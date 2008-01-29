@@ -733,18 +733,19 @@ The basic structure that needs to be added to the plugin, is as follows:
 &lt;pre&gt;public function filter_plugin_config( $actions, $plugin_id )
         {
                 if ( $plugin_id == $this-&gt;plugin_id() ) {
-                        $actions[] = _('Configure');
+                        $actions[] = _t('Configure');
                 }
                 return $actions;
         }&lt;/pre&gt;
-The _() function translates the string into the language used by the site.  For English-language blogs, the output would be &quot;Configure&quot;, while for Spanish-language blogs, for example, the output might be &quot;Configurar&quot;.
+The _t() function translates the string into the language used by the site.  For English-language blogs, the output would be &quot;Configure&quot;, while for Spanish-language blogs, for example, the output might be &quot;Configurar&quot;.
+The _e() function echoes a translated string for display.
 &lt;pre&gt;public function action_plugin_ui( $plugin_id, $action )
         {
                 if ( $plugin_id == $this-&gt;plugin_id() ) {
                         switch ( $action ) {
-                                case _('Configure') :
+                                case _t('Configure') :
                                         $ui = new FormUI( strtolower( get_class( $this ) ) );
-                                        $customvalue= $ui-&gt;add( 'text', 'customvalue', _('Your custom value:') );
+                                        $customvalue= $ui-&gt;add( 'text', 'customvalue', _t('Your custom value:') );
                                         $ui-&gt;on_success( array( $this, 'updated_config' ) );
                                         $ui-&gt;out();
                                 break;
