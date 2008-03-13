@@ -539,41 +539,8 @@ You may also want to read over [[Using Excerpts]] if you want to have full lengt
 
 Here is [http://www.chrisjdavis.org/asides-with-habari another tutorial] for doing inline asides.  That is, asides listed along with primary posts, however with the ability to format them differently.</pre>
 </div>
-<div title="Choosing a Custom Theme" modifier="miklb" created="200710131835" tags="MediaWikiFormat" changecount="1">
-<pre>Habari now supports a basic way to change themes.  The first step is to create a new directory in /user/themes/ for your new theme.  Either copy your k2 theme over, or start from scratch.
-
-If you are copying k2 over, you can simply edit the theme.xml file in the theme directory.  You should leave the first line alone, and simply edit the tags below that.  They are pretty self explanatory.  If you are creating a theme from scratch, the theme.xml file should start with &lt;pre&gt;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;&lt;/pre&gt;
-Then add a &lt;pre&gt;&lt;theme&gt;&lt;/pre&gt; tag.
-
-Below that, add these tags:
-
-===Name===
-&lt;pre&gt;&lt;name&gt;&lt;/name&gt;&lt;/pre&gt; This is the name you are giving your theme.
-
-
-===Author===
-&lt;pre&gt;&lt;author&gt;&lt;/author&gt;&lt;/pre&gt; Your name, or whom ever is being credited with the design.
-
-
-===Url===
-&lt;pre&gt;&lt;url&gt;&lt;/url&gt;&lt;/pre&gt;  The url the theme can be found at.
-
-
-===Version===
-&lt;pre&gt;&lt;version&gt;&lt;/version&gt;&lt;/pre&gt;  The version number for the theme/design.
-
-
-===Template Engine===
-&lt;pre&gt;&lt;template_engine&gt;&lt;/template_engine&gt;&lt;/pre&gt; The template engine that the theme uses.  Currently Habari supports rawphpengine, however, by design, any number of other engines can be supported (Smarty and PHPTal are currently being developed for Habari).
-
-
-
-Finally, a closing &lt;pre&gt;&lt;/themes&gt;&lt;/pre&gt; tag is needed.
-
-This file should be uploaded the new theme's directory if it's not there already.
-
-You can now visit your Admin -&gt; Themes page, and should have the option to &quot;active&quot; your new theme.  Note, you must have at least a home.php file in your theme directory, however Habari currently supports numerous templates (see [[Template_File_Hierarchy]]), and at this point, you should also have the theme.php  file (see the example in k2).
-</pre>
+<div title="Choosing a Custom Theme" modifier="miklb" modified="200710132257" created="200803130446" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="694">
+<pre>#REDIRECT [[Creating a Custom Theme]]</pre>
 </div>
 <div title="Code Submisson" modifier="habari" modified="200710161723" created="200710132030" tags="MediaWikiFormat" changecount="2">
 <pre>== Editing the Code ==
@@ -589,17 +556,249 @@ Then, attach your .diff file to the appropriate issue in the [http://trac.habari
 Other users will then be able to apply your patch to test its compatibility with other configurations, and once tested and approved a comitter will then be able to apply your patch to the code to become a part of '''Habari'''
 </pre>
 </div>
-<div title="Coding Standards" modifier="habari" modified="200710161723" created="200710132028" tags="MediaWikiFormat" changecount="4">
+<div title="Coding Standards" modifier="Massimiliano" modified="200802022119" created="200803130446" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="1200">
 <pre>These are the Coding Standards for Habari:
 
-* Use tabs instead of spaces for indentation
-* for functions and classes, the opening brace { should be on its own line
-* conditionals have the opening brace on the same line: &lt;code&gt;if ( foo == bar ) {&lt;/code&gt;
-* on an else condition, closing brace on new line, else and opening brace on same line: &lt;code&gt;} ''[line break]'' else {&lt;/code&gt; are named like so: &lt;code&gt;ClassName&lt;/code&gt;
-* Variables are named with underscores: &lt;code&gt;variable_name&lt;/code&gt;
-* spaces inside parentheses and operators: ( parentheses ), &lt;code&gt;foo == bar&lt;/code&gt;
-* no space before assignment, space after: &lt;code&gt;$foo= bar&lt;/code&gt;
-</pre>
+*Use tabs instead of spaces for indentation
+*for functions and classes, the opening brace { should be on its own line
+*conditionals have the opening brace on the same line: &lt;code&gt;if ( foo == bar ) {&lt;/code&gt;
+*on an else condition, closing brace on new line, else and opening brace on same line: &lt;code&gt;} ''[line break]'' else {&lt;/code&gt;
+*Classes are named like so: &lt;code&gt;ClassName&lt;/code&gt;
+*Variables are named with underscores: &lt;code&gt;variable_name&lt;/code&gt;
+*spaces inside parentheses and operators: ( parentheses ), &lt;code&gt;foo == bar&lt;/code&gt;
+*no space before assignment, space after: &lt;code&gt;$foo= bar&lt;/code&gt;
+
+{{developer}}
+
+[[Category:Manual]]</pre>
+</div>
+<div title="Creating A Plugin" modifier="Massimiliano" modified="200802022118" created="200803130446" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="1199">
+<pre>Habari's functionality can be modified or extended using plugins, which are written in PHP. Writing a plugin for Habari is extremely simple.
+
+The steps below describe in detail how to create a plugin for Habari, and provide some examples of the sorts of things that can be done with a plugin.
+
+== Step 1: Create The Plugin Class File ==
+
+Create a new directory in your &lt;tt&gt;/user/plugins&lt;/tt&gt; directory that uses the name of your plugin.  As an example, you could create: &lt;tt&gt;/user/plugins/mysample&lt;/tt&gt;
+
+In that directory, create a php file that contains the name of your plugin (the same as the directory) plus &lt;tt&gt;.plugin.php&lt;/tt&gt; added to the end.  For our example, we would create:  &lt;tt&gt;/user/plugins/mysample/mysample.plugin.php&lt;/tt&gt;
+
+== Step 2: Create the Base Plugin Class == 
+
+All plugins in Habari must extend the core &lt;tt&gt;Plugin&lt;/tt&gt; class.  This allows the system to easily find and register your plugin. The following code creates a plugin called &lt;tt&gt;MyPlugin&lt;/tt&gt;.
+
+&lt;code&gt;
+ class MyPlugin extends Plugin
+ {
+   function info()
+   {
+     return array(
+       'name' =&gt; 'My Plugin',
+       'version' =&gt; '1.0',
+       'url' =&gt; 'http://habariproject.org/',
+       'author' =&gt; 'Habari Community',
+       'authorurl' =&gt; 'http://habariproject.org/',
+       'license' =&gt; 'Apache License 2.0',
+       'description' =&gt; 'Description',
+     );
+   }
+ }
+&lt;/code&gt;
+
+The &lt;tt&gt;info()&lt;/tt&gt; member of the plugin is _required_.  It indicates the basic plugin information.  If you want your plugin to appear properly in Habari's list of plugins in the admin, then you need to provide these fields at a minimum:
+
+;name: The name of the plugin as it will appear in the admin console.
+;version: The version of your plugin.  It is important that this version number be compatible with PHP's [http://php.net/version_compare version_compare()] function if you want your plugin to be compatible with the habariproject.org update beacon.
+;url: The URL location of your plugin.  This will be used to create a link to your plugin from the admin console.
+;author: The name of the author of your plugin.  (Your name!)
+;authorurl: The URL location of your blog/web site if any.
+;license: The distribution license of your plugin.
+;description: Description of your plugin.
+
+You should not create an instance of your plugin (&lt;tt&gt;$foo = new MyPlugin()&lt;/tt&gt;) within your plugin class file.  Habari will find your plugin and create an instance of it for you when your plugin is activated.  It is able to do this because your plugin extends the core &lt;tt&gt;Plugin&lt;/tt&gt; class.  (If your plugin requires a separate class, Habari won't create an instance of it, because it wouldn't extend &lt;tt&gt;Plugin&lt;/tt&gt;.)
+
+== Step 3: Add Actions and Filters ==
+
+The plugin system in Habari is based on Actions and Filters.
+
+An Action occurs when a certain event in the software takes place.  For example, when a post is saved or displayed an Action is triggered.  An Action notifies your plugin that the event has taken place, allowing your plugin to perform some function.  Values that are passed to an action cannot be changed.
+
+A Filter is similar to an Action but allows your plugin to change data that will be used by the system when an event occurs.  Filters are passed the value of a parameter to filter, and return that parameter, possibly having altered it in some way.  Some Filters also pass additional parameters to give plugins extra information.  An example is a Filter that responds to a comment submission and returns the &quot;spamminess&quot; of the comment.  The value that is returned from a Filter is passed to subsequent Filters as the first parameter, and is eventually used as the value for the filtered item.
+
+Each Action or Filter has a name called a &quot;hook name&quot; that represents an event.  A plugin &quot;hook&quot; is the place in the code where Habari checks to see if any plugins need to be informed of an event.  A hook is either an Action or a Filter.  See [[Plugin Hooks]] for more information on plugin hooks, including a list of available Actions and Filters.  A plugin &quot;sink&quot; is one of the actual functions that is executed when the plugin hook code is run. Creating sinks that are activated for specific hooks is as simple as adding a method to your class with the appropriate name, either &lt;tt&gt;filter_hook_name&lt;/tt&gt; or &lt;tt&gt;action_hook_name&lt;/tt&gt;.
+
+=== Action Example ===
+
+Assume that you want your plugin to perform a task whenever the system has finished loading all plugins.  The hook name of this hook is &lt;tt&gt;plugins_loaded&lt;/tt&gt;.  &lt;tt&gt;plugins_loaded&lt;/tt&gt; is an Action.
+
+To sink this action, create a new method in your plugin like so:
+
+&lt;code&gt;
+ function action_plugins_loaded()
+ {
+   Utils::debug('Hello!');
+ }
+&lt;/code&gt;
+
+The prefix of &lt;tt&gt;action_&lt;/tt&gt; in your function name tells Habari that you are creating a sink for an Action.  The &lt;tt&gt;plugins_loaded&lt;/tt&gt; part of the function name tells Habari what hook you want to sink.
+
+When you activate the plugin with this function in it, the &quot;Hello!&quot; message will be displayed inside the pink debug box immediately after all active plugins are loaded.
+
+Some Actions will pass values to the sink methods.  These values can be checked and acted upon.
+
+=== Filter Example ===
+
+Assume that you want your plugin to check the spamminess of a comment.  The hook name of a hook that will do this is &lt;tt&gt;spam_filter&lt;/tt&gt;.  &lt;tt&gt;spam_filter&lt;/tt&gt; is a Filter.
+
+To sink this Filter, create a new method in your plugin like so:
+
+&lt;code&gt;
+ function filter_spam_filter($rating, $comment, $handler_vars)
+ {
+   if ( strpos( $comment-&gt;content, 'viagra' ) ) {
+     $rating++;
+   }
+   return $rating;
+ }
+&lt;/code&gt;
+
+The prefix of &lt;tt&gt;filter_&lt;/tt&gt; in your function name tells Habari that you are creating a sink for a Filter.  The &lt;tt&gt;spam_filter&lt;/tt&gt; part of the function name tells Habari what hook you want to sink.
+
+When you activate the plugin with this method, Habari will pass every submitted comment through it.  The function looks for the word &quot;viagra&quot; in the content of the comment, and upon finding it, increases the spam rating of the comment.  
+
+Finally, the rating is returned for use by the next plugin, and by the system.  Note that even when no adjustment is made to the value of &lt;tt&gt;$rating&lt;/tt&gt; it *must* be returned, otherwise the system will not have a value to process.
+
+In this sink method, the &lt;tt&gt;$handler_vars&lt;/tt&gt; parameter is provided to the method by the system, but it is not used by the method.  This parameter could have been omitted in the method declaration, but it might be useful to leave it there for future use.
+
+=== XMLRPC Example ===
+
+Implementing XMLRPC via plugins is very easy by use of a special prefix for a plugin function.
+
+&lt;code&gt;
+ function xmlrpc_namespace__function($param1, $param2, ...);
+&lt;/code&gt;
+
+A hook implemented in this way uses the &quot;namespace&quot; part of the hook name as the XMLRPC namespace, and the &quot;function&quot; part as the XMLRPC function.  The two are separated by two underscore characters.
+
+Values passed from to this hook function are those interpreted by processing the incoming values posted to Habari's XMLRPC endpoint.
+
+To return a properly formatted XMLRPC value, simply return a standard PHP data type.  This will be converted into a proper XMLRPC response by the plugin system.
+
+== Step 4: Common Plugin Tasks ==
+
+The previous steps provide instructions for constructing the basic structure of a Habari plugin.  With that knowledge, leveraging the many plugin hooks is a simple task.
+
+What follows are a few things that are common tasks when creating a plugin.
+
+=== Add Output to a Theme ===
+
+So, you have created your killer plugin and want to provide theme developers a chance to show off your work.  Based on the action example above, you can do something like this:
+
+&lt;code&gt;
+ function action_add_template_vars( $theme ) {
+ {
+   $theme-&gt;yourvariable= 'Sweet Plugin Output';
+ }
+&lt;/code&gt;
+
+This makes &lt;tt&gt;$yourvariable&lt;/tt&gt; available in the theme, where you can do something like 
+
+&lt;code&gt;
+&lt;?php echo $yourvariable ?&gt;
+&lt;/code&gt;
+
+and that will output the value directly in the theme template file.
+
+=== Use FormUI to Create an Options Page ===
+
+Adding an options control to your plugin is also very easy, and most users will be more comfortable with setting the options via the admin panel than editing plugin code directly. Thankfully Habari provides a mechanism called FormUI that enables plugin developers to quickly create their own option controls.
+
+The basic structure that needs to be added to the plugin, is as follows:
+&lt;code&gt;
+        public function filter_plugin_config( $actions, $plugin_id )
+        {
+                if ( $plugin_id == $this-&gt;plugin_id() ) {
+                        $actions[]= _t('Configure');
+                }
+                return $actions;
+        }
+&lt;/code&gt;
+The _t() function translates the string into the language used by the site.  For English-language blogs, the output would be &quot;Configure&quot;, while for Spanish-language blogs, for example, the output might be &quot;Configurar&quot;.
+&lt;code&gt;
+        public function action_plugin_ui( $plugin_id, $action )
+        {
+                if ( $plugin_id == $this-&gt;plugin_id() ) {
+                        switch ( $action ) {
+                                case _t('Configure') :
+                                        $ui = new FormUI( strtolower( get_class( $this ) ) );
+                                        $customvalue= $ui-&gt;add( 'text', 'customvalue', _t('Your custom value:') );
+                                        $ui-&gt;on_success( array( $this, 'updated_config' ) );
+                                        $ui-&gt;out();
+                                break;
+                        }
+                }
+        }
+&lt;/code&gt;
+&lt;code&gt;
+        public function updated_config( $ui )
+        {
+                return true;
+        }
+
+&lt;/code&gt;
+
+The first function, &lt;tt&gt;filter_plugin_config&lt;/tt&gt;, creates a simple configure link for the plugin, on the Plugin Administration page.
+&lt;tt&gt;action_plugin_ui&lt;/tt&gt; adds the form controls, in this example a text field called &lt;tt&gt;customvalue&lt;/tt&gt; is added.
+The call to &lt;tt&gt;on_success&lt;/tt&gt; registers a callback function, in this case &lt;tt&gt;updated_config&lt;/tt&gt;. This is called when the FormUI is successfully submitted to allow you to perform actions if the form is successfully submitted and passes validation.  If the FormUI object makes use of the on_success callback, it must return true from the callback for FormUI to save the options to the options table.   If the on_success callback returns false, then the callback is responsible for saving its own options.  If no callback is defined, then the fields will be saved automatically.  When FormUI saves fieldvalues, the fields are saved in the Options table in the format &lt;tt&gt;{plugin_name}:{field_name}&lt;/tt&gt;, your plugin name in lowercase and the field name separated by a colon.
+
+To read the value of the variable have defined in an Action or Filter, call &lt;tt&gt;Options::get( 'myplugin:customvalue' );&lt;/tt&gt;, and build logic around the value it returns.
+
+To store a user-specific option - an option that is different for each logged-in user - apply the prefix &quot;user:&quot; to the name of the added control.  Instead of being stored in the options table, the user-specific option will be stored in the user's info record as &lt;tt&gt;{plugin_name}_{field_name}&lt;/tt&gt;.  So a plugin named &quot;Foo&quot; with an option named &quot;user:bar&quot; will have its value accessible from:
+&lt;code&gt;User::-&gt;identify()-&gt;info-&gt;foo_bar&lt;/code&gt;
+
+For more information about using the FormUI, including other controls and validation, see [[Building Forms]].
+
+=== Change the Priority of Execution for Your Plugin ===
+
+Sometimes you want your implementation of a plugin hook to execute before certain core hooks or other plugins' implementations.  To do this, you need to set the priority of your hooks.
+
+By default, the priority of every hook in your plugin is 8.  Hooks with a lower priority execute sooner.
+
+To set the priority of one of your hooks, add the method &lt;tt&gt;set_priorities()&lt;/tt&gt; in your plugin class.  Have it return an associative array using the full function name of the hook (including the 'filter_' or 'action_' prefix) as the key and the priority integer as the value.
+
+&lt;code&gt;
+ function set_priorities()
+ {
+   return array(
+     'action_add_template_vars' =&gt; 10,
+   );
+ }
+&lt;/code&gt;
+
+Habari will process this function for priorities, and use them to order the execution of plugin hooks.
+
+=== Create an Automatic Update Notification ===
+
+Habari can notify users of changes to your plugin if you follow a few simple steps.
+
+'''Step 1:'''
+Get GUID, for example from http://www.somacon.com/p113.php, using the &quot;Normal&quot; setting.
+
+'''Step 2:'''
+Add this function to your plugin, and replace the strings therein:
+
+&lt;code&gt;
+ function action_update_check() {
+ 	Update::add( 'My Plugin Name', 'My GUID (from link above)', $this-&gt;info-&gt;version ); 
+ }
+&lt;/code&gt;
+
+'''Step 3:'''
+Beacon settings for plugins are stored on http://habariproject.org. You should update these when your plugin is updated. There will eventually be a script that processes changes to the beacon information, but this script does not yet exist.  To update the beacon, contact someone with access to edit files on the server. Be sure to specify a brief description of changes and whether the update is a &quot;Critical&quot;, &quot;Feature&quot;, or &quot;Bugfix&quot; update.
+
+{{developer}}
+
+[[Category:Manual]]</pre>
 </div>
 <div title="Creating_A_Plugin" modifier="habari" modified="200710161723" created="200710132108" tags="MediaWikiFormat" changecount="2">
 <pre>Writing a plugin in Habari is dirt-simple.
@@ -781,16 +980,17 @@ To set the priority of one of your hooks, add the method &lt;tt&gt;set_prioritie
 Habari will process this function for priorities, and use them to order the execution of plugin hooks.
 </pre>
 </div>
-<div title="Customizing Theme Behavior" modifier="habari" modified="200710161723" created="200710132019" tags="MediaWikiFormat" changecount="3">
+<div title="Customizing Theme Behavior" modifier="Massimiliano" modified="200802022117" created="200803130446" tags="Category:Asides Category:Theming" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="1198">
 <pre>In addition to the ability of using custom templates to display output for particular requests, Habari allows customization of the code that controls which templates are called for display and what values are passed to them.
 
-To accomplish this, Habari attempts to load a &lt;tt&gt;theme.php&lt;/tt&gt; file located in the theme directory.  If this file is present, is it included in the code before the theme is rendered for any incoming request.
+To accomplish this, Habari attempts to load a &lt;tt&gt;theme.php&lt;/tt&gt; file located in the theme directory.  If this file is present, it is included in the code before the theme is rendered for any incoming request.
 
 To override the core behavior for themes (defined in &lt;tt&gt;/system/classes/theme.php&lt;/tt&gt;), define a new class structure in the theme's &lt;tt&gt;theme.php&lt;/tt&gt; that extends the core &lt;tt&gt;Theme&lt;/tt&gt; class.  
 
 Consider this custom class:
 
-&lt;pre&gt;// Set a custom theme to use for all public page (UserThemeHandler) theme output
+&lt;source lang=&quot;php&quot;&gt;
+// Set a custom theme to use for all public page (UserThemeHandler) theme output
 define('THEME_CLASS', 'CustomTheme');
 
 /**
@@ -817,11 +1017,13 @@ class CustomTheme extends Theme
 		parent::act_display_posts();
 	}
 
-}&lt;/pre&gt;
-
+}
+&lt;/source&gt;
 
 This class defines two custom functions for output.  Both of these functions would be executed based on the action field value set for the &lt;tt&gt;rewrite_rules&lt;/tt&gt; record that matches an incoming URL request.
-</pre>
+
+[[Category:Asides]]
+[[Category:Theming]]</pre>
 </div>
 <div title="DefaultTiddlers" modifier="miklb" modified="200707302054" created="200703132340" server.type="file" server.host="file:///Users/blogworks/Sites/MyHabari/Docs/Habari_Manual.20070916.0135310976.html" server.page.revision="200707302054">
 <pre>[[Introduction]]
@@ -930,14 +1132,14 @@ Habari supports Atom Publishing Protocol by default, and with a MetaWeblog plugi
 Additionally, as development is still in a state of rapid growth, you can consult the online wiki to learn more about [http://wiki.habariproject.org/en/Habari_Classes classes] and [http://wiki.habariproject.org/en/Plugin_Hooks plugin hooks].
 </pre>
 </div>
-<div title="FAQ" modifier="habari" modified="200710161721" created="200704162101" tags="MediaWikiFormat" server.type="file" server.host="file:///Users/blogworks/Sites/MyHabari/Docs/Habari_Manual.20070916.0135310976.html" server.page.revision="200708031911" changecount="3">
+<div title="FAQ" modifier="michaeltwofish" modified="200802200620" created="200803130446" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="1267">
 <pre>==What does &quot;habari&quot; mean?==
 &quot;Habari&quot; is a Swahili word that means &quot;what's the news?&quot;  It's similar to the English &quot;What's up?&quot; or the Spanish &quot;¿Qué pasa?&quot;  The typical response is &quot;mzuri sana&quot;, which means &quot;very good.&quot;
 
 ==What are the system requirements?==
 Habari is a modern solution for blogging, and requires modern software.  To successfully use Habari, you will need:
 
-* A web server ([http://httpd.apache.org/ Apache] and [http://www.lighttpd.net/ lighttpd] tested so far)
+* A web server ([http://httpd.apache.org/ Apache], [http://www.lighttpd.net/ lighttpd] and [http://nginx.net/ nginx] tested so far)
 * [http://www.php.net/ PHP] version 5.2.x or above.  Habari ''will not'' work with PHP 4.
 * [http://www.php.net/pdo PHP Data Objects] support
 * A database.  [http://www.mysql.com/ MySQL] and [http://www.sqlite.org/ SQLite] tested,  [http://www.postgresql.org/ PostgreSQL] coming soon.
@@ -945,16 +1147,7 @@ Habari is a modern solution for blogging, and requires modern software.  To succ
 Habari has been successfully tested on Etch, the stable version of [http://www.debian.org/ Debian].
 
 ==Will Habari work with my web host?==
-Habari should work with any web host that support the above requirement, the below hosts were successfully tested to run Habari:
-
-* [http://dreamhost.com/ Dreamhost]
-* [http://www.site5.com/ Site5]
-* [http://www.mediatemple.net/webhosting/gs/ (mt) Media Temple - (gs) Grid-Server]
-* [http://www.asmallorange.com/ A Small Orange] (servers Claire, Epsilon, Libby, Nu, Pickett)
-* [http://www.celeonet.fr/ Celeonet]
-* [http://www.1and1.fr 1and1 France]
-* [http://www.nearlyfreespeech.net NearlyFreeSpeech (with PHP5 requested)]
-* [http://slicehost.com/ Slicehost ''(running apache 2, php5, mysql5 or sqlite3)'']
+Habari should work with any web host that supports the above requirements. A list of web hosts where Habari has been tested and run successfully can be found at [[Supported Hosts]].
 
 ==How is this different from the eleventy billion other blog packages?==
 It's true that there are tons of blogging software solutions from which to choose.  Each has their place, and their legion of ardent followers.
@@ -977,13 +1170,13 @@ Habari uses a modified version of the Apache License (http://www.apache.org/lice
 
 Developers contributing to the Habari project itself should note that, unless explicitly stated otherwise, any contribution intentionally submitted for inclusion shall be under the terms and conditions of the Habari license, without any additional terms or conditions. However, plugins and themes designed to work with Habari are not required to have the same license as Habari itself.
 
-You can find our license included in the source, and [http://trac.habariproject.org/habari/browser/trunk/LICENSE in our code repository].
+You can find our license included in the source, and http://svn.habariproject.org/habari/trunk/LICENSE in our code repository].
 
 ==Why HTML vs XHTML==
 A consensus amongst project members concluded a thorough discussion as to the merits of the two DOC types, and what would be appropriate for the Admin pages of Habari.  The conclusion was that HTML was the &quot;proper&quot; way, however, end users are welcome to serve their pages in any way they prefer by declaring the DOC type in their theme.  A more [[XHTML_vs_HTML|comprehensive outline]] of the discussion, culled from the information in the original discussion is provided.
 
 ==How can I help?==
-* Open new issues [http://trac.habariproject.org/habari here] describing problems you experience, or to request new features.
+* Open new issues [http://trac.habariproject.org/habari/ on our issue tracker] describing problems you experience, or to request new features.
 * Join the Google Group(s) in which you have the most interest, and start sharing!
 ** The [http://groups.google.com/group/habari-users habari-users] group is for end user support, and general discussion.
 ** The [http://groups.google.com/group/habari-dev habari-dev] group is for nitty-gritty implementation discussions of the code, database schemas, and the like.
@@ -1000,7 +1193,8 @@ As you write your code, review Habari's [[Coding Standards|coding standards]] to
 As you prepare your changes, ask for review on the development mailing list as often as you need it.
 
 When your changes are complete, file code changes as a diff in the issue that you're tracking, and attach any associated files.  Be sure to mention how the files are to be applied if there are any special considerations.  Your issue will be reviewed, and if suitable, will be applied in the code repository.
-</pre>
+
+[[Category:Manual]]</pre>
 </div>
 <div title="Formatting" modifier="habari" modified="200710161724" created="200704162110" server.type="file" server.host="file:///Users/blogworks/Sites/MyHabari/Docs/Habari_Manual.20070916.0135310976.html" server.page.revision="200704162110" changecount="1">
 <pre>Like most wikis, TiddlyWiki supports a range of simplified character formatting:
@@ -1028,103 +1222,120 @@ The highlight can also accept CSS syntax to directly style the text:
 <div title="Habari Classes" modifier="habari" modified="200710161724" created="200710132032" tags="MediaWikiFormat" changecount="3">
 <pre></pre>
 </div>
-<div title="Habari Workflow" modifier="habari" modified="200710161724" created="200710132029" tags="MediaWikiFormat" changecount="2">
-<pre>''Workflow'' might be the wrong term.  This page will attempt to describe in general terms what happens when '''Habari''' receives a request from a user.  The process is basically the same for visitors (anonymous or otherwise) and users (administrators or otherwise), but each will be explained in detail for your benefit.
+<div title="Habari Workflow" modifier="Massimiliano" modified="200802022122" created="200803130446" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="1203">
+<pre>''Workflow'' might be the wrong term.  This page will attempt to describe in general terms what happens when Habari receives a request from a user.  The process is basically the same for visitors (anonymous or otherwise) and users (administrators or otherwise), but each will be explained in detail for your benefit.
 
-For the purposes of this document, we will assume that a client somewhere on the internet is accessing an instance of '''Habari''' at &lt;code&gt;&lt;nowiki&gt;http://habariproject.org/en/&lt;/nowiki&gt;&lt;/code&gt;.
+For the purposes of this document, we will assume that a client somewhere on the internet is accessing an instance of Habari at &lt;code&gt;&lt;nowiki&gt;http://habariproject.org/en/&lt;/nowiki&gt;&lt;/code&gt;.
 
-==End User Workflow==
-The client computer will initiate an HTTP request to &lt;code&gt;&lt;nowiki&gt;http://habariproject.org/en/&lt;/nowiki&gt;&lt;/code&gt;.  The '''Habari''' instance on the server will accept the request.
+==Set up==
+The client computer will initiate an HTTP request to &lt;code&gt;&lt;nowiki&gt;http://habariproject.org/en/&lt;/nowiki&gt;&lt;/code&gt;.  The Habari instance on the server will accept the request. All requests begin in the same way. This section describes Habari's set up process.
 
 ===mod_rewrite===
-Before '''Habari''' is ever invoked, the web server software (Apache, Lighttpd, IIS) will evaluate whether the incoming request is an actual file on the server's hard disk(s) or not.  If the request is for a specific file that does actually exist, the web server software will deliver this file to the client, and '''Habari''' will not be involved.  This happens when serving &lt;code&gt;.css&lt;/code&gt; stylesheets, for example.  This might also happen when serving media files (images, podcasts, etc).
+Before Habari is ever invoked, the web server software (Apache, Lighttpd, IIS) will evaluate whether the incoming request is an actual file on the server's hard disk(s) or not.  If the request is for a specific file that does actually exist, the web server software will deliver this file to the client, and Habari will not be involved.  This happens when serving &lt;code&gt;.css&lt;/code&gt; stylesheets, for example.  This might also happen when serving media files (images, podcasts, etc).
 
-If the client request is not for a specific file that exists on the server's hard disk(s), the web server software will pass the request on to the '''Habari''' &lt;code&gt;index.php&lt;/code&gt;.
+If the client request is not for a specific file that exists on the server's hard disk(s), the web server software will pass the request on to the Habari &lt;code&gt;index.php&lt;/code&gt;.
 
 ===Version Check===
-The very first thing &lt;code&gt;index.php&lt;/code&gt; does is to determine whether the version of PHP installed on the server is at least version 5.1.0 or above.  This is the absolute bare minimum version of PHP that '''Habari''' will support.
+The very first thing &lt;code&gt;index.php&lt;/code&gt; does is to determine whether the version of PHP installed on the server is at least version 5.2.0 or above.  This is the absolute bare minimum version of PHP that Habari will support.
 
 ===HABARI_PATH===
-Next, &lt;code&gt;index.php&lt;/code&gt; sets a constant -- &lt;code&gt;HABARI_PATH&lt;/code&gt; -- that will be used throughout the program.  This constant contains the filesystem path to the &lt;code&gt;index.php&lt;/code&gt; file.  For example, if '''Habari''' is installed at &lt;code&gt;/home/habari/public_html&lt;/code&gt;, then &lt;code&gt;HABARI_PATH&lt;/code&gt; will contain ''/home/habari/public_html''.  The &lt;code&gt;HABARI_PATH&lt;/code&gt; constant is used in many places throughout the '''Habari''' code.
+Next, &lt;code&gt;index.php&lt;/code&gt; sets a constant -- &lt;code&gt;HABARI_PATH&lt;/code&gt; -- that will be used throughout the program.  This constant contains the filesystem path to the &lt;code&gt;index.php&lt;/code&gt; file.  For example, if Habari is installed at &lt;code&gt;/home/habari/public_html&lt;/code&gt;, then &lt;code&gt;HABARI_PATH&lt;/code&gt; will contain ''/home/habari/public_html''.  The &lt;code&gt;HABARI_PATH&lt;/code&gt; constant is used in many places throughout the Habari code.
 
 ===Output Buffering===
-Once the constant has been set, '''Habari''' enables output buffering.  This is a process to delay sending any data to the client until such time as the server is ready to do so.  In the normal execution of a web site, content is delivered to the client directly from the server as it is read in by the server.  With output buffering, content is held on the server until the script on the server specifically tells the server to send it to the client.
+Once the constant has been set, Habari enables output buffering.  This is a process to delay sending any data to the client until such time as the server is ready to do so.  In the normal execution of a web site, content is delivered to the client directly from the server as it is read in by the server.  With output buffering, content is held on the server until the script on the server specifically tells the server to send it to the client.
 
 ===__autoload()===
-The next portion of the &lt;code&gt;index.php&lt;/code&gt; defines a function, &lt;code&gt;__autoload()&lt;/code&gt;, that represents one of the fundamental building blocks of '''Habari'''.  Although it is defined here in &lt;code&gt;index.php&lt;/code&gt;, it is not executed at this time.  The &lt;code&gt;[http://www.php.net/autoload __autoload()]&lt;/code&gt; function automatically locates and loads any PHP class files that are referenced for use within '''Habari'''.  This function looks for class files first in the Site classes directory, if it exists, and then in &lt;code&gt;HABARI_PATH/system/classes&lt;/code&gt;.  By using the &lt;code&gt;__autoload()&lt;/code&gt; function, '''Habari''' is able to dynamically load class files as they are needed, without requiring the '''Habari''' developers to pre-define every single class file and its location.
+The next portion of the &lt;code&gt;index.php&lt;/code&gt; defines a function, &lt;code&gt;__autoload()&lt;/code&gt;, that represents one of the fundamental building blocks of Habari.  Although it is defined here in &lt;code&gt;index.php&lt;/code&gt;, it is not executed at this time.  The &lt;code&gt;[http://www.php.net/autoload __autoload()]&lt;/code&gt; function automatically locates and loads any PHP class files that are referenced for use within Habari.  This function looks for class files first in the Site classes directory, if it exists, and then in &lt;code&gt;HABARI_PATH/system/classes&lt;/code&gt;.  By using the &lt;code&gt;__autoload()&lt;/code&gt; function, Habari is able to dynamically load class files as they are needed, without requiring the Habari developers to pre-define every single class file and its location.
 
 ===Error Reporting===
-With the &lt;code&gt;__autoload()&lt;/code&gt; function defined, '''Habari''' now sets PHP error reporting to &quot;All&quot;.  This step is primarily to aid server administrators by ensuring that sufficient diagnostic information is recorded in the web server error logs if something goes wrong.  Without this, it is often difficult to know exactly where a problem has occurred, or why.
+With the &lt;code&gt;__autoload()&lt;/code&gt; function defined, Habari now sets PHP error reporting to &quot;All&quot;.  This step is primarily to aid server administrators by ensuring that sufficient diagnostic information is recorded in the web server error logs if something goes wrong.  Without this, it is often difficult to know exactly where a problem has occurred, or why.
 
 ===revert_magic_quotes_gpc()===
-Next '''Habari''' invokes a function called &lt;code&gt;revert_magic_quotes_gpc()&lt;/code&gt; inside the &lt;code&gt;Utils&lt;/code&gt; class.  Because the &lt;code&gt;Utils&lt;/code&gt; class is not yet defined, the &lt;code&gt;__autoload()&lt;/code&gt; function is triggered.  &lt;code&gt;__autoload()&lt;/code&gt; searches for a file named &lt;code&gt;utils.php&lt;/code&gt; in one of several directories.  Unless you have created your own &lt;code&gt;utils.php&lt;/code&gt; file, '''Habari''' will load &lt;code&gt;HABARI_PATH/system/classes/utils.php&lt;/code&gt; and execute the &lt;code&gt;revert_magic_quotes_gpc()&lt;/code&gt; function therein.  This function undoes &quot;[http://www.php.net/magic_quotes magic quotes]&quot;.  '''Habari''' does not rely on magic quotes in the same way that many other tools do.
+Next Habari invokes a function called &lt;code&gt;revert_magic_quotes_gpc()&lt;/code&gt; inside the &lt;code&gt;Utils&lt;/code&gt; class.  Because the &lt;code&gt;Utils&lt;/code&gt; class is not yet defined, the &lt;code&gt;__autoload()&lt;/code&gt; function is triggered.  &lt;code&gt;__autoload()&lt;/code&gt; searches for a file named &lt;code&gt;utils.php&lt;/code&gt; in one of several directories.  Unless you have created your own &lt;code&gt;utils.php&lt;/code&gt; file, Habari will load &lt;code&gt;HABARI_PATH/system/classes/utils.php&lt;/code&gt; and execute the &lt;code&gt;revert_magic_quotes_gpc()&lt;/code&gt; function therein.  This function undoes &quot;[http://www.php.net/magic_quotes magic quotes]&quot;.  Habari does not rely on magic quotes in the same way that many other tools do.
 
 ===config.php===
-With all of that set, '''Habari''' is finally ready to load the &lt;code&gt;config.php&lt;/code&gt; file that specifies how to connect to the database.  A single installation of the '''Habari''' source code can power many sites, so there are a number of places in which the &lt;code&gt;config.php&lt;/code&gt; file might be found.  The &lt;code&gt;get_config_path()&lt;/code&gt; function in the &lt;code&gt;Site&lt;/code&gt; class determines where the correct &lt;code&gt;config.php&lt;/code&gt; file is for this invocation of '''Habari'''.  Remember, the &lt;code&gt;Site&lt;/code&gt; class will be automatically loaded by the &lt;code&gt;__autoload()&lt;/code&gt; function!
+With all of that set, Habari is finally ready to load the &lt;code&gt;config.php&lt;/code&gt; file that specifies how to connect to the database.  A single installation of the Habari source code can power many sites, so there are a number of places in which the &lt;code&gt;config.php&lt;/code&gt; file might be found.  The &lt;code&gt;get_config_path()&lt;/code&gt; function in the &lt;code&gt;Site&lt;/code&gt; class determines where the correct &lt;code&gt;config.php&lt;/code&gt; file is for this invocation of Habari.  Remember, the &lt;code&gt;Site&lt;/code&gt; class will be automatically loaded by the &lt;code&gt;__autoload()&lt;/code&gt; function!
 
-If '''Habari''' is only being used for a single site -- say a personal blog -- then the &lt;code&gt;config.php&lt;/code&gt; file should reside inside the &lt;code&gt;HABARI_PATH&lt;/code&gt; directory.  However, '''Habari''' has no immediate way of determining whether it is being used for one site or one hundred sites.  &lt;code&gt;get_config_path()&lt;/code&gt; does the following:
+If Habari is only being used for a single site -- say a personal blog -- then the &lt;code&gt;config.php&lt;/code&gt; file should reside inside the &lt;code&gt;HABARI_PATH&lt;/code&gt; directory.  However, Habari has no immediate way of determining whether it is being used for one site or one hundred sites.  &lt;code&gt;get_config_path()&lt;/code&gt; does the following:
 * defines the path to the &lt;code&gt;config.php&lt;/code&gt; as &lt;code&gt;HABARI_PATH&lt;/code&gt;, by default
 * looks for the existence of any &lt;code&gt;config.php&lt;/code&gt; files inside any sub-directories of &lt;code&gt;HABARI_PATH/user/sites&lt;/code&gt;
 ** if none are found, return the default path of &lt;code&gt;HABARI_PATH&lt;/code&gt;
-* Compare the URL used to access '''Habari''' for this request with the directories in &lt;code&gt;HABARI_PATH/user/sites&lt;/code&gt;, using the following formula:
+* Compare the URL used to access Habari for this request with the directories in &lt;code&gt;HABARI_PATH/user/sites&lt;/code&gt;, using the following formula:
 ** strip off the protocol used to access the site.  &lt;code&gt;&lt;nowiki&gt;http://habariproject.org/en/&lt;/nowiki&gt;&lt;/code&gt; becomes &lt;code&gt;//habariproject.org/en/&lt;/code&gt;
 ** replace all slashes with periods.  So &lt;code&gt;habariproject.org/en&lt;/code&gt; becomes &lt;code&gt;habariproject.org.en&lt;/code&gt;.
 ** place any non-standard HTTP port at the beginning of the directory.  So &lt;code&gt;habariproject.org/en:8080&lt;/code&gt; becomes &lt;code&gt;8080.habariproject.org.en&lt;/code&gt;
 ** if a match exists between the URL used for this request and a directory, return that directory.  For example, &lt;code&gt;&lt;nowiki&gt;http://habariproject.org/en/&lt;/nowiki&gt;&lt;/code&gt; matches &lt;code&gt;HABARI_PATH/user/sites/habariproject.org.en&lt;/code&gt;
 
 ===Install?===
-If there is no &lt;code&gt;config.php&lt;/code&gt;, or if it is incomplete, the '''Habari''' installation process will be invoked.  If there is a valid &lt;code&gt;config.php&lt;/code&gt;, '''Habari''' will attempt to connect to the database.  If that fails, the installation process will be invoked.
+If there is no &lt;code&gt;config.php&lt;/code&gt;, or if it is incomplete, the Habari installation process will be invoked.  If there is a valid &lt;code&gt;config.php&lt;/code&gt;, Habari will attempt to connect to the database.  If that fails, the installation process will be invoked.
 
 ===Content Type===
-'''Habari''' next forcibly sets the content type to &lt;code&gt;text/html;charset=utf-8&lt;/code&gt;.
+Habari next forcibly sets the content type to &lt;code&gt;text/html;charset=utf-8&lt;/code&gt;.
 
 ===Locale===
-'''Habari''' sets the locale, which governs the language used to display '''Habari'''-generated messages.  The default locale is U.S. English.
+Habari sets the locale, which governs the language used to display Habari-generated messages.  The default locale is U.S. English.
 
 ===Plugins===
-Plugins are loaded next, and the very first plugin hook is triggered.  Any plugins registered against the &lt;code&gt;plugins_loaded&lt;/code&gt; hook will be executed.
+Plugins are loaded next, and the very first plugin hook is triggered.  Any plugins registered against the &lt;code&gt;plugins_loaded&lt;/code&gt; hook will be executed.  See [[Plugins]] for more information.
 
 ===Controller===
-The controller ( '''C''' in MVC ([http://en.wikipedia.org/wiki/Model-view-controller model-view-controller]) &quot;[p]rocesses and responds to events, typically user actions, and may invoke changes on the model.&quot;  The controller first examines the request (&lt;code&gt;Controller::parse_request();&lt;/code&gt;).  This compares the requested URL against the list of registered actions in the &lt;code&gt;rewrite_rules&lt;/code&gt; database table.  If a match is found, the action specified in the rule is invoked against the handler specified in the rule.  The controller contains an array of &lt;code&gt;handler_vars&lt;/code&gt;, which are set by HTTP POST and GET values passed to this request, as well as any values set by plugins.
+The controller ( '''C''' in MVC ([http://en.wikipedia.org/wiki/Model-view-controller model-view-controller]) &quot;[p]rocesses and responds to events, typically user actions, and may invoke changes on the model.&quot;  The controller first examines the request (&lt;code&gt;Controller::parse_request();&lt;/code&gt;).  This compares the requested URL against the list of registered actions in the &lt;code&gt;rewrite_rules&lt;/code&gt; database table.  If a match is found, the action specified in the rule is invoked against the handler specified in the rule.  For more information on rewrite rules, see the [[Rewrite Tutorial]].  The controller contains an array of &lt;code&gt;handler_vars&lt;/code&gt;, which are set by HTTP POST and GET values passed to this request, as well as any values set by plugins. Execution from this point is different, depending on which handler is invoked according to the rewrite rule matched. The following sections describe in the workflow for different handlers.
 
-For the normal case of a user viewing the site, the handler will be UserThemeHandler.  UserThemeHandler evaluates the request (home page, single post view, date-based archive view, etc) and loads the proper theme template files.  The handler will place the &lt;code&gt;handler_vars&lt;/code&gt; into the theme's global variable space.  The template files are then delivered to the viewer.
-
-===Flush Output===
-The very last thing that &lt;code&gt;index.php&lt;/code&gt; does is to flush the output buffer.  Any output that has been prepared is finally sent to the browser.
+==End User Workflow==
+In the event that the requested URL is simply to a public page of the blog, that is for the normal case of a user viewing the site, the handler will be UserThemeHandler.  UserThemeHandler evaluates the request (home page, single post view, date-based archive view, etc) and loads the proper theme template files.  For information on how Habari chooses which template file to use, see [[Template File Hierarchy]].  The handler will place the &lt;code&gt;handler_vars&lt;/code&gt; into the theme's global variable space.  The template files are then delivered to the viewer.
 
 ==Administrative Workflow==
-</pre>
-</div>
-<div title="Importing Content" modifier="YourName" created="200711050104" tags="MediaWikiFormat" changecount="1">
-<pre>Habari currently ships with a plugin to import posts, comments, tags (including Ultimate Tag Warrior Tags) and users from WordPress (current version confirmed to work with 2.3.1, millage will vary with older versions).  Other importers are planned.
+For requests to the administration section of Habari, those whose path begins with &lt;code&gt;/admin&lt;/code&gt; the AdminHandler will be invoked.
 
-You must fist activate the plugin before navigating to the admin/import page.  After activating the plugin, you will get a select box to choose what type of content you are importing (as mentioned, WordPress is the only importer currently available).
+===Authentication and Authorisation===
+Only users with administration privileges can access pages under &lt;code&gt;/admin&lt;/code&gt;, so the first thing that AdminHandler does is check if the user is logged in, and if not redirects them to the login page. The user's privileges are then checked, and if they do not have administrative access an error message is displayed.
+
+===Routing the request===
+Once the user is authenticated and authorised, control is passed to &lt;code&gt;AdminHandler-&gt;act_admin()&lt;/code&gt; which decides where the request should be routed based on the HTTP method used (GET or POST) and the page requested (the portion of the URL following &lt;code&gt;/admin&lt;/code&gt;) to the appropriate function in &lt;code&gt;AdminHandler&lt;/code&gt;.  For example, a GET request to &lt;code&gt;/admin/publish&lt;/code&gt; will be sent to &lt;code&gt;AdminHandler-&gt;get_publish()&lt;/code&gt;, and the handler will prepare the publish page for display.
+
+===Administration Output===
+The administration section has its own theme, located in &lt;code&gt;HABARI_PATH/system/admin&lt;/code&gt;. Each of the functions in &lt;code&gt;AdminHandler&lt;/code&gt; specify which template should be used as their output, which is then output in the same way as any other theme.
+
+==Flush Output==
+The very last thing that &lt;code&gt;index.php&lt;/code&gt; does is to flush the output buffer.  Any output that has been prepared is finally sent to the browser.
+
+{{developer}}
+
+[[Category:Manual]]</pre>
+</div>
+<div title="Importing Content" modifier="Massimiliano" modified="200802022133" created="200803130446" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="1210">
+<pre>Need help [[Restoring a WordPress SQL file]]? This page is about importing directly from a WordPress database.
+
+Habari currently ships with a plugin to import posts, comments, tags (including Ultimate Tag Warrior Tags) and users from WordPress (current version confirmed to work with 2.3.1, mileage will vary with older versions).  Other importers are planned.
+
+You must first activate the plugin before navigating to the admin/import page.  After activating the plugin, you will get a select box to choose what type of content you are importing (as mentioned, WordPress is the only importer currently available).
+
+One note about importing, due to the feature of importing users, you can not have the same user name in your Habari install at the time of import (this can easily be changed under admin/users/ -&gt;edit, and change the name.  You can change back after importing.  Example, if your Habari install uses admin and your WordPress install uses admin, change your Habari name to admin2 for the import, and change it back after importing). '''For the upcoming .4 release, and as of revision 1319 this issue has been resolved.'''
 
 You will then be prompted to fill in your WordPress database information, and choose your options for tag importation.
 
-It is suggested you set up a separate database for your Habari install from that of your WordPress installation, the import process will be much faster and less room for error.  WordPress pages *should* import as Habari pages, and everything else either an entry or draft.
+It is suggested you set up a separate database for your Habari install from that of your WordPress installation. The import process will be much faster and less room for error. WordPress pages should import as Habari pages, and everything else either an entry or draft.
 
 Approved and unapproved comments should also be imported.
 
-Note that WP permalinks and paths will be lost, and you should explore options with .htaccess if you are concerned with maintaining your previous links.  Andrew da Silva's [http://andrewdasilva.com/files/plugins/route301.zip Route 301] plugin may help in some cases.
+Note that WordPress permalinks and paths will be lost, and you should explore options with .htaccess if you are concerned with maintaining your previous links. Andrew da Silva's [http://www.habariproject.org/dist/plugins/route301.zip Route 301] plugin may help in some cases. Alternatively, you can set up a custom permalink scheme by adding a rewrite rule to your Habari database. Feel free to post to [http://groups.google.com/group/habari-users Habari users] if you have any questions or problems with your migration.
 
-Feel free to post to [http://groups.google.com/group/habari-users Habari users] if you have any questions or problems with your migration.
-</pre>
+[[Category:Manual]]</pre>
 </div>
-<div title="Installation" modifier="habari" modified="200710161721" created="200707290741" tags="MediaWikiFormat" server.type="file" server.host="file:///Users/blogworks/Sites/MyHabari/Docs/Habari_Manual.20070916.0135310976.html" server.page.revision="200708031903" changecount="6">
+<div title="Installation" modifier="andycowl" modified="200803031353" created="200803130446" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="1363">
 <pre>==Before You Install==
 
 === Server Requirements ===
-* Supported Web Server
-** [http://httpd.apache.org/ Apache (1.3.x or higher, 2.x or higher recommended)] with [http://httpd.apache.org/docs/1.3/mod/mod_rewrite.html mod_rewrite] enabled
-** [http://www.lighttpd.net/ Lighttpd]
-** [http://www.nginx.net/ Nginx]
-* Supported Database
-** MySQL 4.1.x or greater
-** SQLite
-* PHP version 5.2 or above
-** PHP Data Objects (PDO) enabled
-** SimpleXML enabled
+*Supported Web Server
+**[http://httpd.apache.org/ Apache (1.3.x or higher, 2.x or higher recommended)] with [http://httpd.apache.org/docs/1.3/mod/mod_rewrite.html mod_rewrite] enabled
+**[http://www.lighttpd.net/ Lighttpd]
+**[http://www.nginx.net/ Nginx]
+*Supported Database
+**MySQL 4.1.x or greater
+**SQLite
+*PHP version 5.2 or above
+**PHP Data Objects (PDO) enabled
+**SimpleXML enabled
 
 ''Support for PostgreSQL is planned.''
 
@@ -1132,20 +1343,36 @@ To install habari on [http://dreamhost.com/ Dreamhost]you need to make sure that
 [http://wiki.habariproject.org/en/Installation:Dreamhost faq here.]
 
 === Change Permissions ===
+In order to enjoy the most convenient installation process, it is required to make writable the folder where Habari will be installed.  The Habari installation process will create a &lt;tt&gt;config.php&lt;/tt&gt; file and &lt;tt&gt;.htaccess&lt;/tt&gt; file for you automatically.
 
-It is required to make writable the folder where Habari will be installed, the installer will create a &lt;tt&gt;config.php&lt;/tt&gt; file.
-
-We recommend you allow modifications on the &lt;tt&gt;.htaccess&lt;/tt&gt; file that may already exist, Habari will need to add several lines to it.
-
-&lt;em&gt;Apply the following chmod to the root folder of your Habari installation.&lt;/em&gt;
+If you are using a GNU/Linux (or other UNIX-like) host, you may apply the following chmod to the root folder of your Habari installation:
 &lt;pre&gt;
-chmod g+ w .
+chmod o+w .
+&lt;/pre&gt;
+That allows everyone to write to the Habari directory.  Specifically, the web server will use this to create the files necessary for Habari's execution.
+
+When the installation process completes, you may remove the &quot;everyone&quot; write permission with this:
+&lt;pre&gt;
+chmod o-w .
 &lt;/pre&gt;
 
-&lt;em&gt;Apply the following chmod to the &lt;tt&gt;.htaccess&lt;/tt&gt; file in the root folder of your Habari installation.&lt;/em&gt;
+==== Instructions for the paranoid ====
+If the idea of giving everyone write access to your Habari directory gives you the willies, you can instead perform the following steps:
 &lt;pre&gt;
-chmod g+ w .htaccess
+touch .htaccess
+touch config.php
+chmod o+w .htaccess
+chmod o+w config.php
 &lt;/pre&gt;
+This creates empty &lt;tt&gt;.htaccess&lt;/tt&gt; and &lt;tt&gt;config.php&lt;/tt&gt; files, and makes only these files world-writable.  Habari will add the necessary bits to these files.
+
+Upon completion, you may remove the world-writable permission with these commands:
+&lt;pre&gt;
+chmod o-w .htaccess
+chmod o-w config.php
+&lt;/pre&gt;
+
+The Habari installation process will do its best not to clobber any existing &lt;tt&gt;.htaccess&lt;/tt&gt; file that might exist.
 
 === Activate PHP5 ===
 
@@ -1162,7 +1389,7 @@ Some hosts may offer both PHP4 and PHP5, but execute files with the &lt;tt&gt;.p
 &lt;em&gt;As Habari is still in development, no guarantees are made that these are fully stable versions, or that updating won't break the current database structure.&lt;/em&gt;
 
 ==== Developer Release ====
-* Habari is still in development, however there is a developer release [http://code.google.com/p/habari/downloads/list available for download].
+* Habari is still in development, however there is a developer release [http://habariproject.org/dist/ available for download].
 
 ==== SVN Checkout ====
 &lt;em&gt;In order to use SVN you will need SSH access to your server. Some hosts have it enabled by default, but others may only enable it upon request.&lt;/em&gt;
@@ -1176,11 +1403,11 @@ Your host will then ask for your host password. Put it in and you are in.
 &lt;pre&gt;cd ~/public_html/habari/&lt;/pre&gt;
 
 * Checkout the source code.
-&lt;pre&gt;svn checkout http://svn.habariproject.org/svn/trunk/htdocs .&lt;/pre&gt;
+&lt;pre&gt;svn checkout http://svn.habariproject.org/habari/trunk/htdocs .&lt;/pre&gt;
 
 * If you are not in the Habari directory, use the following command to &lt;em&gt;checkout&lt;/em&gt; in a new directory called &lt;tt&gt;habari&lt;/tt&gt;.
 
-&lt;pre&gt;svn checkout http://svn.habariproject.org/svn/trunk/ habari&lt;/pre&gt;
+&lt;pre&gt;svn checkout http://svn.habariproject.org/habari/trunk/htdocs habari&lt;/pre&gt;
 
 &lt;em&gt;Reference: [[Subversion and applying patchs]]&lt;/em&gt;
 
@@ -1252,7 +1479,318 @@ These values will be extracted when or if &lt;tt&gt;index.php&lt;/tt&gt; detects
 This will allow a fully automated installation, without any prompts being displayed to the user (assuming the $db_connection array is properly constructed, too).
 
 At the moment, it's a convenience for those who are constantly re-installing Habari and who don't want to waste a bunch of time keying in the same values over and over.  It's also the basis of an automagic deployment tool for hosting providers.
-</pre>
+
+==[[Troubleshooting]]==
+
+See [[Troubleshooting|troubleshooting]] page for more details...
+
+==[[Installation/Special_Instructions|Special Instructions]]==
+===Software Bundles===
+*[[Installation/Special_Instructions/LAMP|LAMP]]
+*[[Installation/Special_Instructions/MAMP|MAMP]]
+*[[Installation/Special_Instructions/WAMP|WAMP]]
+*[[Installation/Special_Instructions/Nginx|Nginx]]
+*[[Installation/Special_Instructions/LiteSpeed|LiteSpeed]]
+
+===Hosting Solutions===
+*[[Installation/Special_Instructions/Dreamhost|Dreamhost]]
+*[[Installation/Special_Instructions/Bluehost|Bluehost]]
+
+[[Category:Manual]]</pre>
+</div>
+<div title="Installation/Special Instructions" modifier="andycowl" modified="200803110808" created="200803130446" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="1461">
+<pre>==Software Bundles==
+*[[Installation/Special_Instructions/LAMP|LAMP]]
+*[[Installation/Special_Instructions/MAMP|MAMP]]
+*[[Installation/Special_Instructions/WAMP|WAMP]]
+*[[Installation/Special_Instructions/Nginx|Nginx]]
+
+==Hosting Solutions==
+*[[Installation/Special_Instructions/A Small Orange|A Small Orange]]
+*[[Installation/Special_Instructions/Dreamhost|Dreamhost]]
+*[[Installation/Special_Instructions/Bluehost|Bluehost]]</pre>
+</div>
+<div title="Installation/Special Instructions/A Small Orange" modifier="andycowl" modified="200803110809" created="200803130446" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="1462">
+<pre>A Small Orange does support PHP5, however, by default they use 4.x.  To enable PHP5, you need to add a single line to your .htaccess file for the directory in which you want to use PHP5.
+
+&lt;pre&gt;AddHandler application/x-httpd-php5 .php&lt;/pre&gt;
+This should be added just above the Habari rules.
+Also note, that ASO doesn't provide users with shell access by default.  You must request this feature via their excellent support team.</pre>
+</div>
+<div title="Installation/Special Instructions/Bluehost" modifier="andycowl" modified="200803031431" created="200803130446" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="1373">
+<pre>Early in 2008, [http://www.bluehost.com Bluehost] upgraded all servers to PHP 5.2.x which allows Habari to be installed and configured on a Bluehost server.
+
+The other main pre-requisite for using Habari is the installation of the [http://uk.php.net/pdo PDO] (PHP Data Objects) extensions; specifically PDO drivers for the MySQL database.
+
+To check the version of PHP running on a Bluehost server and to determine whether your server has the necessary software installed, simply create a text file named 'phpinfo.php' in the root directory of the Web server containing the following lines:
+
+&lt;pre&gt;
+&lt;?php
+phpinfo();
+?&gt;
+&lt;/pre&gt;
+
+Then, visit the URL in a Web browser - &lt;nowiki&gt;http://www.mysite.com/phpinfo.php&lt;/nowiki&gt; and examine the output.
+
+The summary section includes the operating system of the host server, the exact version of the PHP interpreter and the options used to configure PHP.
+
+[[Image:Bluehost-php-summary.png]]
+
+
+* Check the version of PHP - Habari needs 5.2 (or higher)
+* Check PDO and the required drivers for the MySQL database are installed. The Web page will be long so searching for 'PDO' may quickly locate the necessary section. If PDO and the drivers are present, you should see a section similar to the following:
+
+[[Image:Bluehost-pdo.png]]
+
+If the PDO extensions and the support for MySQL are present, proceed with the installation of Habari.
+
+Otherwise, raise a ticket with Bluehost Technical Support asking for PDO and/or the drivers for MySQL to be installed on your server.</pre>
+</div>
+<div title="Installation/Special Instructions/Dreamhost" modifier="freakerz" modified="200711022015" created="200803130446" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="849">
+<pre>= How to install Habari on Dreamhost. =
+
+== php5 ==
+
+Log into your dreamhost.com account by going to [https://panel.dreamhost.com panel.dreamhost.com]. Find the ''Manage Domain'' setting and make a fully hosted domain with PHP version 5.2.2.
+
+[[Image:s1.JPG]]
+
+== MySQL ==
+
+You then need to go to ''Goodies'' &gt; ''Manage MySQL''. Scroll to the bottom of that page and find the bit that says ''Create a new MySQL database''. 
+
+Make sure you create a new user and that you also change the ''hostname'' to the correct site. 
+
+'''Example:'''
+''Database name:'' Habari 
+''Hostname:'' habari.example.com  
+''User:'' habari2
+''Password:'' habari12345 
+
+[[Image:s2.JPG]]
+
+If you like you can put a comment on the database so you know what is in there.  
+
+Then follow the [[Installation|Install guides]] as normal.</pre>
+</div>
+<div title="Installation/Special Instructions/LiteSpeed" modifier="SoreGums" modified="200802292018" created="200803130446" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="1336">
+<pre>== LiteSpeed ==
+
+=== Configure PHP ===
+
+==== Compile PDO Extensions ====
+Using LiteSpeed's inbuilt compiler these options work for MySQL.
+For sqlite you'll need to ensure you have sqlite installed on the system and use appropriate configure options.
+&lt;pre&gt;
+--with-mysql=/usr --with-mysql-sock=/var/run/mysqld/mysqld.sock --with-zlib --with-gd --enable-shmop --enable-track-vars --enable-sockets --enable-sysvsem
+--enable-sysvshm --enable-magic-quotes --enable-mbstring --enable-pdo=shared --with-pdo-sqlite=shared --with-sqlite=shared --with-pdo-mysql=shared
+--with-config-file-path=../php
+&lt;/pre&gt;
+
+==== Load PDO Extensions ====
+As we specified the location of the php config file in the configure line above to be ../php, this should map to /opt/lsws/php/php.ini.
+Open that file and make sure the following is present
+&lt;pre&gt;
+;extension_dir = ./
+extension=pdo.so
+extension=pdo_mysql.so
+&lt;/pre&gt;
+PHP will then use the extension_dir that is compiled into it.
+
+To verify all is well create a new file info.php and inside put
+&lt;pre&gt;
+&lt;?php phpinfo() ?&gt;
+&lt;/pre&gt;
+When you view this you should see the PDO extension and drivers enabled.
+
+=== Configure Virtual Host ===
+
+It's a lot simpler to deal with LiteSpeed as LiteSpeed rather using all your Apache knowledge and treat LSWS like Apache.
+So don't use .htaccess just setup rewrite rules in the Virtual Host config.
+
+Do everything you normally do for a php webapp. The part you need to take note of is the Rewrite tab.
+Ensure Rewrite is enabled and that these rules are present.
+&lt;pre&gt;
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteBase /
+RewriteRule . index.php [PT]
+&lt;/pre&gt;
+Update RewriteBase to where you have Habri installed. I've setup on the root dir.
+
+Restart LiteSpeed and you should be good to install.</pre>
+</div>
+<div title="Installation/Special Instructions/Nginx" modifier="tinster" modified="200802041550" created="200803130446" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="1219">
+<pre>==Installing Habari to Run on Nginx [engine x]==
+
+There are a few special considerations to get Habari up and running on [http://www.nginx.net/ Nginx].  The first being that Nginx does not provide FastCGI for you, so you've got to have a way to spawn your own FastCGI processes...
+
+===Spawning FastCGI Processes===
+
+I prefer to use the &lt;code&gt;spawn-fcgi&lt;/code&gt; program provided with the [http://www.lighttpd.net/ lighttpd] web server.  You can use PHP's built-in FastCGI manager &lt;code&gt;php-cgi&lt;/code&gt; to [http://blog.kovyrin.net/2006/05/30/nginx-php-fastcgi-howto/ do the same thing], but it's a bit more work and not as straight-forward.  Plus, if you learn how to use spawn-fcgi, you can use it for other FastCGI applications aside from ones that are PHP-based.
+
+====Install spawn-fcgi====
+
+To download and install &lt;code&gt;spawn-fcgi&lt;/code&gt; to your machine, run the following commands.  Feel free to adjust the path where you want the binary and don't worry, all of the building happens in your current directory...nothing else will be installed on your machine.
+
+&lt;pre&gt;$ wget http://www.lighttpd.net/download/lighttpd-1.4.18.tar.bz2
+$ tar -xvjf lighttpd-1.4.18.tar.bz2
+$ cd lighttpd-1.4.18/
+$ ./configure
+$ make
+$ sudo cp src/spawn-fcgi /usr/bin/spawn-fcgi&lt;/pre&gt;
+
+''NOTE: You will need to be root in order to copy the binary to its final location, everything else should work fine as a normal user.  To gain root privileges, the program &lt;code&gt;sudo&lt;/code&gt; was used in the example above, you may or may not have access to sudo on your machine.''
+
+After &lt;code&gt;spawn-fcgi&lt;/code&gt; has been copied to the desired location, you can safely remove the build directory and original source file:
+
+&lt;pre&gt;$ cd ..
+$ rm -rf lighttpd-1.4.18/
+$ rm lighttpd-1.4.18.tar.bz2&lt;/pre&gt;
+
+====Run spawn-fcgi====
+
+This part will be fairly distribution-specific, but I'll provide the basic command that you'll need.  What you'll want to do is find a way to run this command as part of your init scripts so the processes will be spawned automatically when you reboot your server.
+
+&lt;pre&gt;/usr/bin/spawn-fcgi -f /usr/bin/php-cgi -a 127.0.0.1 -p 53217 -P /var/run/habari.pid&lt;/pre&gt;
+
+* &lt;code&gt;-f&lt;/code&gt; -&gt; the filename of the fcgi-application; in our case we want php-cgi, which is provided by your distribution's php package.  If you don't know where to find it, try running &lt;code&gt;which php-cgi&lt;/code&gt; on the command line.
+* &lt;code&gt;-a&lt;/code&gt; -&gt; the address to bind the processes to; in our case we want the localhost
+* &lt;code&gt;-p&lt;/code&gt; -&gt; the port number to bind the processes to; pick whatever you want (technically it would be best to pick one between 49152 and 65535), just make sure to remember the number and use that same one for your Nginx configuration file
+* &lt;code&gt;-P&lt;/code&gt; -&gt; the location where to save the process id file; you can use this file to easily [[Installation/Special_Instructions/Nginx#How to Properly Kill spawn-fcgi Processes|kill the processes]] later
+
+For better security, you can also set the user/group that the spawned processes will run as to a non-privileged user.  To do this, you use the &lt;code&gt;-u&lt;/code&gt; and &lt;code&gt;-g&lt;/code&gt; flags respectively.  For more information on all the available options, run &lt;code&gt;spawn-fcgi -h&lt;/code&gt; on the command line.
+
+===Configure Nginx===
+
+The key part here is that Habari uses the FrontController design pattern, and thus requires any unrecognized URL request (meaning a request for a file that does not exist on the server) to be forwarded to and handled by the main index.php file.  The file you need to edit is called &lt;code&gt;nginx.conf&lt;/code&gt; and is installed in different places depending on your Linux distribution.  For me, it was located here: &lt;code&gt;/etc/nginx/conf/nginx.conf&lt;/code&gt; (installed from source, the default location is &lt;code&gt;/usr/local/nginx/conf/nginx.conf&lt;/code&gt;)
+
+&lt;pre&gt;server {
+    listen       12.345.678.90:80;  # YOUR PUBLIC IP ADDRESS (just use listen 80 to bind to all interfaces)
+    server_name  domain.com;        # YOUR DOMAIN NAME (subdomains [blog.yourdomain.com] will also work here)
+
+    root   /srv/www/nginx/domain.com/habari;  # ABSOLUTE PATH TO YOUR HABARI INSTALLATION
+
+    location / {
+        index  index.php index.html index.htm;
+
+        # serve static files that exist without running other rewrite tests
+        if (-f $request_filename) {
+            expires  30d;
+            break;
+        }
+
+        # send all non-existing file or directory requests to index.php
+        # GOTCHA: Make sure your rewrite rules are inside the location block. 
+        if (!-e $request_filename) {
+            rewrite  ^  /index.php  last;
+        }
+    }
+
+    location ~ \.php$ {
+        fastcgi_pass   localhost:53217;  # PORT NUMBER WHERE YOU SPAWNED YOUR FCGI PROCESSES
+        fastcgi_index  index.php;
+
+        fastcgi_param  SERVER_SOFTWARE  nginx;
+        fastcgi_param  QUERY_STRING     $query_string;
+        fastcgi_param  REQUEST_METHOD   $request_method;
+        fastcgi_param  CONTENT_TYPE     $content_type;
+        fastcgi_param  CONTENT_LENGTH   $content_length;
+        fastcgi_param  SCRIPT_NAME      $fastcgi_script_name;
+        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;  # SAME PATH AS ABOVE
+        fastcgi_param  REQUEST_URI      $request_uri;
+        fastcgi_param  REDIRECT_STATUS  200;
+    }
+}&lt;/pre&gt;
+
+After you've added these settings to your configuration, restart the &lt;code&gt;nginx&lt;/code&gt; daemon and your settings should take effect.
+
+===How to Properly Kill spawn-fcgi Processes===
+
+If you need to kill the FastCGI processes that you spawned (for instance, when stopping an init script), then you can run the following command since we saved the process id to a file:
+
+&lt;pre&gt;kill $(cat /var/run/habari.pid) &amp;&gt;/dev/null&lt;/pre&gt;</pre>
+</div>
+<div title="Installation/Special Instructions/WAMP" modifier="andycowl" modified="200803031041" created="200803130446" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="1354">
+<pre>[http://www.wampserver.com/en/ WampServer] is a Windows software package containing Apache, PHP and mySQL that enables users to easily install Habari on Windows.
+
+== Install WampServer ==
+
+Download and install the WampServer package. Check the basic operation of the WAMP package by starting all WAMP Services and accessing the Web site.
+
+&lt;nowiki&gt;http://localhost/&lt;/nowiki&gt;
+
+The default WampServer page displaying the Apache and PHP version should be displayed.
+
+[[Image:WampServer.PNG]]
+
+== Create a mySQL database ==
+
+Create a mySQL database with an associated database account for use with Habari. Use the phpMyAdmin utility. Select 'Privileges' to create a new user e.g. 'habari'.
+
+Check the option 
+
+'Create database with same name and grant all privileges'
+
+Make a note of the username and password credentials.
+
+== Configure Apache ==
+
+The default settings for the Apache Web Server bundled with WampServer result in a '500 Internal Server error' when trying to install Habari.
+
+''Internal Server Error
+
+''The server encountered an internal error or misconfiguration and was unable to complete your request.''
+
+''Please contact the server administrator, webmaster@localhost and inform them of the time the error occurred, and anything you might have done that may have caused the error.''
+
+''More information about this error may be available in the server error log.
+
+When the Apache error log (Apache-Apache error log) is examined, the following Apache error is recorded
+
+''D:/wamp/www/habari-0.4/.htaccess: Invalid command 'RewriteEngine', perhaps misspelled or defined by a module not included in the server configuration''
+
+To fix this problem, simply enable the Apache Rewrite module from the WAMP menu (Apache-Apache Modules). Scroll down the list and ensure 'rewrite_module' is checked.
+
+After this configuration change, all Wamp services should be stopped and restarted (Restart All Services). Installation of Habari should now complete successfully.
+
+== Install Habari ==
+
+Download the Habari [http://habariproject.org/en/download distribution] and extract the files to the Web Server root directory (D:\wamp\www\habari).
+
+Bring up the Habari installation page in a Web browser - &lt;nowiki&gt;http://localhost/habari/&lt;/nowiki&gt; - and simply follow the standard Habari installation process.</pre>
+</div>
+<div title="Installation/Special_Instructions/Bluehost" modifier="andycowl" modified="200803031431" created="200803130447" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="1373">
+<pre>Early in 2008, [http://www.bluehost.com Bluehost] upgraded all servers to PHP 5.2.x which allows Habari to be installed and configured on a Bluehost server.
+
+The other main pre-requisite for using Habari is the installation of the [http://uk.php.net/pdo PDO] (PHP Data Objects) extensions; specifically PDO drivers for the MySQL database.
+
+To check the version of PHP running on a Bluehost server and to determine whether your server has the necessary software installed, simply create a text file named 'phpinfo.php' in the root directory of the Web server containing the following lines:
+
+&lt;pre&gt;
+&lt;?php
+phpinfo();
+?&gt;
+&lt;/pre&gt;
+
+Then, visit the URL in a Web browser - &lt;nowiki&gt;http://www.mysite.com/phpinfo.php&lt;/nowiki&gt; and examine the output.
+
+The summary section includes the operating system of the host server, the exact version of the PHP interpreter and the options used to configure PHP.
+
+[[Image:Bluehost-php-summary.png]]
+
+
+* Check the version of PHP - Habari needs 5.2 (or higher)
+* Check PDO and the required drivers for the MySQL database are installed. The Web page will be long so searching for 'PDO' may quickly locate the necessary section. If PDO and the drivers are present, you should see a section similar to the following:
+
+[[Image:Bluehost-pdo.png]]
+
+If the PDO extensions and the support for MySQL are present, proceed with the installation of Habari.
+
+Otherwise, raise a ticket with Bluehost Technical Support asking for PDO and/or the drivers for MySQL to be installed on your server.</pre>
+</div>
+<div title="Installation:Dreamhost" modifier="freakerz" modified="200711022016" created="200803130446" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="850">
+<pre></pre>
 </div>
 <div title="Introduction" modifier="habari" modified="200710161719" created="200707302035" tags="MediaWikiFormat" server.type="file" server.host="file:///Users/blogworks/Sites/MyHabari/Docs/Habari_Manual.20070916.0135310976.html" server.page.revision="200708032058" changecount="11">
 <pre>These documents are intended for basic information on installing, upgrading and base use. As development continues, additional information will be added. For more
@@ -2920,55 +3458,99 @@ Each '''Habari''' site can use its own themes and plugins, as well as the themes
 &lt;/div&gt;
 &lt;!--}}}--&gt;</pre>
 </div>
-<div title="Pingbacks" modifier="habari" modified="200710161731" created="200710131847" tags="MediaWikiFormat" changecount="2">
-<pre>As of revision 756 Habari now supports the sending and recieving of Pingbacks.  That is all well and good, but how do we display them on our sites?
-
-Quite simple actually.  Let's go over the code you will need to add to your comments template.
+<div title="Pingbacks" modifier="Pivwan" modified="200802271815" created="200803130446" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="1316">
+<pre>As of revision 756 Habari now supports the sending and recieving of Pingbacks. Displaying them on your site is simple. Let's go over the code you will need to add to your comments template.
 
 By default Habari grabs all the comments for a given post (normal comments, trackbacks, etc) and sorts them into &quot;buckets&quot; for later use.  For instance when we want to display all our comments, we would do something like this:
-&lt;pre&gt;if( $post-&gt;comments-&gt;approved-&gt;count ) :
-	foreach ( $post-&gt;comments-&gt;comments-&gt;approved as $comment ) :&lt;/pre&gt;
+&lt;source lang=&quot;php&quot;&gt;
+if ( $post-&gt;comments-&gt;approved-&gt;count ) {
+  foreach ( $post-&gt;comments-&gt;comments-&gt;approved as $comment ) { 
+&lt;/source&gt;
 
-In the above code we are checking that there are approved comments for this post, and if so we are processing them for display.  Pretty simple.  The code for displaying pingbacks is much the same:
+The code above checks if there are approved comments for this post, and if so begins a loop to process them for display. The code for displaying pingbacks is much the same:
 
-&lt;pre&gt;if( $post-&gt;comments-&gt;pingbacks-&gt;count ) : 
-	foreach ( $post-&gt;comments-&gt;pingbacks-&gt;approved as $pingback ) :
-&lt;/pre&gt;
+&lt;source lang=&quot;php&quot;&gt;
+if ( $post-&gt;comments-&gt;pingbacks-&gt;count ) {
+  foreach ( $post-&gt;comments-&gt;pingbacks-&gt;approved as $pingback ) {
+&lt;/source&gt;
 
-At this point, if we have approved pingbacks they have been returned and we are processing them for display.  Here is a sample of the code that I am using on my site to display pingbacks:
+If there are approved pingbacks for this post they are processed for display.  Here is complete sample code to display pingbacks:
 
-&lt;pre&gt;&lt;?php if( $post-&gt;comments-&gt;pingbacks-&gt;count ) : ?&gt;
-	&lt;h1&gt;&lt;?php echo $post-&gt;comments-&gt;pingbacks-&gt;count; ?&gt; &lt;?php echo _n( 'Pingback', 'Pingbacks', $post-&gt;comments-&gt;pingbacks-&gt;count ); ?&gt; to &lt;?php echo $post-&gt;title; ?&gt;&lt;/h1&gt;
-		&lt;div id=&quot;pings&quot;&gt;
-			&lt;ol id=&quot;pings-list&quot;&gt;
-				&lt;?php foreach ( $post-&gt;comments-&gt;pingbacks-&gt;approved as $pingback ) : ?&gt;
-					&lt;li id=&quot;ping-&lt;?php echo $pingback-&gt;id; ?&gt;&quot;&gt;
-						&lt;p&gt;
-							&lt;a href=&quot;&lt;?php echo $pingback-&gt;url; ?&gt;&quot; title=&quot;&quot;&gt;&lt;?php echo $pingback-&gt;name; ?&gt;&lt;/a&gt; 
-							&amp;raquo; &lt;?php echo $pingback-&gt;content; ?&gt;
-						&lt;/p&gt;
-					&lt;/li&gt;
-				&lt;?php endforeach; ?&gt;
-			&lt;/ol&gt;
-		&lt;/div&gt;
-	&lt;?php endif; ?&gt;&lt;/pre&gt;
+&lt;source lang=&quot;php&quot;&gt;
+&lt;?php if ( $post-&gt;comments-&gt;pingbacks-&gt;count ) : ?&gt;
+  &lt;h1&gt;
+  &lt;?php 
+    echo $post-&gt;comments-&gt;pingbacks-&gt;count . ' ';
+    echo _n( 'Pingback', 'Pingbacks', $post-&gt;comments-&gt;pingbacks-&gt;count );
+    echo ' ' . to ' ' . $post-&gt;title; ?&gt;
+  &lt;/h1&gt;
+  &lt;div id=&quot;pings&quot;&gt;
+    &lt;ol id=&quot;pings-list&quot;&gt;
+      &lt;?php foreach ( $post-&gt;comments-&gt;pingbacks-&gt;approved as $pingback ) : ?&gt;
+        &lt;li id=&quot;ping-&lt;?php echo $pingback-&gt;id; ?&gt;&quot;&gt;
+          &lt;p&gt;
+            &lt;?php
+              echo &quot;&lt;a href=\&quot;{$pingback-&gt;url}\&quot;&gt;{$pingback-&gt;name}&lt;/a&gt; &amp;raquo; {$pingback-&gt;content}&quot;;
+            ?&gt;
+          &lt;/p&gt;
+        &lt;/li&gt;
+      &lt;?php endforeach; ?&gt;
+    &lt;/ol&gt;
+  &lt;/div&gt;
+&lt;?php endif; ?&gt;
+&lt;/source&gt;
 
-Fairly straightforward I would think.
+The default comments template in the k2 theme will show both pingbacks and comments. To show only comments use the following code.
 
-Note, to only call your comments, you need to use &lt;pre&gt;$post-&gt;comments-&gt;comments-&gt;approved-&gt;count;&lt;/pre&gt;, otherwise, the default comments.php in k2 will show both pingbacks and pingbacks as comments with the above  pingback code.
-</pre>
+&lt;source lang=&quot;php&quot;&gt;$post-&gt;comments-&gt;pingbacks-&gt;approved-&gt;count;&lt;/source&gt;
+
+[[Category:Manual]]</pre>
 </div>
-<div title="Plugins" modifier="habari" modified="200710161731" created="200710132018" tags="MediaWikiFormat" changecount="3">
-<pre>Plugins are intended to be extensions of the core functionality of Habari.  Your installation will come with several, community developed plugins, or you may download other, community and individually developed plugins.  Eventually, a repository on the official site will house freely available plugins, until then, you can check out the [http://wiki.habariproject.org/en/Available_Plugins Available Plugins].
+<div title="Plugins" modifier="ringmaster" modified="200803012243" created="200803130446" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="1340">
+<pre>Plugins are intended to be extensions of the core functionality of Habari.  Your installation will come with several, community developed plugins, or you may download other, community and individually developed plugins.  Eventually, a repository on the official site will house freely available plugins, until then, you can check out the [[Available Plugins]].
 
 ==Installation &amp; Activation==
-Plugins are installed in the /User/Plugins directory of your Habari installation.  The directory structure must be kept in place, that is, do not upload just the php files of the plugin, rather, the entire directory, even if only one file exists.
 
-Navigate to your /admin/plugins in your dashboard, and a list of all plugins in your user directory should be available. To active or deactivate a plugin, simply click the button to the right of the plugin name.  Some plugins also provide configuration settings, clicking the configure link will open the options below the list of your installed plugins (it does not open in a new page.  Also note, the interface for this is still in development).
+The directory structure must be kept in place, that is, do not upload just the php files of the plugin, rather, the entire directory, even if only one file exists.
 
-==Implementing the Plugin==
-Some plugins will provide features that do not require anything else to implement.  However, some plugins will require adding a line of code to your active theme to output some data.  Generally speaking, the plugin author should provide documentation for this, however, the basics of how they work is that the plugin sets a variable using your theme.php file, and then within the template where you want your data to be outputted, you simply echo that variable.  This is done so that in the future, when other theme engines are added, specific PHP code isn't required for the plugin to work with that theme.  So if a plugin had the variable $my_twitter, in the raw php engine you would add &lt;code&gt;&lt;?php echo $my_twitter; ?&gt;&lt;/code&gt; to the template you wanted to show the data.  As other engines are added, this will be updated to reflect those as well.
-</pre>
+===System Plugins vs User Plugins===
+Core plugins are installed in &lt;tt&gt;/system/plugins&lt;/tt&gt;.  User installed plugins should be installed in &lt;tt&gt;/user/plugins/&lt;/tt&gt;.  This system allows for upgrades, without having to touch the &lt;tt&gt;/user&lt;/tt&gt; directory at all.  If a plugin exists in both locations, the &lt;tt&gt;/user/plugins&lt;/tt&gt; will override the system version. Note, all of the files and directories of a plugin must live in the &lt;tt&gt;/user/plugin&lt;/tt&gt; directory, it will not pull from both. 
+
+To activate and configure your plugins navigate your browser to &lt;tt&gt;/admin/plugins&lt;/tt&gt;, and a list of all plugins in your user directory should be available. To active or deactivate a plugin, simply click the button to the right of the plugin name.  Some plugins also provide configuration settings, clicking the configure link will open the options below the list of your installed plugins (but note that the interface for plugin configuration is still in development). Note that a &quot;sandboxing&quot; function exists to check a plugins syntax before being activated.  If any errors exist, the plugin will not be available for activation.  If this occurs, you should contact the plugin author, or check for a newer version.
+
+==Enabling the Plugin==
+Some features provided by plugins will be enabled without you doing anything other than activating the plugin.  However, some plugins will require adding code to your active theme to output some data.  Generally speaking, the plugin author should provide documentation for this, however, in most cases the plugin sets a variable and adds it to the $theme instance, which represents the active theme. Within the template where you want the plugin's data displayed, you simply echo that variable.  This is done so that in the future, when other theme engines are added, specific PHP code isn't required for the plugin to work with that theme engine.  If a plugin sets the variable &lt;code&gt;$my_twitter&lt;/code&gt;, in the raw PHP engine you would add &lt;code&gt;&lt;?php echo $my_twitter; ?&gt;&lt;/code&gt; to the template where you want to show the data.  As other engines are added, this will be updated to reflect those as well.
+
+==Checking for Plugins in Themes==
+You can use a conditional statement to see if a particular plugin is active, and if so, do something, else, do something else.  
+
+This is '''not recommended''' for most purposes, especially in template files, because [[Theme Functions]] provide more functionality and have the plugin detection built-in, and [[Theme Dependencies]] allow you to specify Theme Functions and versions that must be present for your theme to work properly before it's even activated.
+
+To test if a plugin is present, use the following function:
+
+&lt;code lang=&quot;php&quot;&gt;&lt;?php Plugins::is_loaded(); ?&gt;&lt;/code&gt;
+
+You need to pass at least one variable to the function, the &lt;code&gt;$name&lt;/code&gt;.  &lt;code&gt;$name&lt;/code&gt; can either be from the plugin info, or the class.  You can also pass a version number, however this is optional.  So for example, if you want to check to see if the Pingback plugin is active, and is at least version 1.0, you would do something to the effect of:
+&lt;code lang=&quot;php&quot;&gt;&lt;?php if (Plugins::is_loaded('pingback','1.0')) {
+  //do something
+}
+else {
+  //something instead
+}
+
+?&gt;&lt;/code&gt;
+
+However, if you do not need to test against a version, you simply need :
+&lt;code lang=&quot;php&quot;&gt;&lt;?php if (Plugins::is_loaded('pingback')) {
+ //do something
+}
+else {
+  //something instead
+}
+
+?&gt;&lt;/code&gt;
+
+[[Category:Manual]]</pre>
 </div>
 <div title="QueryRecord" modifier="habari" modified="200710161731" created="200710132025" tags="MediaWikiFormat" changecount="7">
 <pre>A single instance of QueryRecord represents a single query result row.  QueryRecord also serves as the base class for derivative classes that provide row-level data access.  QueryRecord is, in many ways, the fundamental building block of Habari.
@@ -3282,8 +3864,14 @@ $rule = RewriteRule::create_url_rule('&quot;archives&quot;/year/mon0/mday0/slug'
 $rule-&gt;insert();
 </pre>
 </div>
-<div title="Site Title" modifier="Khaled Abou Alfa" created="200703132345" server.type="file" server.host="file:///Users/blogworks/Sites/MyHabari/Docs/Habari_Manual.20070916.0135310976.html" server.page.revision="200703132345">
-<pre>Khaled Abou Alfa</pre>
+<div title="Security Considerations" modifier="michaeltwofish" modified="200712030536" created="200803130446" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="1002">
+<pre>Security always involves a trade off with convenience. Habari has been designed to be as secure as possible by default, and every effort has been made to make administrators and users aware of decisions they make that might diminish the security of their Habari installation. When a user logs in to Habari, a cookie is saved onto the user's machine, allowing access to restricted pages without having to enter a username and password again. To protect accounts from unauthorised accessed, without any plugin, Habari logins timeout after 20 minutes of non-use.
+
+Many systems implement &quot;Remember me&quot; functionality, allowing users to choose to save their login details in a cookie so that they can log in to subsequent sessions without having to enter their username and password at all. While this may be convenient, it also opens a security hole. For example, on shared machines, forgetting to log out is a very serious security matter, and users may be unaware that their account could be compromised.
+
+To ensure that administrators and users consider security carefully, Habari does not provide &quot;Remember me&quot; functionality in its core. A plugin that allows this convenience over Habari's default security is available. However, you should only install something that makes your site less secure if you really understand the ramifications. If you have further questions about security, please see the Getting Help section on the [[Main Page]] of this wiki.
+
+[[Category:Manual]]</pre>
 </div>
 <div title="SiteSubtitle" modifier="Khaled Abou Alfa" modified="200704162057" created="200703132345" server.type="file" server.host="file:///Users/blogworks/Sites/MyHabari/Docs/Habari_Manual.20070916.0135310976.html" server.page.revision="200704162057">
 <pre>| User Manual</pre>
@@ -3291,7 +3879,7 @@ $rule-&gt;insert();
 <div title="SiteTitle" modifier="Khaled Abou Alfa" modified="200704162057" created="200703132346" server.type="file" server.host="file:///Users/blogworks/Sites/MyHabari/Docs/Habari_Manual.20070916.0135310976.html" server.page.revision="200704162057">
 <pre>Habari</pre>
 </div>
-<div title="Stack Class" modifier="miklb" modified="200710132111" created="200710132110" tags="MediaWikiFormat" changecount="4">
+<div title="Stack Class" modifier="Massimiliano" modified="200802022110" created="200803130446" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="1194">
 <pre>The Stack class allows a developer to create a &quot;stack&quot; of items for later output.  This can be useful for creating a stack of scripts or CSS file references that should be added to the page output.  Using the naming feature of the Stack class, a developer can ensure that only one script is added to the stack for a specific purpose.
 
 == Output a Stack ==
@@ -3302,22 +3890,24 @@ The ::get() method returns the values generated for a stack, and the ::out() met
 
 To output a specific stack:
 
- &lt;pre&gt;Stack::out('stack_name');&lt;/pre&gt;
+ &lt;code&gt;Stack::out('stack_name');&lt;/code&gt;
 
 This causes all elements of the stack named &lt;tt&gt;stack_name&lt;/tt&gt; to be output to the page in sequence.  The values are not formatted.
 
 To use a simple format of the values, this syntax is useful:
 
- &lt;pre&gt;Stack::out('stack_name', '&lt;link rel=&quot;stylesheet&quot; href=&quot;%s&quot; type=&quot;text/css&quot;&gt;');&lt;/pre&gt;
+ &lt;code&gt;Stack::out('stack_name', '&lt;link rel=&quot;stylesheet&quot; href=&quot;%s&quot; type=&quot;text/css&quot;&gt;');&lt;/code&gt;
 
 This outputs each element of the stack as if it was called as a parameter to PHP's sprintf() function.  The string supplied as the second parameter to Stack::out() is the formatting string that is used to format each element.
 
 The most complex formatting technique allows callback functions as formatting functions:
 
- &lt;pre&gt;function myformatter($text){
+ &lt;code&gt;
+ function myformatter($text){
    return strrev($text) 
  }
- Stack::out('stack_name', 'myformatter');&lt;/pre&gt;
+ Stack::out('stack_name', 'myformatter');
+ &lt;/code&gt;
 
 The second parameter to Stack:out() in this example is the name of a callback function.  The function is called for each element of the stack, and the return value of that function is used for the stack output.  In this case, the text of every element of the stack is reversed before it is output.
 
@@ -3327,22 +3917,25 @@ Note that the callback function returns, and does not echo, regardless of whethe
 
 When you know the name of a stack, it is easy to queue values to it:
 
- &lt;pre&gt;Stack::add('stack_name', $value);&lt;/pre&gt;
+ &lt;code&gt;Stack::add('stack_name', $value);&lt;/code&gt;
 
 &lt;tt&gt;$value&lt;/tt&gt; is the value that you want to add to the stack.  Calling ::add() this way will not ensure uniqueness.
 
 To ensure that the element you are adding to the stack is unique for a purpose, use this:
 
- &lt;pre&gt;Stack::add('stack_name', $value, 'element_name');&lt;/pre&gt;
+ &lt;code&gt;Stack::add('stack_name', $value, 'element_name');&lt;/code&gt;
 
 &lt;tt&gt;element_name&lt;/tt&gt; is a name for the element that is added to the stack.  Only one value can exist for each name in each stack.  The second call to ::add() with the same element name replaces the existing stack element with a new value.
 
 To remove an existing element from a stack:
 
- &lt;pre&gt;Stack::remove('stack_name', 'element_name');&lt;/pre&gt;
+ &lt;code&gt;Stack::remove('stack_name', 'element_name');&lt;/code&gt;
 
 In this syntax, note that you are not able to remove values that have not been given names.
-</pre>
+
+{{developer}}
+
+[[Category:Manual]]</pre>
 </div>
 <div title="StyleSheet" modifier="YourName" modified="200801052006" created="200701122350" tags="BlackicityTheme" server.type="file" server.host="file:///Users/blogworks/Sites/MyHabari/Docs/Habari_Manual.20070916.0135310976.html" server.page.revision="200707302047" changecount="4">
 <pre>/*{{{*/
@@ -3621,25 +4214,28 @@ h2 {font-size:16px;}
 h3 {font-size: 14px;}
 /*}}}*/</pre>
 </div>
-<div title="Supported Hosts" modifier="miklb" modified="200707302043" created="200707302040" tags="MediaWikiFormat" server.type="file" server.host="file:///Users/blogworks/Sites/MyHabari/Docs/Habari_Manual.20070916.0135310976.html" server.page.revision="200707302043">
-<pre>== Hosts Supporting Habari requirements==
+<div title="Supported Hosts" modifier="andycowl" modified="200803110812" created="200803130446" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="1463">
+<pre>=Known Hosts Supporting Habari requirements=
 
-* [http://dreamhost.com/ Dreamhost]
-* [http://www.site5.com/ Site5]
-* [http://www.mediatemple.net/webhosting/gs/ (mt) Media Temple - (gs) Grid-Server]
-* [http://www.asmallorange.com/ A Small Orange] (confirmed servers Claire, Epsilon, Libby, Nu, Pickett)
-* [http://www.celeonet.fr/ Celeonet]
-* [http://www.1and1.fr/ 1and1 France]
+The following list of hosts are known to have the necessary prerequisites for Habari, and Habari has been reported to us as executing successfully on them.  This list is not an endorsement of these hosts over others.  At this time the Habari Project offers no official recommendation or endorsement of any hosting provider.
 
-==Note about A Small Orange==
-ASO does support PHP5, however, by default they use 4.x.  To enable PHP5, you need to add a single line to your .htaccess file for the directory in which you want to use PHP5.
+*[http://www.1and1.fr/ 1and1 France]
+*[http://www.asmallorange.com/ A Small Orange]
+*[http://www.aziendeitalia.com/ Aziende Italia]
+*[http://www.bluehost.com/ Bluehost]
+*[http://www.celeonet.fr/ Celeonet]
+*[http://dreamhost.com/ Dreamhost]
+*[http://itrebal.com/ Itrebal Webhosting]
+*[http://www.jumba.net.au/ Jumba]
+*[http://www.mediatemple.net/webhosting/gs/ (mt) Media Temple - (gs) Grid-Server]
+*[http://www.nearlyfreespeech.net Nearly Free Speech (with PHP5 requested)]
+*[http://www.site5.com/ Site5]
+*[http://www.slicehost.com/ Slicehost] (running apache2 or nginx, php5, mysql5 or sqlite3)
+*[http://servage.net Servage]
 
-&lt;pre&gt;AddHandler application/x-httpd-php5 .php&lt;/pre&gt;
-This should be added just above the habari rules.
-Also note, that ASO doesn't provide users with shell access by default.  You must request this feature via their excellent support team.
-</pre>
+Depending on the hosting provider, there may be additional configuration steps required. Refer to [[Installation/Special_Instructions]] for more information.</pre>
 </div>
-<div title="Template File Hierarchy" modifier="miklb" created="200710131836" tags="MediaWikiFormat" changecount="1">
+<div title="Template File Hierarchy" modifier="Massimiliano" modified="200802022106" created="200803130446" tags="Category:Manual Category:Theming" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="1190">
 <pre>Themes in Habari are constructed from several template files.  Each template potentially corresponds to a type of data and the amount of data that is displayed.
 
 A &quot;post&quot; refers to an atomic published unit.  There are different types of posts in the core Habari software.  These types are called &quot;content-types&quot;.
@@ -3717,15 +4313,79 @@ For example, when failing to find an explicit template for entry #35 (&lt;tt&gt;
 Each request has a chain of templates that it tries, getting more generic as the possible templates fail to exist.  Eventually, Habari attempts to display the content using the &lt;tt&gt;home&lt;/tt&gt; template.  The &lt;tt&gt;home&lt;/tt&gt; template is the minimum required template for a functioning theme.  (That is to say, a theme may have ''only'' a &lt;tt&gt;home&lt;/tt&gt; template file, which will be used to display all content.)
 
 The failover order for any request is determined in the core system Theme class (not necessarily the user Theme class), and is specific to the type of request made.  The failover order can be overridden by using a custom Theme class, but this is not required for failover to work as described.
-</pre>
+
+=== List of supported filenames ===
+
+Below is the list of files that Habari will look for in order based on the type of request.  The template engine will likely use the first file listed that exists, and will continue through the list to the end until it finds a matching file for that request.
+
+These substitutions should be used for elements of the template name that begin with a dollar sign:
+
+;&lt;tt&gt;$type&lt;/tt&gt;: The content type of the post, usually &lt;tt&gt;entry&lt;/tt&gt; or &lt;tt&gt;page&lt;/tt&gt;
+;&lt;tt&gt;$id&lt;/tt&gt;: The id of the post
+;&lt;tt&gt;$tag&lt;/tt&gt;: The requested tag.
+;&lt;tt&gt;$year&lt;/tt&gt;: The requested year.
+;&lt;tt&gt;$month&lt;/tt&gt;: The requested month.
+;&lt;tt&gt;$day&lt;/tt&gt;: The requested day.
+
+==== Display the homepage (/) ====
+#home
+#multiple
+
+==== Display an entry or a page (/first-post) ====
+#$type.$id
+#$type.slug
+#$type.tag.$tag
+#$type.single
+#$type.multiple
+#single
+#multiple
+#home
+
+==== Display entries by tag (/tag/deleteme) ====
+#tag.$tag
+#tag
+#multiple
+#home
+
+==== Display search results (/search/hello+world) ====
+#search
+#multiple
+#home
+
+==== Display entries by date (/2007/12/02) ====
+#year.$year.month.$month.day.$day
+#year.month.day
+#month.$month.day.$day
+#year.$year.month.$month
+#year.$year.day.$day
+#month.day
+#year.day
+#year.month
+#month.$month
+#day.$day
+#year.$year
+#year
+#month
+#day
+#multiple
+#home
+
+==== Error 404 ====
+#404
+#home
+
+[[Category:Manual]]
+[[Category:Theming]]</pre>
 </div>
-<div title="Themes" modifier="habari" modified="200710161722" created="200710131832" tags="MediaWikiFormat" changecount="8">
+<div title="Themes" modifier="Massimiliano" modified="200802022115" created="200803130446" tags="Category:Asides Category:Theming" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="1197">
 <pre>Currently, Habari only supports one theme engine, the rawphpengine.  Eventually, it will support additional engines (such as Smarty and PHPTAL).  
 
-A modified version of the popular, [http://getk2.com/ k2] theme currently comes as the default theme upon installation, however, the goal is to offer several themes with the download.  A few publicly [http://wiki.habariproject.org/en/Available_Themes available themes] are currently available, with many more on the horizon.
+A modified version of the popular [http://getk2.com/ K2] theme currently comes as the default theme upon installation, however, the goal is to offer several themes with the download.  A few publicly [[Available Themes|available themes]] are currently available, with many more on the horizon.
 
-==Intstallation==
-Additional themes can be uploaded to your /user/themes directory.  Themes must include a theme.xml file in order to be activated in /admin/themes.  See [[Creating a Custom Theme]] for details about this file.
+==Installation==
+Included themes are installed in &lt;code&gt;system/themes&lt;/code&gt;.  This allows for upgrading without touching the &lt;code&gt;/user&lt;/code&gt; directory at all.  If you would like to use a system theme, but make modifications, you can copy '''all of the files and directories''' into user/themes.  The &lt;code&gt;user/themes/k2&lt;/code&gt; would override the &lt;code&gt;system/k2&lt;/code&gt;.  Again, this allows for upgrading, and any changes to the distributed version K2 not over write your modified version.  You could then migrate any changes to your user copy.
+
+Additional themes can be uploaded to your &lt;code&gt;/user/themes&lt;/code&gt; directory.  Themes must include a theme.xml file in order to be activated in &lt;code&gt;/admin/themes&lt;/code&gt;.  See [[Creating a Custom Theme]] for details about this file, and about how to create your own themes.
 
 ===Additional Information about themes and customization:===
 
@@ -3735,12 +4395,14 @@ Additional themes can be uploaded to your /user/themes directory.  Themes must i
 
 * [[Using Excerpts]]
 
-* Show [[Recent Comments]]
+* [[Recent Comments|Show Recent Comments]]
 
 * [[Asides]]
 
-* Show [[Pingbacks]]
-</pre>
+* [[Pingbacks|Show Pingbacks]]
+
+[[Category:Asides]]
+[[Category:Theming]]</pre>
 </div>
 <div title="Upgrading" modifier="YourName" modified="200711050115" created="200708031912" tags="MediaWikiFormat" server.type="file" server.host="file:///Users/blogworks/Sites/MyHabari/Docs/Habari_Manual.20070916.0135310976.html" server.page.revision="200708032046" changecount="9">
 <pre>''Please note: We plan on releasing an export/import plugin for easier upgrading process with the 0.4 release.''
@@ -3778,36 +4440,71 @@ The only difference left is the tables' structure. From 0.2 to 0.3 we modified c
 [[Category:Manual]]
 </pre>
 </div>
-<div title="User Documentation" modifier="YourName" modified="200711050104" created="200710131727" tags="MediaWikiFormat" changecount="5">
-<pre>==Intallation and Configuration==
+<div title="User Documentation" modifier="michaeltwofish" modified="200712030439" created="200803130446" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="1000">
+<pre>=Intallation and Configuration=
 * [[Installation]]: what we know so far
 * [[Upgrading]]
-* [[Importing Content]]
 * [[Multisite|Multisite configuration]]: how to drive many sites from a single '''Habari''' installation
-==Content==
+* [[Importing Content]]
+* [[Security Considerations]]
+
+=Content=
 * [[Desktop Blogging]]
 
-==Extending and Customizing==
+* [[Post Statuses]]
+
+=Extending and Customizing=
 * [[Themes]]: how themers can use '''Habari'''
-* [[Plugins]]: how plugin authors can use '''Habari'''</pre>
-</div>
-<div title="User Overrides" modifier="miklb" created="200710132105" changecount="2">
-<pre>The core files used by Habari reside in /system/classes. In general, each file represents a single class: post.php defined the Post object, posts.php defines the Posts object, etc. In order to make Habari as flexible as possible, the developers have made it possible to easily override the default classes. Any file placed in /user/classes will override the system file of the same name.
+* [[Plugins]]: User documentation for Plugins
 
-So, if you wanted to redesign the way the Post object operates internally, while still preserving the external interfaces, you could create your own Post class in /user/classes/post.php. Habari will detect the presence of your file, and will load it in place of the system file.
 
-This is a terrific way to test changes to the core Habari code without trouncing the system: you can copy the file(s) you want to modify from /system/classes to /user/classes and make whatever changes you need. When you're finished, you can delete your local files and Habari will automatically use the system classes! </pre>
+[[Category:Manual]]</pre>
 </div>
-<div title="Using Excerpts" modifier="miklb" modified="200710131839" created="200710131838" tags="MediaWikiFormat" changecount="2">
+<div title="User Overrides" modifier="skippy" modified="200802262231" created="200803130446" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="1314">
+<pre>The core files used by Habari reside in /system/classes.  In general, each file represents a single class: post.php defined the Post object, posts.php defines the Posts object, etc.  In order to make Habari as flexible as possible, the developers have made it possible to easily override the default classes.  Any file placed in /user/classes will override the system file of the same name.
+
+So, if you wanted to redesign the way the Post object operates internally, while still preserving the external interfaces, you could create your own Post class in /user/classes/post.php.  Habari will detect the presence of your file, and will load it in place of the system file.
+
+This is a terrific way to test changes to the core Habari code without trouncing the system: you can copy the file(s) you want to modify from /system/classes to /user/classes and make whatever changes you need.  When you're finished, you can delete your local files and Habari will automatically use the system classes!
+
+== Themes ==
+
+Habari will look in each of these directories for themes that can be activated:
+
+* &lt;tt&gt;/user/sites/{sitename}/themes&lt;/tt&gt;
+* &lt;tt&gt;/user/themes&lt;/tt&gt;
+* &lt;tt&gt;/3rdparty/themes&lt;/tt&gt;
+* &lt;tt&gt;/system/themes&lt;/tt&gt;
+
+The first theme with a given name found from these directories (in order from top to bottom) will be available to Habari for selection. Other themes with the same name but in later directories will not be available for activation. This allows a theme in the user directory (one modified by the user) to override one of the same name in subsequent directories.
+
+== Plugins ==
+
+Habari will look in each of these directories for plugins that can be activated:
+
+* &lt;tt&gt;/user/sites/{sitename}/plugins&lt;/tt&gt;
+* &lt;tt&gt;/user/plugins&lt;/tt&gt;
+* &lt;tt&gt;/3rdparty/plugins&lt;/tt&gt;
+* &lt;tt&gt;/system/plugins&lt;/tt&gt;
+
+The first plugin with a given name found from these directories (in order from top to bottom) will be available to Habari for selection.  Other plugins with the same name but in later directories will not be available for activation.  This allows a plugin in the &lt;tt&gt;user&lt;/tt&gt; directory (one modified by the user) to override one of the same name in subsequent directories.
+
+As with the theme directories, the &lt;tt&gt;user&lt;/tt&gt; directory is for user-created content.  The &lt;tt&gt;system&lt;/tt&gt; directory is for content supplied by the core software.  The &lt;tt&gt;3rdparty&lt;/tt&gt; directory is for contributed content that is external to the core software, such as that which can be updated by subversion checkout from a non-Habari repository.
+
+{{developer}}
+
+[[Category:Manual]]</pre>
+</div>
+<div title="Using Excerpts" modifier="Massimiliano" modified="200802022107" created="200803130446" tags="Category:Manual Category:Theming" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="1191">
 <pre>By default, the k2 theme will &quot;summarize&quot; all posts.  This is controlled via the theme.php file in the theme directory.  The three parameters in the default code are 'more', 100, 1. 'more' is the text you want on the page to link to the full post, 100 is the number of characters, and 1 is the number of paragraphs.  Which ever the function sees first (either 100 characters, or 1 paragraph), it will invoke the 'more' link.  So if you want longer excerpts, you would change that to something like 500, 3, or what ever you were comfortable with.  Conversely, you can drop the number of characters and paragraphs in function, and simply manually add &lt;code&gt;&lt;!--more--&gt;&lt;/code&gt; inside the post.
 
 ''Note, there may be formatting issues with custom themes'' 
 
 The first, is to simply comment out the line in your theme.php file that applies the summarize function to the posts.  Line 22 of k2's theme.php file reads:
-&lt;pre&gt;Format::apply_with_hook_params( 'more', 'post_content_out', 'more', 100, 1 );&lt;/pre&gt;
+&lt;source lang=&quot;php&quot;&gt;Format::apply_with_hook_params( 'more', 'post_content_out', 'more', 100, 1 );&lt;/source&gt;
 
 Simply change that to:
-&lt;pre&gt;// Format::apply_with_hook_params( 'more', 'post_content_out', 'more', 100, 1 );&lt;/pre&gt;
+&lt;source lang=&quot;php&quot;&gt;// Format::apply_with_hook_params( 'more', 'post_content_out', 'more', 100, 1 );&lt;/source&gt;
 
 Commenting out versus removing would be best, if for no other reason than it would make it easier to add back later.  Now all of your posts should be full posts, not the truncated &quot;excerpts&quot;.
 
@@ -3815,20 +4512,24 @@ A second, and more versatile method of using this function, would be to change h
 
 In line 22 in the above example, we simply commented out the entire thing.  Now we are going to change how the function is applied, so that you can have both full length and excerpt posts.
 
-change line 22 to:
-&lt;pre&gt;Format::apply_with_hook_params( 'more', 'post_content_excerpt', 'more', 100, 1 );&lt;/pre&gt;
+Before line 22 add a line:
+&lt;source lang=&quot;php&quot;&gt;Format::apply( 'autop', 'post_content_excerpt' );&lt;/source&gt;
+
+Then change line 22 to:
+&lt;source lang=&quot;php&quot;&gt;Format::apply_with_hook_params( 'more', 'post_content_excerpt', 'more', 100, 1 );&lt;/source&gt;
 
 ''note, you can use excerpt, summary, what ever you care to call it, you just need to be sure that you make the necessary changes in the following code''
 
 Now, if you notice in your home.php file (or entry.multiple.php), the content is being called using:
 
-&lt;pre&gt;&lt;?php echo $post-&gt;content_out; ?&gt;&lt;/pre&gt;
+&lt;source lang=&quot;php&quot;&gt;&lt;?php echo $post-&gt;content_out; ?&gt;&lt;/source&gt;
 
 If you have made the previous change, your posts should now be full length.  Now suppose you have somewhere you want to have excerpts.  You can simply call:
-&lt;pre&gt;&lt;?php echo $post-&gt;content_excerpt; ?&gt;&lt;/pre&gt;
+&lt;source lang=&quot;php&quot;&gt;&lt;?php echo $post-&gt;content_excerpt; ?&gt;&lt;/source&gt;
 and your posts will be excerpts.
 
-</pre>
+[[Category:Manual]]
+[[Category:Theming]]</pre>
 </div>
 <div title="What's New" modifier="YourName" modified="200711050124" created="200711050122" tags="MediaWikiFormat" changecount="2">
 <pre>==Introduction==
