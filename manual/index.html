@@ -3873,6 +3873,9 @@ To ensure that administrators and users consider security carefully, Habari does
 
 [[Category:Manual]]</pre>
 </div>
+<div title="SideBarTabs" modifier="Habari" modified="200803191748" created="200803191747" changecount="2">
+<pre>&lt;&lt;tabs txtMainTab &quot;All&quot; &quot;All tiddlers&quot; TabAll  &quot;Timeline&quot; &quot;Timeline&quot; TabTimeline &quot;Tags&quot; &quot;All tags&quot; TabTags &quot;More&quot; &quot;More lists&quot; TabMore&gt;&gt;</pre>
+</div>
 <div title="SiteSubtitle" modifier="Khaled Abou Alfa" modified="200704162057" created="200703132345" server.type="file" server.host="file:///Users/blogworks/Sites/MyHabari/Docs/Habari_Manual.20070916.0135310976.html" server.page.revision="200704162057">
 <pre>| User Manual</pre>
 </div>
@@ -4531,92 +4534,29 @@ and your posts will be excerpts.
 [[Category:Manual]]
 [[Category:Theming]]</pre>
 </div>
-<div title="What's New" modifier="YourName" modified="200711050124" created="200711050122" tags="MediaWikiFormat" changecount="2">
-<pre>==Introduction==
-Habari's third Developer Release represents a huge step forward. The Administration area has seen a major update and includes better filtering, a cleaner look (which will continue to be improved for the next release), and better control over the content of your site. Over 100 bugs have been closed, representing fixes, improvements and new features to make Habari one step closer to being the cutting-edge blogging platform it is destined to be. Everything from the installer to comment moderation has been improved, and documentation has been improved throughout the project. For a complete list of bugs closed, check the [http://wiki.habariproject.org/en/Releases/0.3/Issues_Fixed Issues Fixed] page in the wiki.
+<div title="What's New" modifier="Habari" modified="200803191747" created="200711050122" tags="MediaWikiFormat" changecount="3">
+<pre>Version 0.4 of Habari should (hopefully!) be the last developer release of Habari, making way for Habari to officially reach beta status.
 
-==What's new for administrators==
-*We're revising the administration area's design and layout. You may experience issues, please report them.
-*Links in the footer are now functional and point to helpful resources.
-===Comments Management===
-*Comments can be searched, filtered and basic pagination was added.
-===Content Creation===
-*You can now specify a publish date, although we do not currently support scheduled posts.
-===Content Management===
-*Content can be searched, filtered and basic pagination was added.
-===Plugins Management===
-*Added new FormUI controls: select and textarea.
-*Added sandboxing, a plugin's synthax is tested prior to list it as manageable.
+Over 200 commits have been applied to the Subversion repository.  Some of these commits represent major functional changes, and some represent really trivial tweaks.  Combined, the 0.4 DR release provides a significant improvement in the Habari codebase.
 
-==What's new for developers==
-===Comments===
-*Removed the function Comment::publish().
-*Made Comments work like Posts.
-*Made Comment work like Post.
-*Added new methods to Comment:
-**Comment::list_comment_types()
-**Comment::list_comment_statuses()
-**Comment::status()
-**Comment::status_name()
-**Comment::type()
-**Comment::type_name()
-*Added a new method to Comments:
-**Comments::delete_by_status()
+Major enhancements and fixes, in no particular order:
+* initial media support with silos: simple file, viddler, and flickr support out of the box
+* improved template file support and fall-back mechanisms in themes
+* better spam detection in the SpamChecker plugin
+* admins can now edit comments
+* on-disk caching is now supported
+* enhanced use of PHP sessions for data management
+* enhanced logging for diagnostic purposes
+* display screenshots on the theme selecton page
+* ACL and permissions support is included in this release, though not yet being used (stay tuned for 0.5!)
+* improved support for SQLite databases
+* improved WordPress import support
+* improved support for internationalization
+* properly detect the available PDO drivers, which should simplify the installation process
+* active and inactive plugins are separated on the plugins page
+* basic unit testing framework
 
-===Event Logging===
-*Made EventLog work like Posts.
-*Made LogEntry work like Post.
-*Renamed LogEntry::cache_types() to LogEntry::list_logentry_types().
-*Added new methods to LogEntry:
-**LogEntry::list_severities()
-**LogEntry::list_modules()
-**LogEntry::list_types()
-**LogEntry::severity_name()
-**LogEntry::get()
-**LogEntry::get_event_type()
-**LogEntry::get_event_module()
-**LogEntry::get_event_severity()
-**LogEntry::__get()
-**LogEntry::__set()
-*Added new methods to EventLog:
-**EventLog::__get()
-**EventLog::get()
-===Plugins===
-*Added tons of new [http://wiki.habariproject.org/en/Plugin_Hooks plugin hooks].
-*Added new methods to Plugins:
-**Plugins::extends_plugin()
-**Plugins::is_loaded()
-
-===Posts===
-*Added new methods to work with statuses and types:
-**Post::list_active_post_types()
-**Post::list_all_post_types()
-**Post::activate_post_type()
-**Post::deactivate_post_type()
-**Post::add_new_type()
-**Post::add_new_status()
-*Added a new property, $post-&gt;statusname, returns the a human-readable status.
-===Rewrite Rules===
-*Default rewrite rules are now stored in 'rewriterules.php' and can be overridden using the plugin hook 'default_rewrite_rules'.
-*Added a new method to RewriteRules:
-**RewriteRules::add_system_rules()
-
-===Theme Development===
-*Added Theme::header() and Theme::footer().
-*Updated jQuery to 1.2.1.
-*Updated Blueprint to 0.6, it was moved to /3rdparty.
-*Improved the Utils::page_selector() method.
-**If you omit the rewrite rule name, it will use the current match.
-**You can specify how many pages to display beside the current page with $settings['leftSide'] and $settings['rightSide'].
-
-==Known Bugs==
-*SQLite support is limited. Search and database upgrade is not possible at this time. The reason is quite simple, ALTER and CONCAT are not supported by SQLite, this will be fixed in the next release.
-
-==Credits==
-These release notes were compiled by the [http://wiki.habariproject.org/en/Habari_Project:Community_Portal Habari Community].
-
-On behalf of the community, we give our warmest thanks to the developers and contributors who made this Habari release possible.
-
+You might like information on [[Installation|installing Habari fresh]] or [[Releases/0.4/Upgrading|upgrading your existing installation to 0.4]].
 </pre>
 </div>
 <div title="XHTML_vs_HTML" modifier="miklb" created="200710132022" tags="MediaWikiFormat" changecount="1">
