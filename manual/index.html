@@ -4534,30 +4534,36 @@ and your posts will be excerpts.
 [[Category:Manual]]
 [[Category:Theming]]</pre>
 </div>
-<div title="What's New" modifier="Habari" modified="200803191747" created="200711050122" tags="MediaWikiFormat" changecount="3">
-<pre>Version 0.4 of Habari should (hopefully!) be the last developer release of Habari, making way for Habari to officially reach beta status.
+<div title="What's New" modifier="Habari" modified="200803240144" created="200711050122" tags="MediaWikiFormat" changecount="4">
+<pre>== Introduction ==
+This is the first maintenance and security release of Habari.&lt;br&gt;
+Only fixes for security vulnerabilities and other critical bugs have been committed.&lt;br&gt;
+New features are only going to be added to the following minor release, [http://wiki.habariproject.org/en/Category:0.5 0.5].
 
-Over 200 commits have been applied to the Subversion repository.  Some of these commits represent major functional changes, and some represent really trivial tweaks.  Combined, the 0.4 DR release provides a significant improvement in the Habari codebase.
+We have a new [[Release Cycle|release cycle]] and [[Release Policy|release policy]], make sure to read them!
 
-Major enhancements and fixes, in no particular order:
-* initial media support with silos: simple file, viddler, and flickr support out of the box
-* improved template file support and fall-back mechanisms in themes
-* better spam detection in the SpamChecker plugin
-* admins can now edit comments
-* on-disk caching is now supported
-* enhanced use of PHP sessions for data management
-* enhanced logging for diagnostic purposes
-* display screenshots on the theme selecton page
-* ACL and permissions support is included in this release, though not yet being used (stay tuned for 0.5!)
-* improved support for SQLite databases
-* improved WordPress import support
-* improved support for internationalization
-* properly detect the available PDO drivers, which should simplify the installation process
-* active and inactive plugins are separated on the plugins page
-* basic unit testing framework
+== Bugs fixed by this release ==
+* User data submitted by forms is not lost if session expires. No more losing your post after a long edit!
+* Multiple SQLite fixes confirming we now fully support this engine.
+**Indexes not created on installation ([http://trac.habariproject.org/habari/ticket/159 issue #159])
+**Installation required world-writable directory ([http://trac.habariproject.org/habari/ticket/205 issue #205])
+**Update issues ([http://trac.habariproject.org/habari/ticket/224 issue #224])
+**Database not auto-vacuumed ([http://trac.habariproject.org/habari/ticket/140 issue #140])
+* Fixed multiple issues regarding the Inputfilter methods parse_url() and glue_url().
+* Updated included documentation.
 
-You might like information on [[Installation|installing Habari fresh]] or [[Releases/0.4/Upgrading|upgrading your existing installation to 0.4]].
-</pre>
+== Known Bugs ==
+This is a list of bugs we found while doing the [[Releases/0.4.1/Test Procedure|Test Procedure]]:
+*Simplefilesilo plugin - Generally broken, was unable to upload or to browse.
+*When creating a user, it does not remember field values if error occur. ([http://trac.habariproject.org/habari/ticket/245 issue #245])
+*When editing a profile, it brings you back to user list on submission. ([http://trac.habariproject.org/habari/ticket/246 issue #246])
+*Commenting behavior is different for non-existant and existant user. ([http://trac.habariproject.org/habari/ticket/247 issue #247])
+*Filtering logs by user does not work. ([http://trac.habariproject.org/habari/ticket/244 issue #244])
+
+==Credits==
+These release notes were compiled by the [[Habari_Project:Community_Portal|Habari Community]].
+
+On behalf of the community, we give our warmest thanks to the developers and contributors who made this Habari release possible.</pre>
 </div>
 <div title="XHTML_vs_HTML" modifier="miklb" created="200710132022" tags="MediaWikiFormat" changecount="1">
 <pre>This page has been created to house points relating to the XHTML vs HTML debate. In the context of this page, we're talking about REAL XHTML, served with the correct mime-type and all the fun and problems that come with it.
