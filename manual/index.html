@@ -5609,32 +5609,34 @@ Additional themes can be uploaded to your &lt;code&gt;/user/themes&lt;/code&gt; 
 [[Category:Asides]]
 [[Category:Theming]]</pre>
 </div>
-<div title="Upgrading" modifier="YourName" modified="200807250031" created="200807242317" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined" changecount="1">
+<div title="Upgrading" modifier="YourName" modified="200807251714" created="200807242317" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined" changecount="4">
 <pre>=Before You Upgrade=
 Before making any major change in your Habari installation, it would be prudent to create a backup of your database and your installation, in particular all the files in your Habari /user directory. The /user directory should contain all files which you have customized - plugins you have installed, themes you have installed, and class files you may have modified. The only exception to the Habari /user directory containing all custom files is if you are not using a locale that is distributed with Habari. In this case, you will have placed your language file in the /system/locale directory.
 
 =The Upgrade Process=
-# Download the new version of Habari that you will be installing. Unzip it into the location of your choice.
-# Deactivate your active plugins. Some of the system plugins may have been changed. Some of the plugins you got in other places may not be compatible with the new version of Habari.
-# Delete the following directories
-## /3rdparty
-## /scripts
-## /doc
-## /system (Unless you have installed a national language file. In that case delete everything from /system except for /system/locale/''name of your language''.
-# Delete the index.php, LICENSE, and NOTICE files from the root of your installation. Do '''not''' delete your config.php file if it is in the root of your Habari installation, or the .htaccess file.
-# Copy the new version of Habari to the same location as the old version.
-# Using your web browser, navigate to your site. If there are any database changes that need to be made, they will be made automatically at this time.
-# Log into your Habari administrative area. Navigate to the plugins page and reactivate the plugins one by one. 
-# Celebrate and enjoy the new features of your latest version of Habari!
+#Download the new version of Habari that you will be installing. Unzip it into the location of your choice.
+#Deactivate your active plugins. Some of the system plugins may have been changed. Some of the plugins you got in other places may not be compatible with the new version of Habari.
+#Delete the following directories
+##/3rdparty
+##/scripts
+##/doc
+##/system (Unless you have installed a national language file. In that case delete everything from /system except for /system/locale/''name of your language''.
+#Delete the index.php, LICENSE, and NOTICE files from the root of your installation. Do '''not''' delete your config.php file if it is in the root of your Habari installation, or the .htaccess file.
+#Copy the new version of Habari to the same location as the old version.
+#Using your web browser, navigate to your site. If there are any database changes that need to be made, they will be made automatically at this time.
+#Log into your Habari administrative area. Navigate to the plugins page and reactivate the plugins one by one. 
+#Celebrate and enjoy the new features of your latest version of Habari!
 
 =Version Specific Instructions=
 
 ==Upgrading from Version 0.4.1 To Version 0.5==
 Many changes have been incorporated into version 0.5. For details of the changes that have been made see the [http://wiki.habariproject.org/en/Releases/0.5 release notes].
 
-In particular, upgrade functions have been incorporated into the install handler, so when you upgrade your Habari installation, any required base database changes will be automatically handled without user intervention.
+In particular, upgrade functions have been incorporated into the install handler, so when you upgrade your Habari installation, any required base database changes will be automatically handled without user intervention. However, the following are issues to note:
 
-One area that will require attention is plugin configuration. Version 0.5 incorporates updates to Habari's [http://wiki.habariproject.org/en/Classes/FormUI form creation system] that changes how the options for plugins are stored. This means that you will need to reconfigure any of your plugins that require configuration for them to work properly. 
+*The first page load after upgrading may be slow due to the conversion of the database to use UTF-8.
+*Version 0.5 incorporates updates to Habari's [http://wiki.habariproject.org/en/Classes/FormUI form creation system] that changes how the options for plugins are stored. This means that you will need to reconfigure any of your plugins that require configuration for them to work properly.
+*The location of the filecache has been moved from '''/system/cache''' to '''/user/cache'''. If your /user directory is not writable by the web server, you will need to create the /user/cache directory by hand and set it to be writable by the web server.
 
 ==[http://wiki.habariproject.org/en/Releases/0.4/Upgrading Upgrading From Version 0.3.3 to 0.4]==
 ==Upgrading From Version 0.2 To Version 0.3==
@@ -5663,27 +5665,27 @@ The only difference left is the tables' structure. From 0.2 to 0.3 we modified c
 
 [[Category:Manual]]</pre>
 </div>
-<div title="User Documentation" modifier="rickc" modified="200807240355" created="200807242317" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined">
+<div title="User Documentation" modifier="YourName" modified="200807251911" created="200807242317" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined" changecount="1">
 <pre>=Intallation and Configuration=
-* [[Installation]]: what we know so far
-* [[Upgrading]]
-* [[Multisite|Multisite configuration]]: how to drive many sites from a single '''Habari''' installation
-* [[Importing Content]]
-* [[Security Considerations]]
+*[[Installation]]: what we know so far
+*[[Upgrading]]
+*[[Multisite|Multisite configuration]]: how to drive many sites from a single '''Habari''' installation
+*[[Importing Content]]
+*[[Security Considerations]]
 
 =Content=
-* [[User Manual]]
+*[[User Manual]]
 
-* [[Desktop Blogging]]
+*[[Desktop Blogging]]
 
 =Extending and Customizing=
-* [[Themes]]: how themers can use '''Habari'''
-* [[Plugins]]: User documentation for Plugins
+*[[Themes]]: how themers can use '''Habari'''
+*[[Plugins]]: User documentation for Plugins
 
 
 [[Category:Manual]]</pre>
 </div>
-<div title="User Manual" modifier="YourName" modified="200807251350" created="200807242331" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" changecount="15">
+<div title="User Manual" modifier="YourName" modified="200807252006" created="200807242331" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" changecount="24">
 <pre>== Introduction ==
 Welcome to Habari, the next-generation online publishing platform!
 
@@ -5737,7 +5739,7 @@ You can create your first post by clicking on the main menu, then selecting &quo
 
 You are now looking at the publish entry page, by default you have three fields into which to enter information.
 
-&lt;img src=&quot;create_entry.jpg&quot; height=&quot;300&quot; width=&quot;300&quot; align=&quot;right&quot;/&gt;
+&lt;html&gt;&lt;img src=&quot;create_entry.jpg&quot; style=&quot;float: right; height: 300px; width: 300px; padding: 5px;&quot; /&gt;&lt;/html&gt;
 
 *The Title box is the name of your entry, this can contain a single word, a sentence, numbers, or symbols producable by your keyboard.  By default, the title you supply will be used to create the URL by which this post will be accessed.
 
@@ -5803,7 +5805,7 @@ Themes allow you to customize the look and feel of the site for your readers. Ha
 By design, Habari by itself has a basic set of capabilities. Plugins add functionality, new capabilities, or additional content types to Habari. Habari includes several out of the box...
 
 === Loupe ===
-&lt;img src=&quot;timeline.jpg&quot; height=&quot;50%&quot; width=&quot;50%&quot; align=&quot;right&quot; /&gt;
+&lt;html&gt;&lt;img src=&quot;timeline.jpg&quot; style=&quot;height: 50%; width: 50%; padding: 5px; float: right;&quot; /&gt;&lt;/html&gt;
 
 On certain administration pages, the loupe is a sliding, expandable window that operates on the timeline of a group of data. The default position for the loupe is the far right: the most recent items of the collection. The default width of the loupe encompasses 20 items. You can click inside the loupe and drag it left and right across the timeline: this will change the items shown beneath the loupe based on the date range highlighted by the loupe. On the left and right of the loupe are handlebars, which you can click to drag left or right to expand or shrink the size of the loupe: this will increase or decrease the number of items shown below.
 
@@ -5814,7 +5816,7 @@ The loupe makes it extremely easy to display and select specific timelines of da
 === The Dashboard ===
 The Dashboard is the first page you see after you log in to Habari's administrative interface. The dashboard can be reached from any page of Habari's administrative interface by choosing '''Dashboard''' from the main menu, or by typing '''Q''' followed by '''D'''.
 
-&lt;img src=&quot;dashboard_with_modules.jpg&quot; height=&quot;300&quot; width=&quot;300&quot; align=&quot;right&quot; /&gt;
+&lt;html&gt;&lt;img src=&quot;dashboard_with_modules.jpg&quot; style=&quot;height: 300px; width: 300px; padding: 5px; float: right;&quot;  /&gt;&lt;/html&gt;
 
 The dashboard provides a summary of useful information for your site. The top section contains a couple of sentences telling you how long your site has been active, a series of high level statistics about your site, how many drafts you have awaiting completion, how many scheduled posts you have, and how many comments you have awaiting moderation.
 
@@ -5827,7 +5829,7 @@ After all the visible modules, the dashboard has a dropdown list of all the modu
 === Managing Content ===
 To manage your content -- draft or published, entry or page -- select one of the Manage links from the main menu.  Habari creates a Manage menu item for each type of content in your system, providing a convenient way to access a specific type of content.  The destination for each of these menu links is, in fact, the same page: the menus merely provide a shortcut to filter the display by the specified content type.
 
-&lt;img src=&quot;manage_posts.jpg&quot; height=&quot;300&quot; width=&quot;300&quot; align=&quot;right&quot; /&gt;
+&lt;html&gt;&lt;img src=&quot;manage_posts.jpg&quot; style=&quot;height: 300px; width: 300px; padding: 5px; float: right; &quot; /&gt;&lt;/html&gt;
 
 Habari strives to make it as easy as possible to find and manage your content.  The first thing to note when visiting the &quot;Manage Content&quot; page is the '''loupe'''.
 
@@ -5852,7 +5854,7 @@ To manage your comments select the Comments link from the main menu.
 
 As with posts, the first thing to note when visiting the Comments page is the loupe and the timeline at the top of the page. The loupe works with comments the same way as it does with posts.
 
-&lt;img src=&quot;manage_comments.jpg&quot; height=&quot;300&quot; width=&quot;300&quot; align=&quot;right&quot; /&gt;
+&lt;html&gt;&lt;img src=&quot;manage_comments.jpg&quot; style=&quot;height: 300px; width: 300px; padding: 5px; float: right;&quot; /&gt;&lt;/html&gt;
 
 Beneath the loupe are the comments returned by the current filters.  Above the loupe are the filter controls, and additional navigation controls.  By default, 20 comments will be presented beneath the loupe in reverse chronological order (newest first).  If you have more than 20 items that satisfy the filters, you can page forward and backward to see the next or previous set of 20 comments using the &quot;Older&quot; and &quot;Newer&quot; links at the top left and right, respectively.  To the right of the &quot;Older&quot; link is a report of the number of comments that match the current filter, and where your current display falls within that set.
 
@@ -5876,7 +5878,7 @@ Once you have some group of comments selected, you can execute a single action a
 
 To manage your site's tags, select '''Tags''' from the main menu, or type '''Q''', then '''6'''.
 
-&lt;img src=&quot;manage_tags.jpg&quot; height=&quot;200&quot; width=&quot;300&quot; align=&quot;right&quot; /&gt;
+&lt;html&gt;&lt;img src=&quot;manage_tags.jpg&quot; style=&quot;height: 200px; width: 300px; padding: 5px; float: right;&quot; /&gt;&lt;/html&gt;
 
 At the very top of the tags page is a '''search box'''. After your site has been in use for a long time, you can have quite a few tags. Use the search box to narrow the number of tags which you are viewing.
 
@@ -5892,7 +5894,7 @@ To '''delete''' one or more tags, click on each tag you want to delete, then cli
 
 === Options ===
 
-&lt;img src=&quot;options.jpg&quot; height=&quot;300&quot; width=&quot;300&quot; align=&quot;right&quot; /&gt;
+&lt;html&gt;&lt;img src=&quot;options.jpg&quot; style=&quot;height: 300px; width: 300px; padding: 5px; float: right;&quot; /&gt;&lt;/html&gt;
 
 Options for your site include such things as the site title, tagline, number of posts per page, time zone, etc.
 
@@ -5902,7 +5904,7 @@ Options are searchable by using the search form at the top right of the page.
 
 === Themes ===
 
-&lt;img src=&quot;manage_themes.jpg&quot; height=&quot;300&quot; width=&quot;300&quot; align=&quot;left&quot; /&gt;
+&lt;html&gt;&lt;img src=&quot;manage_themes.jpg&quot; style=&quot;height: 300px; width: 300px; padding: 5px; float: left;&quot; /&gt;&lt;/html&gt;
 
 To change your theme select '''Themes''' from the main menu. This will take you to the themes page.
 
@@ -5914,7 +5916,7 @@ If a theme is inactive, the only available action is to '''Activate''' it. Click
 
 === Plugins ===
 
-&lt;img src=&quot;manage_plugins.jpg&quot; height=&quot;300&quot; width=&quot;300&quot; align=&quot;right&quot;  /&gt;
+&lt;html&gt;&lt;img src=&quot;manage_plugins.jpg&quot; style=&quot;height: 300px; width: 300px; padding: 5px; float: right;&quot;  /&gt;&lt;/html&gt;
 
 To manage your plugins, select '''Plugins''' from the main menu. You will be taken to your plugins page.
 
@@ -6093,14 +6095,14 @@ and your posts will be excerpts.
 [[Category:Manual]]
 [[Category:Theming]]</pre>
 </div>
-<div title="What's New" modifier="YourName" modified="200807251302" created="200711050122" tags="MediaWikiFormat" changecount="10">
+<div title="What's New" modifier="YourName" modified="200807251600" created="200711050122" tags="MediaWikiFormat" changecount="11">
 <pre>== Introduction ==
 Welcome to Habari Version 0.5!
 
 This latest release of Habari contains some major improvements and feature changes.
 
 * There is a new administrative interface, lovingly named Monolith
-* Several translations are being shipped with Habari. These include the default English, as well as German, Japanese, and Taiwan Chinese
+* Several translations are being shipped with Habari. These include the default English, as well as Danish, German, Japanese, and Traditional Chinese
 * We now include three themes in the download
 * In addition to using MySQL and SQLite, you now have the choice of using PostgreSQL as your backend database
 * Session handling has been improved
