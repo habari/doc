@@ -1030,11 +1030,11 @@ QueryRecord provides the following:
 
 [[Category:Manual]]</pre>
 </div>
-<div title="Code Submisson" modifier="michaeltwofish" modified="200805241224" created="200807242317" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined">
+<div title="Code Submisson" modifier="YourName" modified="200807251122" created="200807242317" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined" changecount="1">
 <pre>Contributions to the Habari codebase made by the wider community are incredibly important. This page describes the process that developers should follow to submit code to Habari.
 
 == Editing the Code ==
-First, you must [[Installation#Downloading_Habari|download the source code]] from SVN.
+First, you must [http://wiki.habariproject.org/en/Installation#Installing_Habari download the source code] from SVN.
 
 Then, following the [[Coding Standards]], make your changes to the code.
 
@@ -1048,7 +1048,7 @@ Other users will then be able to apply your patch to test its compatibility with
 
 [[Category:Manual]]</pre>
 </div>
-<div title="Coding Standards" modifier="blakej" modified="200806231617" created="200807242317" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined">
+<div title="Coding Standards" modifier="YourName" modified="200807251124" created="200807242317" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined" changecount="1">
 <pre>These are the Coding Standards for Habari:
 
 *Use tabs instead of spaces for indentation
@@ -1061,14 +1061,14 @@ Other users will then be able to apply your patch to test its compatibility with
 *spaces before and after assignment: &lt;code&gt;$foo = bar&lt;/code&gt;
 *Single line comments should use the // comment format; multi-line comments should use the /* */ format
 *Calls through the DB class should use the brace syntax for table names: &lt;code&gt;DB::query( 'SELECT * FROM {table}' );&lt;/code&gt;
-*Where HTML and PHP is mixed in templates, [http://au.php.net/alternative_syntax| PHP's alternative control syntax] should be used.
+*Where HTML and PHP is mixed in templates, [http://au.php.net/alternative_syntax PHP's alternative control syntax] should be used.
 
 {{developer}}
 
 [[Category:Manual]]</pre>
 </div>
-<div title="Creating a Custom Theme" modifier="michaeltwofish" modified="200805190107" created="200807242317" tags="Category:Theming Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined">
-<pre>Habari supports a powerful and flexible way to create custom themes, and this article describes in detail how to create one. A good way to get started is to use the default K2 theme or one of the other [[Available Themes|available themes]] as a reference. Create a new directory in &lt;code&gt;/user/themes/&lt;/code&gt; for your new theme, and put all of your theme files in this directory. The minimum requirement for a theme is an XML file that describes the theme, and some template files, with a minimum of the &lt;code&gt;home.php&lt;/code&gt; template. Themes may also optionally&amp;#151;and almost always will&amp;#151;include a file called &lt;code&gt;theme.php&lt;/code&gt;, which is used to customise theme behaviour.  Themes may also include a screen shot to be shown on the Admin | Themes page.  The screen shot should be in png, jpg, or gif format, and be 150px high by 200px wide for optimal display (or some 3:4 ratio, as the image will be resized to those dimensions).  The screen shot should be named &lt;code&gt;screenshot.file_type&lt;/code&gt;, i.e., &lt;code&gt;screenshot.png&lt;/code&gt;.
+<div title="Creating a Custom Theme" modifier="YourName" modified="200807251151" created="200807242317" tags="Category:Theming Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined" changecount="12">
+<pre>Habari supports a powerful and flexible way to create custom themes, and this article describes in detail how to create one. A good way to get started is to use the default K2 theme or one of the other [http://wiki.habariproject.org/en/Available_Themes available themes] as a reference. Create a new directory in &lt;code&gt;/user/themes/&lt;/code&gt; for your new theme, and put all of your theme files in this directory. The minimum requirement for a theme is an XML file that describes the theme, and some template files, with a minimum of the &lt;code&gt;home.php&lt;/code&gt; template. Themes may also optionally&amp;#151;and almost always will&amp;#151;include a file called &lt;code&gt;theme.php&lt;/code&gt;, which is used to customise theme behaviour.  Themes may also include a screen shot to be shown on the Admin | Themes page.  The screen shot should be in png, jpg, or gif format, and be 150px high by 200px wide for optimal display (or some 3:4 ratio, as the image will be resized to those dimensions).  The screen shot should be named &lt;code&gt;screenshot.file_type&lt;/code&gt;, i.e., &lt;code&gt;screenshot.png&lt;/code&gt;.
 
 ==theme.xml==
 The first step in creating a custom theme is to define it's basic properties in &lt;code&gt;theme.xml&lt;/code&gt; within the theme's base directory. These properties will be used to identify the theme to users, give you credit, and appropriately version the theme through its life.
@@ -1078,31 +1078,32 @@ The first step in creating a custom theme is to define it's basic properties in 
 | 
 ! Description
 |-
-! &lt;name&gt;&lt;/name&gt;
+! &amp;lt;name&amp;gt;&amp;lt;/name&amp;gt;
 | The name of the theme.
 |-
-! &lt;author&gt;&lt;/author&gt;
+! &amp;lt;author&amp;gt;&amp;lt;/author&amp;gt;
 | Author's name or whomever is being credited with the design.
 |-
-! &lt;url&gt;&lt;/url&gt;
+! &amp;lt;url&amp;gt;&amp;lt;/url&amp;gt;
 | Location at which the theme can be found.
 |-
-! &lt;version&gt;&lt;/version&gt;
+! &amp;lt;&amp;gt;version&amp;lt;/version&amp;gt;
 | Current version of the template
 |-
-! &lt;template_engine&gt;&lt;/template_engine&gt;
+! &amp;lt;template_engine&amp;gt;&amp;lt;/template_engine&amp;gt;
 | The template engine that the theme uses.
 |}
 
 ===Example theme.xml===
-&lt;code lang=&quot;xml&quot;&gt;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;pre&gt;
 &lt;theme&gt;
         &lt;name&gt;K2&lt;/name&gt;
         &lt;author&gt;K2 Team&lt;/author&gt;
         &lt;url&gt;http://getk2.com/&lt;/url&gt;
         &lt;version&gt;1.0&lt;/version&gt;
         &lt;template_engine&gt;rawphpengine&lt;/template_engine&gt;
-&lt;/theme&gt;&lt;/code&gt;
+&lt;/theme&gt;
+&lt;/pre&gt;
 
 You can now visit your Admin -&gt; Themes page and activate your new theme, however, if you visit your site you will be presented with a blank page. This is because as yet there are no templates, so Habari does not know how to display anything. 
 
@@ -1116,7 +1117,7 @@ The instance of your custom theme class &amp;#151; or the default theme if you h
 A custom theme class has all of the same abilities as a plugin.  If you add functions in the theme class that use the plugin prefixes (&lt;tt&gt;filter_&lt;/tt&gt;, &lt;tt&gt;action_&lt;/tt&gt;, etc.), Habari will treat them as though they were in an active plugin.  Only the current theme's theme class will have functions like this enabled.
 
 ==Template Files==
-Habari has flexible template support, allowing you to customise any aspect of a how a blog is displayed. The way that the templates are processed is dependent on the template engine being used. Currently Habari supports &lt;code&gt;rawphpengine&lt;/code&gt;, however, it is designed so that any number of other engines can be supported (Smarty and PHPTal engines are some examples of template engines that have been discussed for inclusion with Habari). More information can be found at [[Template Engines]]. 
+Habari has flexible template support, allowing you to customise any aspect of a how a blog is displayed. The way that the templates are processed is dependent on the template engine being used. Currently Habari supports &lt;code&gt;rawphpengine&lt;/code&gt;, however, it is designed so that any number of other engines can be supported (Smarty and PHPTal engines are some examples of template engines that have been discussed for inclusion with Habari). More information can be found at [http://wiki.habariproject.org/en/Template_Engines Template Engines]. 
 
 Templates using the &lt;code&gt;rawphpengine&lt;/code&gt; are simply HTML files with embedded PHP. While you can use any code you like in your templates, you should try to keep the templates as simple as possible. Ideally, complex code should be located in &lt;code&gt;theme.php&lt;/code&gt; and the output included in variables, which you simply echo in your template. 
 
@@ -1150,7 +1151,7 @@ Themes can also include internal templates for common code that are never called
 It's likely that you'll want your theme to display output from [[Plugins|plugins]], if those plugins are active. Habari provides a number of ways of doing this. If the plugin outputs content directly, you can check if the plugin is loaded and use that data in your template. Checking that a particular plugin is loaded is simple, and is illustrated here by checking if the pingback plugin is active. (A more [[Plugins#Checking_for_Plugins_in_Themes|complete example]] demonstrating the active condtion).  The &lt;code&gt;is_loaded()&lt;/code&gt; function can also take a second parameter that specifies a particular version of the plugin.
 &lt;code lang=&quot;php&quot;&gt;&lt;?php Plugins::is_loaded('pingback'); ?&gt;&lt;/code&gt;
 
-Alternatively, and a better way of doing this is to use theme functions. These are special functions that let theme developers safely insert content returned by plugins, meaning, if the function is in a theme template, and the plugin is not active, nothing will out put and the theme will ignore the function. More detail can be found under [[Theme Functions]].
+Alternatively, and a better way of doing this is to use theme functions. These are special functions that let theme developers safely insert content returned by plugins, meaning, if the function is in a theme template, and the plugin is not active, nothing will out put and the theme will ignore the function. More detail can be found under [http://wiki.habariproject.org/en/Theme_Functions Theme Functions].
 
 ==Variables Available to Custom Themes==
 In addition to the &lt;code&gt;$theme&lt;/code&gt; variable that holds a reference to the theme, other variables available to theme developers are described in the table below. 
@@ -1357,8 +1358,7 @@ To set the priority of one of your hooks, add the method &lt;tt&gt;set_prioritie
    );
  }&lt;/pre&gt;
 
-Habari will process this function for priorities, and use them to order the execution of plugin hooks.
-</pre>
+Habari will process this function for priorities, and use them to order the execution of plugin hooks.</pre>
 </div>
 <div title="Customizing Theme Behavior" modifier="Massimiliano" modified="200802022117" created="200803130446" tags="Category:Asides Category:Theming" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="1198">
 <pre>In addition to the ability of using custom templates to display output for particular requests, Habari allows customization of the code that controls which templates are called for display and what values are passed to them.
@@ -1405,7 +1405,7 @@ This class defines two custom functions for output.  Both of these functions wou
 [[Category:Asides]]
 [[Category:Theming]]</pre>
 </div>
-<div title="Database Schema" modifier="rickc" modified="200807241406" created="200807242317" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined">
+<div title="Database Schema" modifier="YourName" modified="200807251155" created="200807242317" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined" changecount="1">
 <pre>=Tables=
 ''Note: The schema below applies to revision 2230''
 ==commentinfo==
@@ -1550,21 +1550,6 @@ id (Primary)
 user_id
 group_id
 
-=Notes and Questions=
-''Please delete any of the below if/when obsolete. Please use the user groups to submit any further comments.
-
-*Does it make sense not to use AUTO_INCREMENT IDs and instead index by what is most often looked up?
-*Uing GMT for all timestamps?
-*what values should we support for &quot;status&quot;?
-**public
-**private
-**draft
-
-*Could just create new users per comment author with no permissions and join the tables.
-** RCB: +1
-** SDM: -1 :This would potentially create a LOT of &quot;users&quot;, especially when one posts a popular / controversial item that generates a lot of comments.  Chris' idea below is an appealing solution.
-** CJD: As an alternative, we can periodically (or on comment creation) check the number of comments from the author and if it hits a certain threshhold, we create an account and give them karma?
-*chris: I would like to have tracks and pings seperated out from comments, since they are not the same thing.  I am not sure if that should be through splitting them out to a new table, or using some kind of type decleration.
 
 {{developer}}
 
@@ -1602,9 +1587,7 @@ Utils::debug($foo, $bar, $baz);
 [[Category:Manual]]</pre>
 </div>
 <div title="DefaultTiddlers" modifier="miklb" modified="200707302054" created="200703132340" server.type="file" server.host="file:///Users/blogworks/Sites/MyHabari/Docs/Habari_Manual.20070916.0135310976.html" server.page.revision="200707302054">
-<pre>[[Introduction]]
-
-</pre>
+<pre>[[Introduction]]</pre>
 </div>
 <div title="Desktop Blogging" modifier="rickc" modified="200807201500" created="200807242317" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined">
 <pre>Many clients exist to allow you to edit your blog and post new content from your desktop without having to interact with the admin interface. They also provide a backup of your posts in case you have a server problem. Habari supports [http://en.wikipedia.org/wiki/Atom_(standard) Atom Publishing Protocol] by default, and with a MetaWeblog plugin, most desktop blogging clients should be able to post to Habari. The XMLRPC entry point should be specified as &lt;nowiki&gt;'http://&lt;site&gt;/xmlrpc'.&lt;/nowiki&gt;
@@ -1850,167 +1833,168 @@ The highlight can also accept CSS syntax to directly style the text:
 }}}
 @@bgcolor(#ff0000):color(#ffffff):red coloured@@</pre>
 </div>
-<div title="Habari Classes" modifier="rickc" modified="200805110539" created="200807242317" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined">
+<div title="Habari Classes" modifier="YourName" modified="200807251501" created="200807242317" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined" changecount="5">
 <pre>If a class is a subheading of another class, this means that the subheaded class is an extension (or implementation) of the class (or interface) above. 
 
 '''See also:''' [http://doc.habariproject.org/api/ Habari API Documentation]
 
-===[[Classes/ACL|ACL]]===
+===[http://wiki.habariproject.org/en/Classes/ACL ACL]===
 The '''ACL''' class implements access control lists, and provides the foundation of Habari's permission system.
 
-===[[Classes/ActionHandler|ActionHandler]]===
+===[http://wiki.habariproject.org/en/ Classes/ActionHandler ActionHandler]===
 
 The ActionHandler class is the superclass of classes that respond to URL requests.
 
 For example, when making a request for a user-facing theme page, the request is handled by UserThemeHandler, which extends ActionHandler.
 
 ActionHandler contains the basic act() function required to handle incoming action requests, although this can be overridden in subclasses to implement different behavior.  In &lt;tt&gt;Controller&lt;/tt&gt;, when a &lt;tt&gt;RewriteRule&lt;/tt&gt;'s &lt;tt&gt;parse_regex&lt;/tt&gt; matches the requested URL, it creates an instance of the &lt;tt&gt;RewriteRule&lt;/tt&gt;'s indicated &lt;tt&gt;handler&lt;/tt&gt; class, and calls &lt;tt&gt;-&gt;act()&lt;/tt&gt; on that object, passing the &lt;tt&gt;RewriteRule&lt;/tt&gt;'s &lt;tt&gt;action&lt;/tt&gt; as a parameter.
+
 ==== Classes that extend ActionHandler ====
-* [[Classes/AdminHandler|AdminHandler]]
-* [[Classes/AjaxHandler|AjaxHandler]]
-* [[Classes/AtomHandler|AtomHandler]]
-* [[Classes/CronTab|CronTab]]
-* [[Classes/InstallHandler|InstallHandler]]
-* [[Classes/FeedbackHandler|FeedbackHandler]]
-* [[Classes/ThemeHandler|ThemeHandler]]
-* [[Classes/UserHandler|UserHandler]]
-* [[Classes/UserThemeHandler|UserThemeHandler]]
-* [[Classes/XMLRPCServer|XMLRPCServer]]
+* [http://wiki.habariproject.org/en/Classes/AdminHandler AdminHandler]
+* [http://wiki.habariproject.org/en/Classes/AjaxHandler AjaxHandler]
+* [http://wiki.habariproject.org/en/Classes/AtomHandler AtomHandler]
+* [http://wiki.habariproject.org/en/Classes/CronTab CronTab]
+* [http://wiki.habariproject.org/en/Classes/InstallHandler InstallHandler]
+* [http://wiki.habariproject.org/en/Classes/FeedbackHandler FeedbackHandler]
+* [http://wiki.habariproject.org/en/Classes/ThemeHandler ThemeHandler]
+* [http://wiki.habariproject.org/en/Classes/UserHandler UserHandler]
+* [http://wiki.habariproject.org/en/Classes/UserThemeHandler UserThemeHandler]
+* [http://wiki.habariproject.org/en/Classes/XMLRPCServer XMLRPCServer]
 
-===[[Classes/ArrayObject|ArrayObject]] (built in class)===
+===[http://wiki.habariproject.org/en/Classes/ArrayObject ArrayObject] (built in class)===
 Many objects in '''Habari''' are arrays of other objects.  In addition to being able to iterate over the members of the array, it is also often useful to perform some actions on the entire collection of member objects.  For these situations, PHP's built-in ArrayObject is extended.  The following classes all extend ArrayObject:
-* [[Classes/Comments|Comments]]
-* [[Classes/EventLog|EventLog]]
-* [[Classes/InfoRecords|InfoRecords]]
-** [[Classes/CommentInfo|CommentInfo]]
-** [[Classes/InfoObject|InfoObject]]
-** [[Classes/PostInfo|PostInfo]]
-** [[Classes/UserInfo|UserInfo]]
-* [[Classes/Posts|Posts]]
-* [[Classes/RewriteRules|RewriteRules]]
-* [[Classes/Tags|Tags]]
-* [[Classes/UserGroups|UserGroups]]
-* [[Classes/Users|Users]]
+* [http://wiki.habariproject.org/en/Classes/Comments Comments]
+* [http://wiki.habariproject.org/en/Classes/EventLog EventLog]
+* [http://wiki.habariproject.org/en/Classes/InfoRecords InfoRecords]
+** [http://wiki.habariproject.org/en/Classes/CommentInfo CommentInfo]
+** [http://wiki.habariproject.org/en/Classes/InfoObject InfoObject]
+** [http://wiki.habariproject.org/en/Classes/PostInfo PostInfo]
+** [http://wiki.habariproject.org/en/Classes/UserInfo UserInfo]
+* [http://wiki.habariproject.org/en/Classes/Posts Posts]
+* [http://wiki.habariproject.org/en/Classes/RewriteRules RewriteRules]
+* [http://wiki.habariproject.org/en/Classes/Tags Tags]
+* [http://wiki.habariproject.org/en/Classes/UserGroups UserGroups]
+* [http://wiki.habariproject.org/en/Classes/Users Users]
 
-===[[Classes/Bitmask|Bitmask]]===
+===[http://wiki.habariproject.org/en/Classes/Bitmask Bitmask]===
 
-===[[Classes/Cache|Cache]]===
-* [[Classes/FileCache|FileCache]]
+===[http://wiki.habariproject.org/en/Classes/Cache Cache]===
+* [http://wiki.habariproject.org/en/Classes/FileCache FileCache]
 
-===[[Classes/ColorUtils|ColorUtils]]===
+===http://wiki.habariproject.org/en/[Classes/ColorUtils ColorUtils]===
 
-===[[Classes/CronJob|CronJob]]===
+===[http://wiki.habariproject.org/en/Classes/CronJob CronJob]===
 
-===[[Classes/CronTab|CronTab]]===
+===[http://wiki.habariproject.org/en/Classes/CronTab CronTab]===
 
-===[[Classes/DatabaseConnection|DatabaseConnection]]===
+===[http://wiki.habariproject.org/en/Classes/DatabaseConnection DatabaseConnection]===
 
-===[[Classes/Error|Error]]===
+===[http://wiki.habariproject.org/en/Classes/Error Error]===
 
-===[[Classes/Exception|Exception]]===
-* [[Classes/Error|Error]]
-* [[Classes/XMLRPCException|XMLRPCException]]
+===[http://wiki.habariproject.org/en/Classes/Exception Exception]===
+* [http://wiki.habariproject.org/en/Classes/Error Error]
+* [http://wiki.habariproject.org/en/Classes/XMLRPCException XMLRPCException]
 
-===[[Classes/Format|Format]]===
+===[http://wiki.habariproject.org/en/Classes/Format Format]===
 
-===[[Classes/FormControl|FormControl]]===
-* [[Classes/FormControlCheckbox|FormControlCheckbox]]
-* [[Classes/FormControlPassword|FormControlPassword]]
-* [[Classes/FormControlSelect|FormControlSelect]]
-* [[Classes/FormControlStatic|FormControlStatic]]
-* [[Classes/FormControlText|FormControlText]]
-* [[Classes/FormControlTextArea|FormControlTextArea]]
-* [[Classes/FormControlTextMulti|FormControlTextMulti]]
+===[http://wiki.habariproject.org/en/Classes/FormControl FormControl]===
+* [http://wiki.habariproject.org/en/Classes/FormControlCheckbox FormControlCheckbox]
+* [http://wiki.habariproject.org/en/Classes/FormControlPassword FormControlPassword]
+* [http://wiki.habariproject.org/en/Classes/FormControlSelect FormControlSelect]
+* [http://wiki.habariproject.org/en/Classes/FormControlStatic FormControlStatic]
+* [http://wiki.habariproject.org/en/Classes/FormControlText FormControlText]
+* [http://wiki.habariproject.org/en/Classes/FormControlTextArea FormControlTextArea]
+* [http://wiki.habariproject.org/en/Classes/FormControlTextMulti FormControlTextMulti]
 
-===[[Classes/FormUI|FormUI]]===
+===[http://wiki.habariproject.org/en/Classes/FormUI FormUI]===
 
-===[[Classes/HTMLTokenizer|HTMLTokenizer]]===
+===[http://wiki.habariproject.org/en/Classes/HTMLTokenizer HTMLTokenizer]===
 
-===[[Interfaces/Importer|Importer]]===
+===[http://wiki.habariproject.org/en/Interfaces/Importer Importer]===
 
-===[[Classes/InputFilter|InputFilter]]===
+===[http://wiki.habariproject.org/en/Classes/InputFilter InputFilter]===
 
-===[[Classes/Locale|Locale]]===
+===[http://wiki.habariproject.org/en/Classes/Locale Locale]===
 
-===[[Classes/Media|Media]]===
+===[http://wiki.habariproject.org/en/Classes/Media Media]===
 
-===[[Classes/MediaAsset|MediaAsset]]===
+===[http://wiki.habariproject.org/en/Classes/MediaAsset MediaAsset]===
 
-===[[Interfaces/MediaSilo|MediaSilo]]===
+===[http://wiki.habariproject.org/en/Interfaces/MediaSilo MediaSilo]===
 
-===[[Classes/Miscellaneous|Miscellaneous]]===
+===[http://wiki.habariproject.org/en/Classes/Miscellaneous Miscellaneous]===
 
-===[[Classes/Pluggable|Pluggable]]===
-* [[Classes/Plugin|Plugin]]
-* [[Classes/Theme|Theme]]
+===[http://wiki.habariproject.org/en/Classes/Pluggable Pluggable]===
+* [http://wiki.habariproject.org/en/Classes/Plugin Plugin]
+* [http://wiki.habariproject.org/en/Classes/Theme Theme]
 
-===[[Classes/Plugins|Plugins]]===
+===[http://wiki.habariproject.org/en/Classes/Plugins Plugins]===
 
-===[[Classes/QueryProfile|QueryProfile]]===
+===[http://wiki.habariproject.org/en/Classes/QueryProfile QueryProfile]===
 
-===[[Classes/QueryRecord|QueryRecord]]===
+===[[QueryRecord]]===
 The QueryRecord class defines a base object that corresponds to a database table.  It has specific methods for inserting, updating, and deleting an instance of itself from the database.  
 ==== Classes that extend QueryRecord ====
-* [[Classes/CronJob|CronJob]]
-* [[Classes/Comment|Comment]]
-* [[Classes/File|File]]
-* [[Classes/LogEntry|LogEntry]]
-* [[Classes/Post|Post]]
-* [[Classes/RewriteRule|RewriteRule]]
-* [[Classes/User|User]]
-* [[Classes/UserGroup|UserGroup]]
+* [http://wiki.habariproject.org/en/Classes/CronJob CronJob]
+* [http://wiki.habariproject.org/en/Classes/Comment Comment]
+* [http://wiki.habariproject.org/en/Classes/File File]
+* [http://wiki.habariproject.org/en/Classes/LogEntry LogEntry]
+* [http://wiki.habariproject.org/en/Classes/Post Post]
+* [http://wiki.habariproject.org/en/Classes/RewriteRule RewriteRule]
+* [http://wiki.habariproject.org/en/Classes/User User]
+* [http://wiki.habariproject.org/en/Classes/UserGroup UserGroup]
 
-===[[Classes/RemoteRequest|RemoteRequest]]===
+===[[Classes/RemoteRequest RemoteRequest]]===
 
-===[[Interfaces/RequestProcessor|RequestProcessor]]===
-* [[Classes/CURLRequestProcessor|CURLRequestProcessor]]
-* [[Classes/SocketRequestProcessor|SocketRequestProcessor]]
+===[http://wiki.habariproject.org/en/Interfaces/RequestProcessor RequestProcessor]===
+* [http://wiki.habariproject.org/en/Classes/CURLRequestProcessor CURLRequestProcessor]
+* [http://wiki.habariproject.org/en/Classes/SocketRequestProcessor SocketRequestProcessor]
 
-===[[Classes/RPCClient|RPCClient]]===
+===[http://wiki.habariproject.org/en/Classes/RPCClient RPCClient]===
 
-===[[Classes/Session|Session]]===
+===[http://wiki.habariproject.org/en/Classes/Session Session]===
 The '''session''' class registers a [http://us3.php.net/manual/en/ref.session.php PHP session] handler to store transient data between page loads.
 
-===[[Classes/Singleton|Singleton]]===
+===[http://wiki.habariproject.org/en/Classes/Singleton Singleton]===
 A [http://en.wikipedia.org/wiki/Singleton_pattern singleton] is a [http://en.wikipedia.org/wiki/Design_pattern_%28computer_science%29 design pattern] used to restrict a class from being instantiated more than once.  '''Habari''' uses the singleton pattern for a number of its classes.  For example, the Controller class, which implements the Controller in Model-View-Controller, is a singleton because there can be only one Controller driving the Model-View.  The DB class is a singleton facade: the normal execution of '''Habari''' requires only a single database instance for execution, but there are situations in which one might want to connect to a different database without having to write your own database handling routines.
-* [[Classes/Controller|Controller]]
-* [[Classes/DB|DB]]
-* [[Classes/Options|Options]]
-* [[Classes/Update|Update]]
-* [[Classes/URL|URL]]
+* [http://wiki.habariproject.org/en/Classes/Controller Controller]
+* [http://wiki.habariproject.org/en/Classes/DB DB]
+* [http://wiki.habariproject.org/en/Classes/Options Options]
+* [http://wiki.habariproject.org/en/Classes/Update Update]
+* [http://wiki.habariproject.org/en/Classes/URL URL]
 
-===[[Classes/Site|Site]]===
+===[http://wiki.habariproject.org/en/Classes/Site Site]===
 The '''site''' class is responsible for building URLs and filesystem paths of various sorts for the current site.  This class provides a unified mechanism for building URLs and paths that supports Habari's multi-site functionality.
 
-===[[Classes/Stack|Stack]]===
+===[[Stack Class]]===
 
-===[[Classes/TemplateEngine|TemplateEngine]]===
+===[http://wiki.habariproject.org/en/Classes/TemplateEngine TemplateEngine]===
 TemplateEngine defines the mechanics of a specific templating system.  The two currently defined engines are RawPHPEngine and Smarty.  Using the RawPHPEngine, one will construct template files in a manner similar to that used by, for example, WordPress: you mix HTML and PHP code together.  Using the SmartyEngine, one will construct [http://smarty.php.net/ Smarty] template files.
-* [[Classes/RawPHPEngine|RawPHPEngine]]
-* [[Classes/SmartyEngine|SmartyEngine]]
+* [http://wiki.habariproject.org/en/Classes/RawPHPEngine RawPHPEngine]
+* [http://wiki.habariproject.org/en/Classes/SmartyEngine SmartyEngine]
 
-===[[Classes/Themes|Themes]]===
+===[http://wiki.habariproject.org/en/Classes/Themes Themes]===
 
-===[[Interfaces/URLProperties|URLProperties]]===
+===[[http://wiki.habariproject.org/en/nterfaces/URLProperties URLProperties]===
 
-===[[Classes/Utils|Utils]]===
+===[http://wiki.habariproject.org/en/Classes/Utils Utils]===
 The '''utils''' class is a bit of a grab-bag of handy routines that don't really fit well within other classes.
 
-===[[Classes/UUID|UUID]]===
+===[http://wiki.habariproject.org/en/Classes/UUID UUID]===
 The '''uuid''' class provides a mechanism for producing &quot;universally unique identifiers&quot;, per [http://www.ietf.org/rfc/rfc4122.txt RFC 4122].
 
-===[[Classes/Version|Version]]===
+===[http://wiki.habariproject.org/en/Classes/Version Version]===
 The '''version''' class is a small class used to record metadata about the current Habari version.  Specifically, it reports the Habari API and database version numbers.
 
-===[[Classes/XMLRPCBinary|XMLRPCBinary]]===
+===[http://wiki.habariproject.org/en/Classes/XMLRPCBinary XMLRPCBinary]===
 
-===[[Classes/XMLRPCClient|XMLRPCClient]]===
+===[http://wiki.habariproject.org/en/Classes/XMLRPCClient XMLRPCClient]===
 
-===[[Classes/XMLRPCDate|XMLRPCDate]]===
+===[http://wiki.habariproject.org/en/Classes/XMLRPCDate XMLRPCDate]===
 
-===[[Classes/XMLRPCStruct|XMLRPCStruct]]===
+===[http://wiki.habariproject.org/en/Classes/XMLRPCStruct XMLRPCStruct]===
 
-===[[Classes/XMLRPCUtils|XMLRPCUtils]]===
+===[http://wiki.habariproject.org/en/Classes/XMLRPCUtils XMLRPCUtils]===
 
  Alphabetical
 {{developer}}
@@ -2123,7 +2107,7 @@ As with Wordpress, your permalinks and paths will be lost. Explore the same opti
 
 [[Category:Manual]]</pre>
 </div>
-<div title="Installation" modifier="YourName" modified="200807250347" created="200807242317" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined" changecount="3">
+<div title="Installation" modifier="YourName" modified="200807251404" created="200807242317" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined" changecount="5">
 <pre>==Before You Install==
 
 === Server Requirements ===
@@ -2214,7 +2198,7 @@ Your host will then ask for your host password. Put it in and you are in.
 
 &lt;pre&gt;svn checkout http://svn.habariproject.org/habari/trunk/htdocs habari&lt;/pre&gt;
 
-&lt;em&gt;Reference: [[Subversion and applying patchs]]&lt;/em&gt;
+&lt;em&gt;Reference: [[Subversion and applying patches]]&lt;/em&gt;
 
 ===Step 2: Preparing the Database===
 As mentioned, Habari requires a database from one of the supported formats.  If you are running on a professional hosting company (see [[Supported Hosts]]), chances are you either were provided with a database, or a web interface for creating a database. If that's the case, you can skip to the next step. Either way you are going to need:
@@ -2229,7 +2213,6 @@ Please note that by default some third party hosts add your user name prior to t
 After checking out the files, and creating your database, you are ready to run the installer.  Open your web browser and navigate to your install location, ie, &lt;tt&gt;&lt;nowiki&gt;http://example.com/habari&lt;/nowiki&gt;&lt;/tt&gt;.
 You should be prompted with an installer, requiring you to choose your database type, and the necessary information to complete installation.
 
-If the installer is not working properly, the [[Common Questions]] page has some information that may help you troubleshoot the installer.
 ====Database Host====
 99% of the time, this is going to be &lt;tt&gt;localhost&lt;/tt&gt;, and should be the default value in the installer.  
 
@@ -2382,8 +2365,7 @@ Developers contributing to the Habari project itself should note that, unless ex
 shall be under the terms and conditions of the Habari license, without any additional terms or conditions. However, plugins and themes designed to work with Habari
 are not required to have the same license as Habari itself.
 
-You can find our license included in the source, and in our [http://trac.habariproject.org/habari/browser/trunk/LICENSE code repository].
-</pre>
+You can find our license included in the source, and in our [http://trac.habariproject.org/habari/browser/trunk/LICENSE code repository].</pre>
 </div>
 <div title="MainMenu" modifier="YourName" modified="200807242326" created="200703132343" server.type="file" server.host="file:///Users/blogworks/Sites/MyHabari/Docs/Habari_Manual.20070916.0135310976.html" server.page.revision="200709160129" changecount="3">
 <pre>[[Introduction]]
@@ -2394,8 +2376,8 @@ You can find our license included in the source, and in our [http://trac.habarip
 [[User Documentation]]
 [[Developer Introduction]]</pre>
 </div>
-<div title="Managing Media" modifier="rickc" modified="200807241319" created="200807242317" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined">
-<pre>To assist in the management of media, such as images, video and audio, Habari provides a mechanism for defining virtual filesystems for media, called Media Silos. A silo provides a consistent interface for dealing with media. Examples of media silos can be seen in the [[SimpleFileSilo]] or FlickrSilo plugins. A developer wanting to interface with a media service should write a plugin that implements the MediaSilo interface.
+<div title="Managing Media" modifier="YourName" modified="200807251409" created="200807242317" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined" changecount="2">
+<pre>To assist in the management of media, such as images, video and audio, Habari provides a mechanism for defining virtual filesystems for media, called Media Silos. A silo provides a consistent interface for dealing with media. Examples of media silos can be seen in the [http://wiki.habariproject.org/en/SimpleFileSilo SimpleFileSilo] or FlickrSilo plugins. A developer wanting to interface with a media service should write a plugin that implements the MediaSilo interface.
 
 == Media Overview ==
 
@@ -4006,10 +3988,9 @@ config.parsers.mediawikiFormatter = new Formatter(config.mediawiki.formatters);
 config.parsers.mediawikiFormatter.format = 'mediawiki';
 config.parsers.mediawikiFormatter.formatTag = 'MediaWikiFormat';
 } //# end of 'install only once'
-//}}}
-</pre>
+//}}}</pre>
 </div>
-<div title="Monolith Human Interface Guide" modifier="mikelietz" modified="200807241346" created="200807242317" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined">
+<div title="Monolith Human Interface Guide" modifier="YourName" modified="200807251201" created="200807242317" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined" changecount="1">
 <pre>Inside out, Habari is being designed to be modern, elegant and user friendly. The administrative interface is representative of this approach, and is meant to provide you with the path of least resistance to your goal, while still letting you retain fine-grained control.
 
 Most of what is described in this document, by its very nature should be intuitive and self-explanatory. However, in an effort to maintain these hard-won properties at the benefit of all involved--users and developers alike--this document serves as a guide for working on or adding to Habari's administration interface.
@@ -4211,7 +4192,7 @@ Similarly, all the applicable links on the Manage pages, like the name of a comm
 
 Similarly to Gmail and Google Reader, the hotkey for switching focus to the Search element is '/'.
 
-For a full description of search filtering, you should refer to the [[Search Filters|search filtering reference]].
+For a full description of search filtering, you should refer to the [http://wiki.habariproject.org/en/SimpleFileSilo search filtering reference].
 
 == The Dashboard ==
 
@@ -4279,8 +4260,7 @@ Each '''Habari''' site can use its own themes and plugins, as well as the themes
 
 == Notes ==
 # Each '''Habari''' site is strictly independent.  Although sites may share themes and plugins located in the top-level /user directory, no data is shared between sites.  User accounts, posts, and settings are completely independent.
-# In order for the installation routine to work for a site other than the default site, there '''must''' be a &lt;code&gt;config.php&lt;/code&gt; in that site's directory.
-</pre>
+# In order for the installation routine to work for a site other than the default site, there '''must''' be a &lt;code&gt;config.php&lt;/code&gt; in that site's directory.</pre>
 </div>
 <div title="Multisite" modifier="rickc" modified="200807011123" created="200807242317" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined">
 <pre>A single installation of the '''Habari''' source code can power multiple, independent sites.
@@ -4340,7 +4320,7 @@ Each '''Habari''' site can use its own themes and plugins, as well as the themes
 &lt;/div&gt;
 &lt;!--}}}--&gt;</pre>
 </div>
-<div title="Pingbacks" modifier="Pivwan" modified="200802271815" created="200807242317" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined">
+<div title="Pingbacks" modifier="YourName" modified="200807251202" created="200807242317" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined" changecount="1">
 <pre>As of revision 756 Habari now supports the sending and recieving of Pingbacks. Displaying them on your site is simple. Let's go over the code you will need to add to your comments template.
 
 By default Habari grabs all the comments for a given post (normal comments, trackbacks, etc) and sorts them into &quot;buckets&quot; for later use.  For instance when we want to display all our comments, we would do something like this:
@@ -4358,6 +4338,7 @@ if ( $post-&gt;comments-&gt;pingbacks-&gt;count ) {
 
 If there are approved pingbacks for this post they are processed for display.  Here is complete sample code to display pingbacks:
 
+&lt;pre&gt;
 &lt;source lang=&quot;php&quot;&gt;
 &lt;?php if ( $post-&gt;comments-&gt;pingbacks-&gt;count ) : ?&gt;
   &lt;h1&gt;
@@ -4381,6 +4362,7 @@ If there are approved pingbacks for this post they are processed for display.  H
   &lt;/div&gt;
 &lt;?php endif; ?&gt;
 &lt;/source&gt;
+&lt;/pre&gt;
 
 The default comments template in the k2 theme will show both pingbacks and comments. To show only comments use the following code.
 
@@ -4535,7 +4517,7 @@ classes/xmlrpcserver.php:		Plugins::filter('xmlrpc_methods', $res);
 
 [[Category:Manual]]</pre>
 </div>
-<div title="Plugins" modifier="ringmaster" modified="200803012243" created="200807242317" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined">
+<div title="Plugins" modifier="YourName" modified="200807251412" created="200807242317" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined" changecount="1">
 <pre>Plugins are intended to be extensions of the core functionality of Habari.  Your installation will come with several, community developed plugins, or you may download other, community and individually developed plugins.  Eventually, a repository on the official site will house freely available plugins, until then, you can check out the [[Available Plugins]].
 
 ==Installation &amp; Activation==
@@ -4553,7 +4535,7 @@ Some features provided by plugins will be enabled without you doing anything oth
 ==Checking for Plugins in Themes==
 You can use a conditional statement to see if a particular plugin is active, and if so, do something, else, do something else.  
 
-This is '''not recommended''' for most purposes, especially in template files, because [[Theme Functions]] provide more functionality and have the plugin detection built-in, and [[Theme Dependencies]] allow you to specify Theme Functions and versions that must be present for your theme to work properly before it's even activated.
+This is '''not recommended''' for most purposes, especially in template files, because [http://wiki.habariproject.org/en/Theme_Functions Theme Functions] provide more functionality and have the plugin detection built-in, and [[Theme Dependencies]] allow you to specify Theme Functions and versions that must be present for your theme to work properly before it's even activated.
 
 To test if a plugin is present, use the following function:
 
@@ -4694,10 +4676,9 @@ QueryRecord provides the following:
 * to_array(), to permit array operations on the object (like &lt;code&gt;foreach&lt;/code&gt;)
 * get_url_args(), which returns an array of the values represented by the object
 * update(), for recording modified values to the database
-* delete(), for deleting an item from the database
-</pre>
+* delete(), for deleting an item from the database</pre>
 </div>
-<div title="Recent Comments" modifier="michaeltwofish" modified="200803140442" created="200807242317" tags="Category:Manual Category:Theming" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined">
+<div title="Recent Comments" modifier="YourName" modified="200807251414" created="200807242317" tags="Category:Manual Category:Theming" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined" changecount="2">
 <pre>It's really simple to get a listing of recent comments to output in your Habari theme. This page describes how to manually add recent comments support by editing your theme. If you don't want to write code, there is a [http://www.habariproject.org/dist/plugins/recentcomments.zip Recent Comments plugin] available from the Habari Extras repository that lets you customize how many comments to display and how to display them.
 
 There are just two steps to add recent comments to your blog.
@@ -4720,7 +4701,7 @@ This tells Habari to store the 25 most recent approved comments into a variable 
 
 Second, add this to your theme's template where you want the comment listing to appear:
 
-&lt;code lang=&quot;php&quot;&gt;
+&lt;pre&gt;
 &lt;h3&gt;Recent Comments&lt;/h3&gt;
 &lt;ul&gt;
   &lt;?php foreach($recent_comments as $comment): ?&gt;
@@ -4734,7 +4715,7 @@ Second, add this to your theme's template where you want the comment listing to 
     &lt;/li&gt;
   &lt;?php endforeach; ?&gt;
 &lt;/ul&gt;
-&lt;/code&gt;
+&lt;/pre&gt;
 
 This loops through each of the comment objects in the array of recent comments using a &lt;tt&gt;foreach&lt;/tt&gt; loop and prints them. You can edit the HTML to change how the comments are displayed.
 
@@ -4748,7 +4729,7 @@ You could even use &lt;tt&gt;$comment-&gt;content&lt;/tt&gt; to output the conte
 [[Category:Manual]]
 [[Category:Theming]]</pre>
 </div>
-<div title="Rewrite Tutorial" modifier="lildude" modified="200805291933" created="200807242317" tags="Category:Manual Category:Outdated" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined">
+<div title="Rewrite Tutorial" modifier="YourName" modified="200807251432" created="200807242317" tags="Category:Manual Category:Outdated" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined" changecount="4">
 <pre>==Parts of a rewrite rule==
 Rewrite rules are made up of several parts conforming to the fields in
 the rewrite_rules table, all with a distinct purpose.
@@ -4817,13 +4798,13 @@ Habari needs more information, though.  It needs to know what that
 expression value should be used for.  So we use named matches.
 
 The syntax for named matches is a little odd, but it's not difficult:
- /archives/(?P&lt;year&gt;\d{4})
+&lt;pre&gt; /archives/(?P&lt;year&gt;\d{4})&lt;/pre&gt;
 
 You simply add ?P&lt;name&gt; just inside the left paren, and set the &quot;name&quot;
 part to the thing that you want to match.
 
 So the regular expression for the URL your requested is this:
- archives/(?P&lt;year&gt;\d{4})/(?P&lt;mon0&gt;\d{2})/(?P&lt;mday0&gt;\d{2})/(?P&lt;slug&gt;[^/]+)/?$
+&lt;pre&gt; archives/(?P&lt;year&gt;\d{4})/(?P&lt;mon0&gt;\d{2})/(?P&lt;mday0&gt;\d{2})/(?P&lt;slug&gt;[^/]+)/?$&lt;/pre&gt;
 
 There are a couple of other tokens in there that I didn't explain, but
 there are plenty of regular expression tutorials on the web that are
@@ -5002,7 +4983,7 @@ Replace habari.db with the actual name of your database file. This will keep vis
 <div title="SiteTitle" modifier="Khaled Abou Alfa" modified="200704162057" created="200703132346" server.type="file" server.host="file:///Users/blogworks/Sites/MyHabari/Docs/Habari_Manual.20070916.0135310976.html" server.page.revision="200704162057">
 <pre>Habari</pre>
 </div>
-<div title="Stack Class" modifier="Massimiliano" modified="200802022110" created="200807242317" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined">
+<div title="Stack Class" modifier="YourName" modified="200807251338" created="200807242317" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined" changecount="15">
 <pre>The Stack class allows a developer to create a &quot;stack&quot; of items for later output.  This can be useful for creating a stack of scripts or CSS file references that should be added to the page output.  Using the naming feature of the Stack class, a developer can ensure that only one script is added to the stack for a specific purpose.
 
 == Output a Stack ==
@@ -5019,18 +5000,18 @@ This causes all elements of the stack named &lt;tt&gt;stack_name&lt;/tt&gt; to b
 
 To use a simple format of the values, this syntax is useful:
 
- &lt;code&gt;Stack::out('stack_name', '&lt;link rel=&quot;stylesheet&quot; href=&quot;%s&quot; type=&quot;text/css&quot;&gt;');&lt;/code&gt;
+ &lt;code&gt;Stack::out('stack_name', '&amp;lt;link rel=&quot;stylesheet&quot; href=&quot;%s&quot; type=&quot;text/css&quot;&amp;gt;');&lt;/code&gt;
 
 This outputs each element of the stack as if it was called as a parameter to PHP's sprintf() function.  The string supplied as the second parameter to Stack::out() is the formatting string that is used to format each element.
 
 The most complex formatting technique allows callback functions as formatting functions:
 
- &lt;code&gt;
+ &lt;code&gt;&lt;pre&gt;
  function myformatter($text){
    return strrev($text) 
  }
  Stack::out('stack_name', 'myformatter');
- &lt;/code&gt;
+ &lt;/pre&gt;&lt;/code&gt;
 
 The second parameter to Stack:out() in this example is the name of a callback function.  The function is called for each element of the stack, and the return value of that function is used for the stack output.  In this case, the text of every element of the stack is reversed before it is output.
 
@@ -5337,7 +5318,7 @@ h2 {font-size:16px;}
 h3 {font-size: 14px;}
 /*}}}*/</pre>
 </div>
-<div title="Subversion and applying patches" modifier="YourName" modified="200807250353" created="200807242317" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined" changecount="1">
+<div title="Subversion and applying patches" modifier="YourName" modified="200807251402" created="200807242317" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined" changecount="2">
 <pre>==Using Subversion and applying patches==
 
 [http://svnbook.red-bean.com/ Subversion] is a source code versioning system that allows developers to concurrently make changes to Habari's source code and reconcile any differences before a release is deployed.
@@ -5438,7 +5419,7 @@ Reverted 'user/themes/k2/header.php' &lt;/pre&gt;
 
 [[Category:Manual]]</pre>
 </div>
-<div title="Supported Hosts" modifier="andycowl" modified="200803110812" created="200803130446" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="1463">
+<div title="Supported Hosts" modifier="YourName" modified="200807251319" created="200803130446" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="1463" changecount="2">
 <pre>=Known Hosts Supporting Habari requirements=
 
 The following list of hosts are known to have the necessary prerequisites for Habari, and Habari has been reported to us as executing successfully on them.  This list is not an endorsement of these hosts over others.  At this time the Habari Project offers no official recommendation or endorsement of any hosting provider.
@@ -5457,7 +5438,7 @@ The following list of hosts are known to have the necessary prerequisites for Ha
 *[http://www.slicehost.com/ Slicehost] (running apache2 or nginx, php5, mysql5 or sqlite3)
 *[http://servage.net Servage]
 
-Depending on the hosting provider, there may be additional configuration steps required. Refer to [[Installation/Special_Instructions]] for more information.</pre>
+Depending on the hosting provider, there may be additional configuration steps required. Refer to [http://wiki.habariproject.org/en/Installation#Special_Instructions installation special instructions] for more information.</pre>
 </div>
 <div title="Template File Hierarchy" modifier="Massimiliano" modified="200802022106" created="200807242317" tags="Category:Manual Category:Theming" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined">
 <pre>Themes in Habari are constructed from several template files.  Each template potentially corresponds to a type of data and the amount of data that is displayed.
@@ -5601,10 +5582,10 @@ These substitutions should be used for elements of the template name that begin 
 [[Category:Manual]]
 [[Category:Theming]]</pre>
 </div>
-<div title="Themes" modifier="Massimiliano" modified="200802022115" created="200803130446" tags="Category:Asides Category:Theming" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="1197">
+<div title="Themes" modifier="YourName" modified="200807251317" created="200803130446" tags="Category:Asides Category:Theming" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="1197" changecount="1">
 <pre>Currently, Habari only supports one theme engine, the rawphpengine.  Eventually, it will support additional engines (such as Smarty and PHPTAL).  
 
-A modified version of the popular [http://getk2.com/ K2] theme currently comes as the default theme upon installation, however, the goal is to offer several themes with the download.  A few publicly [[Available Themes|available themes]] are currently available, with many more on the horizon.
+A modified version of the popular [http://getk2.com/ K2] theme currently comes as the default theme upon installation, however, the goal is to offer several themes with the download.  A few publicly [http://wiki.habariproject.org/en/Available_Themes available themes] are currently available, with many more on the horizon.
 
 ==Installation==
 Included themes are installed in &lt;code&gt;system/themes&lt;/code&gt;.  This allows for upgrading without touching the &lt;code&gt;/user&lt;/code&gt; directory at all.  If you would like to use a system theme, but make modifications, you can copy '''all of the files and directories''' into user/themes.  The &lt;code&gt;user/themes/k2&lt;/code&gt; would override the &lt;code&gt;system/k2&lt;/code&gt;.  Again, this allows for upgrading, and any changes to the distributed version K2 not over write your modified version.  You could then migrate any changes to your user copy.
@@ -5702,7 +5683,7 @@ The only difference left is the tables' structure. From 0.2 to 0.3 we modified c
 
 [[Category:Manual]]</pre>
 </div>
-<div title="User Manual" modifier="YourName" modified="200807250042" created="200807242331" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" changecount="14">
+<div title="User Manual" modifier="YourName" modified="200807251350" created="200807242331" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" changecount="15">
 <pre>== Introduction ==
 Welcome to Habari, the next-generation online publishing platform!
 
@@ -5713,7 +5694,7 @@ The word &quot;Habari&quot; is Swahili for &quot;news&quot;, as in &quot;What's 
 As a Free Software project, Habari's most valuable asset is the community of users and developers who collaborate to improve the product.  Habari is built by people just like you: folks with an interest in blogging and internet publishing.
 
 == Installation ==
-Habari has a few [[Installation#Before_You_Install|Server Requirements]], which you will need to meet to be able to run Habari. If you have what is required, (or better), you are good to go! As Habari is still in development, no guarantees are made that these are fully stable versions, or that updating won't break the current database structure.
+Habari has a few [http://wiki.habariproject.org/en/Installation#Server_Requirements Server Requirements], which you will need to meet to be able to run Habari. If you have what is required, (or better), you are good to go! As Habari is still in development, no guarantees are made that these are fully stable versions, or that updating won't break the current database structure.
 
 To install the latest stable version of Habari:
 
@@ -6039,8 +6020,7 @@ Please keep in mind when filing tickets for bug reports or feature enhancements 
 ==== A note about security issues ====
 As mentioned above, all items filed in the Habari Trac are public.  If you are reporting a security problem, or a potential security problem, we respectfully ask that you first contact security@habariproject.org so that we can review the situation with you without jeopardizing our users' sites.  If you open a ticket with details of how to execute an attack against a Habari installation, someone somewhere '''will''' see that information and exploit it.
 
-[[Category:Manual]]
-</pre>
+[[Category:Manual]]</pre>
 </div>
 <div title="User Overrides" modifier="skippy" modified="200802262231" created="200807242317" tags="Category:Manual" wikiformat="mediawiki" server.host="wiki.habariproject.org/w" server.page.revision="undefined">
 <pre>The core files used by Habari reside in /system/classes.  In general, each file represents a single class: post.php defined the Post object, posts.php defines the Posts object, etc.  In order to make Habari as flexible as possible, the developers have made it possible to easily override the default classes.  Any file placed in /user/classes will override the system file of the same name.
@@ -6113,7 +6093,7 @@ and your posts will be excerpts.
 [[Category:Manual]]
 [[Category:Theming]]</pre>
 </div>
-<div title="What's New" modifier="YourName" modified="200807250337" created="200711050122" tags="MediaWikiFormat" changecount="9">
+<div title="What's New" modifier="YourName" modified="200807251302" created="200711050122" tags="MediaWikiFormat" changecount="10">
 <pre>== Introduction ==
 Welcome to Habari Version 0.5!
 
@@ -6131,7 +6111,7 @@ This latest release of Habari contains some major improvements and feature chang
 
 
 == Known Bugs ==
-Close to 300 bug fixes and improvements have been made since the last release, but many are still listed on [http://trac.habariproject.org/habari/timeline trac]. Many of these revolved around dealing with multibyte character set.
+Close to 300 bug fixes and improvements have been made since the last release, but many are still listed on [http://trac.habariproject.org/habari/timeline trac]. Many of these involve working with multibyte characters.
 
 ==Credits==
 These release notes were compiled by the [http://wiki.habariproject.org/en/Habari_Project:Community_Portal Habari Community].
@@ -6224,8 +6204,7 @@ Again, there's a compelling use-case -- the ability to freely write equations in
 
 It seems to me that, if you are going to produce XHTML, that's what you need to do. If you are going to produce faux XHTML (served as text/html) by crappy old string-concatenation techniques, then you might as well produce HTML4. Browser are going to consume it as malformed HTML4 anyway.
 
-Probably, there are too few potential users who are interested in MathML or SVG (or whatever) to make the extra effort required to produce real XHML worth it. (Personally, I think there's a chicken-or-egg aspect to that question: the only way to find out how many people would like having SVG on their blog is to provide a blogging tool which allows them to do it.)
-</pre>
+Probably, there are too few potential users who are interested in MathML or SVG (or whatever) to make the extra effort required to produce real XHML worth it. (Personally, I think there's a chicken-or-egg aspect to that question: the only way to find out how many people would like having SVG on their blog is to provide a blogging tool which allows them to do it.)</pre>
 </div>
 </div>
 <!--POST-STOREAREA-->
