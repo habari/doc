@@ -108,7 +108,6 @@ img{
 	<a href="#whatsnew" title="Introduction">What's New</a>
 	<a href="#installation" title="Introduction">Installation</a>
 	<a href="#upgrading" title="Introduction">Upgrading</a>
-	<a href="#faq" title="Introduction">FAQ</a>
 	<a href="#userdocumentaion" title="Introduction">Using Habari</a>
 	<a href="#devintroduction" title="Introduction">Developer Introduction</a>
 </div>
@@ -259,69 +258,6 @@ Config::set( 'db_connection', array(
 <h3>Upgrading Other Versions of Habari</h3>
 <p>For specific upgrade instructions for earlier versions of Habari, see the <href="http://wiki.habariproject.org/en/Upgrading" title="Full Upgrade Instructions">full upgrade notes</a> on the wiki.</p>
 </div>
-
-	<div id="faq">
-		<h1>FAQ</h1>
-		<h2>Project Questions</h2>
-		<h3>What does "habari" mean?</h3>
-		<p>"Habari" is a Swahili word that means "what's the news?" It's similar to the English "What's up?" or the Spanish "¿Qué pasa?" The typical response is "nzuri sana", which means "very good."</p>
-		<h3>How is this different from the eleventy billion other blog packages?</h3>
-		<p>It's true that there are tons of blogging software solutions from which to choose. Each has their place, and their legion of ardent followers.</p>
-		<p>Habari is being written with a firm understanding of the current state of blogging. Most other blogging packages have been around long enough that their responses to things like comment spam and Digg site overloads are bolted on after the fact; whereas Habari is being written from the beginning to take these things -- and more -- into account.</p>
-		<p>Habari strongly favors open, standard, and documented protocols. Atom, being both open and documented, is the prefered syndication format, and the Atom Publishing Protocol is the prefered means of remote communication with your site. This is a core feature, and not a plugin.</p>
-		<p>Habari is being written specifically for modern web hosting environments, and uses modern object-oriented programming techniques. Using these recent but well-established additions to the PHP language allows Habari to make use of PDO, enabling prepared statements for all interactions with the database. This greatly reduces the system's vulnerability to SQL injection attacks. This is just one of many benefits of modern object-oriented techniques.</p>
-		<p>Those are just a few of the technical differences, but a major component of what makes Habari different is its community participation model. Users who demonstrate a consistent level of quality contributions to the project are granted more privileges within the project.</p>
-		<h3>Why not fork an existing project?</h3>
-		<p>None of the packages we've tried have really satisfied us, so in the fine tradition of open source software we're trying to scratch our own itch.</p>
-		<p>To be sure, there's a lot that many blog packages do right, and we'd be foolish to re-invent the wheel simply to be different. But many existing blog packages have made fundamental decisions that limit what can be done, or how, with the system. Rather than try to work around those limitations, or try to remove what's broken, we'd prefer to start fresh and import those ideas that are good.</p>
-		<h2>How is Habari licensed?</h2>
-		<p>Habari uses a modified version of the Apache License (http://www.apache.org/licenses/LICENSE-2.0). For those unfamiliar with this license, the Apache License FAQ page] should answer most of your questions.</p>
-		<blockquote>Developers contributing to the Habari project itself should note that, unless explicitly stated otherwise, any contribution intentionally submitted for inclusion shall be under the terms and conditions of the Habari license, without any additional terms or conditions. However, plugins and themes designed to work with Habari are not required to have the same license as Habari itself.</blockquote>
-		<p>You can find our license included in the source, and http://svn.habariproject.org/habari/trunk/LICENSE in our code repository.</p>
-		<h3>Why HTML vs XHTML</h3>
-		<p>A consensus amongst project members concluded a thorough discussion as to the merits of the two DOC types, and what would be appropriate for the Admin pages of Habari. The conclusion was that HTML was the "proper" way, however, end users are welcome to serve their pages in any way they prefer by declaring the DOC type in their theme. A more comprehensive outline of the discussion, culled from the information in the original discussion is provided.</p>
-
-		<h2>Running Habari</h2>
-		<h3>Will Habari work with my web host?</h3>
-		<p>Habari should work with any web host that supports the above requirements. A list of web hosts where Habari has been tested and run successfully can be found at Supported Hosts.</p>
-		<h3>What are the system requirements?</h3>
-		<p>Habari is a modern solution for blogging, and requires modern software. To successfully use Habari, you will need:</p>
-		<ul>
-			<li>Web Server - (Apache, lighttpd and nginx have been tested successfully.</li>
-			<li>PHP 5.2.x or above - Habari will not work with PHP 4.</li>
-			<li>PHP Data Objects support. Depending on the database you are using, the following pdo extensions need to be enabled.</li>
-			<li>php_pdo_mysql</li>
-			<li>php_pdo_sqlite</li>
-			<li>Database - MySQL, PostgresSQL, and SQLite are supported.</li>
-			<li>The following extensions enabled in PHP.</li>
-			<li>hash</li>
-			<li>iconv</li>
-			<li>tokenizer</li>
-			<li>simplexml</li>
-			<li>mbstring</li>
-		</ul>
-		<h3>Does Habari work with PostgreSQL?</h3>
-		<p>Support for PostgreSQL introduced in version 0.5 of Habari. But this support was not fully updated in 0.6 (see <a href="#whatsnew" title="What's New">What's New</a>).</p>
-		<h3>Does using SQLite as my database have any special requirements?</h3>
-		<p>SQLite is a single file database that creates temporary files in the directory which contains your database. As a result, your web server must have write access to the directory in which your database exists. If you do not designate a specific directory in your Habari configuration, the default directory in which your database file is created is the directory in which you installed Habari.</p>
-
-		<h2>Contributing Questions</h2>
-		<h3>How can I help?</h3>
-		<ul>
-		<li>Open new issues on our issue tracker describing problems you experience, or to request new features.</li>
-		<li>Join the Google Group(s) in which you have the most interest, and start sharing!
-			<ul>
-				<li>The habari-users group is for end user support, and general discussion.</li>
-				<li>The habari-dev group is for nitty-gritty implementation discussions of the code, database schemas, and the like.</li>
-				<li>The habari-svn group is a way to track the development activity of the source code. You can review the commit logs, and monitor changes as they occur.</li>
-			</ul></li>
-		</ul>
-		<h3>How do I add my code changes to the project?</h3>
-		<p>If you would like to work on a feature or bug fix, there is a best practice for getting your changes into the process.</p>
-		<p>Regardless of the type of fix/change, first create an issue in the issue tracker describing your proposed change. Allowing the group to review your proposal could save you the time of implementing something that is being done as part of a larger task, and could gain you the insight or help of other people who are interested in what you're doing.</p>
-		<p>As you write your code, review Habari's coding standards to get acquainted to how your code should be formatted. As you prepare your changes, ask for review on the development mailing list as often as you need it.</p>
-		<p>When your changes are complete, file code changes as a diff in the issue that you're tracking, and attach any associated files. Be sure to mention how the files are to be applied if there are any special considerations. Your issue will be reviewed, and if suitable, will be applied in the code repository.</p>
-	</div>
 
 	<div id="userdocumentaion">
 
@@ -740,23 +676,25 @@ Can't log in!
 		<h1>Developer Introduction</h1>
 		<p>To learn more about Habari internals and developing for Habari, listed are some useful starting points:</p>
 		<ul>
-			<li>Debugging Tips: Some tips for getting started with debugging in Habari.</li>
-			<li>QueryRecord: The building block of Habari.</li>
-			<li>Coding Standards: Generally accepted practice within the project.</li>
-			<li>CSS Coding Standards: Generally accepted CSS practice within the project (suggestion).</li>
-			<li>Habari Workflow : How Habari processes requests.</li>
-			<li>Code Submisson : How to submit code and patches for Habari.</li>
-			<li>Habari Classes : An overview of the main object classes used by Habari.</li>
-			<li>Multisite : How multi-site configurations work in Habari.</li>
-			<li>User Overrides : How to use the `/user/classes` and `/user/themes` directories to override core Habari functionality.</li>
-			<li>Plugin Hooks : A list of available hooks for your plugins.</li>
-			<li>Creating A Plugin : A tutorial on Habari Plugin architecture.</li>
-			<li>Rewrite Tutorial : How to construct rewrite rules for Habari.</li>
-			<li>Database Schema : Structure of the Habari Database.</li>
-			<li>Stack Class: The Stack class allows a developer to create a "stack" of items for later output.</li>
-			<li>Managing Media: How Habari helps developers manage media from a variety of sources.</li>
-			<li>Monolith Human Interface Guide: How to approach the further development of the administration interface and its intended use.</li>
-		</ul>
+			<li> <a href="http://wiki.habariproject.org/en/Debugging_Tips" title="Debugging Tips">Debugging Tips</a>: Some tips for getting started with debugging in Habari.</li>
+		<li> <a href="http://wiki.habariproject.org/en/QueryRecord" class="mw-redirect" title="QueryRecord">QueryRecord</a>: The building block of Habari.</li>
+		<li> <a href="http://wiki.habariproject.org/en/Coding_Standards" title="Coding Standards">Coding Standards</a>: Generally accepted practice within the project.</li>
+		<li> <a href="http://wiki.habariproject.org/en/CSS_Coding_Standards" title="CSS Coding Standards">CSS Coding Standards</a>: Generally accepted CSS practice within the project (suggestion).</li>
+		<li> <a href="http://wiki.habariproject.org/en/Habari_Workflow" title="Habari Workflow">Habari Workflow</a>&nbsp;: How Habari processes requests.</li>
+		<li> <a href="http://wiki.habariproject.org/en/Code_Submisson" title="Code Submisson">Code Submisson</a>&nbsp;: How to submit code and patches for Habari.</li>
+		<li> <a href="http://wiki.habariproject.org/en/Habari_Classes" title="Habari Classes">Habari Classes</a>&nbsp;: An overview of the main object classes used by Habari.</li>
+		<li> <a href="http://wiki.habariproject.org/en/Multisite" title="Multisite">Multisite</a>&nbsp;: How multi-site configurations work in Habari.</li>
+		<li> <a href="http://wiki.habariproject.org/en/User_Overrides" title="User Overrides">User Overrides</a>&nbsp;: How to use the `/user/classes` and `/user/themes` directories to override core Habari functionality.</li>
+		<li> <a href="http://wiki.habariproject.org/en/Plugin_Hooks" title="Plugin Hooks">Plugin Hooks</a>&nbsp;: A list of available hooks for your plugins.</li>
+		<li> <a href="http://wiki.habariproject.org/en/Creating_A_Plugin" title="Creating A Plugin">Creating A Plugin</a>&nbsp;: A tutorial on Habari Plugin architecture.</li>
+		<li> <a href="http://wiki.habariproject.org/en/Rewrite_Tutorial" title="Rewrite Tutorial">Rewrite Tutorial</a>&nbsp;: How to construct rewrite rules for Habari.</li>
+		<li> <a href="http://wiki.habariproject.org/en/Database_Schema" title="Database Schema">Database Schema</a>&nbsp;: Structure of the Habari Database.</li>
+		<li> <a href="http://wiki.habariproject.org/en/Stack_Class" title="Stack Class">Stack Class</a>: The Stack class allows a developer to create a "stack" of items for later output.</li>
+		<li> <a href="http://wiki.habariproject.org/en/Managing_Media" title="Managing Media">Managing Media</a>: How Habari helps developers manage media from a variety of sources.</li>
+		<li> <a href="http://wiki.habariproject.org/en/Human_Interface_Guidelines" title="Human Interface Guidelines">Human Interface Guidelines</a>: How to approach the further development of the administration interface and its intended use.</li>
+	</ul>
+
+
 	</div>
 
 </div>
