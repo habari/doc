@@ -142,7 +142,7 @@ img{
 	<div id="whatsnew">
 		<h1>What's New</h1>
 		<h2>Introduction</h2>
-		<p>Welcome to Habari Version 0.6!</p>
+		<p>Welcome to Habari Version 0.6.3!</p>
 		<p>This latest release of Habari contains some major improvements and feature changes.</p>
 		<ul>
 			<li>ACL ( Access Control Lists ) support is introduced. With ACL, not only does Habari have support for users, group support has been added. Groups can be assigned specific rights that limit what parts of your site the groups members can access, ranging from only being able to read and comment on published posts ( anonymous users ) to being able to do anything on the site ( administrators ), and everything in between. This support is fully transparent to single-user sites, but can make life much easier for sites with multiple authors and user classes.</li>
@@ -158,7 +158,6 @@ img{
 		</ul>
 		<h2>Known Bugs</h2>
 		<p>Almost 1100 bug fixes and improvements have been made since the last release, but as with any piece of software issues and enhancement requests remain. For full details see Habari's <a href="http://trac.habariproject.org/habari/timeline" title="External link to http://trac.habariproject.org/habari/timeline" target="_blank">change management system</a>.</p>
-		<p>Of specific note, PostgreSQL support has not been fully updated in version 0.6. This is primarily due to lack of participants in the project with ability and resources for development and testing of that detabase engine. We welcome users of Postgres to submit patches and test future changes in the hope to include support for new installs and upgrades of Postgres in a point release of 0.6. However, it is currently advised that users currently running 0.5.2 with Postgres do not upgrade to 0.6.</p>
 		<h2>Credits</h2>
 		<p>These release notes were compiled by the <a href="http://wiki.habariproject.org/en/Habari_Project:Community_Portal" title=" External link to http://wiki.habariproject.org/en/Habari_Project:Community_Portal" target="_blank">Habari Community</a>.</p>
 		<p>On behalf of the community, we give our warmest thanks to the developers and contributors who made this Habari release possible.</p>
@@ -186,11 +185,11 @@ img{
 </li><li> Log into your Habari administrative area. Navigate to the plugins page and reactivate the plugins one by one. 
 </li><li> Celebrate and enjoy the new features of your latest version of Habari!
 </li></ol>
-<h3>Upgrading from Version 0.5.2 to Version 0.6</h3>
+<h3>Upgrading from Version 0.5.2 to Version 0.6.3</h3>
 
-<p>Version 0.6 incorporates many changes from the previous version, both in bug fixes and new features. For details see <a href="http://wiki.habariproject.org/en/Releases/0.6" title="http://wiki.habariproject.org/en/Releases/0.6" rel="nofollow">the release notes</a>.
+<p>Version 0.6.3 incorporates many changes from the previous version, both in bug fixes and new features. For details see <a href="http://wiki.habariproject.org/en/Releases/0.6.3" title="http://wiki.habariproject.org/en/Releases/0.6.3" rel="nofollow">the release notes</a>.
 </p><p>Habari's upgrade process is designed to be transparent, with the only indication that an upgrade is happening being a slightly longer page load time the first time the site is visited after the software is updated.
-</p><p>One major change that affects the upgrade process in this release is in how Habari stores it's configuration details. Habari 0.5.2 and earlier stored site configuration details in global variables. Habari 0.6 marks the move to using a config class, so the variables aren't globally available, a change that was made to improve security. These details are stored in the site's config.php file, which is located either in the root of the site's directory, or, for multisite users, in Habari's <tt>/user/sites/site_name directory</tt>. 
+</p><p>One major change that affects the upgrade process in this release is in how Habari stores it's configuration details. Habari 0.5.2 and earlier stored site configuration details in global variables. Habari 0.6.x marks the move to using a config class, so the variables aren't globally available, a change that was made to improve security. These details are stored in the site's config.php file, which is located either in the root of the site's directory, or, for multisite users, in Habari's <tt>/user/sites/site_name directory</tt>. 
 </p><p>For users who have left their config.php file writable, the necessary changes to the configuration file will be handled by the upgrade process transparently. For users who have made their configuration file read only, some manual changes will have to be made before the upgrade process can begin.
 </p><p>
 </p>
@@ -224,7 +223,7 @@ $db_connection= array(
 ?&gt;
 
 </pre>
-<p>With version 0.6 the config file looks like this:
+<p>With version 0.6.x the config file looks like this:
 </p><p><b>For MySQL</b>
 </p>
 <pre>
@@ -417,7 +416,8 @@ Config::set( 'db_connection', array(
 </p><p>Additional filters are available for manual entry.  To see all posts authored by Scott, type "author:scott" into the search box.  There is no shortcut link for these other filters because it's possible that a single site might have, for example, a sufficiently large number of authors as to make the links dominate the screen.
 
 </p><p>You can combine the filter links with manual search words.  To see all drafts about pizza, click the "Draft" button, and then type in "pizza".  Or, manually type in "status:draft pizza".
-</p><p>The loupe will update for the current set of filtered posts.  The combination of filter controls and timeline provide for extremely flexible content navigation.
+</p><p>The loupe will update for the current set of filtered posts.  The combination of filter controls and timeline provide for extremely 
+flexible content navigation.
 </p><p>Beneath the timeline is the list of posts that match the current filters.  The post title, status, author, and date are displayed above a brief snippet of the post.  This snippet should provide a bit of context about the post if you can't remember it from the title.  The title of the post is a hyperlink, allowing you to click it to view that post on the publish page.  The status, author, and date are also hyperlinks that show you similar items (same status, same author, or same publication date).  To the right of the post is a "drop button".  This is a special control mechanism that acts like both a button and a drop-down list.  If you place your mouse over the drop button it will expand to reveal all of the options available to you.  The first item -- the one displayed before you placed your mouse over the drop button -- is the default action that will occur if you click your mouse.  You may select one of the other items from the list, though, if you don't want to take the default action.  When managing content, the usual values of the drop buttons will be "Delete" and "Edit".
 </p><p>To the left of each post is a checkbox.  You can tick the boxes to mark one or more posts, allowing you to delete a group of posts.  The number of posts marked will be indicated above and below the list of posts.  The posts you select will be remembered, allowing you to page through all the posts that match the current filter.  The number shown will remind you that you have posts selected that might not be displayed on the current page.  Next to the number of selected posts (which says "None selected" if you've not yet selected any) is another checkbox. If you tick this box, all posts on the current page will be selected. Once you do so, another link will appear which allows you to select <b>all</b> posts which match the current filter, even those not visible.
 </p><p>Once you have some group of posts selected, you can delete the entire group at once by clicking the <b>Delete Selected</b> button to the right.
@@ -577,7 +577,7 @@ Config::set( 'db_connection', array(
 
 <p>Habari is able to import post, comment, category/tag, and user data from a growing list of importable platforms</a>. To import content, first activate the corresponding Importer plugin on the plugins page (Q P in the Main Menu) and then follow the steps detailed on the Import page.
 </p><p>Once the import process is complete your old data has been copied and can be managed through Habari, and can be deleted from the other platform if desired.
-</p><p><b>Important Note</b>: Deactivate any spamchecking plugins or plugins that contact outside sites before beginning to import your data. If active, these will greatly slow down, or even prevent, the successful completion of the import process. In the case of spamchecking plugins, comments may incorrectly be marked as unapproved if a spamchecker plugin is active.
+</p><p><b>Important Note</b>: Deactivate any spamchecking plugins or plugins that contact outside sites (such as pingback) before beginning to import your data. If active, these will greatly slow down, or even prevent, the successful completion of the import process. In the case of spamchecking plugins, comments may incorrectly be marked as unapproved if a spamchecker plugin is active.
 </p><p>After you have completed the import process, remember to reactivate the plugins you deactivated.
 </p>
 <a name="Extending_Habari"></a><h3>Extending Habari</h3>
