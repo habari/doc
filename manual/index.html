@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
@@ -195,7 +195,7 @@ img{
 </p><p>For users who have left their config.php file writable, the necessary changes to the configuration file will be handled by the upgrade process transparently. For users who have made their configuration file read only, some manual changes will have to be made before the upgrade process can begin.
 </p><p>
 </p>
-<h4>Manually Updating The Configuration File </span></h4>
+<h4>Manually Updating The Configuration File</h4>
 
 <p>The config.php file for Habari version 0.5.2 and below looks like this:
 </p><p><b>For MySQL</b>
@@ -225,7 +225,7 @@ $db_connection= array(
 ?&gt;
 
 </pre>
-<p>With version 0.6 the config file looks like this:
+<p>With version 0.6 and forward the config file looks like this:
 </p><p><b>For MySQL</b>
 </p>
 <pre>
@@ -282,8 +282,7 @@ Config::set( 'db_connection', array(
 <ul><li> Download <a href="http://habariproject.org/en/download" class="external free" title="http://habariproject.org/en/download" rel="nofollow">the current release</a> and unzip the Habari package.
 </li><li> If you are using MySQL or PostgreSQL, obtain the connection settings needed below, or create a database for Habari on your web server.
 </li><li> Upload Habari files on your web server.
-</li><li> Point your web browser at <a href="http://example.com/" class="external free" title="http://example.com/" rel="nofollow">http://example.com/</a> (the location of your Habari files on your server) to begin installation with the Database Setup.
-</li></ul>
+</li><li> Point your web browser at <u>http://yoursite.com/</u> (the location of your Habari files on your server) to begin installation with the Database Setup. </li></ul>
 <p>The Habari installer initially presents you with a choice of languages that it will use for the interface.  Select the correct locale code from the list for your language of choice.  The default selection is "en-us", which is English, United States.
 </p><p>Clicking the question mark at the top of any section of the installer will reveal more information about each field in that section.
 
@@ -312,7 +311,7 @@ Config::set( 'db_connection', array(
 </p>
 
 <a name="Using_Habari"></a><h3>Using Habari</h3>
-<p>After you have installed Habari, go to <a href="http://example.com/admin/" class="external free" title="http://example.com/admin/" rel="nofollow">http://example.com/admin/</a>. You will be taken to a login page. Enter your user name and password to open up Habari's administration interface. You will be greeted by the Dashboard.  This page provides a snapshot of useful information, such as the total number of posts and comments on your site, the number of posts you've made, and more. Later you can install plugins to add new modules to the dashboard, greatly expanding its usefulness.
+<p>After you have installed Habari, go to <u>http://yoursite.com/admin/</u>. You will be taken to a login page. Enter your user name and password to open up Habari's administration interface. You will be greeted by the Dashboard.  This page provides a snapshot of useful information, such as the total number of posts and comments on your site, the number of posts you've made, and more. Later you can install plugins to add new modules to the dashboard, greatly expanding its usefulness.
 </p><p>The primary way you will interact with Habari is through the main menu.  The main menu is accessed by placing your mouse at the top left of the window.  The menu should automatically drop down, to reveal to you the available choices.  The menu items users see will be controlled by the permissions assigned to them by the site administrator.  Clicking on any menu item will take you to the corresponding page within the administrative interface.  For details on each menu item, see the corresponding section of this manual.
 </p><p>It should be noted that the main menu can also be accessed by keyboard shortcuts.  If you press the Q key on your keyboard, the menu should expand.  Press the Q key again to hide the menu.  When the menu is displayed, each menu item has a keyboard shortcut displayed to the right.  Using the keyboard shortcuts you can quickly navigate through Habari.  Want to create a new entry?  Press Q, then the 1 key.  Want to change your site's theme?  Press Q, then T.  Want to add a new user?  Q U.
 </p>
