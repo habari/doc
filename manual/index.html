@@ -99,6 +99,7 @@ h6{
 img{
 	float: right;
 	margin: 5px;
+	border-style: none;
 }
 </style>
 </head>
@@ -256,7 +257,7 @@ Config::set( 'db_connection', array(
 </p><p>If you don't wish to do that, open the configuration file in a text editor and make the changes shown above, save your changes, then navigate to your site so the upgrade process can proceed.
 </p>
 <h3>Upgrading Other Versions of Habari</h3>
-<p>For specific upgrade instructions for earlier versions of Habari, see the <href="http://wiki.habariproject.org/en/Upgrading" title="Full Upgrade Instructions">full upgrade notes</a> on the wiki.</p>
+<p>For specific upgrade instructions for earlier versions of Habari, see the <a href="http://wiki.habariproject.org/en/Upgrading" title="Full Upgrade Instructions">full upgrade notes</a> on the wiki.</p>
 </div>
 
 	<div id="userdocumentaion">
@@ -321,7 +322,7 @@ Config::set( 'db_connection', array(
 <p>You can create your first post by clicking on the main menu, then selecting "Create Entry".
 </p><p>You are now looking at the publish entry page, by default you have three fields into which to enter information.
 </p>
-<img alt="Create Entry admin page" src="create_entry.jpg" width="300" height="267" border="0" class="thumbimage" />
+<img alt="Create Entry admin page" src="create_entry.jpg" width="300" height="267" class="thumbimage" />
 
 <ul><li>The Title box is the name of your entry, this can contain a single word, a sentence, numbers, or symbols producable by your keyboard.  By default, the title you supply will be used to create the URL by which this post will be accessed.
 </li></ul>
@@ -390,7 +391,7 @@ Config::set( 'db_connection', array(
 <p>By design, Habari by itself has a basic set of capabilities. Plugins add functionality, new capabilities, or additional content types to Habari. Habari includes several out of the box...
 </p>
 <a name="Timeline_and_Loupe"></a><h4>Timeline and Loupe</h4>
-<img alt="The timeline and loupe" src="timeline.jpg" width="300" height="43" border="0" class="thumbimage" />
+<img alt="The timeline and loupe" src="timeline.jpg" width="300" height="43" class="thumbimage" />
 <p>On certain administration pages, the loupe is a sliding, expandable window that operates on the timeline of a group of data. The default position for the loupe is the far right: the most recent items of the collection. The default width of the loupe encompasses 20 items. You can click inside the loupe and drag it left and right across the timeline: this will change the items shown beneath the loupe based on the date range highlighted by the loupe. On the left and right of the loupe are handlebars, which you can click to drag left or right to expand or shrink the size of the loupe: this will increase or decrease the number of items shown below.
 </p><p>The loupe makes it extremely easy to display and select specific timelines of data. You can drag and expand the loupe to display all the items from June of last year to June of this year. Or you can narrow the loupe to only display items from last month, or yesterday.
 </p>
@@ -400,17 +401,17 @@ Config::set( 'db_connection', array(
 <p>The Dashboard is the first page you see after you log in to Habari's administrative interface. The dashboard can be reached from any page of Habari's administrative interface by choosing <b>Dashboard</b> from the main menu, or by typing <b>Q</b> followed by <b>D</b>.
 </p>
 
-<img alt="Dashboard admin page with default modules" src="dashboard_with_modules.jpg" width="300" height="251" border="0" class="thumbimage" />Dashboard admin page with default modules
+<img alt="Dashboard admin page with default modules" src="dashboard_with_modules.jpg" width="300" height="251" class="thumbimage" />Dashboard admin page with default modules
 <p>The dashboard provides a summary of useful information for your site. The top section contains a couple of sentences telling you how long your site has been active, a series of high level statistics about your site, how many drafts you have awaiting completion, how many scheduled posts you have, and how many comments you have awaiting moderation.
 </p><p>Next is a series of <b>modules</b>. Modules are small sub-blocks that focus on specific details about your site. Habari comes with modules that contain lists of your recent published posts, recent comments on your blog, and recent activity that has been logged. Plugins can add various other modules dedicated to specific purposes. A plugin that redirects your feeds through the Feedburner service, for example, may use a module to let you know how many subscribers you have, while a plugin that tracks links to your site may use a module to show you the recent links.
 </p><p>Modules can be moved and rearranged, added, and hidden, so they stay in the positions that is most logical to you and show you the information you want to see. If you don't care about recent log activity, click the <b>x</b> in the upper left corner of the log module to hide it. If the first thing you want to see is any recent comments on your site, move the recent comments module to the top left of the modules section by clicking on the grey rectangle in the upper right of the module and dragging the module .
 </p><p>After all the visible modules, the dashboard has a dropdown list of all the modules that are available to show. To show a module you don't currently have displayed, choose the module then click the button with a + on it to the right of the list to display the module.
 </p>
-<a name="Managing_Content"></a><h4>Managing Content</h3>
+<a name="Managing_Content"></a><h4>Managing Content</h4>
 
 <p>To manage your content -- draft or published, entry or page -- select one of the Manage links from the main menu.  Habari creates a main Manage menu item, which has a submenu listing each type of content in your system, providing a convenient way to access a specific type of content.  The destination for each of these menu links is, in fact, the same page: the menus merely provide a shortcut to filter the display by the specified content type.
 </p>
-<img alt="Manage Posts page" src="manage_posts.jpg" width="300" height="299" border="0" class="thumbimage" />
+<img alt="Manage Posts page" src="manage_posts.jpg" width="300" height="299" class="thumbimage" />
 <p>Habari strives to make it as easy as possible to find and manage your content.  The first thing to note when visiting the "Manage Content" page is the <b>timeline</b>.
 </p><p>Beneath the timeline are the posts returned by the current filters.  Beside the timeline are the filter controls, and additional navigation controls.  By default, 20 posts will be presented beneath the timeline in reverse chronological order (newest first).  If you have more than 20 items that satisfy the filters, you can page forward and backward to see the next or previous set of 20 posts using the "Older" and "Newer" links at the top left and right, respectively.  To the right of the "Older" link is a report of the number of posts that match the current filter, and where your current display falls within that set.
 </p><p>Above the timeline on the Manage Content page is the <b>search</b> box.  You can use this box to type in search terms to find content.  To find all posts that include the word "Habari", simply type "Habari" into the search box and wait a moment.  The list of posts below will be updated, and the quantity indicator to the left of the filter box will be updated.  Beside the search box are several links that provide shortcut filter controls.  To see only entries, click the "Entry" link:  this will add <tt>type:entry</tt> into the search box, restricting the list of posts to only those of type Entry.  Click the "Entry" link again to remove that filter from the list.  Using these buttons, you can quickly drill down to see all your content.  Click the "Entry" link and the "Draft" link to see all your unpublished entries.  Click the "Entry" link again to see all draft posts, regardless of content type.
@@ -427,7 +428,7 @@ Config::set( 'db_connection', array(
 <p>To manage your comments select the Comments link from the main menu, or type <b>Q</b>, then <b>C</b>.
 </p><p>As with posts, the first thing to note when visiting the Comments page is the timeline and the loupe at the top of the page. The timeline works with comments the same way as it does with posts.
 </p>
-<img alt="The Manage Comments page" src="manage_comments.jpg" width="300" height="416" border="0" class="thumbimage" />
+<img alt="The Manage Comments page" src="manage_comments.jpg" width="300" height="416" class="thumbimage" />
 <p>Beneath the timeline are the comments returned by the current filters.  Above the timeline are the search and filter controls, and additional navigation controls.  By default, 20 comments will be presented beneath the timeline in reverse chronological order (newest first).  If you have more than 20 items that satisfy the filters, you can page forward and backward to see the next or previous set of comments using the "Older" and "Newer" links at the top left and right, respectively.  To the right of the "Older" link is a report of the number of comments that match the current filter, and where your current display falls within that set.
 </p><p>In the top center of the Comments page is the search box.  You can use this box to type in search terms to find comments.  To find all comments that include the word <i>Habari</i>, simply type <i>Habari</i> into the search box and wait a moment.  The list of comments will be updated, and the quantity indicator to the left of the search box will be updated.  Beside the search box are several links that provide shortcut filter controls to the different statuses and types a comment may have.  To see only Approved comments, click the <b>Approved</b> link:  this will add <tt>status:Approved</tt> to the search box, restricting the list of comments to only those which are approved.  Click the <b>Approved</b> link again to remove that filter from the list.  Using these , you can quickly drill down to see all your comments.  Click the <b>Unapproved</b> link and the <b>Pingback</b> link to see all your unapproved pingbacks.  Click the <b>Unapproved</b> link again to remove the Unapproved filter and see all pingbacks, regardless of status.
 
@@ -446,7 +447,7 @@ Config::set( 'db_connection', array(
 <p>To manage your site's tags, select <b>Tags</b> from the main menu, or type <b>Q</b>, then <b>A</b>.
 </p>
 
-<img alt="The Manage Tags page" src="manage_tags.jpg" width="300" height="103" border="0" class="thumbimage" />
+<img alt="The Manage Tags page" src="manage_tags.jpg" width="300" height="103" class="thumbimage" />
 <p>At the very top of the tags page is a <b>search box</b>. After your site has been in use for a period of time, you can have quite a few tags. Use the search box to narrow the number of tags which you are viewing.
 </p><p>Below the search box you will see the tags which you have used on your site. These will be of various heights, as a visual cue to how frequently they have been used, and each one will have a superscript number to the right of it denoting the exact number of posts on which it has been used.
 </p><p>Select tags by clicking on them. A second click on a tag de-selects it.
@@ -457,7 +458,7 @@ Config::set( 'db_connection', array(
 </p>
 
 <a name="Options"></a><h4>Options</h4>
-<img alt="Options admin page" src="options.jpg" width="300" height="231" border="0" class="thumbimage" />
+<img alt="Options admin page" src="options.jpg" width="300" height="231" class="thumbimage" />
 
 <p>Options for your site include such things as the site title, tagline, number of posts per page, time zone, etc.
 </p><p>To edit your site's options, either select <b>Options</b> from the main menu, or type <b>Q</b>, then <b>O</b>.
@@ -466,7 +467,7 @@ Config::set( 'db_connection', array(
 
 <a name="Themes_2"></a><h4>Themes</h4>
 
-<img alt="Themes admin page" src="manage_themes.jpg" width="300" height="259" border="0" class="thumbimage" />
+<img alt="Themes admin page" src="manage_themes.jpg" width="300" height="259" class="thumbimage" />
 <p>To change your theme select <b>Themes</b> from the main menu, or type <b>Q</b>, then <b>T</b>. This will take you to the Themes page.
 </p><p>The Themes page is divided into two sections. The top section contains one item, your current active theme. The bottom section contains all the themes that are available for you to use. 
 </p><p>Each theme will show several pieces of information. To the far left is the name of the theme, its developer, and a screenshot of what it looks like in use. In the middle is a short description of the theme. For inactive themes, to the right is a dropbutton containing available actions for the theme. Your active theme will not have a dropbutton.
@@ -475,7 +476,7 @@ Config::set( 'db_connection', array(
 </p>
 
 <a name="Plugins_2"></a><h4>Plugins</h4>
-<img alt="Plugins admin page" src="manage_plugins.jpg" width="300" height="281" border="0" class="thumbimage" /></a>
+<img alt="Plugins admin page" src="manage_plugins.jpg" width="300" height="281" class="thumbimage" />
 <p>To manage your plugins, select <b>Plugins</b> from the main menu, or type <b>Q</b>, then <b>P</b>. You will be taken to your Plugins page.
 
 </p><p>The plugins page is divided into two main sections. At the top of the page is a list of the plugins you have activated. The bottom of the page contains a list of the plugins you have installed, but have not yet activated. Even if you have not added any plugins yourself, this section will contain the plugins that come with Habari.
@@ -511,13 +512,13 @@ Config::set( 'db_connection', array(
 </p><p>When editing a group, you are first presented with the list of users that are members of that group. You may add additional members from the drop-down list and then clicking the "Add" button. <b>IMPORTANT</b>: changes to the list of users are not saved to the database until you click the "Apply" button at the bottom of the page!
 </p><p>Beneath the user listing is a list of all of the defined permissions within the system, with controls to enable or disable access to these permissions for the group.
 </p>
-<img alt="Group admin page showing permissions granted to &#39;admins&#39; group." src="group.jpg" width="300" height="414" border="0" class="thumbimage" />
+<img alt="Group admin page showing permissions granted to &#39;admins&#39; group." src="group.jpg" width="300" height="414" class="thumbimage" />
 
 <a name="Permissions"></a><h5>Permissions</h5>
 <p>There are two kinds of permissions within Habari: binary and CRUD:
 </p>
 
-<a name="Binary_Permissions"></a><h6>Binary Permissions</h5>
+<a name="Binary_Permissions"></a><h6>Binary Permissions</h6>
 <p>Binary permissions are either/or: a group may either do the thing, or not do the thing. For example, the "add, remove, and edit users" permission is either/or. Either a user can add and edit users, or they cannot.
 </p><p>There's a subtle distinction for binary permissions between "not assigned" and "denied". In either case, the group is not permitted to do the thing defined by the permission. The distinction comes into play when a user belongs to multiple groups. Let's look at a practical example to illustrate the point.
 </p><p>User Scott is assigned to the "Content Managers" group, which has been granted permissions to "Manage comments on all posts", "Manage comments on one's own posts", and "Manage tags". The specific assignment of these permissions allows Scott to manage the content on the blog. The "Content Managers" group is neither granted nor denied the "Change theme" permission. Since the "Change theme" permission is not specifically granted, Scott may not change the site theme.
@@ -575,7 +576,7 @@ Config::set( 'db_connection', array(
 </p>
 <a name="Importing_Content"></a><h3>Importing Content</h3>
 
-<p>Habari is able to import post, comment, category/tag, and user data from a growing list of importable platforms</a>. To import content, first activate the corresponding Importer plugin on the plugins page (Q P in the Main Menu) and then follow the steps detailed on the Import page.
+<p>Habari is able to import post, comment, category/tag, and user data from a growing list of importable platforms. To import content, first activate the corresponding Importer plugin on the plugins page (Q P in the Main Menu) and then follow the steps detailed on the Import page.
 </p><p>Once the import process is complete your old data has been copied and can be managed through Habari, and can be deleted from the other platform if desired.
 </p><p><b>Important Note</b>: Deactivate any spamchecking plugins or plugins that contact outside sites before beginning to import your data. If active, these will greatly slow down, or even prevent, the successful completion of the import process. In the case of spamchecking plugins, comments may incorrectly be marked as unapproved if a spamchecker plugin is active.
 </p><p>After you have completed the import process, remember to reactivate the plugins you deactivated.
@@ -634,7 +635,7 @@ Config::set( 'db_connection', array(
 
 </p><p><a href="http://trac.habariproject.org/" class="external text" title="http://trac.habariproject.org/" rel="nofollow">Habari Trac</a> is the place to file bug reports.  Before you can file bugs, you need to register an account with the system.  Click the <tt>Register</tt> link at the far right of the screen.  Once you've created an account you can log in by clicking on the <tt>Login</tt> link.  Once logged in, you can file a new ticket!
 </p>
-<img alt="Creating a New Ticket" src="create_new_ticket.jpg" width="300" height="242" border="0" class="thumbimage" />
+<img alt="Creating a New Ticket" src="create_new_ticket.jpg" width="300" height="242" class="thumbimage" />
 <p>The first thing you need to provide is a succinct summary of the problem.  Be concise, but don't be vague: the summary you provide is the first thing people will read when reviewing bugs to be fixed, so make sure that the developers get a jumpstart on your problem by supplying them with a meaningful summary.  If you see an HTTP 500 error page every time you try to log in, a good summary might be
 </p>
 <pre>
