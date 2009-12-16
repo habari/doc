@@ -8,12 +8,13 @@
 </head>
 <body>
 <div id="topMenu">
-	<a href="#introduction" title="Introduction">Introduction</a>
-	<a href="#whatsnew" title="What's New">What's New</a>
-	<a href="#installation" title="Installation">Installation</a>
-	<a href="#upgrading" title="Upgrading">Upgrading</a>
-	<a href="#userdocumentaion" title="Using Habari">Using Habari</a>
-	<a href="#devintroduction" title="Developer Introduction">Developer Introduction</a>
+	<a href="index.html#introduction" title="Introduction">Introduction</a>
+	<a href="habari.html" title="About Habari">About Habari</a>
+	<a href="new.html" title="What's New">What's New</a>
+	<a href="installation.html" title="Installation">Installation</a>
+	<a href="upgrading.html" title="Upgrading">Upgrading</a>
+	<a href="index.html#userdocumentaion" title="Using Habari">Using Habari</a>
+	<a href="developer.html" title="Developer Introduction">Developer Introduction</a>
 </div>
 
 <div id="wrapper">
@@ -21,147 +22,7 @@
 	<div id="introduction">
 		<h1>Introduction</h1>
 		<p>These documents are intended for basic information on installing, upgrading and base use. As development continues, additional information will be added. For more comprehensive documentation, visit the <a class="externalLink" href="http://wiki.habariproject.org/en/Main_Page" title="External link to http://wiki.habariproject.org/en/Main_Page" target="_blank">main Habari wiki</a>.</p>
-		<h2>About Habari</h2>
-		<p>Habari intends to represent a fresh start to the idea of blogging. The system will be fast, easy to use, and easy to modify. New users should have no problem using and enjoying Habari. Advanced users should have no problem tweaking Habari to do exactly what they need it to do.</p>
-		<h2>What Does Habari Mean?</h2>
-"Habari" is a Swahili word that means "what's the news?" It's similar to the English "What's up?" or the Spanish "Qué pasa?" The typical response is "mzuri sana", which means "very good."
-		<h2>How Will it be Different?</h2>
-		<p>Habari is being written with a firm understanding of the current state of blogging. Most other blogging packages have been around long enough that their responses to things like comment spam and Digg site overloads are bolted on after the fact; whereas Habari is being written from the beginning to take these things -- and more -- into account.</p>
-		<p>Habari strongly favors open, standard, and documented protocols. Atom, being both open and documented, is the prefered syndication format, and the Atom Publishing Protocol is the prefered means of remote communication with your site. This is a core feature, and not a plugin.</p>
-		<p>Habari is being written specifically for modern web hosting environments, and uses modern object-oriented programming techniques. Using these recent but well-established additions to the PHP language allows Habari to make use of PDO, enabling prepared statements for all interactions with the database. This greatly reduces the system's vulnerability to SQL injection attacks. This is just one of many benefits of modern object-oriented techniques.</p>
-		<p>Those are just a few of the technical differences, but a major component of what makes Habari different is its community participation model. Users who demonstrate a consistent level of quality contributions to the project are granted more privileges within the project.</p>
-		<h2>Our Process</h2>
-		<h3>Meritocracy</h3>
-		<p>Following the <a href="http://www.apache.org/foundation/how-it-works.html#meritocracy/" title="External link to http://www.apache.org/foundation/how-it-works.html#meritocracy/" target="_blank">meritocracy</a> model advocated by the Apache Software Foundation, the Habari project rewards contributors with decision making privilege in the project. Regular participants should be able to influence the direction of the project to which they dedicate their time and talent. The requirement for participation will be something of a moving target over time, but the barrier to entry should never be so high that dedicated people are excluded.</p>
-		<h3>Transparency</h3>
-		<p>A fundamental aspect of successful open source projects is transparency. Decisions are made in the public's eye, and discussion and deliberation takes place in the open. The Habari project pursues transparency by using the Google issues tracker to maintain a record of proposed changes, and discussion associated with those changes. All proposals -- whether for code, documentation, visual style, etc -- are logged through the issues tracker for public scrutiny and input.</p>
-		<h3>Licensing</h3>
-		<p>All contributions to Habari will acquire the <a href="http://www.apache.org/licenses/LICENSE-2.0" title="External link to http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache
-		License</a>, which is a modified version of the Apache License. For those unfamiliar with this license, the <a href="http://www.apache.org/foundation/licence-FAQ.html" title="External link to http://www.apache.org/foundation/licence-FAQ.html" target="_blank">Apache License FAQ
-		page</a> should answer most of your questions.</p>
-		<p>Developers contributing to the Habari project itself should note that, unless explicitly stated otherwise, any contribution intentionally submitted for inclusion shall be under the terms and conditions of the Habari license, without any additional terms or conditions. However, plugins and themes designed to work with Habari are not required to have the same license as Habari itself.</p>
-		<p>You can find our license included in the source, and in our code repository.</p>
 	</div>
-
-	<div id="whatsnew">
-		<h1>What's New</h1>
-		<h2>Introduction</h2>
-		<p>Welcome to Habari Version 0.6!</p>
-		<p>This latest release of Habari contains some major improvements and feature changes.</p>
-		<ul>
-			<li>ACL ( Access Control Lists ) support is introduced. With ACL, not only does Habari have support for users, group support has been added. Groups can be assigned specific rights that limit what parts of your site the groups members can access, ranging from only being able to read and comment on published posts ( anonymous users ) to being able to do anything on the site ( administrators ), and everything in between. This support is fully transparent to single-user sites, but can make life much easier for sites with multiple authors and user classes.</li>
-			<li>There have been improvements to the admin interface.</li>
-			<li>Sites that use SQLite as the storage database should see an increase in performance.</li>
-			<li>UTF8 support has been improved. For previous users of Habari, part of the upgrade process is to ensure the database is utilizing UTF8 properly.</li>
-			<li>Support for HiEngine, Habari's theme templating system, has been improved. Theme creators now have the option of creating good looking themes using either raw PHP calls, or HiEngine templating.</li>
-			<li>Help support for plugins in the admin interface.</li>
-			<li>Tag support is still built in, but the tag drawer has been moved to a plugin to improve the publish page performance for sites with hundreds of tags.</li>
-			<li>The format of Habari's configuration file has changed. For those who have left it writable, the upgrade will be transparent. For those who have made it read only, it is recommended that it be made writable before upgrading, then set back to read only. If you don't wish to do this, see the <a href="#upgrading" title="Upgrade Instructions">upgrading instructions</a> for details.</li>
-			<li>The Serendipity importer no longer ships with Habari. An importer for WordPress databases up through version 2.7.1 is included. The importer has had many improvements in this version.</li>
-			<li>Habari now ships with a plugin that allows you to create private posts. With this plugin enabled, you can make a post available for reading to only a selected group of readers.</li>
-		</ul>
-		<h2>Known Bugs</h2>
-		<p>Almost 1100 bug fixes and improvements have been made since the last release, but as with any piece of software issues and enhancement requests remain. For full details see Habari's <a href="http://trac.habariproject.org/habari/timeline" title="External link to http://trac.habariproject.org/habari/timeline" target="_blank">change management system</a>.</p>
-		<p>Of specific note, PostgreSQL support has not been fully updated in version 0.6. This is primarily due to lack of participants in the project with ability and resources for development and testing of that detabase engine. We welcome users of Postgres to submit patches and test future changes in the hope to include support for new installs and upgrades of Postgres in a point release of 0.6. However, it is currently advised that users currently running 0.5.2 with Postgres do not upgrade to 0.6.</p>
-		<h2>Credits</h2>
-		<p>These release notes were compiled by the <a href="http://wiki.habariproject.org/en/Habari_Project:Community_Portal" title=" External link to http://wiki.habariproject.org/en/Habari_Project:Community_Portal" target="_blank">Habari Community</a>.</p>
-		<p>On behalf of the community, we give our warmest thanks to the developers and contributors who made this Habari release possible.</p>
-		</div>
-
-	<div id="upgrading">
-		<h1>Upgrading</h1>
-<h2>Before You Upgrade</h2>
-<p>Before making any major change in your Habari installation, it would be prudent to create a backup of your database and your installation, in particular all the files in your Habari /user directory. The /user directory should contain all files which you have customized - plugins you have installed, themes you have installed, class files you may have modified, or locale files you have installed.
-</p>
-<h2>The Upgrade Process</h2>
-
-<ol><li> Download the new version of Habari that you will be installing. Unzip it into the location of your choice.
-</li><li> Deactivate your active plugins. Some of the system plugins may have been changed. Some of the plugins you got in other places may not be compatible with the new version of Habari.
-</li><li> Delete the following directories
-<ol><li> /3rdparty
-</li><li> /scripts
-</li><li> /doc
-</li><li> /system
-</li></ol>
-</li><li> Delete the index.php, LICENSE, and NOTICE files from the root of your installation. Do <b>not</b> delete your config.php file if it is in the root of your Habari installation, or the .htaccess file.
-
-</li><li> Copy the new version of Habari to the same location as the old version.
-</li><li> Using your web browser, navigate to your site. If there are any database changes that need to be made, they will be made automatically at this time.
-</li><li> Log into your Habari administrative area. Navigate to the plugins page and reactivate the plugins one by one. 
-</li><li> Celebrate and enjoy the new features of your latest version of Habari!
-</li></ol>
-<h3>Upgrading from Version 0.5.2 to Version 0.6</h3>
-
-<p>Version 0.6 incorporates many changes from the previous version, both in bug fixes and new features. For details see <a href="http://wiki.habariproject.org/en/Releases/0.6" title="http://wiki.habariproject.org/en/Releases/0.6" rel="nofollow">the release notes</a>.
-</p><p>Habari's upgrade process is designed to be transparent, with the only indication that an upgrade is happening being a slightly longer page load time the first time the site is visited after the software is updated.
-</p><p>One major change that affects the upgrade process in this release is in how Habari stores it's configuration details. Habari 0.5.2 and earlier stored site configuration details in global variables. Habari 0.6 marks the move to using a config class, so the variables aren't globally available, a change that was made to improve security. These details are stored in the site's config.php file, which is located either in the root of the site's directory, or, for multisite users, in Habari's <tt>/user/sites/site_name directory</tt>. 
-</p><p>For users who have left their config.php file writable, the necessary changes to the configuration file will be handled by the upgrade process transparently. For users who have made their configuration file read only, some manual changes will have to be made before the upgrade process can begin.
-</p><p>
-</p>
-<h4>Manually Updating The Configuration File</h4>
-
-<p>The config.php file for Habari version 0.5.2 and below looks like this:
-</p><p><b>For MySQL</b>
-</p>
-<pre>
-&lt;?php
-$db_connection= array(
-	'connection_string'=&gt;'mysql:host={$db_host};dbname={$db_schema}',
-	'username'=&gt;'{$db_user}',
-	'password'=&gt;'{$db_pass}',
-	'prefix'=&gt;'{$table_prefix}'
-);
-
-?&gt;
-</pre>
-<p><b>For SQLite</b>
-</p>
-<pre>
-&lt;?php
-$db_connection= array(
-	'connection_string'=&gt;'sqlite:{$db_file}',
-	'username'=&gt;'',
-	'password'=&gt;'',
-	'prefix'=&gt;'{$table_prefix}'
-);
-
-?&gt;
-
-</pre>
-<p>With version 0.6 and forward the config file looks like this:
-</p><p><b>For MySQL</b>
-</p>
-<pre>
-&lt;?php
-Config::set( 'db_connection', array(
-	'connection_string'=&gt;'mysql:host={$db_host};dbname={$db_schema}',
-	'username'=&gt;'{$db_user}',
-	'password'=&gt;'{$db_pass}',
-	'prefix'=&gt;'{$table_prefix}'
-));
-
-?&gt;
-</pre>
-<p><b>For SQLite</b>
-</p>
-<pre>
-
-&lt;?php
-Config::set( 'db_connection', array(
-	'connection_string'=&gt;'sqlite:{$db_file}',
-	'username'=&gt;'',
-	'password'=&gt;'',
-	'prefix'=&gt;'{$table_prefix}'
-));
-
-?&gt;
-</pre>
-<p>The easiest thing to do is, before upgrading, make the configuration file writable. Perform the upgrade, then make the file read only again.
-</p><p>If you don't wish to do that, open the configuration file in a text editor and make the changes shown above, save your changes, then navigate to your site so the upgrade process can proceed.
-</p>
-<h3>Upgrading Other Versions of Habari</h3>
-<p>For specific upgrade instructions for earlier versions of Habari, see the <a href="http://wiki.habariproject.org/en/Upgrading" title="Full Upgrade Instructions">full upgrade notes</a> on the wiki.</p>
-</div>
 
 	<div id="userdocumentaion">
 
@@ -177,41 +38,6 @@ Config::set( 'db_connection', array(
 		<p>As a Free Software project, Habari's most valuable asset is the community of users and developers who collaborate to improve the product.  Habari is built by people just like you: folks with an interest in blogging and internet publishing.
 		</p>
 
-		<h3 id="installation">Installation</h3>
-		<p>Habari has a few <a href="http://wiki.habariproject.org/en/Installation" title="Installation">Server Requirements</a>, which you will need to meet to be able to run Habari. If you have what is required, (or better), you are good to go! As Habari is still in development, no guarantees are made that these are fully stable versions, or that updating won't break the current database structure.
-		</p><p>To install the latest stable version of Habari:
-		</p>
-
-<ul><li> Download <a href="http://habariproject.org/en/download" class="external free" title="http://habariproject.org/en/download" rel="nofollow">the current release</a> and unzip the Habari package.
-</li><li> If you are using MySQL or PostgreSQL, obtain the connection settings needed below, or create a database for Habari on your web server.
-</li><li> Upload Habari files on your web server.
-</li><li> Point your web browser at <u>http://yoursite.com/</u> (the location of your Habari files on your server) to begin installation with the Database Setup. </li></ul>
-<p>The Habari installer initially presents you with a choice of languages that it will use for the interface.  Select the correct locale code from the list for your language of choice.  The default selection is "en-us", which is English, United States.
-</p><p>Clicking the question mark at the top of any section of the installer will reveal more information about each field in that section.
-
-</p><p>Depending on the Database Type you set, you may need to enter some of the following information:
-</p>
-<ul><li> Database Type: You can choose between MySQL, PostgreSQL, or SQLite. Your hosting company should be able to tell you what you should use.
-</li><li> Database Host: Again your hosting company should have provided this information when you first joined.
-</li><li> Username: This is the username used to connect Habari to the MySQL database.
-</li><li> Password: This is the password used to connect Habari to the MySQL database.
-</li><li> Database Name: Again your hosting company should have provided this information when you first joined.
-</li><li> Table Prefix: You will only need to change this if you have more than one version of Habari installed.
-</li></ul>
-<p>The Site Configuration settings you will need to set are:
-</p>
-
-<ul><li> Site Name: The name of your blog.
-</li><li> Username: The name or alias you wish to use to administer your blog. This should not be the same as the username for the database.
-</li><li> Password: The password associated to the above Username. Enter this in the second box, just to make sure you get it right.
-</li><li> Admin Email: This is the email address associated with the above Username. Habari will email you to let you know everything is working.
-</li></ul>
-<p>The installer recommends several plugins upon initial install.  These plugins are checked in the next section, Plugin Activation.  Additional optional plugins are included in the core installation, but these plugins are not checked by default.  If there are additional plugin present in addition, Habari will list these here as well.  Choose the plugins that should be activated upon installation by checking the box next to each.
-</p><p>Conclude the installation process by clicking the "Install Habari" button.  When Habari completes processing, installation is complete.
-</p><p>The End! Habari should now be installed.
-</p><p><a href="http://wiki.habariproject.org/en/Installation" title="Installation">Full Installation Instructions</a> are available, including some details of how to adjust your settings for different web servers and specific configuration information for several popular hosting companies.
-</p><p>If you are happy to use the current development version of Habari, the full instructions explain how to access the Habari subversion repository; however, for most normal users you will need to download the latest stable version of Habari.
-</p>
 
 <a name="Using_Habari"></a><h3>Using Habari</h3>
 <p>After you have installed Habari, go to <u>http://yoursite.com/admin/</u>. You will be taken to a login page. Enter your user name and password to open up Habari's administration interface. You will be greeted by the Dashboard.  This page provides a snapshot of useful information, such as the total number of posts and comments on your site, the number of posts you've made, and more. Later you can install plugins to add new modules to the dashboard, greatly expanding its usefulness.
@@ -573,31 +399,6 @@ Can't log in!
 </p>
 		
 		
-	</div>
-
-	<div id="devintroduction">
-		<h1>Developer Introduction</h1>
-		<p>To learn more about Habari internals and developing for Habari, listed are some useful starting points:</p>
-		<ul>
-			<li> <a href="http://wiki.habariproject.org/en/Debugging_Tips" title="Debugging Tips">Debugging Tips</a>: Some tips for getting started with debugging in Habari.</li>
-		<li> <a href="http://wiki.habariproject.org/en/QueryRecord" class="mw-redirect" title="QueryRecord">QueryRecord</a>: The building block of Habari.</li>
-		<li> <a href="http://wiki.habariproject.org/en/Coding_Standards" title="Coding Standards">Coding Standards</a>: Generally accepted practice within the project.</li>
-		<li> <a href="http://wiki.habariproject.org/en/CSS_Coding_Standards" title="CSS Coding Standards">CSS Coding Standards</a>: Generally accepted CSS practice within the project (suggestion).</li>
-		<li> <a href="http://wiki.habariproject.org/en/Habari_Workflow" title="Habari Workflow">Habari Workflow</a>&nbsp;: How Habari processes requests.</li>
-		<li> <a href="http://wiki.habariproject.org/en/Code_Submisson" title="Code Submisson">Code Submisson</a>&nbsp;: How to submit code and patches for Habari.</li>
-		<li> <a href="http://wiki.habariproject.org/en/Habari_Classes" title="Habari Classes">Habari Classes</a>&nbsp;: An overview of the main object classes used by Habari.</li>
-		<li> <a href="http://wiki.habariproject.org/en/Multisite" title="Multisite">Multisite</a>&nbsp;: How multi-site configurations work in Habari.</li>
-		<li> <a href="http://wiki.habariproject.org/en/User_Overrides" title="User Overrides">User Overrides</a>&nbsp;: How to use the `/user/classes` and `/user/themes` directories to override core Habari functionality.</li>
-		<li> <a href="http://wiki.habariproject.org/en/Plugin_Hooks" title="Plugin Hooks">Plugin Hooks</a>&nbsp;: A list of available hooks for your plugins.</li>
-		<li> <a href="http://wiki.habariproject.org/en/Creating_A_Plugin" title="Creating A Plugin">Creating A Plugin</a>&nbsp;: A tutorial on Habari Plugin architecture.</li>
-		<li> <a href="http://wiki.habariproject.org/en/Rewrite_Tutorial" title="Rewrite Tutorial">Rewrite Tutorial</a>&nbsp;: How to construct rewrite rules for Habari.</li>
-		<li> <a href="http://wiki.habariproject.org/en/Database_Schema" title="Database Schema">Database Schema</a>&nbsp;: Structure of the Habari Database.</li>
-		<li> <a href="http://wiki.habariproject.org/en/Stack_Class" title="Stack Class">Stack Class</a>: The Stack class allows a developer to create a "stack" of items for later output.</li>
-		<li> <a href="http://wiki.habariproject.org/en/Managing_Media" title="Managing Media">Managing Media</a>: How Habari helps developers manage media from a variety of sources.</li>
-		<li> <a href="http://wiki.habariproject.org/en/Human_Interface_Guidelines" title="Human Interface Guidelines">Human Interface Guidelines</a>: How to approach the further development of the administration interface and its intended use.</li>
-	</ul>
-
-
 	</div>
 
 </div>

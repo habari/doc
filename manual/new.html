@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<link rel='alternate' type='application/rss+xml' title='RSS' href='index.xml'/>
+<title> Habari - User Manual </title>
+<link rel="stylesheet" type="text/css" media="screen" href="style.css">
+</head>
+<body>
+<div id="topMenu">
+	<a href="index.html#introduction" title="Introduction">Introduction</a>
+	<a href="habari.html" title="About Habari">About Habari</a>
+	<a href="new.html" title="What's New">What's New</a>
+	<a href="installation.html" title="Installation">Installation</a>
+	<a href="upgrading.html" title="Upgrading">Upgrading</a>
+	<a href="index.html#userdocumentaion" title="Using Habari">Using Habari</a>
+	<a href="developer.html" title="Developer Introduction">Developer Introduction</a>
+</div>
+
+<div id="wrapper">
+
+	<div id="whatsnew">
+		<h1>What's New</h1>
+		<h2>Introduction</h2>
+		<p>Welcome to Habari Version 0.6!</p>
+		<p>This latest release of Habari contains some major improvements and feature changes.</p>
+		<ul>
+			<li>ACL ( Access Control Lists ) support is introduced. With ACL, not only does Habari have support for users, group support has been added. Groups can be assigned specific rights that limit what parts of your site the groups members can access, ranging from only being able to read and comment on published posts ( anonymous users ) to being able to do anything on the site ( administrators ), and everything in between. This support is fully transparent to single-user sites, but can make life much easier for sites with multiple authors and user classes.</li>
+			<li>There have been improvements to the admin interface.</li>
+			<li>Sites that use SQLite as the storage database should see an increase in performance.</li>
+			<li>UTF8 support has been improved. For previous users of Habari, part of the upgrade process is to ensure the database is utilizing UTF8 properly.</li>
+			<li>Support for HiEngine, Habari's theme templating system, has been improved. Theme creators now have the option of creating good looking themes using either raw PHP calls, or HiEngine templating.</li>
+			<li>Help support for plugins in the admin interface.</li>
+			<li>Tag support is still built in, but the tag drawer has been moved to a plugin to improve the publish page performance for sites with hundreds of tags.</li>
+			<li>The format of Habari's configuration file has changed. For those who have left it writable, the upgrade will be transparent. For those who have made it read only, it is recommended that it be made writable before upgrading, then set back to read only. If you don't wish to do this, see the <a href="#upgrading" title="Upgrade Instructions">upgrading instructions</a> for details.</li>
+			<li>The Serendipity importer no longer ships with Habari. An importer for WordPress databases up through version 2.7.1 is included. The importer has had many improvements in this version.</li>
+			<li>Habari now ships with a plugin that allows you to create private posts. With this plugin enabled, you can make a post available for reading to only a selected group of readers.</li>
+		</ul>
+		<h2>Known Bugs</h2>
+		<p>Almost 1100 bug fixes and improvements have been made since the last release, but as with any piece of software issues and enhancement requests remain. For full details see Habari's <a href="http://trac.habariproject.org/habari/timeline" title="External link to http://trac.habariproject.org/habari/timeline" target="_blank">change management system</a>.</p>
+		<p>Of specific note, PostgreSQL support has not been fully updated in version 0.6. This is primarily due to lack of participants in the project with ability and resources for development and testing of that detabase engine. We welcome users of Postgres to submit patches and test future changes in the hope to include support for new installs and upgrades of Postgres in a point release of 0.6. However, it is currently advised that users currently running 0.5.2 with Postgres do not upgrade to 0.6.</p>
+		<h2>Credits</h2>
+		<p>These release notes were compiled by the <a href="http://wiki.habariproject.org/en/Habari_Project:Community_Portal" title=" External link to http://wiki.habariproject.org/en/Habari_Project:Community_Portal" target="_blank">Habari Community</a>.</p>
+		<p>On behalf of the community, we give our warmest thanks to the developers and contributors who made this Habari release possible.</p>
+		</div>
+
+</div>
+</body>
+</html>
