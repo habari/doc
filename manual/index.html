@@ -142,7 +142,7 @@ img{
 	<div id="whatsnew">
 		<h1>What's New</h1>
 		<h2>Introduction</h2>
-		<p>Welcome to Habari Version 0.6.3!</p>
+		<p>Welcome to Habari Version 0.6.4!</p>
 		<p>This latest release of Habari contains some major improvements and feature changes.</p>
 		<ul>
 			<li>ACL ( Access Control Lists ) support is introduced. With ACL, not only does Habari have support for users, group support has been added. Groups can be assigned specific rights that limit what parts of your site the groups members can access, ranging from only being able to read and comment on published posts ( anonymous users ) to being able to do anything on the site ( administrators ), and everything in between. This support is fully transparent to single-user sites, but can make life much easier for sites with multiple authors and user classes.</li>
@@ -159,7 +159,7 @@ img{
 		<h2>Known Bugs</h2>
 		<p>Almost 1100 bug fixes and improvements have been made since the last release, but as with any piece of software issues and enhancement requests remain. For full details see Habari's <a href="http://trac.habariproject.org/habari/timeline" title="External link to http://trac.habariproject.org/habari/timeline" target="_blank">change management system</a>.</p>
 		<h2>Credits</h2>
-		<p>These release notes were compiled by the <a href="http://wiki.habariproject.org/en/Habari_Project:Community_Portal" title=" External link to http://wiki.habariproject.org/en/Habari_Project:Community_Portal" target="_blank">Habari Community</a>.</p>
+		<p>These release notes were compiled by the <a href="http://wiki.habariproject.org/en/Habari_Project:Community_Portal" title="External link to http://wiki.habariproject.org/en/Habari_Project:Community_Portal" target="_blank">Habari Community</a>.</p>
 		<p>On behalf of the community, we give our warmest thanks to the developers and contributors who made this Habari release possible.</p>
 		</div>
 
@@ -185,9 +185,9 @@ img{
 </li><li> Log into your Habari administrative area. Navigate to the plugins page and reactivate the plugins one by one. 
 </li><li> Celebrate and enjoy the new features of your latest version of Habari!
 </li></ol>
-<h3>Upgrading from Version 0.5.2 to Version 0.6.3</h3>
+<h3>Upgrading from Version 0.5.2 to Version 0.6.4</h3>
 
-<p>Version 0.6.3 incorporates many changes from the previous version, both in bug fixes and new features. For details see <a href="http://wiki.habariproject.org/en/Releases/0.6.3" title="http://wiki.habariproject.org/en/Releases/0.6.3" rel="nofollow">the release notes</a>.
+<p>Version 0.6.4 incorporates many changes from the previous version, both in bug fixes and new features. For details see <a href="http://wiki.habariproject.org/en/Releases/0.6.4" title="http://wiki.habariproject.org/en/Releases/0.6.4" rel="nofollow">the release notes</a>.
 </p><p>Habari's upgrade process is designed to be transparent, with the only indication that an upgrade is happening being a slightly longer page load time the first time the site is visited after the software is updated.
 </p><p>One major change that affects the upgrade process in this release is in how Habari stores it's configuration details. Habari 0.5.2 and earlier stored site configuration details in global variables. Habari 0.6.x marks the move to using a config class, so the variables aren't globally available, a change that was made to improve security. These details are stored in the site's config.php file, which is located either in the root of the site's directory, or, for multisite users, in Habari's <tt>/user/sites/site_name directory</tt>. 
 </p><p>For users who have left their config.php file writable, the necessary changes to the configuration file will be handled by the upgrade process transparently. For users who have made their configuration file read only, some manual changes will have to be made before the upgrade process can begin.
