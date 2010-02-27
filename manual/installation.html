@@ -69,7 +69,7 @@
 <p>There are several possible causes for this error:</p>
 
 <ol><li>Your Apache server does not have mod_rewrite enabled for the virtualhost that contains Habari.  mod_rewrite is required for Habari to functions.  Verify that mod_rewrite is installed and enabled on your server.
-</li><li>Your Apache configuration does not allow .htaccess to override configuration options in the virtualhost.  The virtualhost in which Habari is installed should include the "AllowOverride All" directive for the directory that contains the Habari files.  This will allow Habari's .htaccess file to properly handle incoming URLs.
+</li><li>Your Apache configuration does not allow .htaccess to override configuration options in the virtualhost.  The virtualhost in which Habari is installed should include the "AllowOverride FileInfo" directive for the directory that contains the Habari files.  This will allow Habari's .htaccess file to properly handle incoming URLs. (Consult the <a href="http://httpd.apache.org/docs/2.2/mod/core.html#allowoverride">AllowOverride</a> documentation for further details on the AllowOverride directive.)
 </li></ol>
 
 </div>
