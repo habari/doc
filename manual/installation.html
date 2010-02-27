@@ -56,6 +56,22 @@
 </p><p>If you are happy to use the current development version of Habari, the full instructions explain how to access the Habari subversion repository; however, for most normal users you will need to download the latest stable version of Habari.
 </p>
 
+<h2 id="common_issues">Common Installation Issues</h2>
+
+<p>There are a few common, yet easily-remedied issues that occur when installing Habari.</p>
+
+<h3>Check Database Connection</h3>
+
+<p>After supplying the database credentials, Habari's installer will contact the server to test that it is able to connect to the database with the supplied values.  On some systems, the following error appears:</p>
+
+<blockquote style="background-color: #fbe3e4; border: 2px solid #fbc2c4;">404 Not Found Not Found The requested URL /blog/ajax/check_mysql_credentials was not found on this server.</blockquote>
+
+<p>There are several possible causes for this error:</p>
+
+<ol><li>Your Apache server does not have mod_rewrite enabled for the virtualhost that contains Habari.  mod_rewrite is required for Habari to functions.  Verify that mod_rewrite is installed and enabled on your server.
+</li><li>Your Apache configuration does not allow .htaccess to override configuration options in the virtualhost.  The virtualhost in which Habari is installed should include the "AllowOverride All" directive for the directory that contains the Habari files.  This will allow Habari's .htaccess file to properly handle incoming URLs.
+</li></ol>
+
 </div>
 
 </div>
