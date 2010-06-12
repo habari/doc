@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<link rel='alternate' type='application/rss+xml' title='RSS' href='index.xml'/>
+<title> Habari - User Manual </title>
+<link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
+</head>
+<body>
+<div id="topMenu">
+	<a href="index.html" title="Introduction">Introduction</a>
+	<a href="habari.html" title="About Habari">About Habari</a>
+	<a href="new.html" title="What's New">What's New</a>
+	<a href="installation.html" title="Installation">Installation</a>
+	<a href="upgrading.html" title="Upgrading">Upgrading</a>
+	<a href="using.html" title="Using Habari">Using Habari</a>
+	<a href="developer.html" title="Developer Introduction">Developer Introduction</a>
+</div>
+
+<div id="wrapper">
+
+	<div id="userdocumentaion">
+
+<strong>Using Habari</strong> | <a href="terms.html">Key Terms and
+Ideas</a> | <a href="administration.html">Administration</a> | <a href="help.html">Getting Help</a>
+
+
+	<h1>Using Habari</h1>
+		<h2>Introduction</h2>
+
+		<p>Welcome to Habari, the next-generation online publishing platform!
+		</p>
+		<p>Habari was built from the ground-up with a firm understanding of the current state of blogging, and with a strong eye toward the future of internet publishing.  Habari strives to make it as easy as possible to publish your content.  It stays out of your way as much as it can, and lends a hand where it's needed.
+		</p>
+		<p>As a Free Software project, Habari's most valuable asset is the community of users and developers who collaborate to improve the product.  Habari is built by people just like you: folks with an interest in blogging and internet publishing.
+		</p>
+
+<ul>
+<li><a href="#start">Getting started</a></li>
+<li><a href="terms.html">Key Terms and Ideas</a></li>
+<li><a href="administration.html">Administration</a></li>
+<li><a href="help.html">Getting Help</a></li>
+</ul>
+
+
+<a name="start"></a><h3>Getting started</h3>
+<p>After you have <a href="installation.html">installed Habari</a>, go to <u>http://yoursite.com/admin/</u>. You will be taken to a login page. Enter your user name and password to open up Habari's administration interface. You will be greeted by the Dashboard.  This page provides a snapshot of useful information, such as the total number of posts and comments on your site, the number of posts you've made, and more. Later you can install plugins to add new modules to the dashboard, greatly expanding its usefulness.
+</p><p>The primary way you will interact with Habari is through the main menu.  The main menu is accessed by placing your mouse at the top left of the window.  The menu should automatically drop down, to reveal to you the available choices.  The menu items users see will be controlled by the permissions assigned to them by the site administrator.  Clicking on any menu item will take you to the corresponding page within the administrative interface.  For details on each menu item, see the corresponding section of this manual.
+</p><p>It should be noted that the main menu can also be accessed by keyboard shortcuts.  If you press the Q key on your keyboard, the menu should expand.  Press the Q key again to hide the menu.  When the menu is displayed, each menu item has a keyboard shortcut displayed to the right.  Using the keyboard shortcuts you can quickly navigate through Habari.  Want to create a new entry?  Press Q, then the 1 key.  Want to change your site's theme?  Press Q, then T.  Want to add a new user?  Q U.
+</p>
+
+<a name="Your_First_Post"></a><h3>Your First Post</h3>
+
+<p>You can create your first post by clicking on the main menu, then selecting "Create Entry".
+</p><p>You are now looking at the publish entry page, by default you have three fields into which to enter information.
+</p>
+<img alt="Create Entry admin page" src="create_entry.jpg" width="300" height="267" class="thumbimage" />
+
+<ul><li>The Title box is the name of your entry, this can contain a single word, a sentence, numbers, or symbols producable by your keyboard.  By default, the title you supply will be used to create the URL by which this post will be accessed.
+</li></ul>
+<ul><li>The Content box contains the main body of your entry. In here you can put almost anything imaginable, although currently you will have to manually enter HTML for URL links and formatting such as bold or underlining.  Beneath the content box is a small handlebar, which you may click and drag to adjust the amount of space used by the box.
+</li></ul>
+<ul><li>The Tag box contains the 'tags', or free-form labels, you apply to your content. You can use as many different tags are you like to describe your entry.  If you are writing a post about a recipe you want to try, you might tag the post with the key ingredients.  This allows visitors to navigate your site by the tag words, to find other recipes that use the selected ingredient.  See the <b>tags</b> section for a more thorough description of tags.
+</li></ul>
+<p>Pressing the Save button will save your work into the Habari database.  The post will still be a Draft, which means it is not available for the public to read.  You can edit and save drafts as many times as you like, to make sure you get the post just right before letting the world read it.  When you are satisfied with your post, click the Publish button.  This will make the post visible to the world on your front page, as well as in your <a href="http://en.wikipedia.org/wiki/Atom_(standard)" class="external text" title="http://en.wikipedia.org/wiki/Atom_(standard)" rel="nofollow">Atom</a> syndication feed.  Congratulations, you've posted your first entry!
+
+</p><p>You also have an additional button between the Tag box and the Save/Publish buttons, the Settings button. It contains optional extras you may wish to use. Clicking it opens a pagesplitter (so called because it splits the page).
+</p>
+<ul><li>Settings:
+<ul><li>Content State: You may manually adjust the status of your post.  Instead of clicking the Publish button, you may select "Published" from the content state drop-down, and then click the Save button.  If you want to unpublish something -- that it, keep it in the Habari database but prevent readers from seeing it -- you may change a Published post to Draft and then click Save.  Plugins may add new content statuses.
+</li><li>Comments Allowed: This tick box determines whether or not your visitors can leave comments on this item.  When the box is ticked comments are allowed. By default this is set to ticked.  If you remove the tick and click Save, no new comments will be accepted on this item.  Any existing comments will be preserved and displayed.
+</li><li>Publication Time: This is the time your post is set to be published. This is normally set by Habari. When you first begin a post, Habari will set the publication time to the current time. When you publish the post for public viewing, Habari sets the publication time to the time you hit the Publish button. The only instance when you should change the publication time is when you wish to create a scheduled post. If you set the publication time to a date and time in the future, then click the Publish button, Habari will schedule the post for publication at the time you indicated.
+</li><li>Content Address: This box lets you set a different slug for your entry. This is useful in case the main title of your entry contains unusual characters or is excessively long. The name you provide in this box will appear in the address window in your web browser, not the title of the entry.
+</li></ul>
+</li></ul>
+
+		
+</div>
+
+</div>
+</body>
+</html>

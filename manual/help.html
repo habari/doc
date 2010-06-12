@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<link rel='alternate' type='application/rss+xml' title='RSS' href='index.xml'/>
+<title> Habari - User Manual </title>
+<link rel="stylesheet" type="text/css" media="screen" href="style.css">
+</head>
+<body>
+<div id="topMenu">
+	<a href="index.html" title="Introduction">Introduction</a>
+	<a href="habari.html" title="About Habari">About Habari</a>
+	<a href="new.html" title="What's New">What's New</a>
+	<a href="installation.html" title="Installation">Installation</a>
+	<a href="upgrading.html" title="Upgrading">Upgrading</a>
+	<a href="using.html" title="Using Habari">Using Habari</a>
+	<a href="developer.html" title="Developer Introduction">Developer Introduction</a>
+</div>
+
+<div id="wrapper">
+
+	<div id="userdocumentaion">
+
+<a href="using.html">Using Habari</a> | <a href="terms.html">Key Terms and
+Ideas</a> | <a href="administration.html">Administration</a> | <strong>Getting Help</strong>
+
+<a name="Getting_Help"></a><h3>Getting Help</h3>
+
+<a name="Forums_and_Mailing_Lists"></a><h4>Forums and Mailing Lists</h4>
+<p>There exist two mailing lists for Habari, one focused on end-user support, and the other focused on nitty-gritty development and programming issues.
+</p><p><a href="http://groups.google.com/group/habari-users" class="external text" title="http://groups.google.com/group/habari-users" rel="nofollow">habari-users</a> is entirely focused on Habari end-user support.  This is the first place to ask for help.  When reporting problems, please provide as much information as you can.  Be sure to accurately copy any specific error messages you receive.  If you can reliably reproduce a problem, describe in detail the steps necessary to do so.  It is often helpful to provide a link to your site, so that others can see the problem first-hand, but at the least please indicate who your hosting provider is.
+
+</p><p><a href="http://groups.google.com/group/habari-dev" class="external text" title="http://groups.google.com/group/habari-dev" rel="nofollow">habari-dev</a> is focused on Habari development: programming, plugin design, and the like.  All of Habari's long-term development takes place on this list, and ideas and suggested, debated, and revised.  If you're interested in helping Habari programming, this is the list for you.
+</p><p>There is also a forum at <a href="http://www.habariproject.org/forums" class="external text" title="http://www.habariproject.org/forums" rel="nofollow">The forums</a> are focused on Habari user to user support.
+</p>
+
+<p>There is an IRC channel, #habari, on irc.freenode.net, which provides
+some support for Habari. While discussion there is frequently casual,
+social, and off-topic, there are usually several people there who can
+help you with your Habari questions, whether they are end-user
+questions, code development questions, or anything else.</p>
+
+<a name="Reporting_Bugs_.2F_Suggesting_Improvements"></a><h4>Reporting Bugs / Suggesting Improvements</h4>
+<p>Habari succeeds because people like you help improve it every day.  One of the easiest ways to contribute to the success of Habari is to report problems.  The <a href="http://groups.google.com/group/habari-users" class="external text" title="http://groups.google.com/group/habari-users" rel="nofollow">habari-users</a> mailing list is the first place that problems should be reported: if the issue is known, you'll be provided with confirmation of that fact and hopefully some information to help you work around the problem until it is fixed.  If you identify a new problem, you may be asked to file a bug report.  It's easy to do!
+
+</p><p><a href="http://trac.habariproject.org/" class="external text" title="http://trac.habariproject.org/" rel="nofollow">Habari Trac</a> is the place to file bug reports.  Before you can file bugs, you need to register an account with the system.  Click the <tt>Register</tt> link at the far right of the screen.  Once you've created an account you can log in by clicking on the <tt>Login</tt> link.  Once logged in, you can file a new ticket!
+</p>
+<img alt="Creating a New Ticket" src="create_new_ticket.jpg" width="300" height="242" class="thumbimage" />
+<p>The first thing you need to provide is a succinct summary of the problem.  Be concise, but don't be vague: the summary you provide is the first thing people will read when reviewing bugs to be fixed, so make sure that the developers get a jumpstart on your problem by supplying them with a meaningful summary.  If you see an HTTP 500 error page every time you try to log in, a good summary might be
+</p>
+<pre>
+HTTP 500 error every time I try to log in
+</pre>
+
+<p>This immediately indicates the specific error and the action that produces it. Even better would be the error message from the web server error log file that accompanies this browser-side symptom. A poor summary for this problem would be
+</p>
+<pre>
+Can't log in!
+</pre>
+<p>This does not indicate the specific error you see.
+</p><p>Summaries are important!  Please try hard to provide a meaningful summary.
+</p><p>Next you indicate whether your ticket is due to a defect with Habari, or if you're simply making a suggestion for enhancement.  The Habari developers love to see suggestions for enhancements because they help steer the long-term growth of Habari.
+</p><p>Below this you enter a full description of the problem or suggestion.  Be as verbose as possible.  If you have a specific error message, paste it here.  If you have log data, paste it here.  If you can reproduce the problem in one or more ways, describe in detail each of the ways to do so.  The more information you can provide, the greater the chance of a developer fixing the problem!  You can also upload screenshots if that helps to describe the problem: click the checkbox labeled "I have files to attach to this ticket".  This will allow you to upload files that will be attached to your report. The version of Habari you are using, the browser and its version, and the database backend ( MySQL, SQLite, Postgres, etc. ) are also very helpful in diagnosing and fixing issues that you report.
+</p><p>In the section labeled <tt>Ticket Properties</tt> you can fine-tune some details about your ticket.  If you're not sure what any of these mean, leave them all at the default values.  
+</p>
+<ul><li> Priority is how severe the problem is: most items can be left at "major", though issues involving data loss or security considerations can certainly be escalated to "critical" or "blocker".
+
+</li><li> Most of the issues you open will likely be about the Habari software itself, but we also like to be alerted to bugs in our documentation and our website!  Suggestions for improvement for the documentation and website are also warmly encouraged.
+</li><li> Keywords are tags you can assign to your ticket.  If you report a problem logging in, you might supply the keyword "login", for example.
+</li><li> Ignore the CC field for now.
+</li><li> It's usually best to leave the Milestone drop-down to "unassigned", and allow a Habari developer to set this as they estimate when the problem will be fixed.
+</li><li> Select the version of Habari that you're using from the Version drop-down.
+</li><li> Leave the "Assign to" field blank.
+</li></ul>
+<p>When you're all done, click "Submit ticket".  This will add your ticket to the system, and a Habari developer will eventually review it.  You might want to bookmark your ticket, and come back to check on it periodically: the Habari developers might ask you questions in comments to your ticket, seeking additional information or asking you to try a proposed fix to confirm that it works for you.
+</p><p>Please keep in mind when filing tickets for bug reports or feature enhancements that the list of tickets is completely public.  <b>DO NOT</b> post any passwords or other sensitive information.
+
+</p>
+<a name="A_note_about_security_issues"></a><h5>A note about security issues</h5>
+<p>As mentioned above, all items filed in the Habari Trac are public.  If you are reporting a security problem, or a potential security problem, we respectfully ask that you first contact security@habariproject.org so that we can review the situation with you without jeopardizing our users' sites.  If you open a ticket with details of how to execute an attack against a Habari installation, someone somewhere <b>will</b> see that information and exploit it.
+</p>
+		
+		
+</div>
+
+</div>
+</body>
+</html>
