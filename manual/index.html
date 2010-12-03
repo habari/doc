@@ -1,46 +1,701 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <link rel='alternate' type='application/rss+xml' title='RSS' href='index.xml'/>
 <title> Habari - User Manual </title>
-<link rel="stylesheet" type="text/css" media="screen" href="style.css">
+<style type="text/css">
+body {
+	color:#333333;
+	font-family:"Neue Helvetica",Helvetica,"Lucida Grande",Verdana,sans-serif;
+	font-size:12px;
+	margin:0;
+	padding:0;
+}
+
+li{
+	margin-bottom:0.5em;
+	list-style-type: circle;
+}
+
+blockquote{
+	font-style: italic;
+	font-size:1.1em;
+}
+
+#wrapper{
+	padding:10px 40px;
+}
+
+#wrapper > div{
+	margin-top:50px;
+}
+#topMenu {
+	background:#282826 none repeat scroll 0 0;
+	color:#FFFFFF;
+	font-family:'Lucida Grande',Verdana,Sans-Serif;
+	padding:10px;
+	position:relative;
+}
+
+#topMenu a {
+	border-right:1px solid #444444;
+	color:#999999;
+	padding:0 8px;
+	font-weight:bold;
+}
+
+a, a:hover {
+	background:transparent none repeat scroll 0 0;
+	color:#1398CA;
+	text-decoration:none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	background:transparent none repeat scroll 0 0;
+	color:#282826;
+	font-family:Arial,Helvetica,sans-serif;
+	padding-bottom:2px;
+	clear: both;
+}
+
+h1{
+	width:100%;
+	border-bottom: 1px solid #000;
+	font-size: 1.6em;
+	font-family:'Lucida Grande',Verdana,Sans-Serif;
+}
+
+h2{
+	width:100%;
+	border-bottom: 1px solid #bbb;
+	font-size: 1.6em;
+}
+
+h3{
+	width:100%;
+	border-bottom: 1px solid #bbb;
+	font-size: 1.5em;
+}
+
+h4{
+	width:100%;
+	border-bottom: 1px solid #bbb;
+	font-size: 1.4em;
+}
+
+h5{
+	width:100%;
+	border-bottom: 1px solid #bbb;
+	font-size: 1.2em;
+}
+
+h6{
+	width:100%;
+	border-bottom: 1px solid #bbb;
+	font-size: 1.1em;
+}
+
+img{
+	float: right;
+	margin: 5px;
+}
+</style>
 </head>
 <body>
 <div id="topMenu">
-	<a href="index.html" title="Introduction">Introduction</a>
-	<a href="habari.html" title="About Habari">About Habari</a>
-	<a href="new.html" title="What's New">What's New</a>
-	<a href="installation.html" title="Installation">Installation</a>
-	<a href="upgrading.html" title="Upgrading">Upgrading</a>
-	<a href="using.html" title="Using Habari">Using Habari</a>
-	<a href="developer.html" title="Developer Introduction">Developer Introduction</a>
+	<a href="#introduction" title="Introduction">Introduction</a>
+	<a href="#whatsnew" title="Introduction">What's New</a>
+	<a href="#installation" title="Introduction">Installation</a>
+	<a href="#upgrading" title="Introduction">Upgrading</a>
+	<a href="#userdocumentaion" title="Introduction">Using Habari</a>
+	<a href="#devintroduction" title="Introduction">Developer Introduction</a>
 </div>
 
 <div id="wrapper">
 
 	<div id="introduction">
-		<h1>Habari!</h1>
-		<p>The word "Habari" is Swahili for "news", as in "What's the news?"  We feel this is an appropriate name for a blogging package not just because of the clever tagline, but because blogs are so often used to tell others what's the news in your life or your business.
-		</p>
-
+		<h1>Introduction</h1>
 		<p>These documents are intended for basic information on installing, upgrading and base use. As development continues, additional information will be added. For more comprehensive documentation, visit the <a class="externalLink" href="http://wiki.habariproject.org/en/Main_Page" title="External link to http://wiki.habariproject.org/en/Main_Page" target="_blank">main Habari wiki</a>.</p>
+		<h2>About Habari</h2>
+		<p>Habari intends to represent a fresh start to the idea of blogging. The system will be fast, easy to use, and easy to modify. New users should have no problem using and enjoying Habari. Advanced users should have no problem tweaking Habari to do exactly what they need it to do.</p>
+		<h2>What Does Habari Mean?</h2>
+"Habari" is a Swahili word that means "what's the news?" It's similar to the English "What's up?" or the Spanish "Qué pasa?" The typical response is "mzuri sana", which means "very good."
+		<h2>How Will it be Different?</h2>
+		<p>Habari is being written with a firm understanding of the current state of blogging. Most other blogging packages have been around long enough that their responses to things like comment spam and Digg site overloads are bolted on after the fact; whereas Habari is being written from the beginning to take these things -- and more -- into account.</p>
+		<p>Habari strongly favors open, standard, and documented protocols. Atom, being both open and documented, is the prefered syndication format, and the Atom Publishing Protocol is the prefered means of remote communication with your site. This is a core feature, and not a plugin.</p>
+		<p>Habari is being written specifically for modern web hosting environments, and uses modern object-oriented programming techniques. Using these recent but well-established additions to the PHP language allows Habari to make use of PDO, enabling prepared statements for all interactions with the database. This greatly reduces the system's vulnerability to SQL injection attacks. This is just one of many benefits of modern object-oriented techniques.</p>
+		<p>Those are just a few of the technical differences, but a major component of what makes Habari different is its community participation model. Users who demonstrate a consistent level of quality contributions to the project are granted more privileges within the project.</p>
+		<h2>Our Process</h2>
+		<h3>Meritocracy</h3>
+		<p>Following the <a href="http://www.apache.org/foundation/how-it-works.html#meritocracy/" title="External link to http://www.apache.org/foundation/how-it-works.html#meritocracy/" target="_blank">meritocracy</a> model advocated by the Apache Software Foundation, the Habari project rewards contributors with decision making privilege in the project. Regular participants should be able to influence the direction of the project to which they dedicate their time and talent. The requirement for participation will be something of a moving target over time, but the barrier to entry should never be so high that dedicated people are excluded.</p>
+		<h3>Transparency</h3>
+		<p>A fundamental aspect of successful open source projects is transparency. Decisions are made in the public's eye, and discussion and deliberation takes place in the open. The Habari project pursues transparency by using the Google issues tracker to maintain a record of proposed changes, and discussion associated with those changes. All proposals -- whether for code, documentation, visual style, etc -- are logged through the issues tracker for public scrutiny and input.</p>
+		<h3>Licensing</h3>
+		<p>All contributions to Habari will acquire the <a href="http://www.apache.org/licenses/LICENSE-2.0" title="External link to http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache
+		License</a>, which is a modified version of the Apache License. For those unfamiliar with this license, the <a href="http://www.apache.org/foundation/licence-FAQ.html" title="External link to http://www.apache.org/foundation/licence-FAQ.html" target="_blank">Apache License FAQ
+		page</a> should answer most of your questions.</p>
+		<p>Developers contributing to the Habari project itself should note that, unless explicitly stated otherwise, any contribution intentionally submitted for inclusion shall be under the terms and conditions of the Habari license, without any additional terms or conditions. However, plugins and themes designed to work with Habari are not required to have the same license as Habari itself.</p>
+		<p>You can find our license included in the source, and in our code repository.</p>
 	</div>
 
-<ul>
-<li><a href="habari.html" title="About Habari">About Habari</a></li>
-<li><a href="new.html" title="What's New">What's New</a></li>
-<li><a href="installation.html" title="Installation">Installation</a></li>
-<li><a href="upgrading.html" title="Upgrading">Upgrading</a></li>
-<li><a href="using.html" title="Using Habari">Using Habari</a></li>
-<ul>
-<li><a href="using.html#start">Getting Started</a></li>
-<li><a href="terms.html">Key Terms and ideas</a></li>
-<li><a href="administration.html">Administration</a></li>
-<li><a href="help.html">Getting Help</a></li>
-</ul>
-<li><a href="developer.html" title="Developer Introduction">Developer Introduction</a></li>
-</ul>
+	<div id="whatsnew">
+		<h1>What's New</h1>
+		<h2>Introduction</h2>
+		<p>Welcome to Habari Version 0.6.4!</p>
+		<p>This latest release of Habari contains some major improvements and feature changes.</p>
+		<ul>
+			<li>ACL ( Access Control Lists ) support is introduced. With ACL, not only does Habari have support for users, group support has been added. Groups can be assigned specific rights that limit what parts of your site the groups members can access, ranging from only being able to read and comment on published posts ( anonymous users ) to being able to do anything on the site ( administrators ), and everything in between. This support is fully transparent to single-user sites, but can make life much easier for sites with multiple authors and user classes.</li>
+			<li>There have been improvements to the admin interface.</li>
+			<li>Sites that use SQLite as the storage database should see an increase in performance.</li>
+			<li>UTF8 support has been improved. For previous users of Habari, part of the upgrade process is to ensure the database is utilizing UTF8 properly.</li>
+			<li>Support for HiEngine, Habari's theme templating system, has been improved. Theme creators now have the option of creating good looking themes using either raw PHP calls, or HiEngine templating.</li>
+			<li>Help support for plugins in the admin interface.</li>
+			<li>Tag support is still built in, but the tag drawer has been moved to a plugin to improve the publish page performance for sites with hundreds of tags.</li>
+			<li>The format of Habari's configuration file has changed. For those who have left it writable, the upgrade will be transparent. For those who have made it read only, it is recommended that it be made writable before upgrading, then set back to read only. If you don't wish to do this, see the <a href="#upgrading" title="Upgrade Instructions">upgrading instructions</a> for details.</li>
+			<li>The Serendipity importer no longer ships with Habari. An importer for WordPress databases up through version 2.7.1 is included. The importer has had many improvements in this version.</li>
+			<li>Habari now ships with a plugin that allows you to create private posts. With this plugin enabled, you can make a post available for reading to only a selected group of readers.</li>
+		</ul>
+		<h2>Known Bugs</h2>
+		<p>Almost 1100 bug fixes and improvements have been made since the last release, but as with any piece of software issues and enhancement requests remain. For full details see Habari's <a href="http://trac.habariproject.org/habari/timeline" title="External link to http://trac.habariproject.org/habari/timeline" target="_blank">change management system</a>.</p>
+		<h2>Credits</h2>
+		<p>These release notes were compiled by the <a href="http://wiki.habariproject.org/en/Habari_Project:Community_Portal" title="External link to http://wiki.habariproject.org/en/Habari_Project:Community_Portal" target="_blank">Habari Community</a>.</p>
+		<p>On behalf of the community, we give our warmest thanks to the developers and contributors who made this Habari release possible.</p>
+		</div>
+
+	<div id="upgrading">
+		<h1>Upgrading</h1>
+<h2>Before You Upgrade</h2>
+<p>Before making any major change in your Habari installation, it would be prudent to create a backup of your database and your installation, in particular all the files in your Habari /user directory. The /user directory should contain all files which you have customized - plugins you have installed, themes you have installed, class files you may have modified, or locale files you have installed.
+</p>
+<h2>The Upgrade Process</h2>
+
+<ol><li> Download the new version of Habari that you will be installing. Unzip it into the location of your choice.
+</li><li> Deactivate your active plugins. Some of the system plugins may have been changed. Some of the plugins you got in other places may not be compatible with the new version of Habari.
+</li><li> Delete the following directories
+<ol><li> /3rdparty
+</li><li> /scripts
+</li><li> /doc
+</li><li> /system
+</li></ol>
+</li><li> Delete the index.php, LICENSE, and NOTICE files from the root of your installation. Do <b>not</b> delete your config.php file if it is in the root of your Habari installation, or the .htaccess file.
+
+</li><li> Copy the new version of Habari to the same location as the old version.
+</li><li> Using your web browser, navigate to your site. If there are any database changes that need to be made, they will be made automatically at this time.
+</li><li> Log into your Habari administrative area. Navigate to the plugins page and reactivate the plugins one by one. 
+</li><li> Celebrate and enjoy the new features of your latest version of Habari!
+</li></ol>
+<h3>Upgrading from Version 0.5.2 to Version 0.6.4</h3>
+
+<p>Version 0.6.4 incorporates many changes from the previous version, both in bug fixes and new features. For details see <a href="http://wiki.habariproject.org/en/Releases/0.6.4" title="http://wiki.habariproject.org/en/Releases/0.6.4" rel="nofollow">the release notes</a>.
+</p><p>Habari's upgrade process is designed to be transparent, with the only indication that an upgrade is happening being a slightly longer page load time the first time the site is visited after the software is updated.
+</p><p>One major change that affects the upgrade process in this release is in how Habari stores it's configuration details. Habari 0.5.2 and earlier stored site configuration details in global variables. Habari 0.6.x marks the move to using a config class, so the variables aren't globally available, a change that was made to improve security. These details are stored in the site's config.php file, which is located either in the root of the site's directory, or, for multisite users, in Habari's <tt>/user/sites/site_name directory</tt>. 
+</p><p>For users who have left their config.php file writable, the necessary changes to the configuration file will be handled by the upgrade process transparently. For users who have made their configuration file read only, some manual changes will have to be made before the upgrade process can begin.
+</p><p>
+</p>
+<h4>Manually Updating The Configuration File </span></h4>
+
+<p>The config.php file for Habari version 0.5.2 and below looks like this:
+</p><p><b>For MySQL</b>
+</p>
+<pre>
+&lt;?php
+$db_connection= array(
+	'connection_string'=&gt;'mysql:host={$db_host};dbname={$db_schema}',
+	'username'=&gt;'{$db_user}',
+	'password'=&gt;'{$db_pass}',
+	'prefix'=&gt;'{$table_prefix}'
+);
+
+?&gt;
+</pre>
+<p><b>For SQLite</b>
+</p>
+<pre>
+&lt;?php
+$db_connection= array(
+	'connection_string'=&gt;'sqlite:{$db_file}',
+	'username'=&gt;'',
+	'password'=&gt;'',
+	'prefix'=&gt;'{$table_prefix}'
+);
+
+?&gt;
+
+</pre>
+<p>With version 0.6.x the config file looks like this:
+</p><p><b>For MySQL</b>
+</p>
+<pre>
+&lt;?php
+Config::set( 'db_connection', array(
+	'connection_string'=&gt;'mysql:host={$db_host};dbname={$db_schema}',
+	'username'=&gt;'{$db_user}',
+	'password'=&gt;'{$db_pass}',
+	'prefix'=&gt;'{$table_prefix}'
+));
+
+?&gt;
+</pre>
+<p><b>For SQLite</b>
+</p>
+<pre>
+
+&lt;?php
+Config::set( 'db_connection', array(
+	'connection_string'=&gt;'sqlite:{$db_file}',
+	'username'=&gt;'',
+	'password'=&gt;'',
+	'prefix'=&gt;'{$table_prefix}'
+));
+
+?&gt;
+</pre>
+<p>The easiest thing to do is, before upgrading, make the configuration file writable. Perform the upgrade, then make the file read only again.
+</p><p>If you don't wish to do that, open the configuration file in a text editor and make the changes shown above, save your changes, then navigate to your site so the upgrade process can proceed.
+</p>
+<h3>Upgrading Other Versions of Habari</h3>
+<p>For specific upgrade instructions for earlier versions of Habari, see the <href="http://wiki.habariproject.org/en/Upgrading" title="Full Upgrade Instructions">full upgrade notes</a> on the wiki.</p>
+</div>
+
+	<div id="userdocumentaion">
+
+		<h1>Using Habari</h1>
+		<h2>Introduction</h2>
+
+		<p>Welcome to Habari, the next-generation online publishing platform!
+		</p>
+		<p>Habari was built from the ground-up with a firm understanding of the current state of blogging, and with a strong eye toward the future of internet publishing.  Habari strives to make it as easy as possible to publish your content.  It stays out of your way as much as it can, and lends a hand where it's needed.
+		</p>
+		<p>The word "Habari" is Swahili for "news", as in "What's the news?"  We feel this is an appropriate name for a blogging package not just because of the clever tagline, but because blogs are so often used to tell others what's the news in your life or your business.
+		</p>
+		<p>As a Free Software project, Habari's most valuable asset is the community of users and developers who collaborate to improve the product.  Habari is built by people just like you: folks with an interest in blogging and internet publishing.
+		</p>
+
+		<h3 id="installation">Installation</h3>
+		<p>Habari has a few <a href="http://wiki.habariproject.org/en/Installation" title="Installation">Server Requirements</a>, which you will need to meet to be able to run Habari. If you have what is required, (or better), you are good to go! As Habari is still in development, no guarantees are made that these are fully stable versions, or that updating won't break the current database structure.
+		</p><p>To install the latest stable version of Habari:
+		</p>
+
+<ul><li> Download <a href="http://habariproject.org/en/download" class="external free" title="http://habariproject.org/en/download" rel="nofollow">the current release</a> and unzip the Habari package.
+</li><li> If you are using MySQL or PostgreSQL, obtain the connection settings needed below, or create a database for Habari on your web server.
+</li><li> Upload Habari files on your web server.
+</li><li> Point your web browser at <a href="http://example.com/" class="external free" title="http://example.com/" rel="nofollow">http://example.com/</a> (the location of your Habari files on your server) to begin installation with the Database Setup.
+</li></ul>
+<p>The Habari installer initially presents you with a choice of languages that it will use for the interface.  Select the correct locale code from the list for your language of choice.  The default selection is "en-us", which is English, United States.
+</p><p>Clicking the question mark at the top of any section of the installer will reveal more information about each field in that section.
+
+</p><p>Depending on the Database Type you set, you may need to enter some of the following information:
+</p>
+<ul><li> Database Type: You can choose between MySQL, PostgreSQL, or SQLite. Your hosting company should be able to tell you what you should use.
+</li><li> Database Host: Again your hosting company should have provided this information when you first joined.
+</li><li> Username: This is the username used to connect Habari to the MySQL database.
+</li><li> Password: This is the password used to connect Habari to the MySQL database.
+</li><li> Database Name: Again your hosting company should have provided this information when you first joined.
+</li><li> Table Prefix: You will only need to change this if you have more than one version of Habari installed.
+</li></ul>
+<p>The Site Configuration settings you will need to set are:
+</p>
+
+<ul><li> Site Name: The name of your blog.
+</li><li> Username: The name or alias you wish to use to administer your blog. This should not be the same as the username for the database.
+</li><li> Password: The password associated to the above Username. Enter this in the second box, just to make sure you get it right.
+</li><li> Admin Email: This is the email address associated with the above Username. Habari will email you to let you know everything is working.
+</li></ul>
+<p>The installer recommends several plugins upon initial install.  These plugins are checked in the next section, Plugin Activation.  Additional optional plugins are included in the core installation, but these plugins are not checked by default.  If there are additional plugin present in addition, Habari will list these here as well.  Choose the plugins that should be activated upon installation by checking the box next to each.
+</p><p>Conclude the installation process by clicking the "Install Habari" button.  When Habari completes processing, installation is complete.
+</p><p>The End! Habari should now be installed.
+</p><p><a href="http://wiki.habariproject.org/en/Installation" title="Installation">Full Installation Instructions</a> are available, including some details of how to adjust your settings for different web servers and specific configuration information for several popular hosting companies.
+</p><p>If you are happy to use the current development version of Habari, the full instructions explain how to access the Habari subversion repository; however, for most normal users you will need to download the latest stable version of Habari.
+</p>
+
+<a name="Using_Habari"></a><h3>Using Habari</h3>
+<p>After you have installed Habari, go to <a href="http://example.com/admin/" class="external free" title="http://example.com/admin/" rel="nofollow">http://example.com/admin/</a>. You will be taken to a login page. Enter your user name and password to open up Habari's administration interface. You will be greeted by the Dashboard.  This page provides a snapshot of useful information, such as the total number of posts and comments on your site, the number of posts you've made, and more. Later you can install plugins to add new modules to the dashboard, greatly expanding its usefulness.
+</p><p>The primary way you will interact with Habari is through the main menu.  The main menu is accessed by placing your mouse at the top left of the window.  The menu should automatically drop down, to reveal to you the available choices.  The menu items users see will be controlled by the permissions assigned to them by the site administrator.  Clicking on any menu item will take you to the corresponding page within the administrative interface.  For details on each menu item, see the corresponding section of this manual.
+</p><p>It should be noted that the main menu can also be accessed by keyboard shortcuts.  If you press the Q key on your keyboard, the menu should expand.  Press the Q key again to hide the menu.  When the menu is displayed, each menu item has a keyboard shortcut displayed to the right.  Using the keyboard shortcuts you can quickly navigate through Habari.  Want to create a new entry?  Press Q, then the 1 key.  Want to change your site's theme?  Press Q, then T.  Want to add a new user?  Q U.
+</p>
+
+<a name="Your_First_Post"></a><h3>Your First Post</h3>
+
+<p>You can create your first post by clicking on the main menu, then selecting "Create Entry".
+</p><p>You are now looking at the publish entry page, by default you have three fields into which to enter information.
+</p>
+<img alt="Create Entry admin page" src="create_entry.jpg" width="300" height="267" border="0" class="thumbimage" />
+
+<ul><li>The Title box is the name of your entry, this can contain a single word, a sentence, numbers, or symbols producable by your keyboard.  By default, the title you supply will be used to create the URL by which this post will be accessed.
+</li></ul>
+<ul><li>The Content box contains the main body of your entry. In here you can put almost anything imaginable, although currently you will have to manually enter HTML for URL links and formatting such as bold or underlining.  Beneath the content box is a small handlebar, which you may click and drag to adjust the amount of space used by the box.
+</li></ul>
+<ul><li>The Tag box contains the 'tags', or free-form labels, you apply to your content. You can use as many different tags are you like to describe your entry.  If you are writing a post about a recipe you want to try, you might tag the post with the key ingredients.  This allows visitors to navigate your site by the tag words, to find other recipes that use the selected ingredient.  See the <b>tags</b> section for a more thorough description of tags.
+</li></ul>
+<p>Pressing the Save button will save your work into the Habari database.  The post will still be a Draft, which means it is not available for the public to read.  You can edit and save drafts as many times as you like, to make sure you get the post just right before letting the world read it.  When you are satisfied with your post, click the Publish button.  This will make the post visible to the world on your front page, as well as in your <a href="http://en.wikipedia.org/wiki/Atom_(standard)" class="external text" title="http://en.wikipedia.org/wiki/Atom_(standard)" rel="nofollow">Atom</a> syndication feed.  Congratulations, you've posted your first entry!
+
+</p><p>You also have an additional button between the Tag box and the Save/Publish buttons, the Settings button. It contains optional extras you may wish to use. Clicking it opens a pagesplitter (so called because it splits the page).
+</p>
+<ul><li>Settings:
+<ul><li>Content State: You may manually adjust the status of your post.  Instead of clicking the Publish button, you may select "Published" from the content state drop-down, and then click the Save button.  If you want to unpublish something -- that it, keep it in the Habari database but prevent readers from seeing it -- you may change a Published post to Draft and then click Save.  Plugins may add new content statuses.
+</li><li>Comments Allowed: This tick box determines whether or not your visitors can leave comments on this item.  When the box is ticked comments are allowed. By default this is set to ticked.  If you remove the tick and click Save, no new comments will be accepted on this item.  Any existing comments will be preserved and displayed.
+</li><li>Publication Time: This is the time your post is set to be published. This is normally set by Habari. When you first begin a post, Habari will set the publication time to the current time. When you publish the post for public viewing, Habari sets the publication time to the time you hit the Publish button. The only instance when you should change the publication time is when you wish to create a scheduled post. If you set the publication time to a date and time in the future, then click the Publish button, Habari will schedule the post for publication at the time you indicated.
+</li><li>Content Address: This box lets you set a different slug for your entry. This is useful in case the main title of your entry contains unusual characters or is excessively long. The name you provide in this box will appear in the address window in your web browser, not the title of the entry.
+</li></ul>
+</li></ul>
+
+<a name="Key_Terms_and_Ideas"></a>
+<h3>Key Terms and Ideas</h3>
+<a name="Content_Types"></a><h4>Content Types</h4>
+
+<p>As a tool for managing content, Habari defines two default types of content.
+</p>
+<ul><li><b>Entries</b> are the most commonly used content type.  This is the content type you use when creating a new blog post.  They are displayed in reverse chronological order (newest first) on your home page and in your Atom syndication feed.  You would use entries to post a review of the movie you watched yesterday, or what your weekend plans are.
+</li><li><b>Pages</b> are used for static information on your site.  Pages typically live outside of the date-based chronology of your site.  You would use a Page to describe something that isn't associated with a specific date or time, like an "About The Author" biography.
+</li></ul>
+<p>Plugins have the ability to add additional content types.
+</p><p><b>NOTE</b>: When discussing Habari, the term "post" will frequently be used to mean any kind of content.  If the content type matters for documentation or example purposes, a specific content type will be used.  Entries and Pages are both Posts.
+</p>
+<a name="Content_Statuses"></a><h4>Content Statuses</h4>
+
+<p>Out of the box Habari maintains three post statuses - <b>draft</b>, <b>published</b>, and <b>scheduled</b>. Plugins have the option of adding further statuses to this list. The Undelete plugin that comes with Habari, for example, adds the <b>deleted</b> status.
+</p>
+<ul><li><b>Draft</b>. Drafts are unfinished, unpublished works.  Drafts are not visible to regular visitors of your site.  All new posts default to the "draft" status and remain that way until you explicitly change their status.  As long as you don't publish the post, it will remain in this state so you can add to it, edit it, and change it as much as you want without being concerned that others will see it.
+</li><li><b>Published</b>. Published items are available for the entire world to read, and are included in your Atom syndication feed.  As soon as you click the Publish button on Habari's post composition page, the status of the post is set to published. At this point it is viewable by the public at large. You can still edit the post.
+</li><li><b>Scheduled</b>. If you change a post's publication time to a future date, then click the Publish button, Habari sets its status to scheduled. The post will be visible to you when you are logged in to Habari's administrative section, but not to the general public. When the time you set for publication arrives, Habari will automatically change the status to published and make the post available for public viewing.
+
+</li></ul>
+<a name="Tags"></a><h4>Tags</h4>
+<p>Tagging is a non-hierarchical way to categorize your content. When you create a post, you label it with one or more tags to show readers what other posts on your site it is related to. Tags have only a general semantic meaning, because the context of a label can change it's meaning, and this context isn't a part of the tag. Tags do, however, allow you to show the general categories of your work without forcing it into a hierarchical system of categories.
+</p>
+<a name="Comments"></a><h4>Comments</h4>
+
+<p>Readers can add feedback to published posts via <b>comments</b>. Habari requires all comments to be moderated before they are displayed on the site. Plugins can change this situations so that comments from frequent commenters are automatically approved, or comments left as spam are automatically marked as spam.
+</p><p>Out of the box Habari maintains three comment statuses - <b>approved</b>,<b>unapproved</b> and <b>spam</b>.
+</p>
+<ul><li><b>Approved</b> - These are comments that you have either manually approved for display on the site, or that have been filtered by a plugin and accepted for display on the site.
+</li><li><b>Unapproved</b> - All comments are unapproved when they are first made. It is up to you as the site administrator to either mark them for approval so they are displayed on the site, mark them as spam, or delete them.
+
+</li><li><b>Spam</b> - Spam comments are made in the hopes that someone will click through the links that they contain. Often spam is related to gambling or sexually oriented products, but can also be random comments that bear no relation to the post on which they are made. Spam is the reason that all comments are not automatically approved. As said above, you can install plugins in your Habari installation that filter all comments, examining them for the characteristics of spam. If the comment fits the spam profile, it will either be automatically deleted, or marked as spam and retained to further train the spam filtering plugin. It is strongly recommended that you install some kind of spam filtering plugin to save your time and to protect your site.
+</li></ul>
+<a name="Feeds"></a><h4>Feeds</h4>
+<p>The term <b>feed</b> indicates a stream of data which is "consumed" by a special application called a <b>feed reader</b> or <b>aggregator</b>.  Your blog's feed contains the same data that is presented to visitors viewing your site, but it is formatted in a way that is suitable for machine-to-machine communication, as opposed to machine-to-human communication.  There are several formats for this machine-to-machine transmission, with the two most popular being <a href="http://en.wikipedia.org/wiki/RSS_(file_format)" class="external text" title="http://en.wikipedia.org/wiki/RSS_(file_format)" rel="nofollow">RSS</a> and <a href="http://atomenabled.org/" class="external text" title="http://atomenabled.org/" rel="nofollow">Atom</a>.  Out of the box, Habari only speaks the Atom format.
+
+</p><p>RSS and Atom allow users to subscribe to your web site in their aggregator, like Bloglines or Google Reader.  Their aggregator will periodically poll your website (usually once every couple of hours), checking to see if you've published any new content.  If you have, your Habari installation will transmit that new content to the aggregator using the Atom format, and your posts will show up in the aggregator's list of new items.
+</p><p>Your main Atom feed can be located by appending <tt>/atom/1</tt> to your site's URL. Separate feeds are also available for comments, posts with the same tag, and the comments for an individual post.
+</p>
+
+<a name="Themes"></a><h4>Themes</h4>
+<p>Themes allow you to customize the look and feel of the site for your readers. Habari includes several themes to choose from after installation, and many more are available from the community.
+</p>
+
+<a name="Plugins"></a><h4>Plugins</h4>
+<p>By design, Habari by itself has a basic set of capabilities. Plugins add functionality, new capabilities, or additional content types to Habari. Habari includes several out of the box...
+</p>
+<a name="Timeline_and_Loupe"></a><h4>Timeline and Loupe</h4>
+<img alt="The timeline and loupe" src="timeline.jpg" width="300" height="43" border="0" class="thumbimage" />
+<p>On certain administration pages, the loupe is a sliding, expandable window that operates on the timeline of a group of data. The default position for the loupe is the far right: the most recent items of the collection. The default width of the loupe encompasses 20 items. You can click inside the loupe and drag it left and right across the timeline: this will change the items shown beneath the loupe based on the date range highlighted by the loupe. On the left and right of the loupe are handlebars, which you can click to drag left or right to expand or shrink the size of the loupe: this will increase or decrease the number of items shown below.
+</p><p>The loupe makes it extremely easy to display and select specific timelines of data. You can drag and expand the loupe to display all the items from June of last year to June of this year. Or you can narrow the loupe to only display items from last month, or yesterday.
+</p>
+<a name="Administration"></a><h3>Administration</h3>
+
+<a name="The_Dashboard"></a><h4>The Dashboard</h4>
+<p>The Dashboard is the first page you see after you log in to Habari's administrative interface. The dashboard can be reached from any page of Habari's administrative interface by choosing <b>Dashboard</b> from the main menu, or by typing <b>Q</b> followed by <b>D</b>.
+</p>
+
+<img alt="Dashboard admin page with default modules" src="dashboard_with_modules.jpg" width="300" height="251" border="0" class="thumbimage" />Dashboard admin page with default modules
+<p>The dashboard provides a summary of useful information for your site. The top section contains a couple of sentences telling you how long your site has been active, a series of high level statistics about your site, how many drafts you have awaiting completion, how many scheduled posts you have, and how many comments you have awaiting moderation.
+</p><p>Next is a series of <b>modules</b>. Modules are small sub-blocks that focus on specific details about your site. Habari comes with modules that contain lists of your recent published posts, recent comments on your blog, and recent activity that has been logged. Plugins can add various other modules dedicated to specific purposes. A plugin that redirects your feeds through the Feedburner service, for example, may use a module to let you know how many subscribers you have, while a plugin that tracks links to your site may use a module to show you the recent links.
+</p><p>Modules can be moved and rearranged, added, and hidden, so they stay in the positions that is most logical to you and show you the information you want to see. If you don't care about recent log activity, click the <b>x</b> in the upper left corner of the log module to hide it. If the first thing you want to see is any recent comments on your site, move the recent comments module to the top left of the modules section by clicking on the grey rectangle in the upper right of the module and dragging the module .
+</p><p>After all the visible modules, the dashboard has a dropdown list of all the modules that are available to show. To show a module you don't currently have displayed, choose the module then click the button with a + on it to the right of the list to display the module.
+</p>
+<a name="Managing_Content"></a><h4>Managing Content</h3>
+
+<p>To manage your content -- draft or published, entry or page -- select one of the Manage links from the main menu.  Habari creates a main Manage menu item, which has a submenu listing each type of content in your system, providing a convenient way to access a specific type of content.  The destination for each of these menu links is, in fact, the same page: the menus merely provide a shortcut to filter the display by the specified content type.
+</p>
+<img alt="Manage Posts page" src="manage_posts.jpg" width="300" height="299" border="0" class="thumbimage" />
+<p>Habari strives to make it as easy as possible to find and manage your content.  The first thing to note when visiting the "Manage Content" page is the <b>timeline</b>.
+</p><p>Beneath the timeline are the posts returned by the current filters.  Beside the timeline are the filter controls, and additional navigation controls.  By default, 20 posts will be presented beneath the timeline in reverse chronological order (newest first).  If you have more than 20 items that satisfy the filters, you can page forward and backward to see the next or previous set of 20 posts using the "Older" and "Newer" links at the top left and right, respectively.  To the right of the "Older" link is a report of the number of posts that match the current filter, and where your current display falls within that set.
+</p><p>Above the timeline on the Manage Content page is the <b>search</b> box.  You can use this box to type in search terms to find content.  To find all posts that include the word "Habari", simply type "Habari" into the search box and wait a moment.  The list of posts below will be updated, and the quantity indicator to the left of the filter box will be updated.  Beside the search box are several links that provide shortcut filter controls.  To see only entries, click the "Entry" link:  this will add <tt>type:entry</tt> into the search box, restricting the list of posts to only those of type Entry.  Click the "Entry" link again to remove that filter from the list.  Using these buttons, you can quickly drill down to see all your content.  Click the "Entry" link and the "Draft" link to see all your unpublished entries.  Click the "Entry" link again to see all draft posts, regardless of content type.
+</p><p>Additional filters are available for manual entry.  To see all posts authored by Scott, type "author:scott" into the search box.  There is no shortcut link for these other filters because it's possible that a single site might have, for example, a sufficiently large number of authors as to make the links dominate the screen.
+
+</p><p>You can combine the filter links with manual search words.  To see all drafts about pizza, click the "Draft" button, and then type in "pizza".  Or, manually type in "status:draft pizza".
+</p><p>The loupe will update for the current set of filtered posts.  The combination of filter controls and timeline provide for extremely 
+flexible content navigation.
+</p><p>Beneath the timeline is the list of posts that match the current filters.  The post title, status, author, and date are displayed above a brief snippet of the post.  This snippet should provide a bit of context about the post if you can't remember it from the title.  The title of the post is a hyperlink, allowing you to click it to view that post on the publish page.  The status, author, and date are also hyperlinks that show you similar items (same status, same author, or same publication date).  To the right of the post is a "drop button".  This is a special control mechanism that acts like both a button and a drop-down list.  If you place your mouse over the drop button it will expand to reveal all of the options available to you.  The first item -- the one displayed before you placed your mouse over the drop button -- is the default action that will occur if you click your mouse.  You may select one of the other items from the list, though, if you don't want to take the default action.  When managing content, the usual values of the drop buttons will be "Delete" and "Edit".
+</p><p>To the left of each post is a checkbox.  You can tick the boxes to mark one or more posts, allowing you to delete a group of posts.  The number of posts marked will be indicated above and below the list of posts.  The posts you select will be remembered, allowing you to page through all the posts that match the current filter.  The number shown will remind you that you have posts selected that might not be displayed on the current page.  Next to the number of selected posts (which says "None selected" if you've not yet selected any) is another checkbox. If you tick this box, all posts on the current page will be selected. Once you do so, another link will appear which allows you to select <b>all</b> posts which match the current filter, even those not visible.
+</p><p>Once you have some group of posts selected, you can delete the entire group at once by clicking the <b>Delete Selected</b> button to the right.
+</p>
+<a name="Managing_Comments"></a><h4>Managing Comments</h4>
+
+<p>To manage your comments select the Comments link from the main menu, or type <b>Q</b>, then <b>C</b>.
+</p><p>As with posts, the first thing to note when visiting the Comments page is the timeline and the loupe at the top of the page. The timeline works with comments the same way as it does with posts.
+</p>
+<img alt="The Manage Comments page" src="manage_comments.jpg" width="300" height="416" border="0" class="thumbimage" />
+<p>Beneath the timeline are the comments returned by the current filters.  Above the timeline are the search and filter controls, and additional navigation controls.  By default, 20 comments will be presented beneath the timeline in reverse chronological order (newest first).  If you have more than 20 items that satisfy the filters, you can page forward and backward to see the next or previous set of comments using the "Older" and "Newer" links at the top left and right, respectively.  To the right of the "Older" link is a report of the number of comments that match the current filter, and where your current display falls within that set.
+</p><p>In the top center of the Comments page is the search box.  You can use this box to type in search terms to find comments.  To find all comments that include the word <i>Habari</i>, simply type <i>Habari</i> into the search box and wait a moment.  The list of comments will be updated, and the quantity indicator to the left of the search box will be updated.  Beside the search box are several links that provide shortcut filter controls to the different statuses and types a comment may have.  To see only Approved comments, click the <b>Approved</b> link:  this will add <tt>status:Approved</tt> to the search box, restricting the list of comments to only those which are approved.  Click the <b>Approved</b> link again to remove that filter from the list.  Using these , you can quickly drill down to see all your comments.  Click the <b>Unapproved</b> link and the <b>Pingback</b> link to see all your unapproved pingbacks.  Click the <b>Unapproved</b> link again to remove the Unapproved filter and see all pingbacks, regardless of status.
+
+</p><p>You can combine the filter links with manual filter controls and search words.  To see all approved comments containing the word <i>terrific</i>, click the <b>Approved</b> link, and then type in <i>terrific</i>.  Or, manually type in <b>status:Approved terrific</b>.
+</p><p>The timeline will update for the current set of filtered posts.  The combination of filter controls, timeline and loupe provide for extremely flexible content navigation.
+</p><p>Beneath the timeline are the comments that match the current filters, with a set of buttons and a checkbox located above and below the comments. Each comment shows the commenter's name, url, and email address ( if they left them ), the title of the post the comment was made on, the time and date of the comment, and the text of the comment. The commenter's url serves as direct link to the commenter's site, the email address serves as a link to send them an email, and the post title serves as a link to the comment and the post on which it was made.
+</p><p>To the right of each comment is a drop button, as seen with on the Manage Posts pages.  The default action for comments on the drop button is <b>Unapprove</b> - to unapprove the comment.  You may select one of the other items from the list, though, if you don't want to take the default action.  These other actions are <b>Spam</b> - to mark the comment as spam, <b>Approve</b> - to approve the comment, <b>Delete</b> - to delete a comment completely, and <b>Edit</b> - to take you to a new page where you can modify a comment.
+
+</p><p>To the left of the comment is a checkbox.  You can tick the boxes to mark one or more comments, allowing you to execute actions against groups of comments.  The number of comments marked will be indicated above and below the list of comments.  The comments you select will be remembered, allowing you to page through all the comments that match the current filter.  The number will remind you that you have comments selected that might not be displayed on the current page.  Next to the number of selected comments (which says "None selected" if you've not yet selected any) is another checkbox.  If you tick this box, all comments on the current page will be selected. Once you do so, another link will appear which allows you to select <b>all</b> comments which match the current filter, even those not visible.
+</p><p>Once you have some group of comments selected, you can execute a single action against them.  Just click the button at the top or bottom of the page for the action you wish to perform. As with the drop button, your choices are to <b>Delete</b> the comment, mark the comments as <b>Spam</b>, <b>Unapprove</b> previously approved comments, and <b>Approve</b> unapproved comments.
+</p><p>If you hover your mouse over the snippet of text from a comment, note that the background color will change. Click on the text when it does so, and the comment will become available for in-place editing. You can modify any of the fields shown on the Manage Comments page - the text of the comment, the commenter's name, their email address, and their url. The drop-button will also change to contain the options to <b>Update</b> and save any changes you may have made, and <b>Cancel</b> to abandon any changes you made. Clicking either of these options will cause Habari to take the indicated action and return the comment to read only mode with the standard options contained in the drop-button.
+
+</p>
+
+<a name="Managing_Tags"></a><h4>Managing Tags</h4>
+<p>To manage your site's tags, select <b>Tags</b> from the main menu, or type <b>Q</b>, then <b>A</b>.
+</p>
+
+<img alt="The Manage Tags page" src="manage_tags.jpg" width="300" height="103" border="0" class="thumbimage" />
+<p>At the very top of the tags page is a <b>search box</b>. After your site has been in use for a period of time, you can have quite a few tags. Use the search box to narrow the number of tags which you are viewing.
+</p><p>Below the search box you will see the tags which you have used on your site. These will be of various heights, as a visual cue to how frequently they have been used, and each one will have a superscript number to the right of it denoting the exact number of posts on which it has been used.
+</p><p>Select tags by clicking on them. A second click on a tag de-selects it.
+</p><p>To <b>rename</b> a tag, click on it, type the new name in the text box below the tags, then click the <b>Rename</b> button.
+</p><p>To <b>merge</b> multiple tags into one tag, click on each tag you want to merge together, type the name you want to give the tags in the text box below the tags, then click the <b>Rename</b> button.
+
+</p><p>To <b>delete</b> one or more tags, click on each tag you want to delete, then click the <b>Delete Selected</b> button beneath the tags.
+</p>
+
+<a name="Options"></a><h4>Options</h4>
+<img alt="Options admin page" src="options.jpg" width="300" height="231" border="0" class="thumbimage" />
+
+<p>Options for your site include such things as the site title, tagline, number of posts per page, time zone, etc.
+</p><p>To edit your site's options, either select <b>Options</b> from the main menu, or type <b>Q</b>, then <b>O</b>.
+</p><p>Options are searchable by using the search form at the top right of the page.
+</p>
+
+<a name="Themes_2"></a><h4>Themes</h4>
+
+<img alt="Themes admin page" src="manage_themes.jpg" width="300" height="259" border="0" class="thumbimage" />
+<p>To change your theme select <b>Themes</b> from the main menu, or type <b>Q</b>, then <b>T</b>. This will take you to the Themes page.
+</p><p>The Themes page is divided into two sections. The top section contains one item, your current active theme. The bottom section contains all the themes that are available for you to use. 
+</p><p>Each theme will show several pieces of information. To the far left is the name of the theme, its developer, and a screenshot of what it looks like in use. In the middle is a short description of the theme. For inactive themes, to the right is a dropbutton containing available actions for the theme. Your active theme will not have a dropbutton.
+</p><p>If a theme is inactive, the only available action is to <b>Activate</b> it. Clicking on an inactive theme's dropbutton automatically deactivates the theme that is currently active, and activates the theme you selected.
+
+</p>
+
+<a name="Plugins_2"></a><h4>Plugins</h4>
+<img alt="Plugins admin page" src="manage_plugins.jpg" width="300" height="281" border="0" class="thumbimage" /></a>
+<p>To manage your plugins, select <b>Plugins</b> from the main menu, or type <b>Q</b>, then <b>P</b>. You will be taken to your Plugins page.
+
+</p><p>The plugins page is divided into two main sections. At the top of the page is a list of the plugins you have activated. The bottom of the page contains a list of the plugins you have installed, but have not yet activated. Even if you have not added any plugins yourself, this section will contain the plugins that come with Habari.
+</p><p>To the right of each plugin is a dropdown button containing the actions that it is possible for you to perform with the plugin. For inactive plugins, the only possible action is <b>Activate</b>, which you may do by clicking on the dropdown button. Once you do so, the plugin is removed from the list of inactivate plugins and transferred to the list of active plugins.
+</p><p>Active plugins can have several actions associated with them. The most common are <b>Configure</b>, which opens an inline form in which you can set the configuration options for that plugin, and <b>Deactivate</b>, which removes the plugin from the list of active plugins and returns it to the list of inactive plugins. If there is no configuration possible for a plugin, the only action you will be able to perform with it is to deactivate it. Depending on what it does, plugins may add other options to the drop-button.
+</p><p>Each plugin that needs to be configured will have different options, but they all work the same general way. There will be a series of fields to fill in, then a <b>Save</b> and a <b>Close</b> button. After setting the plugin options to your satisfaction, click the <b>Save</b> button to save the changes to the database. Click the <b>Close</b> button to close the configuration dialog.
+
+</p><p>Some active plugins will have a question mark (<b>?</b>) to the right of their name. Clicking on the question mark will open an inline frame containing usage instructions for that plugin.
+</p>
+
+<a name="Users_and_Groups"></a><h4>Users and Groups</h4>
+<p>Habari supports multiple users, each of which can be assigned to groups with different permissions within the system. Some users can have phenomenal cosmic powers (over the blog, that is) while some users can be restricted to simply writing new posts depending on their groups.
+</p><p>Users can be members of one or more groups. Groups are assigned permissions. The combined permissions assigned to all the groups to which a user belongs define the things that user is permitted to do within the blog.
+</p><p>When we talk about "what a user can do", what we're really saying is "things that can be done by one of the groups to which this user belongs". It's important to remember that users don't have any permission on their own. Users can only do stuff based on the permissions assigned to the groups to which they blog. But it's awkward to keep saying "This user belongs to a group with permission to do Foo", so for brevity we'll simply say "Users who can do Foo".
+</p>
+
+<a name="Users"></a><h5>Users</h5>
+
+<p>Users with the "add, remove, and edit users" permission can, obviously, add, remove, and edit users. A user with this permission can access the Users page from the main menu. Here is presented a list of all the user accounts in the system, and a brief report on their activity within the system. Above the user list is a form to create a new user: simply supply a username, email address, and password.
+</p><p>If there are many users on the system, the display can be filtered by searching for part of a user name.
+</p><p>To the left of each user is a checkbox. This is only used when deleting a user account. Select the user(s) to be deleted, select whether to reassign that user's posts to a different user or to delete the posts from the system, and press the delete button.
+</p><p>Clicking on any user will display that user's details page.
+</p>
+<a name="User"></a><h5>User</h5>
+<p>From a user's details page one may specify additional information about a user or they may specify their own information, if they're viewing their own user detail page. Most of the data displayed on this page is purely informational, and not really used by Habari anywhere.
+</p><p>The Apply button is used to save any changes made on the user page. A user can also be deleted directly for their page by using the delete button. Choose whether you want to reassign posts to another users or not before using the delete button on the page.
+</p><p>Note that plugins can modify this page to add new fields.
+</p>
+<a name="Groups"></a><h5>Groups</h5>
+
+<p>Users with the "manage groups and permissions" permission can access the Groups page from the main menu. By default, all groups defined within the system are displayed. You may modify a single group's details by selecting it from the drop-down list at the top of the page, by clicking on the group's name in the main list, or by clicking the "Edit" option from the drop-button to the right of that group.
+</p><p>To add a new group, simply supply a group name in the field at the bottom of the page and click the "Add Group" button. Newly created groups will have no permissions, by default.
+</p><p>When editing a group, you are first presented with the list of users that are members of that group. You may add additional members from the drop-down list and then clicking the "Add" button. <b>IMPORTANT</b>: changes to the list of users are not saved to the database until you click the "Apply" button at the bottom of the page!
+</p><p>Beneath the user listing is a list of all of the defined permissions within the system, with controls to enable or disable access to these permissions for the group.
+</p>
+<img alt="Group admin page showing permissions granted to &#39;admins&#39; group." src="group.jpg" width="300" height="414" border="0" class="thumbimage" />
+
+<a name="Permissions"></a><h5>Permissions</h5>
+<p>There are two kinds of permissions within Habari: binary and CRUD:
+</p>
+
+<a name="Binary_Permissions"></a><h6>Binary Permissions</h5>
+<p>Binary permissions are either/or: a group may either do the thing, or not do the thing. For example, the "add, remove, and edit users" permission is either/or. Either a user can add and edit users, or they cannot.
+</p><p>There's a subtle distinction for binary permissions between "not assigned" and "denied". In either case, the group is not permitted to do the thing defined by the permission. The distinction comes into play when a user belongs to multiple groups. Let's look at a practical example to illustrate the point.
+</p><p>User Scott is assigned to the "Content Managers" group, which has been granted permissions to "Manage comments on all posts", "Manage comments on one's own posts", and "Manage tags". The specific assignment of these permissions allows Scott to manage the content on the blog. The "Content Managers" group is neither granted nor denied the "Change theme" permission. Since the "Change theme" permission is not specifically granted, Scott may not change the site theme.
+</p><p>Scott is next added to the "Site Managers" group, which has been granted permission to "Manage options" and "Change theme". Since Scott is in a group that specifically grants permission for "Change theme", Scott may now change the current theme.
+</p><p>After some time, the blog owner decides that he really likes the current theme, and doesn't want anyone changing it. Rather than go through each of the groups to manually remove any previously granted permission to "Change theme" the site owner makes a new group called "No Theme Changes", and assigns all the users to this group. The only permission setting for this group is to specifically deny access to the "Change theme" permission. The <b>deny</b> permission overrides any specifically granted permission for the same thing. Scott is now a member of the "Site Managers" and "No Theme Changes" groups. The former specifically grants him permission to change the theme, but the latter specifically revokes permission to change the theme. Denied permissions always override granted permissions.
+
+</p>
+<a name="CRUD_Permissions"></a><h6>CRUD Permissions</h6>
+<p>CRUD stands for "Create, Read, Update, Delete" and indicates that there are several related actions for that permission. For example, "Permissions on one's own posts" is CRUD. A user might be permitted to create new posts, but not update or delete posts they had previously created.
+</p><p>As with binary permissions, there is a difference for CRUD permissions between "not assigned" and "denied". A particular permission not assigned to one group may be assigned to another group. A user that was a member of both groups would have the permission, because one of the groups to which they belong was assigned that permission. Any CRUD permissions that are specifically denied to a group will deny that permission to all members of the group, regardless of other group membership that might grant that permission.
+</p><p>Using the cascading nature of groups and permissions, it is possible to create robust group assignments to enforce granular permissions. You can create "Content Managers" who have access to modify the content of the site without changing site settings or managing users. You could then create a "Users Managers" group that only has permission to manage users. As members of the "Content Managers" group gain experience and prove their trustworthiness, you can add their user accounts to the "User Managers" group so that they can begin adding new users, and managing current ones.
+</p>
+<a name="Default_Permissions"></a><h6>Default Permissions</h6>
+
+<p>Habari creates a set of permissions to enable managing access to its different areas. Plugins can add their own permissions to control access to their added functionality. The default permissions are listed below.
+</p>
+<ul><li><b>Super User</b>
+<ul><li><b>Permissions for super users:</b> This permission implicitly grants all members of the group access to all permissions even for the ones from which any of their groups is denied.
+</li></ul>
+</li></ul>
+<ul><li><b>Administration:</b> These permissions control access to the different admin interface areas and are all of a binary type. If no access is defined or if access is denied to any of these permissions, the relevant admin page will be hidden from the menu.
+<ul><li><b>Manage comments on all posts:</b> Allow or deny editing and moderating all comments within the blog.
+</li><li><b>Manage comments on one's own posts:</b> Allow or deny editing and moderating comments made on the user's authored posts
+
+</li><li><b>Manage tags:</b> Allow or deny access to rename or delete the site's tags.
+</li><li><b>Manage options:</b> Allow or deny changing the site's main options
+</li><li><b>Change theme:</b> Allow or deny access to change the currently active theme.
+</li><li><b>Configure the active theme:</b> Allow or deny access to change the configuration of the currently active theme.
+</li><li><b>Activate/deactivate plugins:</b> Allow or deny activating or deactivating plugins.
+</li><li><b>Configure active plugins:</b> Allow or deny access to change the configuration of the currently active plugins.
+
+</li><li><b>Use the importer:</b> Allow or deny access to use the importer plugins that use the admin import page.
+</li><li><b>Add, remove, and edit users:</b> Allow or deny access to fully manage the blog's users. Note that if a user doesn't have this permission, they will not be able to change their own user information.
+</li><li><b>Manage groups and permissions:</b> Allow or deny access to creating, editing or deleting groups and changing their permissions.
+</li><li><b>Manage logs:</b> Allow or deny access to the logs page.
+</li></ul>
+</li></ul>
+<ul><li><b>Content:</b> These permissions control what type of access is allowed to the content of the site. If no access is defined or if access is denied to any of these permissions, the relevant admin page will be hidden from the menu. As plugins add new content types, new permissions are added relevant to each of the types.
+
+<ul><li><b>Permissions to all posts:</b> Controls the access level to all the site's posts of any type.
+</li><li><b>Permissions to posts of type "entry":</b> Controls the access level to all the site's posts of the type 'entry'.
+</li><li><b>Permissions to posts of type "page":</b> Controls the access level to all the site's posts of the type 'page'.
+</li><li><b>Permissions on one's own posts:</b> Controls the access level to all the posts created by the user and of any type.
+</li></ul>
+</li><li><b>Comments</b>
+<ul><li><b>Make comments on any post:</b> Allow or deny ability to post comments on site's posts.
+
+</li></ul>
+</li></ul>
+<a name="Logs"></a><h4>Logs</h4>
+<p>Habari keeps records of most of the interesting things about which it knows.  It records each time someone logs in, each time a new item is posted, and the like.  By selecting Logs from the main menu (shortcut: Q L), you can review the recent activity on your site.  
+</p><p>At the top of the page is the familiar loupe and filter input box, allowing you to control what log messages to display.  At the top of each column of data is a drop-down allowing you to filter the logs by specific elements.  For example, you can select all the log entries generated by a specific IP address, or all logs generated by a specific user.  You can apply multiple filter controls, allowing you to drill down to all authentication messages from a specific IP address and a specific user.
+</p><p>To the left of each log entry is a checkbox, allowing you to select one or more log entries.  Selected entries can be manually deleted.
+</p><p>It is important to note that these logs are not permanent, and will expire after some time (usually a few weeks).
+</p>
+<a name="Importing_Content"></a><h3>Importing Content</h3>
+
+<p>Habari is able to import post, comment, category/tag, and user data from a growing list of importable platforms</a>. To import content, first activate the corresponding Importer plugin on the plugins page (Q P in the Main Menu) and then follow the steps detailed on the Import page.
+</p><p>Once the import process is complete your old data has been copied and can be managed through Habari, and can be deleted from the other platform if desired.
+</p><p><b>Important Note</b>: Deactivate any spamchecking plugins or plugins that contact outside sites (such as pingback) before beginning to import your data. If active, these will greatly slow down, or even prevent, the successful completion of the import process. In the case of spamchecking plugins, comments may incorrectly be marked as unapproved if a spamchecker plugin is active.
+</p><p>After you have completed the import process, remember to reactivate the plugins you deactivated.
+</p>
+<a name="Extending_Habari"></a><h3>Extending Habari</h3>
+<p>By design, Habari is built with the basic set of capabilities needed by everyone to create and maintain a blog or simple website. It is, however, also designed to be highly extensible through the use of plugins and themes other than those with which it ships.
+</p>
+
+<a name="Themes_3"></a><h4>Themes</h4>
+<p>Your site's theme is its basic look and feel as seen by your visitors. Habari comes with several themes.
+</p>
+<ul><li> Charcoal - Charcoal is a unique theme designed to highlight some of Habari's capabilites. 
+</li><li> Mzingi - Mzingi is a basic theme designed to serve as a foundation from which you can create your own themes.
+</li><li> K2 - K2 is one of the most popular themes in the blogging world. 
+</li></ul>
+<p>You aren't limited to these themes in your choices. There are many more themes listed in Habari's theme repository at <a href="http://wiki.habariproject.org/en/Available_Themes" class="external free" title="http://wiki.habariproject.org/en/Available_Themes" rel="nofollow">Habari's wiki</a>
+
+</p>
+<a name="Plugins_3"></a><h4>Plugins</h4>
+<p>Habari comes packaged with several plugins. These are intended to serve as examples of best practices in plugin creation for developers, and to provide useful functionality to everyone.
+</p>
+<a name="Miscellaneous_Plugins"></a><h5>Miscellaneous Plugins</h5>
+<ul><li> Core Dash Modules - These included a latest posts module, a latest comments module, and a log module. Activate this plugin to get an overview of the latest activity on your site whenever you log in.
+
+</li><li> Pingback - Enable this plugin to send pingbacks to sites to which you link in your posts.
+</li><li> Spamchecker - Activate this plugin to perform a basic spam check on comments that your site receives.
+</li><li> Undelete - We all make mistakes, including deleting posts that we later wish we had kept. Activate this plugin to retain deleted posts, so if you change your mind or discover you made a mistake after deleting something, you can recover it.
+</li><li> ThemeHelper - This plugin is relied on by some themes. It is especially helpful if you create your own themes.
+</li><li> Simple Private Posts - This plugin allows you to mark a post as private, making it available only to readers to whom you have given permission. The public at large is not able to see it.
+</li></ul>
+<a name="Media_Plugins"></a><h5>Media Plugins</h5>
+
+<ul><li> Habari Media Silo - In Habari, a media silo is a way to manage media that you would wish to embed into your posts. Activate the Habari Media Silo in order to be able to upload images to your site and embed them in your posts with the proper HTML tags with a simple click of the mouse.
+</li><li> Flickr Silo - Activate the Flickr Silo to access the images you have stored on Flickr with the same ease with which you manage locally stored images.
+</li><li> Viddler Silo - Activate the Viddler Silo to access the videos you have stored on Viddler.
+</li></ul>
+
+<a name="Importers"></a><h5>Importers</h5>
+<ul><li> Wordpress Importer - Activate the Wordpress Importer to import your content from Wordpress into Habari.
+</li></ul>
+<p>In addition to the plugins that are packaged with Habari, dozens of other plugins have been created to extended the software's functionality. These cover everything from WYSIWYG editors, to contact forms, to plugins to allow you to implement custom URLs for your site. Your can find an extensive list on the <a href="http://wiki.habariproject.org/en/Available_Plugins" class="external text" title="http://wiki.habariproject.org/en/Available_Plugins" rel="nofollow">wiki plugin page</a>, and even more at the <a href="http://www.habariproject.org/dist/plugins/" class="external text" title="http://www.habariproject.org/dist/plugins/" rel="nofollow">Habari Distribution Directory</a>.
+</p>
+
+<a name="Getting_Help"></a><h3>Getting Help</h3>
+
+<a name="Forums_and_Mailing_Lists"></a><h4>Forums and Mailing Lists</h4>
+<p>There exist two mailing lists for Habari, one focused on end-user support, and the other focused on nitty-gritty development and programming issues.
+</p><p><a href="http://groups.google.com/group/habari-users" class="external text" title="http://groups.google.com/group/habari-users" rel="nofollow">habari-users</a> is entirely focused on Habari end-user support.  This is the first place to ask for help.  When reporting problems, please provide as much information as you can.  Be sure to accurately copy any specific error messages you receive.  If you can reliably reproduce a problem, describe in detail the steps necessary to do so.  It is often helpful to provide a link to your site, so that others can see the problem first-hand, but at the least please indicate who your hosting provider is.
+
+</p><p><a href="http://groups.google.com/group/habari-dev" class="external text" title="http://groups.google.com/group/habari-dev" rel="nofollow">habari-dev</a> is focused on Habari development: programming, plugin design, and the like.  All of Habari's long-term development takes place on this list, and ideas and suggested, debated, and revised.  If you're interested in helping Habari programming, this is the list for you.
+</p><p>There is also a forum at <a href="http://www.habariproject.org/forums" class="external text" title="http://www.habariproject.org/forums" rel="nofollow">The forums</a> are focused on Habari user to user support.
+</p>
+
+<a name="Reporting_Bugs_.2F_Suggesting_Improvements"></a><h4>Reporting Bugs / Suggesting Improvements</h4>
+<p>Habari succeeds because people like you help improve it every day.  One of the easiest ways to contribute to the success of Habari is to report problems.  The <a href="http://groups.google.com/group/habari-users" class="external text" title="http://groups.google.com/group/habari-users" rel="nofollow">habari-users</a> mailing list is the first place that problems should be reported: if the issue is known, you'll be provided with confirmation of that fact and hopefully some information to help you work around the problem until it is fixed.  If you identify a new problem, you may be asked to file a bug report.  It's easy to do!
+
+</p><p><a href="http://trac.habariproject.org/" class="external text" title="http://trac.habariproject.org/" rel="nofollow">Habari Trac</a> is the place to file bug reports.  Before you can file bugs, you need to register an account with the system.  Click the <tt>Register</tt> link at the far right of the screen.  Once you've created an account you can log in by clicking on the <tt>Login</tt> link.  Once logged in, you can file a new ticket!
+</p>
+<img alt="Creating a New Ticket" src="create_new_ticket.jpg" width="300" height="242" border="0" class="thumbimage" />
+<p>The first thing you need to provide is a succinct summary of the problem.  Be concise, but don't be vague: the summary you provide is the first thing people will read when reviewing bugs to be fixed, so make sure that the developers get a jumpstart on your problem by supplying them with a meaningful summary.  If you see an HTTP 500 error page every time you try to log in, a good summary might be
+</p>
+<pre>
+HTTP 500 error every time I try to log in
+
+</pre>
+<p>This immediately indicates the specific error and the action that produces it.  A poor summary for this problem would be
+</p>
+<pre>
+Can't log in!
+</pre>
+<p>This does not indicate the specific error you see.
+</p><p>Summaries are important!  Please try hard to provide a meaningful summary.
+</p><p>Next you indicate whether your ticket is due to a defect with Habari, or if you're simply making a suggestion for enhancement.  The Habari developers love to see suggestions for enhancements because they help steer the long-term growth of Habari.
+</p><p>Below this you enter a full description of the problem or suggestion.  Be as verbose as possible.  If you have a specific error message, paste it here.  If you have log data, paste it here.  If you can reproduce the problem in one or more ways, describe in detail each of the ways to do so.  The more information you can provide, the greater the chance of a developer fixing the problem!  You can also upload screenshots if that helps to describe the problem: click the checkbox labeled "I have files to attach to this ticket".  This will allow you to upload files that will be attached to your report. The version of Habari you are using, the browser and its version, and the database backend ( MySQL, SQLite, Postgres, etc. ) are also very helpful in diagnosing and fixing issues that you report.
+</p><p>In the section labeled <tt>Ticket Properties</tt> you can fine-tune some details about your ticket.  If you're not sure what any of these mean, leave them all at the default values.  
+</p>
+<ul><li> Priority is how severe the problem is: most items can be left at "major", though issues involving data loss or security considerations can certainly be escalated to "critical" or "blocker".
+
+</li><li> Most of the issues you open will likely be about the Habari software itself, but we also like to be alerted to bugs in our documentation and our website!  Suggestions for improvement for the documentation and website are also warmly encouraged.
+</li><li> Keywords are tags you can assign to your ticket.  If you report a problem logging in, you might supply the keyword "login", for example.
+</li><li> Ignore the CC field for now.
+</li><li> It's usually best to leave the Milestone drop-down to "unassigned", and allow a Habari developer to set this as they estimate when the problem will be fixed.
+</li><li> Select the version of Habari that you're using from the Version drop-down.
+</li><li> Leave the "Assign to" field blank.
+</li></ul>
+<p>When you're all done, click "Submit ticket".  This will add your ticket to the system, and a Habari developer will eventually review it.  You might want to bookmark your ticket, and come back to check on it periodically: the Habari developers might ask you questions in comments to your ticket, seeking additional information or asking you to try a proposed fix to confirm that it works for you.
+</p><p>Please keep in mind when filing tickets for bug reports or feature enhancements that the list of tickets is completely public.  <b>DO NOT</b> post any passwords or other sensitive information.
+
+</p>
+<a name="A_note_about_security_issues"></a><h5>A note about security issues</h5>
+<p>As mentioned above, all items filed in the Habari Trac are public.  If you are reporting a security problem, or a potential security problem, we respectfully ask that you first contact security@habariproject.org so that we can review the situation with you without jeopardizing our users' sites.  If you open a ticket with details of how to execute an attack against a Habari installation, someone somewhere <b>will</b> see that information and exploit it.
+</p>
+		
+		
+	</div>
+
+	<div id="devintroduction">
+		<h1>Developer Introduction</h1>
+		<p>To learn more about Habari internals and developing for Habari, listed are some useful starting points:</p>
+		<ul>
+			<li> <a href="http://wiki.habariproject.org/en/Debugging_Tips" title="Debugging Tips">Debugging Tips</a>: Some tips for getting started with debugging in Habari.</li>
+		<li> <a href="http://wiki.habariproject.org/en/QueryRecord" class="mw-redirect" title="QueryRecord">QueryRecord</a>: The building block of Habari.</li>
+		<li> <a href="http://wiki.habariproject.org/en/Coding_Standards" title="Coding Standards">Coding Standards</a>: Generally accepted practice within the project.</li>
+		<li> <a href="http://wiki.habariproject.org/en/CSS_Coding_Standards" title="CSS Coding Standards">CSS Coding Standards</a>: Generally accepted CSS practice within the project (suggestion).</li>
+		<li> <a href="http://wiki.habariproject.org/en/Habari_Workflow" title="Habari Workflow">Habari Workflow</a>&nbsp;: How Habari processes requests.</li>
+		<li> <a href="http://wiki.habariproject.org/en/Code_Submisson" title="Code Submisson">Code Submisson</a>&nbsp;: How to submit code and patches for Habari.</li>
+		<li> <a href="http://wiki.habariproject.org/en/Habari_Classes" title="Habari Classes">Habari Classes</a>&nbsp;: An overview of the main object classes used by Habari.</li>
+		<li> <a href="http://wiki.habariproject.org/en/Multisite" title="Multisite">Multisite</a>&nbsp;: How multi-site configurations work in Habari.</li>
+		<li> <a href="http://wiki.habariproject.org/en/User_Overrides" title="User Overrides">User Overrides</a>&nbsp;: How to use the `/user/classes` and `/user/themes` directories to override core Habari functionality.</li>
+		<li> <a href="http://wiki.habariproject.org/en/Plugin_Hooks" title="Plugin Hooks">Plugin Hooks</a>&nbsp;: A list of available hooks for your plugins.</li>
+		<li> <a href="http://wiki.habariproject.org/en/Creating_A_Plugin" title="Creating A Plugin">Creating A Plugin</a>&nbsp;: A tutorial on Habari Plugin architecture.</li>
+		<li> <a href="http://wiki.habariproject.org/en/Rewrite_Tutorial" title="Rewrite Tutorial">Rewrite Tutorial</a>&nbsp;: How to construct rewrite rules for Habari.</li>
+		<li> <a href="http://wiki.habariproject.org/en/Database_Schema" title="Database Schema">Database Schema</a>&nbsp;: Structure of the Habari Database.</li>
+		<li> <a href="http://wiki.habariproject.org/en/Stack_Class" title="Stack Class">Stack Class</a>: The Stack class allows a developer to create a "stack" of items for later output.</li>
+		<li> <a href="http://wiki.habariproject.org/en/Managing_Media" title="Managing Media">Managing Media</a>: How Habari helps developers manage media from a variety of sources.</li>
+		<li> <a href="http://wiki.habariproject.org/en/Human_Interface_Guidelines" title="Human Interface Guidelines">Human Interface Guidelines</a>: How to approach the further development of the administration interface and its intended use.</li>
+	</ul>
+
+
+	</div>
 
 </div>
 </body>
