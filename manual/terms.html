@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<link rel='alternate' type='application/rss+xml' title='RSS' href='index.xml'/>
+<title> Habari - User Manual </title>
+<link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
+</head>
+<body>
+<div id="topMenu">
+	<a href="index.html" title="Introduction">Introduction</a>
+	<a href="habari.html" title="About Habari">About Habari</a>
+	<a href="new.html" title="What's New">What's New</a>
+	<a href="installation.html" title="Installation">Installation</a>
+	<a href="upgrading.html" title="Upgrading">Upgrading</a>
+	<a href="using.html" title="Using Habari">Using Habari</a>
+	<a href="developer.html" title="Developer Introduction">Developer Introduction</a>
+</div>
+
+<div id="wrapper">
+
+	<div id="userdocumentaion">
+
+<a href="using.html">Using Habari</a> | <strong>Key Terms and
+Ideas</strong> | <a href="administration.html">Administration</a> | <a
+href="help.html">Getting Help</a>
+
+<h3>Key Terms and Ideas</h3>
+<a name="Content_Types"></a><h4>Content Types</h4>
+
+<p>As a tool for managing content, Habari defines two default types of content.
+</p>
+<ul><li><b>Entries</b> are the most commonly used content type.  This is the content type you use when creating a new blog post.  They are displayed in reverse chronological order (newest first) on your home page and in your Atom syndication feed.  You would use entries to post a review of the movie you watched yesterday, or what your weekend plans are.
+</li><li><b>Pages</b> are used for static information on your site.  Pages typically live outside of the date-based chronology of your site.  You would use a Page to describe something that isn't associated with a specific date or time, like an "About The Author" biography.
+</li></ul>
+<p>Plugins have the ability to add additional content types.
+</p><p><b>NOTE</b>: When discussing Habari, the term "post" will frequently be used to mean any kind of content.  If the content type matters for documentation or example purposes, a specific content type will be used.  Entries and Pages are both Posts.
+</p>
+<a name="Content_Statuses"></a><h4>Content Statuses</h4>
+
+<p>Out of the box Habari maintains three post statuses - <b>draft</b>, <b>published</b>, and <b>scheduled</b>. Plugins have the option of adding further statuses to this list. The Undelete plugin that comes with Habari, for example, adds the <b>deleted</b> status.
+</p>
+<ul><li><b>Draft</b>. Drafts are unfinished, unpublished works.  Drafts are not visible to regular visitors of your site.  All new posts default to the "draft" status and remain that way until you explicitly change their status.  As long as you don't publish the post, it will remain in this state so you can add to it, edit it, and change it as much as you want without being concerned that others will see it.
+</li><li><b>Published</b>. Published items are available for the entire world to read, and are included in your Atom syndication feed.  As soon as you click the Publish button on Habari's post composition page, the status of the post is set to published. At this point it is viewable by the public at large. You can still edit the post.
+</li><li><b>Scheduled</b>. If you change a post's publication time to a future date, then click the Publish button, Habari sets its status to scheduled. The post will be visible to you when you are logged in to Habari's administrative section, but not to the general public. When the time you set for publication arrives, Habari will automatically change the status to published and make the post available for public viewing.
+
+</li></ul>
+<a name="Tags"></a><h4>Tags</h4>
+<p>Tagging is a non-hierarchical way to categorize your content. When you create a post, you label it with one or more tags to show readers what other posts on your site it is related to. Tags have only a general semantic meaning, because the context of a label can change it's meaning, and this context isn't a part of the tag. Tags do, however, allow you to show the general categories of your work without forcing it into a hierarchical system of categories.
+</p>
+<a name="Comments"></a><h4>Comments</h4>
+
+<p>Readers can add feedback to published posts via <b>comments</b>. Habari requires all comments to be moderated before they are displayed on the site. Plugins can change this situations so that comments from frequent commenters are automatically approved, or comments left as spam are automatically marked as spam.
+</p><p>Out of the box Habari maintains three comment statuses - <b>approved</b>,<b>unapproved</b> and <b>spam</b>.
+</p>
+<ul><li><b>Approved</b> - These are comments that you have either manually approved for display on the site, or that have been filtered by a plugin and accepted for display on the site.
+</li><li><b>Unapproved</b> - All comments are unapproved when they are first made. It is up to you as the site administrator to either mark them for approval so they are displayed on the site, mark them as spam, or delete them.
+
+</li><li><b>Spam</b> - Spam comments are made in the hopes that someone will click through the links that they contain. Often spam is related to gambling or sexually oriented products, but can also be random comments that bear no relation to the post on which they are made. Spam is the reason that all comments are not automatically approved. As said above, you can install plugins in your Habari installation that filter all comments, examining them for the characteristics of spam. If the comment fits the spam profile, it will either be automatically deleted, or marked as spam and retained to further train the spam filtering plugin. It is strongly recommended that you install some kind of spam filtering plugin to save your time and to protect your site.
+</li></ul>
+<a name="Feeds"></a><h4>Feeds</h4>
+<p>The term <b>feed</b> indicates a stream of data which is "consumed" by a special application called a <b>feed reader</b> or <b>aggregator</b>.  Your blog's feed contains the same data that is presented to visitors viewing your site, but it is formatted in a way that is suitable for machine-to-machine communication, as opposed to machine-to-human communication.  There are several formats for this machine-to-machine transmission, with the two most popular being <a href="http://en.wikipedia.org/wiki/RSS_(file_format)" class="external text" title="http://en.wikipedia.org/wiki/RSS_(file_format)" rel="nofollow">RSS</a> and <a href="http://atomenabled.org/" class="external text" title="http://atomenabled.org/" rel="nofollow">Atom</a>.  Out of the box, Habari only speaks the Atom format.
+
+</p><p>RSS and Atom allow users to subscribe to your web site in their aggregator, like Bloglines or Google Reader.  Their aggregator will periodically poll your website (usually once every couple of hours), checking to see if you've published any new content.  If you have, your Habari installation will transmit that new content to the aggregator using the Atom format, and your posts will show up in the aggregator's list of new items.
+</p><p>Your main Atom feed can be located by appending <tt>/atom/1</tt> to your site's URL. Separate feeds are also available for comments, posts with the same tag, and the comments for an individual post.
+</p>
+
+<a name="Themes"></a><h4>Themes</h4>
+<p>Themes allow you to customize the look and feel of the site for your readers. Habari includes several themes to choose from after installation, and many more are available from the community.
+</p>
+
+<a name="Plugins"></a><h4>Plugins</h4>
+<p>By design, Habari by itself has a basic set of capabilities. Plugins add functionality, new capabilities, or additional content types to Habari. Habari includes several out of the box&hellip;
+</p>
+<a name="Timeline_and_Loupe"></a><h4>Timeline and Loupe</h4>
+<img alt="The timeline and loupe" src="timeline.jpg" width="300" height="43" class="thumbimage" />
+<p>On certain administration pages, the loupe is a sliding, expandable window that operates on the timeline of a group of data. The default position for the loupe is the far right: the most recent items of the collection. The default width of the loupe encompasses 20 items. You can click inside the loupe and drag it left and right across the timeline: this will change the items shown beneath the loupe based on the date range highlighted by the loupe. On the left and right of the loupe are handlebars, which you can click to drag left or right to expand or shrink the size of the loupe: this will increase or decrease the number of items shown below.
+</p><p>The loupe makes it extremely easy to display and select specific timelines of data. You can drag and expand the loupe to display all the items from June of last year to June of this year. Or you can narrow the loupe to only display items from last month, or yesterday.
+</p>
+</div>		
+</div>
+</body>
+</html>

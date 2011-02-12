@@ -1,0 +1,636 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<link rel='alternate' type='application/rss+xml' title='RSS'
+href='index.xml'/>
+<title> Habari - User Manual </title>
+<link rel="stylesheet" type="text/css" media="screen" href="style.css">
+</head>
+<body>
+<div id="topMenu">
+	<a href="index.html" title="Introduction">Introduction</a>
+	<a href="habari.html" title="About Habari">About Habari</a>
+	<a href="new.html" title="What's New">What's New</a>
+	<a href="installation.html" title="Installation">Installation</a>
+	<a href="upgrading.html" title="Upgrading">Upgrading</a>
+	<a href="using.html" title="Using Habari">Using Habari</a>
+	<a href="developer.html" title="Developer Introduction">Developer
+Introduction</a>
+</div>
+
+<div id="wrapper">
+
+	<div id="userdocumentaion">
+
+<a href="using.html">Using Habari</a> | <a href="terms.html">Key Terms and
+Ideas</a> | <strong>Administration</strong> | <a href="help.html">Getting Help</a>
+
+<a name="Administration"></a><h3>Administration</h3>
+
+<a name="The_Dashboard"></a><h4>The Dashboard</h4>
+<p>The Dashboard is the first page you see after you log in to Habari's
+administrative interface. The dashboard can be reached from any page of Habari's
+administrative interface by choosing <b>Dashboard</b> from the main menu, or by
+typing <b>Q</b> followed by <b>D</b>.
+</p>
+
+<div class="image"><img alt="Dashboard admin page with default modules" src="dashboard_with_modules.jpg"
+width="300" height="251" class="thumbimage" />
+<div class="caption">Dashboard admin page with default modules</div></div>
+
+<p>The dashboard provides a summary of useful information for your site. The top
+section contains a couple of sentences telling you how long your site has been
+active, a series of high level statistics about your site, how many drafts you
+have awaiting completion, how many scheduled posts you have, and how many
+comments you have awaiting moderation.
+</p><p>Next is a series of <b>modules</b>. Modules are small sub-blocks that
+focus on specific details about your site. Habari comes with modules that
+contain lists of your recent published posts, recent comments on your blog, and
+recent activity that has been logged. Plugins can add various other modules
+dedicated to specific purposes. A plugin that redirects your feeds through the
+Feedburner service, for example, may use a module to let you know how many
+subscribers you have, while a plugin that tracks links to your site may use a
+module to show you the recent links.
+</p><p>Modules can be moved and rearranged, added, and hidden, so they stay in
+the positions that is most logical to you and show you the information you want
+to see. If you don't care about recent log activity, click the <b>x</b> in the
+upper left corner of the log module to hide it. If the first thing you want to
+see is any recent comments on your site, move the recent comments module to the
+top left of the modules section by clicking on the grey rectangle in the upper
+right of the module and dragging the module .
+</p><p>After all the visible modules, the dashboard has a dropdown list of all
+the modules that are available to show. To show a module you don't currently
+have displayed, choose the module then click the button with a + on it to the
+right of the list to display the module.
+</p>
+<a name="Managing_Content"></a><h4>Managing Content</h4>
+
+<p>To manage your content -- draft or published, entry or page -- select one of
+the Manage links from the main menu.  Habari creates a main Manage menu item,
+which has a submenu listing each type of content in your system, providing a
+convenient way to access a specific type of content.  The destination for each
+of these menu links is, in fact, the same page: the menus merely provide a
+shortcut to filter the display by the specified content type.
+</p>
+<img alt="Manage Posts page" src="manage_posts.jpg" width="300" height="299"
+class="thumbimage" />
+<p>Habari strives to make it as easy as possible to find and manage your
+content.  The first thing to note when visiting the "Manage Content" page is the
+<b>timeline</b>.
+</p><p>Beneath the timeline are the posts returned by the current filters. 
+Beside the timeline are the filter controls, and additional navigation controls.
+ By default, 20 posts will be presented beneath the timeline in reverse
+chronological order (newest first).  If you have more than 20 items that satisfy
+the filters, you can page forward and backward to see the next or previous set
+of 20 posts using the "Older" and "Newer" links at the top left and right,
+respectively.  To the right of the "Older" link is a report of the number of
+posts that match the current filter, and where your current display falls within
+that set.
+</p><p>Above the timeline on the Manage Content page is the <b>search</b> box. 
+You can use this box to type in search terms to find content.  To find all posts
+that include the word "Habari", simply type "Habari" into the search box and
+wait a moment.  The list of posts below will be updated, and the quantity
+indicator to the left of the filter box will be updated.  Beside the search box
+are several links that provide shortcut filter controls.  To see only entries,
+click the "Entry" link:  this will add <tt>type:entry</tt> into the search box,
+restricting the list of posts to only those of type Entry.  Click the "Entry"
+link again to remove that filter from the list.  Using these buttons, you can
+quickly drill down to see all your content.  Click the "Entry" link and the
+"Draft" link to see all your unpublished entries.  Click the "Entry" link again
+to see all draft posts, regardless of content type.
+</p><p>Additional filters are available for manual entry.  To see all posts
+authored by Scott, type "author:scott" into the search box.  There is no
+shortcut link for these other filters because it's possible that a single site
+might have, for example, a sufficiently large number of authors as to make the
+links dominate the screen.
+
+</p><p>You can combine the filter links with manual search words.  To see all
+drafts about pizza, click the "Draft" button, and then type in "pizza".  Or,
+manually type in "status:draft pizza".
+</p><p>The loupe will update for the current set of filtered posts.  The
+combination of filter controls and timeline provide for extremely flexible
+content navigation.
+</p><p>Beneath the timeline is the list of posts that match the current filters.
+ The post title, status, author, and date are displayed above a brief snippet of
+the post.  This snippet should provide a bit of context about the post if you
+can't remember it from the title.  The title of the post is a hyperlink,
+allowing you to click it to view that post on the publish page.  The status,
+author, and date are also hyperlinks that show you similar items (same status,
+same author, or same publication date).  To the right of the post is a "drop
+button".  This is a special control mechanism that acts like both a button and a
+drop-down list.  If you place your mouse over the drop button it will expand to
+reveal all of the options available to you.  The first item -- the one displayed
+before you placed your mouse over the drop button -- is the default action that
+will occur if you click your mouse.  You may select one of the other items from
+the list, though, if you don't want to take the default action.  When managing
+content, the usual values of the drop buttons will be "Delete" and
+"Edit".
+</p><p>To the left of each post is a checkbox.  You can tick the boxes to mark
+one or more posts, allowing you to delete a group of posts.  The number of posts
+marked will be indicated above and below the list of posts.  The posts you
+select will be remembered, allowing you to page through all the posts that match
+the current filter.  The number shown will remind you that you have posts
+selected that might not be displayed on the current page.  Next to the number of
+selected posts (which says "None selected" if you've not yet selected any) is
+another checkbox. If you tick this box, all posts on the current page will be
+selected. Once you do so, another link will appear which allows you to select
+<b>all</b> posts which match the current filter, even those not
+visible.
+</p><p>Once you have some group of posts selected, you can delete the entire
+group at once by clicking the <b>Delete Selected</b> button to the
+right.
+</p>
+<a name="Managing_Comments"></a><h4>Managing Comments</h4>
+
+<p>To manage your comments select the Comments link from the main menu, or type
+<b>Q</b>, then <b>C</b>.
+</p><p>As with posts, the first thing to note when visiting the Comments page is
+the timeline and the loupe at the top of the page. The timeline works with
+comments the same way as it does with posts.
+</p>
+<img alt="The Manage Comments page" src="manage_comments.jpg" width="300"
+height="416" class="thumbimage" />
+<p>Beneath the timeline are the comments returned by the current filters.  Above
+the timeline are the search and filter controls, and additional navigation
+controls.  By default, 20 comments will be presented beneath the timeline in
+reverse chronological order (newest first).  If you have more than 20 items that
+satisfy the filters, you can page forward and backward to see the next or
+previous set of comments using the "Older" and "Newer" links at the top left and
+right, respectively.  To the right of the "Older" link is a report of the number
+of comments that match the current filter, and where your current display falls
+within that set.
+</p><p>In the top center of the Comments page is the search box.  You can use
+this box to type in search terms to find comments.  To find all comments that
+include the word <i>Habari</i>, simply type <i>Habari</i> into the search box
+and wait a moment.  The list of comments will be updated, and the quantity
+indicator to the left of the search box will be updated.  Beside the search box
+are several links that provide shortcut filter controls to the different
+statuses and types a comment may have.  To see only Approved comments, click the
+<b>Approved</b> link:  this will add <tt>status:Approved</tt> to the search box,
+restricting the list of comments to only those which are approved.  Click the
+<b>Approved</b> link again to remove that filter from the list.  Using these ,
+you can quickly drill down to see all your comments.  Click the
+<b>Unapproved</b> link and the <b>Pingback</b> link to see all your unapproved
+pingbacks.  Click the <b>Unapproved</b> link again to remove the Unapproved
+filter and see all pingbacks, regardless of status.
+
+</p><p>You can combine the filter links with manual filter controls and search
+words.  To see all approved comments containing the word <i>terrific</i>, click
+the <b>Approved</b> link, and then type in <i>terrific</i>.  Or, manually type
+in <b>status:Approved terrific</b>.
+</p><p>The timeline will update for the current set of filtered posts.  The
+combination of filter controls, timeline and loupe provide for extremely
+flexible content navigation.
+</p><p>Beneath the timeline are the comments that match the current filters,
+with a set of buttons and a checkbox located above and below the comments. Each
+comment shows the commenter's name, url, and email address ( if they left them
+), the title of the post the comment was made on, the time and date of the
+comment, and the text of the comment. The commenter's url serves as direct link
+to the commenter's site, the email address serves as a link to send them an
+email, and the post title serves as a link to the comment and the post on which
+it was made.
+</p><p>To the right of each comment is a drop button, as seen with on the Manage
+Posts pages.  The default action for comments on the drop button is
+<b>Unapprove</b> - to unapprove the comment.  You may select one of the other
+items from the list, though, if you don't want to take the default action. 
+These other actions are <b>Spam</b> - to mark the comment as spam,
+<b>Approve</b> - to approve the comment, <b>Delete</b> - to delete a comment
+completely, and <b>Edit</b> - to take you to a new page where you can modify a
+comment.
+
+</p><p>To the left of the comment is a checkbox.  You can tick the boxes to mark
+one or more comments, allowing you to execute actions against groups of
+comments.  The number of comments marked will be indicated above and below the
+list of comments.  The comments you select will be remembered, allowing you to
+page through all the comments that match the current filter.  The number will
+remind you that you have comments selected that might not be displayed on the
+current page.  Next to the number of selected comments (which says "None
+selected" if you've not yet selected any) is another checkbox.  If you tick this
+box, all comments on the current page will be selected. Once you do so, another
+link will appear which allows you to select <b>all</b> comments which match the
+current filter, even those not visible.
+</p><p>Once you have some group of comments selected, you can execute a single
+action against them.  Just click the button at the top or bottom of the page for
+the action you wish to perform. As with the drop button, your choices are to
+<b>Delete</b> the comment, mark the comments as <b>Spam</b>, <b>Unapprove</b>
+previously approved comments, and <b>Approve</b> unapproved comments.
+</p><p>If you hover your mouse over the snippet of text from a comment, note
+that the background color will change. Click on the text when it does so, and
+the comment will become available for in-place editing. You can modify any of
+the fields shown on the Manage Comments page - the text of the comment, the
+commenter's name, their email address, and their url. The drop-button will also
+change to contain the options to <b>Update</b> and save any changes you may have
+made, and <b>Cancel</b> to abandon any changes you made. Clicking either of
+these options will cause Habari to take the indicated action and return the
+comment to read only mode with the standard options contained in the
+drop-button.
+
+</p>
+
+<a name="Managing_Tags"></a><h4>Managing Tags</h4>
+<p>To manage your site's tags, select <b>Tags</b> from the main menu, or type
+<b>Q</b>, then <b>A</b>.
+</p>
+
+<img alt="The Manage Tags page" src="manage_tags.jpg" width="300" height="103"
+class="thumbimage" />
+<p>At the very top of the tags page is a <b>search box</b>. After your site has
+been in use for a period of time, you can have quite a few tags. Use the search
+box to narrow the number of tags which you are viewing.
+</p><p>Below the search box you will see the tags which you have used on your
+site. These will be of various heights, as a visual cue to how frequently they
+have been used, and each one will have a superscript number to the right of it
+denoting the exact number of posts on which it has been used.
+</p><p>Select tags by clicking on them. A second click on a tag de-selects
+it.
+</p><p>To <b>rename</b> a tag, click on it, type the new name in the text box
+below the tags, then click the <b>Rename</b> button.
+</p><p>To <b>merge</b> multiple tags into one tag, click on each tag you want to
+merge together, type the name you want to give the tags in the text box below
+the tags, then click the <b>Rename</b> button.
+
+</p><p>To <b>delete</b> one or more tags, click on each tag you want to delete,
+then click the <b>Delete Selected</b> button beneath the tags.
+</p>
+
+<a name="Options"></a><h4>Options</h4>
+<img alt="Options admin page" src="options.jpg" width="300" height="231"
+class="thumbimage" />
+
+<p>Options for your site include such things as the site title, tagline, number
+of posts per page, time zone, etc.
+</p><p>To edit your site's options, either select <b>Options</b> from the main
+menu, or type <b>Q</b>, then <b>O</b>.
+</p><p>Options are searchable by using the search form at the top right of the
+page.
+</p>
+
+<a name="Themes_2"></a><h4>Themes</h4>
+
+<img alt="Themes admin page" src="manage_themes.jpg" width="300" height="259"
+class="thumbimage" />
+<p>To change your theme select <b>Themes</b> from the main menu, or type
+<b>Q</b>, then <b>T</b>. This will take you to the Themes page.
+</p><p>The Themes page is divided into two sections. The top section contains
+one item, your current active theme. The bottom section contains all the themes
+that are available for you to use. 
+</p><p>Each theme will show several pieces of information. To the far left is
+the name of the theme, its developer, and a screenshot of what it looks like in
+use. In the middle is a short description of the theme. For inactive themes, to
+the right is a dropbutton containing available actions for the theme. Your
+active theme will not have a dropbutton.
+</p><p>If a theme is inactive, the only available action is to <b>Activate</b>
+it. Clicking on an inactive theme's dropbutton automatically deactivates the
+theme that is currently active, and activates the theme you selected.
+
+</p>
+
+<a name="Plugins_2"></a><h4>Plugins</h4>
+<img alt="Plugins admin page" src="manage_plugins.jpg" width="300" height="281"
+class="thumbimage" />
+<p>To manage your plugins, select <b>Plugins</b> from the main menu, or type
+<b>Q</b>, then <b>P</b>. You will be taken to your Plugins page.
+
+</p><p>The plugins page is divided into two main sections. At the top of the
+page is a list of the plugins you have activated. The bottom of the page
+contains a list of the plugins you have installed, but have not yet activated.
+Even if you have not added any plugins yourself, this section will contain the
+plugins that come with Habari.
+</p><p>To the right of each plugin is a dropdown button containing the actions
+that it is possible for you to perform with the plugin. For inactive plugins,
+the only possible action is <b>Activate</b>, which you may do by clicking on the
+dropdown button. Once you do so, the plugin is removed from the list of
+inactivate plugins and transferred to the list of active plugins.
+</p><p>Active plugins can have several actions associated with them. The most
+common are <b>Configure</b>, which opens an inline form in which you can set the
+configuration options for that plugin, and <b>Deactivate</b>, which removes the
+plugin from the list of active plugins and returns it to the list of inactive
+plugins. If there is no configuration possible for a plugin, the only action you
+will be able to perform with it is to deactivate it. Depending on what it does,
+plugins may add other options to the drop-button.
+</p><p>Each plugin that needs to be configured will have different options, but
+they all work the same general way. There will be a series of fields to fill in,
+then a <b>Save</b> and a <b>Close</b> button. After setting the plugin options
+to your satisfaction, click the <b>Save</b> button to save the changes to the
+database. Click the <b>Close</b> button to close the configuration
+dialog.
+
+</p><p>Some active plugins will have a question mark (<b>?</b>) to the right of
+their name. Clicking on the question mark will open an inline frame containing
+usage instructions for that plugin.
+</p>
+
+<a name="Users_and_Groups"></a><h4>Users and Groups</h4>
+<p>Habari supports multiple users, each of which can be assigned to groups with
+different permissions within the system. Some users can have phenomenal cosmic
+powers (over the blog, that is) while some users can be restricted to simply
+writing new posts depending on their groups.
+</p><p>Users can be members of one or more groups. Groups are assigned
+permissions. The combined permissions assigned to all the groups to which a user
+belongs define the things that user is permitted to do within the
+blog.
+</p><p>When we talk about "what a user can do", what we're really saying is
+"things that can be done by one of the groups to which this user belongs". It's
+important to remember that users don't have any permission on their own. Users
+can only do stuff based on the permissions assigned to the groups to which they
+blog. But it's awkward to keep saying "This user belongs to a group with
+permission to do Foo", so for brevity we'll simply say "Users who can do
+Foo".
+</p>
+
+<a name="Users"></a><h5>Users</h5>
+
+<p>Users with the "add, remove, and edit users" permission can, obviously, add,
+remove, and edit users. A user with this permission can access the Users page
+from the main menu. Here is presented a list of all the user accounts in the
+system, and a brief report on their activity within the system. Above the user
+list is a form to create a new user: simply supply a username, email address,
+and password.
+</p><p>If there are many users on the system, the display can be filtered by
+searching for part of a user name.
+</p><p>To the left of each user is a checkbox. This is only used when deleting a
+user account. Select the user(s) to be deleted, select whether to reassign that
+user's posts to a different user or to delete the posts from the system, and
+press the delete button.
+</p><p>Clicking on any user will display that user's details
+page.
+</p>
+<a name="User"></a><h5>User</h5>
+<p>From a user's details page one may specify additional information about a
+user or they may specify their own information, if they're viewing their own
+user detail page. Most of the data displayed on this page is purely
+informational, and not really used by Habari anywhere.
+</p><p>The Apply button is used to save any changes made on the user page. A
+user can also be deleted directly for their page by using the delete button.
+Choose whether you want to reassign posts to another users or not before using
+the delete button on the page.
+</p><p>Note that plugins can modify this page to add new fields.
+</p>
+<a name="Groups"></a><h5>Groups</h5>
+
+<p>Users with the "manage groups and permissions" permission can access the
+Groups page from the main menu. By default, all groups defined within the system
+are displayed. You may modify a single group's details by selecting it from the
+drop-down list at the top of the page, by clicking on the group's name in the
+main list, or by clicking the "Edit" option from the drop-button to the right of
+that group.
+</p><p>To add a new group, simply supply a group name in the field at the bottom
+of the page and click the "Add Group" button. Newly created groups will have no
+permissions, by default.
+</p><p>When editing a group, you are first presented with the list of users that
+are members of that group. You may add additional members from the drop-down
+list and then clicking the "Add" button. <b>IMPORTANT</b>: changes to the list
+of users are not saved to the database until you click the "Apply" button at the
+bottom of the page!
+</p><p>Beneath the user listing is a list of all of the defined permissions
+within the system, with controls to enable or disable access to these
+permissions for the group.
+</p>
+<img alt="Group admin page showing permissions granted to &#39;admins&#39;
+group." src="group.jpg" width="300" height="414" class="thumbimage"
+/>
+
+<a name="Permissions"></a><h5>Permissions</h5>
+<p>There are two kinds of permissions within Habari: binary and
+CRUD:
+</p>
+
+<a name="Binary_Permissions"></a><h6>Binary Permissions</h6>
+<p>Binary permissions are either/or: a group may either do the thing, or not do
+the thing. For example, the "add, remove, and edit users" permission is
+either/or. Either a user can add and edit users, or they cannot.
+</p><p>There's a subtle distinction for binary permissions between "not
+assigned" and "denied". In either case, the group is not permitted to do the
+thing defined by the permission. The distinction comes into play when a user
+belongs to multiple groups. Let's look at a practical example to illustrate the
+point.
+</p><p>User Scott is assigned to the "Content Managers" group, which has been
+granted permissions to "Manage comments on all posts", "Manage comments on one's
+own posts", and "Manage tags". The specific assignment of these permissions
+allows Scott to manage the content on the blog. The "Content Managers" group is
+neither granted nor denied the "Change theme" permission. Since the "Change
+theme" permission is not specifically granted, Scott may not change the site
+theme.
+</p><p>Scott is next added to the "Site Managers" group, which has been granted
+permission to "Manage options" and "Change theme". Since Scott is in a group
+that specifically grants permission for "Change theme", Scott may now change the
+current theme.
+</p><p>After some time, the blog owner decides that he really likes the current
+theme, and doesn't want anyone changing it. Rather than go through each of the
+groups to manually remove any previously granted permission to "Change theme"
+the site owner makes a new group called "No Theme Changes", and assigns all the
+users to this group. The only permission setting for this group is to
+specifically deny access to the "Change theme" permission. The <b>deny</b>
+permission overrides any specifically granted permission for the same thing.
+Scott is now a member of the "Site Managers" and "No Theme Changes" groups. The
+former specifically grants him permission to change the theme, but the latter
+specifically revokes permission to change the theme. Denied permissions always
+override granted permissions.
+
+</p>
+<a name="CRUD_Permissions"></a><h6>CRUD Permissions</h6>
+<p>CRUD stands for "Create, Read, Update, Delete" and indicates that there are
+several related actions for that permission. For example, "Permissions on one's
+own posts" is CRUD. A user might be permitted to create new posts, but not
+update or delete posts they had previously created.
+</p><p>As with binary permissions, there is a difference for CRUD permissions
+between "not assigned" and "denied". A particular permission not assigned to one
+group may be assigned to another group. A user that was a member of both groups
+would have the permission, because one of the groups to which they belong was
+assigned that permission. Any CRUD permissions that are specifically denied to a
+group will deny that permission to all members of the group, regardless of other
+group membership that might grant that permission.
+</p><p>Using the cascading nature of groups and permissions, it is possible to
+create robust group assignments to enforce granular permissions. You can create
+"Content Managers" who have access to modify the content of the site without
+changing site settings or managing users. You could then create a "Users
+Managers" group that only has permission to manage users. As members of the
+"Content Managers" group gain experience and prove their trustworthiness, you
+can add their user accounts to the "User Managers" group so that they can begin
+adding new users, and managing current ones.
+</p>
+<a name="Default_Permissions"></a><h6>Default Permissions</h6>
+
+<p>Habari creates a set of permissions to enable managing access to its
+different areas. Plugins can add their own permissions to control access to
+their added functionality. The default permissions are listed
+below.
+</p>
+<ul><li><b>Super User</b>
+<ul><li><b>Permissions for super users:</b> This permission implicitly grants
+all members of the group access to all permissions even for the ones from which
+any of their groups is denied.
+</li></ul>
+</li></ul>
+<ul><li><b>Administration:</b> These permissions control access to the different
+admin interface areas and are all of a binary type. If no access is defined or
+if access is denied to any of these permissions, the relevant admin page will be
+hidden from the menu.
+<ul><li><b>Manage comments on all posts:</b> Allow or deny editing and
+moderating all comments within the blog.
+</li><li><b>Manage comments on one's own posts:</b> Allow or deny editing and
+moderating comments made on the user's authored posts
+
+</li><li><b>Manage tags:</b> Allow or deny access to rename or delete the site's
+tags.
+</li><li><b>Manage options:</b> Allow or deny changing the site's main
+options
+</li><li><b>Change theme:</b> Allow or deny access to change the currently
+active theme.
+</li><li><b>Configure the active theme:</b> Allow or deny access to change the
+configuration of the currently active theme.
+</li><li><b>Activate/deactivate plugins:</b> Allow or deny activating or
+deactivating plugins.
+</li><li><b>Configure active plugins:</b> Allow or deny access to change the
+configuration of the currently active plugins.
+
+</li><li><b>Use the importer:</b> Allow or deny access to use the importer
+plugins that use the admin import page.
+</li><li><b>Add, remove, and edit users:</b> Allow or deny access to fully
+manage the blog's users. Note that if a user doesn't have this permission, they
+will not be able to change their own user information.
+</li><li><b>Manage groups and permissions:</b> Allow or deny access to creating,
+editing or deleting groups and changing their permissions.
+</li><li><b>Manage logs:</b> Allow or deny access to the logs
+page.
+</li></ul>
+</li></ul>
+<ul><li><b>Content:</b> These permissions control what type of access is allowed
+to the content of the site. If no access is defined or if access is denied to
+any of these permissions, the relevant admin page will be hidden from the menu.
+As plugins add new content types, new permissions are added relevant to each of
+the types.
+
+<ul><li><b>Permissions to all posts:</b> Controls the access level to all the
+site's posts of any type.
+</li><li><b>Permissions to posts of type "entry":</b> Controls the access level
+to all the site's posts of the type 'entry'.
+</li><li><b>Permissions to posts of type "page":</b> Controls the access level
+to all the site's posts of the type 'page'.
+</li><li><b>Permissions on one's own posts:</b> Controls the access level to all
+the posts created by the user and of any type.
+</li></ul>
+</li><li><b>Comments</b>
+<ul><li><b>Make comments on any post:</b> Allow or deny ability to post comments
+on site's posts.
+
+</li></ul>
+</li></ul>
+<a name="Logs"></a><h4>Logs</h4>
+<p>Habari keeps records of most of the interesting things about which it knows. 
+It records each time someone logs in, each time a new item is posted, and the
+like.  By selecting Logs from the main menu (shortcut: Q L), you can review the
+recent activity on your site.  
+</p><p>At the top of the page is the familiar loupe and filter input box,
+allowing you to control what log messages to display.  At the top of each column
+of data is a drop-down allowing you to filter the logs by specific elements. 
+For example, you can select all the log entries generated by a specific IP
+address, or all logs generated by a specific user.  You can apply multiple
+filter controls, allowing you to drill down to all authentication messages from
+a specific IP address and a specific user.
+</p><p>To the left of each log entry is a checkbox, allowing you to select one
+or more log entries.  Selected entries can be manually deleted.
+</p><p>It is important to note that these logs are not permanent, and will
+expire after some time (usually a few weeks).
+</p>
+<a name="Importing_Content"></a><h3>Importing Content</h3>
+
+<p>Habari is able to import post, comment, category/tag, and user data from a
+growing list of importable platforms. To import content, first activate the
+corresponding Importer plugin on the plugins page (Q P in the Main Menu) and
+then follow the steps detailed on the Import page.
+</p><p>Once the import process is complete your old data has been copied and can
+be managed through Habari, and can be deleted from the other platform if
+desired.
+</p><p><b>Important Note</b>: Deactivate any spamchecking plugins or plugins
+that contact outside sites before beginning to import your data. If active,
+these will greatly slow down, or even prevent, the successful completion of the
+import process. In the case of spamchecking plugins, comments may incorrectly be
+marked as unapproved if a spamchecker plugin is active.
+</p><p>After you have completed the import process, remember to reactivate the
+plugins you deactivated.
+</p>
+<a name="Extending_Habari"></a><h3>Extending Habari</h3>
+<p>By design, Habari is built with the basic set of capabilities needed by
+everyone to create and maintain a blog or simple website. It is, however, also
+designed to be highly extensible through the use of plugins and themes other
+than those with which it ships.
+</p>
+
+<a name="Themes_3"></a><h4>Themes</h4>
+<p>Your site's theme is its basic look and feel as seen by your visitors. Habari
+comes with several themes.
+</p>
+<ul><li> Charcoal - A unique theme designed to highlight some of
+Habari's capabilites. 
+</li><li> Mzingi - A basic theme designed to serve as a foundation
+from which you can create your own themes.
+</li><li> K2 - One of the most popular themes in the blogging world.
+
+</li></ul>
+<p>You aren't limited to these themes in your choices. There are many more
+themes listed in Habari's theme repository at <a href="http://wiki.habariproject.org/en/Available_Themes"
+class="external free" title="http://wiki.habariproject.org/en/Available_Themes"
+rel="nofollow">Habari's wiki</a>, and in the <a href="http://www.habariproject.org/dist/themes/"
+class="external free" title="http://www.habariproject.org/dist/themes/">Habari Distribution Directory</a>.
+
+</p>
+<a name="Plugins_3"></a><h4>Plugins</h4>
+<p>Habari comes packaged with several plugins. These are intended to serve as
+examples of best practices in plugin creation for developers, and to provide
+useful functionality to everyone.
+</p>
+<a name="Miscellaneous_Plugins"></a><h5>Miscellaneous Plugins</h5>
+<ul><li> Core Dash Modules - These included a latest posts module, a latest
+comments module, and a log module. Activate this plugin to get an overview of
+the latest activity on your site whenever you log in.
+
+</li><li> Pingback - Enable this plugin to send pingbacks to sites to which you
+link in your posts.
+</li><li> Spamchecker - Activate this plugin to perform a basic spam check on
+comments that your site receives.
+</li><li> Undelete - We all make mistakes, including deleting posts that we
+later wish we had kept. Activate this plugin to retain deleted posts, so if you
+change your mind or discover you made a mistake after deleting something, you
+can recover it.
+</li><li> ThemeHelper - This plugin is relied on by some themes. It is
+especially helpful if you create your own themes.
+</li><li> Simple Private Posts - This plugin allows you to mark a post as
+private, making it available only to readers to whom you have given permission.
+The public at large is not able to see it.
+</li></ul>
+<a name="Media_Plugins"></a><h5>Media Plugins</h5>
+
+<ul><li> Habari Media Silo - In Habari, a media silo is a way to manage media
+that you would wish to embed into your posts. Activate the Habari Media Silo in
+order to be able to upload images to your site and embed them in your posts with
+the proper HTML tags with a simple click of the mouse.
+</li><li> Flickr Silo - Activate the Flickr Silo to access the images you have
+stored on Flickr with the same ease with which you manage locally stored
+images.
+</li><li> Viddler Silo - Activate the Viddler Silo to access the videos you have
+stored on Viddler.
+</li></ul>
+
+<a name="Importers"></a><h5>Importers</h5>
+<ul><li> Wordpress Importer - Activate the Wordpress Importer to import your
+content from Wordpress into Habari.
+</li></ul>
+<p>In addition to the plugins that are packaged with Habari, dozens of other
+plugins have been created to extended the software's functionality. These cover
+everything from WYSIWYG editors, to contact forms, to plugins to allow you to
+implement custom URLs for your site. Your can find an extensive list on the <a
+href="http://wiki.habariproject.org/en/Available_Plugins" class="external text"
+title="http://wiki.habariproject.org/en/Available_Plugins" rel="nofollow">wiki
+plugin page</a>, and even more at the <a href="http://www.habariproject.org/dist/plugins/"
+class="external text" title="http://www.habariproject.org/dist/plugins/"
+rel="nofollow">Habari Distribution Directory</a>.
+</p>
+		
+</div>
+
+</div>
+</body>
+</html>
