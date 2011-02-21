@@ -20,7 +20,9 @@
 <div id="wrapper">
 
 	<div id="upgrading">
-		<h1>Upgrading</h1>
+<h1>Upgrading</h1>
+<p>Habari's upgrade process is designed to be transparent, with the only indication that an upgrade is happening being a slightly longer page load time the first time the site is visited after the software is updated.</p>
+
 <h2>Before You Upgrade</h2>
 <p>Before making any major change in your Habari installation, it would be prudent to create a backup of your database and your installation, in particular all the files in your Habari /user directory. The /user directory should contain all files which you have customized - plugins you have installed, themes you have installed, class files you may have modified, or locale files you have installed.
 </p>
@@ -41,75 +43,110 @@
 </li><li> Log into your Habari administrative area. Navigate to the plugins page and reactivate the plugins one by one. 
 </li><li> Celebrate and enjoy the new features of your latest version of Habari!
 </li></ol>
-<h3>Upgrading from Version 0.5.2 to Version 0.6</h3>
 
-<p>Version 0.6 incorporates many changes from the previous version, both in bug fixes and new features. For details see <a href="http://wiki.habariproject.org/en/Releases/0.6" title="http://wiki.habariproject.org/en/Releases/0.6" rel="nofollow">the release notes</a>.
-</p><p>Habari's upgrade process is designed to be transparent, with the only indication that an upgrade is happening being a slightly longer page load time the first time the site is visited after the software is updated.
-</p><p>One major change that affects the upgrade process in this release is in how Habari stores it's configuration details. Habari 0.5.2 and earlier stored site configuration details in global variables. Habari 0.6 marks the move to using a config class, so the variables aren't globally available, a change that was made to improve security. These details are stored in the site's config.php file, which is located either in the root of the site's directory, or, for multisite users, in Habari's <tt>/user/sites/site_name directory</tt>. 
-</p><p>For users who have left their config.php file writable, the necessary changes to the configuration file will be handled by the upgrade process transparently. For users who have made their configuration file read only, some manual changes will have to be made before the upgrade process can begin.
-</p><p>
+<h3>Upgrading from Version 0.6.x to Version 0.7.x</h3>
+<p>Version 0.7 incorporates many changes from the previous version, both in bug fixes and new features. For details see <a href="http://wiki.habariproject.org/en/Releases/0.7" title="http://wiki.habariproject.org/en/Releases/0.7" rel="nofollow">the release notes</a>.
 </p>
-<h4>Manually Updating The Configuration File</h4>
 
-<p>The config.php file for Habari version 0.5.2 and below looks like this:
-</p><p><b>For MySQL</b>
+<p>There are four major changes that have the potential to break your installation.</p>
+
+<h4>Legacy Themes</h4>
+<p>Your theme files may need to be updated, but to even be activated the theme's type needs to be properly set in the theme.xml file.
+If that file currently looks like this:
+<code><pre>
+&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;theme&gt;
+    &lt;name&gt;Blah...
+...
+&lt;/theme&gt;
+</pre></code>
+you must change it as follows:
+<code><pre>
+&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;pluggable type="theme"&gt;
+    &lt;name>Blah...
+    &lt;class>Blah&lt;/class&gt;
+...
+&lt;/pluggable&gt;
+</pre></code>
+That '''class''' must match (including case) the class name in your theme. For example, the Blah theme would have the following line in theme.php:
+<code><pre>
+class Blah extends Theme
+{
+</pre></code>
 </p>
-<pre>
-&lt;?php
-$db_connection= array(
-	'connection_string'=&gt;'mysql:host={$db_host};dbname={$db_schema}',
-	'username'=&gt;'{$db_user}',
-	'password'=&gt;'{$db_pass}',
-	'prefix'=&gt;'{$table_prefix}'
-);
 
-?&gt;
-</pre>
-<p><b>For SQLite</b>
+<h4>Incompatible Plugins</h4>
+<p>You must deactivate all plugins when upgrading to version 0.7 as version 0.6 plugins are not compatible with version 0.7. The core plugins, those that come with Habari, have all been updated. Most of the plugins in the <a href="https://trac.habariproject.org/habari-extras/browser/plugins/" title="Extras Repository">extras repository</a> have also been updated. You can download a zip archive of plugins from the <a href="http://habariproject.org/dist/plugins/" title="Habari webpage">Habari webpage</a>. You should choose the version tagged 0.7 or trunk if there is no 0.7 tag yet. If you find a plugin in the extras repository that is not updated for 0.7, ask on [[IRC]] and someone will likely fix it for you immediately.
 </p>
-<pre>
-&lt;?php
-$db_connection= array(
-	'connection_string'=&gt;'sqlite:{$db_file}',
-	'username'=&gt;'',
-	'password'=&gt;'',
-	'prefix'=&gt;'{$table_prefix}'
-);
 
-?&gt;
-
-</pre>
-<p>With version 0.6 and forward the config file looks like this:
-</p><p><b>For MySQL</b>
+<p>If you get the error <tt>Cannot override final method Plugin::info()</tt>, that means you have upgraded to 0.7 while an incompatible plugin is active. To recover your site, either upgrade the plugin or find the offending plugin in your Habari installation, and move the whole directory for that plugin out of the plugins directory.
 </p>
-<pre>
-&lt;?php
-Config::set( 'db_connection', array(
-	'connection_string'=&gt;'mysql:host={$db_host};dbname={$db_schema}',
-	'username'=&gt;'{$db_user}',
-	'password'=&gt;'{$db_pass}',
-	'prefix'=&gt;'{$table_prefix}'
-));
 
-?&gt;
-</pre>
-<p><b>For SQLite</b>
+<p>To fix your own plugins, you need to add an XML configuration file, as described on the page <a href="http://wiki.habariproject.org/en/Dev:Creating_A_Plugin#Habari_0.7" title="Creating a Plugin">Creating a Plugin</a>, and remove the function called <tt>info()</tt> from the plugin code. The file for the plugin code is called, for example, <tt>myplugin.plugin.php</tt> in the plugin's directory.
 </p>
-<pre>
 
-&lt;?php
-Config::set( 'db_connection', array(
-	'connection_string'=&gt;'sqlite:{$db_file}',
-	'username'=&gt;'',
-	'password'=&gt;'',
-	'prefix'=&gt;'{$table_prefix}'
-));
-
-?&gt;
-</pre>
-<p>The easiest thing to do is, before upgrading, make the configuration file writable. Perform the upgrade, then make the file read only again.
-</p><p>If you don't wish to do that, open the configuration file in a text editor and make the changes shown above, save your changes, then navigate to your site so the upgrade process can proceed.
+<h4>Comment Forms Must Use FormUI</h4>
+<p>To make it easier for plugins to customize comment forms, for example for spam prevention, comments must now be submitted through a <a href="http://wiki.habariproject.org/en/Dev:FormUI" title="FormUI">FormUI</a> comment form. This has been possible for some time, so many forms already use this method. If your theme submits comments through a normal HTML form, they won't be saved. <a href="http://wiki.habariproject.org/en/Dev:Adding_a_Comment_Form" title="Adding a Comment Form">Adding a Comment Form</a> describes how to add and customize Habari's comment form.
 </p>
+
+<h4>Tags Schema Changes</h4>
+<p>If your theme or a plugin retrieves tags, upgrading to version 0.7 is likely to break that code. This is because internally, the Habari tags system now uses the <a href="http://wiki.habariproject.org/en/Dev:Taxonomy" title="Taxonomy">Taxonomy</a> system. On a technical level, <tt>Tag</tt> is now a subclass of the <tt>Term</tt> class, and <tt>Tags</tt> is a subclass of the <tt>Vocabulary</tt> class, so the tag-specific database tables, <tt>tags</tt> and <tt>tag2posts</tt>, aren't used any more. The tables will still be in your database, and will be removed in a later upgrade.
+</p>
+
+<p>Specifically, if your theme does something like this, in 0.7 the tags retrieved will not be up to date and an error is likely to occur.
+<code><pre>
+$tags = DB::get_results( 'SELECT * FROM ' . DB::table('tags') );
+</pre></code>
+
+This code can be changed to the following to get an alphabetical listing of the tags.
+<code><pre>
+$tags = Tags::vocabulary()->getTree( 'term_display ASC' );
+</pre></code>
+</p>
+
+<p>In addition, themes often use code similar to the following to see whether to output a post's tags or not:
+
+<code><pre>
+&lt;?php if( is_array( $post->tags ) ) : ?&gt;
+</pre></code>
+
+This will no longer work. Post tags are no longer stored as an array of text strings. They are now an <tt>ArrayObject</tt> of <tt>Tag</tt> objects. A suitable replacement for the above code is:
+
+<code><pre>
+&lt;?php if( count( $post->tags ) ) : ?&gt;
+</pre></code>
+
+For the same reason, this code will no longer work:
+
+<code><pre>
+&lt;?php if( in_array( 'Some tag', $post->tags ) ) : ?&gt;
+</pre></code>
+
+In it's place use:
+
+<code><pre>
+&lt;?php if( $post->tags->has( 'Some tag' ) ) : ?&gt;
+</pre></code>
+
+See <a href="http://groups.google.com/group/habari-dev/browse_thread/thread/c62e38ed828093dc" title="Google Groups habari-dev post">this post</a> to the -dev mailing list for more details.
+</p>
+
+<p>Additionally, the way that posts are retrieved according to the tags that are attached to them has changed. Previously, you might have used something like the following:
+
+<code><pre>
+&lt;?php $asides = Posts::get( array( 'tag' => 'asides' ) ); ?&gt;
+</pre></code>
+
+Those posts should now be retrieved through the <tt>tags</tt> vocabulary.
+
+<code><pre>
+&lt;?php $asides = Posts::get( array( 'vocabulary' => array( 'tags:term' => 'asides' ) ) ); ?&gt;
+</pre></code>
+
+See the <a href="http://wiki.habariproject.org/en/Dev:Retrieving_Posts" title="Retrieving Posts">Retrieving Posts</a> page for more details.
+</p>
+
 <h3>Upgrading Other Versions of Habari</h3>
 <p>For specific upgrade instructions for earlier versions of Habari, see the <a href="http://wiki.habariproject.org/en/Upgrading" title="Full Upgrade Instructions">full upgrade notes</a> on the wiki.</p>
 </div>
