@@ -21,9 +21,9 @@
 
 	<div id="userdocumentaion">
 <h1 id="installation">Installation</h1>
-		<p>Habari has a few <a href="http://wiki.habariproject.org/en/Installation" title="Installation">Server Requirements</a>, which you will need to meet to be able to run Habari. If you have what is required, (or better), you are good to go! As Habari is still in development, no guarantees are made that these are fully stable versions, or that updating won't break the current database structure.
-		</p><p>To install the latest stable version of Habari:
-		</p>
+<p>Habari has a few <a href="http://wiki.habariproject.org/en/Installation" title="Installation">Server Requirements</a>, which you will need to meet to be able to run Habari. If you have what is required, (or better), you are good to go! As Habari is still in development, no guarantees are made that these are fully stable versions, or that updating won't break the current database structure.</p>
+
+<p>To install the latest stable version of Habari:</p>
 
 <ul><li> Download <a href="http://habariproject.org/en/download" class="external free" title="http://habariproject.org/en/download" rel="nofollow">the current release</a> and unzip the Habari package.
 </li><li> If you are using MySQL or PostgreSQL, obtain the connection settings needed below, or create a database for Habari on your web server.
@@ -41,19 +41,34 @@
 </li><li> Database Name: Again your hosting company should have provided this information when you first joined.
 </li><li> Table Prefix: You will only need to change this if you have more than one version of Habari installed.
 </li></ul>
+
+<p>After entering the required fields (those marked with an asterisk), the <em>Check Database Connection</em> button will become available. Click it to check that the connection details you just entered are correct. If they are, the next section of settings, Site Configuration, will become available.</p>
+
 <p>The Site Configuration settings you will need to set are:
 </p>
 
 <ul><li> Site Name: The name of your blog.
 </li><li> Username: The name or alias you wish to use to administer your blog. This should not be the same as the username for the database.
-</li><li> Password: The password associated to the above Username. Enter this in the second box, just to make sure you get it right.
+</li><li> Password: The password associated with the above Username. Re-enter the password in the second box.
 </li><li> Admin Email: This is the email address associated with the above Username. Habari will email you to let you know everything is working.
 </li></ul>
-<p>The installer recommends several plugins upon initial install.  These plugins are checked in the next section, Plugin Activation.  Additional optional plugins are included in the core installation, but these plugins are not checked by default.  If there are additional plugin present in addition, Habari will list these here as well.  Choose the plugins that should be activated upon installation by checking the box next to each.
-</p><p>Conclude the installation process by clicking the "Install Habari" button.  When Habari completes processing, installation is complete.
-</p><p>The End! Habari should now be installed.
-</p><p><a href="http://wiki.habariproject.org/en/Installation" title="Installation">Full Installation Instructions</a> are available, including some details of how to adjust your settings for different web servers and specific configuration information for several popular hosting companies.
-</p><p>If you are happy to use the current development version of Habari, the full instructions explain how to access the Habari subversion repository; however, for most normal users you will need to download the latest stable version of Habari.
+
+<p>The next step of the installation procedure, Plugin Activation, becomes available after successfully entering the Site Configuration details.</p>
+
+<p>Habari comes with several commonly used plugins. Some of these are marked for activation by default. In the Plugin Activation section you can choose not to activate any of these plugins, or choose others to also activate.</p>
+
+<p>If you have already added other plugins to your Habari directories, these will also be in the list of plugins. You can choose to activate as many of these as you like during the installation.</p>
+
+<p>Conclude the installation process by clicking the "Install Habari" button.  When Habari completes processing, installation is complete.
+</p>
+
+<p><strong>The End!</strong> Habari should now be installed.
+</p>
+
+<p><a href="http://wiki.habariproject.org/en/Installation" title="Installation">Full Installation Instructions</a> are available, including some details of how to adjust your settings for different web servers and specific configuration information for several popular hosting companies.
+</p>
+
+<p>If you are happy to use the current development version of Habari, the full instructions explain how to access the Habari subversion repository; however, for most normal users you will want to download the latest stable version of Habari.
 </p>
 
 <h2 id="common_issues">Common Installation Issues</h2>
