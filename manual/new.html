@@ -20,30 +20,66 @@
 <div id="wrapper">
 
 	<div id="whatsnew">
-		<h1>What's New</h1>
-		<h2>Introduction</h2>
-		<p>Welcome to Habari Version 0.6!</p>
-		<p>This latest release of Habari contains some major improvements and feature changes.</p>
-		<ul>
-			<li>ACL ( Access Control Lists ) support is introduced. With ACL, not only does Habari have support for users, group support has been added. Groups can be assigned specific rights that limit what parts of your site the groups members can access, ranging from only being able to read and comment on published posts ( anonymous users ) to being able to do anything on the site ( administrators ), and everything in between. This support is fully transparent to single-user sites, but can make life much easier for sites with multiple authors and user classes.</li>
-			<li>There have been improvements to the admin interface.</li>
-			<li>Sites that use SQLite as the storage database should see an increase in performance.</li>
-			<li>UTF8 support has been improved. For previous users of Habari, part of the upgrade process is to ensure the database is utilizing UTF8 properly.</li>
-			<li>Support for HiEngine, Habari's theme templating system, has been improved. Theme creators now have the option of creating good looking themes using either raw PHP calls, or HiEngine templating.</li>
-			<li>Help support for plugins in the admin interface.</li>
-			<li>Tag support is still built in, but the tag drawer has been moved to a plugin to improve the publish page performance for sites with hundreds of tags.</li>
-			<li>The format of Habari's configuration file has changed. For those who have left it writable, the upgrade will be transparent. For those who have made it read only, it is recommended that it be made writable before upgrading, then set back to read only. If you don't wish to do this, see the <a href="#upgrading" title="Upgrade Instructions">upgrading instructions</a> for details.</li>
-			<li>The Serendipity importer no longer ships with Habari. An importer for WordPress databases up through version 2.7.1 is included. The importer has had many improvements in this version.</li>
-			<li>Habari now ships with a plugin that allows you to create private posts. With this plugin enabled, you can make a post available for reading to only a selected group of readers.</li>
-		</ul>
-		<h2>Known Bugs</h2>
-		<p>Almost 1100 bug fixes and improvements have been made since the last release, but as with any piece of software issues and enhancement requests remain. For full details see Habari's <a href="http://trac.habariproject.org/habari/timeline" title="External link to http://trac.habariproject.org/habari/timeline" target="_blank">change management system</a>.</p>
-		<p>Of specific note, PostgreSQL support has not been fully updated in version 0.6. This is primarily due to lack of participants in the project with ability and resources for development and testing of that detabase engine. We welcome users of Postgres to submit patches and test future changes in the hope to include support for new installs and upgrades of Postgres in a point release of 0.6. However, it is currently advised that users currently running 0.5.2 with Postgres do not upgrade to 0.6.</p>
-		<h2>Credits</h2>
-		<p>These release notes were compiled by the <a href="http://wiki.habariproject.org/en/Habari_Project:Community_Portal" title=" External link to http://wiki.habariproject.org/en/Habari_Project:Community_Portal" target="_blank">Habari Community</a>.</p>
-		<p>On behalf of the community, we give our warmest thanks to the developers and contributors who made this Habari release possible.</p>
-		</div>
+<h1>What's New</h1>
+<h2>Introduction</h2>
+<p>Welcome to Habari Version 0.7!</p>
 
+<p>This latest release of Habari contains some major improvements and feature changes.</p>
+
+<p>Some things that Habari users should be aware of:
+</p> 
+
+<ul>
+<li> Plugins now use an XML configuration file, which improves performance. See <a href="http://wiki.habariproject.org/en/Dev:Creating_A_Plugin#Habari_0.7" title="Dev:Creating A Plugin" class="external text">Creating a Plugin</a> for details. <b>Warning</b>: this change may break your site. When upgrading from 0.6, you should deactivate all your plugins and upgrade them to versions that are compatible with 0.7. See the <a href="upgrading.html" title="Upgrading">upgrade instructions</a> for details on how to ensure your plugins are compatible.</li>
+<li> The format for theme XML configuration files has changed. See <a href="http://wiki.habariproject.org/en/Creating_a_Custom_Theme" title="Creating a Custom Theme">Creating a Custom Theme</a> for details.</li>
+<li> Theme comment forms must now use Habari's built-in form builder, <a href="http://wiki.habariproject.org/en/Dev:FormUI" title="Dev:FormUI">FormUI</a>. This makes it easier for plugins to work with comment submission, the most important benefit of which is allowing better spam prevention. <b>Warning</b>: this change may break your theme. See the <a href="upgrading.html" title="Upgrading">upgrade instructions</a> for details on how to use the FormUI comment form in your theme.</li>
+<li> Tag management has drastically changed internally, and in most cases tag code in themes and plugins will need to be updated. <b>Warning</b>: changes to how tags are implemented are likely to break your theme or plugins. See the <a href="upgrading.html" title="Upgrading">upgrade instructions</a>.</li>
+<li> Added a system to allow you to add output from plugins without editing theme files. Themes can define <a href="http://wiki.habariproject.org/en/Dev:Theme_Areas" title="Dev:Theme Areas">Areas</a> to which users can add <a href="http://wiki.habariproject.org/en/Dev:Plugin_Blocks" title="Dev:Plugin Blocks" class="external text">Blocks</a> provided by plugins. This is similar to what other systems might call widgets.</li>
+</ul> 
+
+<p>There are also some changes that will be of interest to developers:
+</p> 
+
+<ul>
+<li> Introduced the <a href="http://wiki.habariproject.org/en/Dev:Taxonomy" title="Dev:Taxonomy">Taxonomy</a> system, and ported the internal tag system to use it. See <a href="http://groups.google.com/group/habari-dev/browse_thread/thread/c62e38ed828093dc" class="external text" rel="nofollow">this post</a> to the -dev mailing list if your theme or plugin retrieves tags.</li>
+<li> The post publish page now supports <a href="http://wiki.habariproject.org/en/Dev:FormUI#Field_Validation" title="Dev:FormUI" class="external text">FormUI validators</a>, so plugins can validate input when creating and editing posts.</li>
+<li> <a href="http://wiki.habariproject.org/en/Dev:Retrieving_Posts#Post_info_data" title="Dev:Retrieving Posts">Retrieving</a> and <a href="http://wiki.habariproject.org/en/Dev:Retrieving_Posts#Ordering_by_post_info" title="Dev:Retrieving Posts" class="external text">ordering</a> posts via post info is now supported.</li>
+<li> We've upgraded to jQuery 1.4.2 (from 1.2.6!).</li>
+<li> Themes and plugins can now react to the activation and deactivation of themes.</li>
+</ul> 
+
+<p>Also, almost every aspect of Habari has had improvements and bug fixes; DB support, AtomPub, ACL, FormUI, the installer, the admin (which is now served as HTML5), internationalization. See the list of <a href="https://trac.habariproject.org/habari/report/11" class="external text" rel="nofollow">issues closed since 0.6</a>.
+</p> 
+
+<ul>
+<li> Improved the installer <a href="https://trac.habariproject.org/habari/ticket/891" class="external text" rel="nofollow">#891</a>.</li>
+<li> Fixed an ACL bug so that users can be restricted to editing just their own profiles <a href="https://trac.habariproject.org/habari/ticket/1012"class="external text" rel="nofollow">#1012</a>.</li>
+<li> Improve database schema updating on SQLite <a href="https://trac.habariproject.org/habari/ticket/966" class="external text" rel="nofollow">#966</a>.</li>
+<li> Stop authors overwriting changes made by other authors in multi-user sites <a href="https://trac.habariproject.org/habari/ticket/253" class="external text" rel="nofollow">#253</a>.</li>
+<li> Bug fixes and improvements to the Habari media silo <a href="https://trac.habariproject.org/habari/ticket/960" class="external text" rel="nofollow">#960</a>, <a href="https://trac.habariproject.org/habari/ticket/971" class="external text" rel="nofollow">#971</a>, <a href="https://trac.habariproject.org/habari/ticket/990" class="external text" rel="nofollow">#990</a>, <a href="https://trac.habariproject.org/habari/ticket/1110" class="external text" rel="nofollow">#1110</a>, <a href="https://trac.habariproject.org/habari/ticket/1111" class="external text" rel="nofollow">#1111</a></li>
+<li> Allow retrieval of posts ordered by post info values <a href="https://trac.habariproject.org/habari/ticket/1035" class="external text" rel="nofollow">#1035</a>.</li>
+<li> Using AtomPub, support creating draft posts <a href="https://trac.habariproject.org/habari/ticket/1042" class="external text" rel="nofollow">#1042</a> and editing tags <a href="https://trac.habariproject.org/habari/ticket/1130" class="external text" rel="nofollow">#1130</a>.</li>
+<li> Allow other software to use <tt>__autoload()</tt> functions <a href="https://trac.habariproject.org/habari/ticket/1130" class="external text" rel="nofollow">#1130</a>.</li>
+<li> Work around bad changes introduced to PDO in PHP 5.2.12 and PHP 5.3.1 <a href="https://trac.habariproject.org/habari/ticket/1116" class="external text" rel="nofollow">#1116</a>, <a href="https://trac.habariproject.org/habari/ticket/1338" class="external text" rel="nofollow">#1338</a>.</li>
+<li> Plugin developers no longer need to use the <tt>Update::add()</tt> function to check if the plugin has been updated (though it will still work). Instead, the <tt>guid</tt> can be included in the plugin's XML <a href="https://trac.habariproject.org/habari/ticket/1208" class="external text" rel="nofollow">#1208</a>.</li>
+<li> We've added more unit tests (though there's still a long way to go).</li>
+<li> The manual has been improved.</li>
+<li> Numerous performance tweaks.</li>
+<li> The version of the Blueprint CSS framework that ships with Habari was upgraded from 0.7 to 1.0, which may cause minor display differences for themes which utilize it.</li>
+<li> Several updates to the WordPress importer were added to reduce the number of "garbage" items being imported from newer releases of WordPress. The importer now excludes menu items, auto-saved drafts, and revisions.</li>
+<li> Themes no longer need to manually specify the Atom, APP, and RSD tags in their head HTML, they are included in the theme-&gt;header() output by default.</li>
+</ul> 
+
+<h2>Known Bugs</h2> 
+<p>More than 700 bug fixes and improvements have been made since the last release, but as with any piece of software issues and enhancement requests remain. For full details see Habari's <a href="http://trac.habariproject.org/habari/timeline" class="external text" rel="nofollow">change management system</a>.
+</p> 
+
+<h2>Credits</h2>
+<p>These release notes were compiled by the <a href="http://wiki.habariproject.org/en/Habari_Project:Community_Portal" title=" External link to http://wiki.habariproject.org/en/Habari_Project:Community_Portal" target="_blank">Habari Community</a>.</p>
+
+<p>On behalf of the community, we give our warmest thanks to the developers and contributors who made this Habari release possible.</p>
+
+</div>
 </div>
 </body>
 </html>
