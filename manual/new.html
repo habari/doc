@@ -46,6 +46,8 @@
 <li> <a href="http://wiki.habariproject.org/en/Dev:Retrieving_Posts#Post_info_data" title="Dev:Retrieving Posts">Retrieving</a> and <a href="http://wiki.habariproject.org/en/Dev:Retrieving_Posts#Ordering_by_post_info" title="Dev:Retrieving Posts" class="external text">ordering</a> posts via post info is now supported.</li>
 <li> We've upgraded to jQuery 1.4.2 (from 1.2.6!).</li>
 <li> Themes and plugins can now react to the activation and deactivation of themes.</li>
+<li> <code>Options::get()</code> now only accepts two parameters - a name or an array of names and the default value to return if the option does not exist. If you were previously passing in multiple arguments as options you'll need to update your call. More details are in the commit message of <a href="https://trac.habariproject.org/habari/changeset/4390" class="external text" rel="nofollow">r4390</a> and updated examples can be found in the <code>Options::get()</code> PHPDoc.
+</li>
 </ul> 
 
 <p>Also, almost every aspect of Habari has had improvements and bug fixes; DB support, AtomPub, ACL, FormUI, the installer, the admin (which is now served as HTML5), internationalization. See the list of <a href="https://trac.habariproject.org/habari/report/11" class="external text" rel="nofollow">issues closed since 0.6</a>.
