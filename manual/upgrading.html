@@ -55,13 +55,13 @@
 <p><a href="http://wiki.habariproject.org/en/Dev:Theme_Functions" title="Dev:Theme Functions">Theme functions</a> no longer print content by default but now return a value. This means that you need to tell your theme to <tt>echo</tt> the returned value. For example, all themes should call the <tt>header()</tt> function, which should be changed from this: </p>
 
 <code>
-<?php $theme->header(); ?>
+&lt;?php $theme->header(); ?&gt;
 </code>
 
 <p>to this:</p>
 
 <code>
-<?php echo $theme->header(); ?>
+&lt;?php echo $theme->header(); ?&gt;
 </code>
 
 <p>You should check your calls to at least <tt>header()</tt>, <tt>footer()</tt>, <tt>prev_page_link()</tt>, <tt>next_page_link()</tt>, <tt>page_selector()</tt>, and <tt>feed_alternate()</tt> in your theme.</p>
