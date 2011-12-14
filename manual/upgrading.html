@@ -75,7 +75,7 @@
 <p>A path disclosure is an error that can show the directory where your software is installed, which can be seen as a security issue. To protect existing Habari installations from a potential path disclosure issue, you can modify your <tt>config.php</tt> file and include the following line at the start of the file. New installations will be protected by default.</p>
 
 <code>
-<?php if ( !defined( 'HABARI_PATH' ) ) { die( 'No direct access' ); }
+&lt;?php if ( !defined( 'HABARI_PATH' ) ) { die( 'No direct access' ); } ?&gt;
 </code>
 </div>
 </body>
