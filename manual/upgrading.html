@@ -43,40 +43,20 @@
 </li><li> Celebrate and enjoy the new features of your latest version of Habari!
 </li></ol>
 
-<h2>Upgrading from Version 0.7.x to Version 0.8</h2>
+<h2>Upgrading from Version 0.8.x to Version 0.9</h2>
 
 <p>There are several changes that you should take into account when upgrading. </p>
 
-<p>All users will be affected by the change in <strong>theme functions</strong> and many will want to remove a <strong>potential path disclosure issue</strong>. Now that it has been removed from the Habari installation, users of the <strong>k2 theme</strong> will need to manually include it.
-</p>
+<h4>Support for PHP 5.2 Removed</h4>
+Before upgrading to Habari 0.9 you should ensure that you have at least PHP 5.3.3 installed. <strong>Do not upgrade Habari if you are unable to confirm your host is running at least PHP 5.3.3.</strong>
 
-<h4>Theme Functions</span></h4>
+<h4>Dashboard Module Functionality Re-Implemented</h4>
+In Habari 0.9, we've re-used the code that Habari uses for blocks and areas in the theme to implement the dashboard.  There are two consequences to this.  
 
-<p><a href="http://wiki.habariproject.org/en/Dev:Theme_Functions" title="Dev:Theme Functions">Theme functions</a> no longer print content by default but now return a value. This means that you need to tell your theme to <tt>echo</tt> the returned value. For example, all themes should call the <tt>header()</tt> function, which should be changed from this: </p>
+First, when loading the Habari dashboard for the first time, the dashboard will no longer have the original modules that were present.  Modules will need to be re-added to the dashboard manually.
 
-<code>
-&lt;?php $theme->header(); ?&gt;
-</code>
+Second, implementing dashboard modules is now done differently.  If you have installed plugins in Habari 0.8 that provide custom dashboard blocks, these will need to be upgraded to use the new 0.9 functionality before their modules appear for use in the dashboard.
 
-<p>to this:</p>
-
-<code>
-&lt;?php echo $theme->header(); ?&gt;
-</code>
-
-<p>You should check your calls to at least <tt>header()</tt>, <tt>footer()</tt>, <tt>prev_page_link()</tt>, <tt>next_page_link()</tt>, <tt>page_selector()</tt>, and <tt>feed_alternate()</tt> in your theme.</p>
-
-<h4>k2 Theme Removal</h4>
-
-<p>If you are using the k2 theme that was previously included in Habari, you should download k2 and included it in your themes directory, <tt>user/themes</tt>. k2 can now be found in <a href="https://github.com/habari-extras/k2">habari-extras</a>.</p>
-
-<h4>Prevent Installation Path Disclosure</h4>
-
-<p>A path disclosure is an error that can show the directory where your software is installed, which can be seen as a security issue. To protect existing Habari installations from a potential path disclosure issue, you can modify your <tt>config.php</tt> file and include the following line at the start of the file. New installations will be protected by default.</p>
-
-<code>
-&lt;?php if ( !defined( 'HABARI_PATH' ) ) { die( 'No direct access' ); } ?&gt;
-</code>
 </div>
 </body>
 </html>
