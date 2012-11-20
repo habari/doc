@@ -22,53 +22,52 @@
 <h1>What's New</h1>
 <h2>Introduction</h2>
 
-<p>Welcome to Habari Version 0.8!</p>
+<p>Welcome to Habari Version 0.9!</p>
 
-<p>This latest release of Habari contains security fixes, major improvements, and feature changes. You should read the <a href="upgrading.html" title="Upgrading">Upgrading</a> notes before you upgrade.</p>
-
-<p>This is also our first release from <a href="https://github.com/habari">Github</a>. Have a look at <a href="http://wiki.habariproject.org/en/Habari_on_github#Installing_Habari_From_Git">how to install Habari from Github</a>.</p>
+<p>s latest release of Habari contains major improvements and feature changes. You should read the <a href="upgrading.html" title="Upgrading">Upgrading</a> page before you upgrade.</p>
 
 <h3>Issues Addressed</h3>
 
-<h4>Security</h4>
+<h4>Important Changes</h4>
 <ul>
-  <li> Don't let admin pages be loaded in an iframe <a href="https://github.com/habari/system/commit/d8a544eb85">d8a544eb85</a></li>
-  <li> Protect Habari Silo uploads from CSRF <a href="https://github.com/habari/system/commit/04cd07adfc">04cd07adfc</a>, <a href="https://github.com/habari/system/commit/04cd07adfc85940b8d8f">85940b8d8f</a></li>
-  <li> Filter the page string of requested admin pages to remove a non-persistent XSS hole <a href="https://github.com/habari/system/commit/a0f34009aa">a0f34009aa</a></li>
-  <li> Prevent direct loading of config files <a href="https://github.com/habari/system/commit/5eb87a12ca">5eb87a12ca</a></li>
+<li>Removed support for PHP 5.2. Habari's minimum supported version is now 5.3.3.</li>
+<li>Performance improvements though reducing database calls. <a href="http://github.com/habari/habari/issues/225">#225</a></li>
+<li>As Viddler is no longer a free service, the Viddler Silo plugin is no longer included. It can now be found in its own repository in <a href="https://github.com/habari-extras/viddlersilo">habari-extras</a>. <a href="https://github.com/habari/habari/issues/369">#369</a></li>
+<li>Admin Dashboard Modules are now Blocks, just like those used by themes. See the <a href="upgrading.html">upgrading</a> notes for consequences of this. <a href="https://github.com/habari/habari/issues/386">#386</a></li>
 </ul>
 
-<p>Thanks again to <a href="http://www.sneaked.net/">Mauro Gentile</a> for working with us on these security issues, his contributions are greatly appreciated, as is his patience in waiting for this release before revealing these bugs!</p>
-
-<h4>Bugs</h4>
-<p>A complete list of all the bugs fixed is near impossible. Here are a selected few, and the rest can be found in <a href="http://github.com/habari/system/commits/0.8">the commit logs</a>.</p>
+<h4>Security</h4>
+No known security issues were reported in this release cycle.
 
 <ul>
-  <li> Remove a call to a PHP 5.3+ method on the admin logs page when filtering by date. <a href="http://trac.habariproject.org/habari/changeset/5125">r5125</a> fixes <a href="http://trac.habariproject.org/habari/ticket/1447">#1447</a>.  </li>
-  <li> Many strings that had translation values available but were not using them now will show localized text.  </li>
-  <li> Fix errors displayed when using Charcoal. <a href="http://github.com/habari/system/commit/9a18afb6">9a18afb6</a> fixes <a href="http://github.com/habari/habari/issues/221">#221</a>.  </li>
-  <li> Use signed values for moving taxonomy terms. <a href="http://github.com/habari/system/commit/35735ae">35735ae</a> fixes <a href="http://github.com/habari/habari/issues/229">#229</a>.  </li>
-  <li> Wrong date in entry dash module. <a href="http://github.com/habari/system/commit/7041fc622673ff17a40ff05e9b9f438b13f6c7bb">7041fc62</a> fixes <a href="http://github.com/habari/habari/issues/208">#208</a>.  </li>
-  <li> Prevent direct access to files. <a href="http://github.com/habari/system/commit/64089ee3">64089ee3</a>.  </li>
+  <li>Fixed the issue that users were able to see menu links to edit content they didn't have permission to edit.  <a href="http://github.com/habari/habari/issues/283">#283</a></li>
+  <li>Sudo for admin to masquerade as another user fixed. <a href="http://github.com/habari/habari/issues/358">#358</a></li>
+</ul>
+
+<h4>Bugs</h4>
+<p>A complete list of all the bugs fixed is near impossible. Here are a selected few, and the rest can be found in <a href="http://github.com/habari/system/commits/0.9">the commit logs</a>.</p>
+
+<ul>
+  <li>Do not allow the undelete plugin to save posts created by a user being deleted. <a href="http://github.com/habari/system/commit/39443b7df5fedd5da2fe758afb39a1b03d261f4d">39443b7</a> fixes <a href="http://github.com/habari/habari/issues/253">#253</a>.</li>
+  <li>Fix bug when merging tags that could lead to losing tags. <a href="http://github.com/habari/system/commit/e1684de49e72f8bc55f02a7bb3e24c87c9626029">e1684de49</a> <a href="http://github.com/habari/system/commit/d7dcfec1d7978a01dd4bb551c50762c073ba626c">d7dcfec1d7</a>.</li>
 </ul>
 
 <h4>Enhancements</h4>
 
 <ul>
-  <li> Add initial support for child themes, wherein a child theme can use all of the templates of its parent, overriding only templates and styles that it intends to augment.  </li>
-  <li> Improve the consistency of rewrite rule names, which may break plugins using those rules. The rule <tt>update_entries</tt> has been renamed <tt>update_posts</tt>.  </li>
-  <li> Change the default behavior of theme functions from echo to return.  </li>
-  <li> Add support for gzip and deflate compression to both SocketRequestProcessor and CurlRequestProcessor, so that any external HTTP requests will be seamlessly compressed to save bandwidth, <a href="https://github.com/habari/system/commit/5e20c9f3b7c171e76b7a08ed6e6b3de25101671d">5e20c9f3b7</a> and <a href="https://github.com/habari/system/commit/3687139d57401983977ca0082d56e9c4bef32bde">3687139d57</a> </li>
-</ul>
-
-<h4>Other Changes</h4>
-<ul>
-  <li> The k2 theme has been removed. It can now be found in <a href="https://github.com/habari-extras/k2">habari-extras</a>.</li>
+  <li>Improved caching.</li>
+  <li>Improved translations.</li>
+  <li>Included a responsive theme, Wazi.</li>
+  <li>Make javascript strings translatable. <a href="http://github.com/habari/system/commit/134fc7a4">134fc7a4</a>.</li>
+  <li>Better automated installation. Habari now can be easily deployed to the cloud. <a href="http://github.com/habari/system/commit/8acb763f">8acb763f</a>, <a href="http://github.com/habari/system/commit/d5207bb0">d5207bb0</a>, and <a href="http://github.com/habari/system/commit/e8c19f87">e8c19f87</a>.</li>
+  <li>HTML5 comment form <a href="http://github.com/habari/habari/issues/273">#273</a>.</li>
+  <li>An experimental Menus plugin is included.</li>
+  <li>The version of jQuery packaged with Habari has been upgraded to the 1.8 series <a href="https://github.com/habari/habari/issues/343">#343</a>.</li>
 </ul>
 
 <h2>Known Bugs</h2> 
 
-<p>Many <a href="https://github.com/habari/system/commits/0.8">bug fixes and improvements</a> have been made since the last release, but as with any piece of software issues and enhancement requests remain. For full details see Habari's <a href="https://github.com/habari/habari/issues">change management system</a>.</p>
+<p>Many <a href="https://github.com/habari/system/commits/0.9">bug fixes and improvements</a> have been made since the last release, but as with any piece of software issues and enhancement requests remain. For full details see Habari's <a href="https://github.com/habari/habari/issues">change management system</a>.</p>
 
 <h2>Credits</h2>
 
